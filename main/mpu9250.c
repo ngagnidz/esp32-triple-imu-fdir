@@ -76,6 +76,7 @@ int wakeup()
     };
     // blocking transmit, result lands in rx_data[0]
     spi_device_polling_transmit(mpu9250, &wakeup_read);
+
     printf("SLEEPING_MODE_STATUS: 0x%02X\n", wakeup_read.rx_data[0]);
     if (wakeup_read.rx_data[0] == 0x01)
     {
@@ -85,32 +86,113 @@ int wakeup()
         return 0;
 }
 
-void app_main(void)
+void range_setup()
 {
-    bus_config();
-    device_config();
-    whoami();
-    wakeup();
 
+    // +- 500dps
+    spi_transaction_t gyro_range_write = {
+        .length = 8,
+        .cmd = 0,
+        .addr = 0x1B,
+        .flags = SPI_TRANS_USE_RXDATA | SPI_TRANS_USE_TXDATA,
+        .tx_data = {0x08},
+    };
+
+    spi_device_polling_transmit(mpu9250, &gyro_range_write);
+
+    spi_transaction_t gyro_range_read = {
+        .length = 8,
+        .cmd = 1,
+        .addr = 0x1B,
+        .flags = SPI_TRANS_USE_RXDATA,
+    };
+    spi_device_polling_transmit(mpu9250, &gyro_range_read);
+    printf("Gyro Range: 0x%X\n", gyro_range_read.rx_data[0]);
+
+    // +-8g
+    spi_transaction_t accel_range_write = {
+        .length = 8,
+        .cmd = 0,
+        .addr = 0x1C,
+        .flags = SPI_TRANS_USE_RXDATA | SPI_TRANS_USE_TXDATA,
+        .tx_data = {0x10},
+    };
+
+    spi_device_polling_transmit(mpu9250, &accel_range_write);
+
+    spi_transaction_t accel_range_read = {
+        .length = 8,
+        .cmd = 1,
+        .addr = 0x1C,
+        .flags = SPI_TRANS_USE_RXDATA,
+    };
+    spi_device_polling_transmit(mpu9250, &accel_range_read);
+    printf("Accel Range: 0x%X\n", accel_range_read.rx_data[0]);
+}
+
+void read_acceleration()
+{
     spi_transaction_t accel_x_high = {
         .cmd = 1,
         .addr = 0x3B, // accel high
         .length = 8,
         .flags = SPI_TRANS_USE_RXDATA,
     };
-    // blocking transmit, result lands in rx_data[0]
-    spi_device_polling_transmit(mpu9250, &accel_x_high);
-    printf("Accel X High: 0x%02X\n", accel_x_high.rx_data[0]);
+    spi_transaction_t accel_x_low = {
+        .cmd = 1,
+        .addr = 0x3C, // accel low
+        .length = 8,
+        .flags = SPI_TRANS_USE_RXDATA,
+    };
 
-    while (1)
-    { // Z high byte should be around 0x3F-0x40 (approx 16384 = 0x4000)
-        spi_transaction_t accel_z_high = {
-            .cmd = 1,
-            .addr = 0x3F,
-            .length = 8,
-            .flags = SPI_TRANS_USE_RXDATA,
-        };
-        spi_device_polling_transmit(mpu9250, &accel_z_high);
-        printf("Accel Z High: 0x%02X\n", accel_z_high.rx_data[0]);
-    }
+    spi_transaction_t accel_y_high = {
+        .cmd = 1,
+        .addr = 0x3D, // accel high
+        .length = 8,
+        .flags = SPI_TRANS_USE_RXDATA,
+    };
+    spi_transaction_t accel_y_low = {
+        .cmd = 1,
+        .addr = 0x3E, // accel low
+        .length = 8,
+        .flags = SPI_TRANS_USE_RXDATA,
+    };
+
+    spi_transaction_t accel_z_high = {
+        .cmd = 1,
+        .addr = 0x3F, // accel high
+        .length = 8,
+        .flags = SPI_TRANS_USE_RXDATA,
+    };
+    spi_transaction_t accel_z_low = {
+        .cmd = 1,
+        .addr = 0x40, // accel low
+        .length = 8,
+        .flags = SPI_TRANS_USE_RXDATA,
+    };
+
+    spi_device_polling_transmit(mpu9250, &accel_x_high);
+    spi_device_polling_transmit(mpu9250, &accel_x_low);
+    int16_t accel_x = (int16_t)((accel_x_high.rx_data[0] << 8) | accel_x_low.rx_data[0]);
+    printf("Accel X: %d\n", accel_x / 4096);
+
+    spi_device_polling_transmit(mpu9250, &accel_y_high);
+    spi_device_polling_transmit(mpu9250, &accel_y_low);
+    int16_t accel_y = (int16_t)((accel_y_high.rx_data[0] << 8) | accel_y_low.rx_data[0]);
+    printf("Accel Y: %d\n", accel_y / 4096);
+
+    spi_device_polling_transmit(mpu9250, &accel_z_high);
+    spi_device_polling_transmit(mpu9250, &accel_z_low);
+    int16_t accel_z = (int16_t)((accel_z_high.rx_data[0] << 8) | accel_z_low.rx_data[0]);
+    printf("Accel Z: %d\n", accel_z / 4096);
+}
+
+void app_main(void)
+{
+    bus_config();
+    device_config();
+    whoami();
+    wakeup();
+    range_setup();
+    read_acceleration();
 }
