@@ -15,7 +15,7 @@ spi_device_handle_t mpu9250_1;
 spi_device_handle_t mpu9250_2;
 spi_device_handle_t mpu9250_3;
 
-static DRAM_ATTR uint8_t buf[14];
+static DRAM_ATTR uint8_t buf[3][14];
 #define ACCEL_SENSITIVITY 4096.0f
 #define GYRO_SENSITIVITY 65.5f
 #define TEMP_SENSITIVITY 333.87f
@@ -182,34 +182,33 @@ void whoami(spi_device_handle_t dev)
     printf("WHO_AM_I: 0x%02X\n", whoami_trans.rx_data[0]);
 }
 
-burst_read_data_t burst_read(correction_data_t corr, spi_device_handle_t dev)
+burst_read_data_t burst_read(correction_data_t corr, spi_device_handle_t dev, int idx)
 {
-
-    burst_read_data_t read;
+    burst_read_data_t read = {0};
 
     spi_transaction_t burst_accel_read = {
-
         .cmd = 1,
         .length = 8 * 14,
-        .rx_buffer = buf,
+        .rx_buffer = buf[idx],
         .addr = 0x3B,
-
     };
 
     spi_device_polling_transmit(dev, &burst_accel_read);
-    read.accel_x = ((int16_t)((buf[0] << 8) | buf[1]) / ACCEL_SENSITIVITY) - corr.accel_x;
-    read.accel_y = ((int16_t)((buf[2] << 8) | buf[3]) / ACCEL_SENSITIVITY) - corr.accel_y;
-    read.accel_z = ((int16_t)((buf[4] << 8) | buf[5]) / ACCEL_SENSITIVITY) - corr.accel_z;
 
-    read.temp = ((int16_t)((buf[6] << 8) | buf[7]) / TEMP_SENSITIVITY) + TEMP_OFFSET;
+    read.accel_x = ((int16_t)((buf[idx][0] << 8) | buf[idx][1]) / ACCEL_SENSITIVITY) - corr.accel_x;
+    read.accel_y = ((int16_t)((buf[idx][2] << 8) | buf[idx][3]) / ACCEL_SENSITIVITY) - corr.accel_y;
+    read.accel_z = ((int16_t)((buf[idx][4] << 8) | buf[idx][5]) / ACCEL_SENSITIVITY) - corr.accel_z;
 
-    read.gyro_x = ((int16_t)((buf[8] << 8) | buf[9]) / GYRO_SENSITIVITY) - corr.gyro_x;
-    read.gyro_y = ((int16_t)((buf[10] << 8) | buf[11]) / GYRO_SENSITIVITY) - corr.gyro_y;
-    read.gyro_z = ((int16_t)((buf[12] << 8) | buf[13]) / GYRO_SENSITIVITY) - corr.gyro_z;
+    read.temp = ((int16_t)((buf[idx][6] << 8) | buf[idx][7]) / TEMP_SENSITIVITY) + TEMP_OFFSET;
+
+    read.gyro_x = ((int16_t)((buf[idx][8] << 8) | buf[idx][9]) / GYRO_SENSITIVITY) - corr.gyro_x;
+    read.gyro_y = ((int16_t)((buf[idx][10] << 8) | buf[idx][11]) / GYRO_SENSITIVITY) - corr.gyro_y;
+    read.gyro_z = ((int16_t)((buf[idx][12] << 8) | buf[idx][13]) / GYRO_SENSITIVITY) - corr.gyro_z;
+
     return read;
 }
 
-correction_data_t calibrate(spi_device_handle_t dev)
+correction_data_t calibrate(spi_device_handle_t dev, int idx)
 {
     correction_data_t corr = {0};
     correction_data_t zero = {0};
@@ -217,7 +216,7 @@ correction_data_t calibrate(spi_device_handle_t dev)
     for (int i = 0; i < CALIBRATION_SAMPLES; i++)
     {
 
-        burst_read_data_t burst_read_result = burst_read(zero, dev);
+        burst_read_data_t burst_read_result = burst_read(zero, dev, idx);
         corr.accel_x += burst_read_result.accel_x;
         corr.accel_y += burst_read_result.accel_y;
         corr.accel_z += burst_read_result.accel_z;
@@ -242,18 +241,14 @@ void app_main(void)
 {
     bus_config();
     device_config();
-    whoami(mpu9250_2);
+    setup(mpu9250_1);
+    setup(mpu9250_2);
+    setup(mpu9250_3);
 
-    if (!setup(mpu9250_2))
-    {
-        printf("IMU setup failed\n");
-        return;
-    }
-
-    correction_data_t corr = calibrate(mpu9250_1);
+    correction_data_t corr = calibrate(mpu9250_1, 0);
 
     printf("Device 1:\n");
-    burst_read_data_t data = burst_read(corr, mpu9250_1);
+    burst_read_data_t data = burst_read(corr, mpu9250_1, 0);
     printf("Accel X: %.3f g\n", data.accel_x);
     printf("Accel Y: %.3f g\n", data.accel_y);
     printf("Accel Z: %.3f g\n", data.accel_z);
@@ -262,10 +257,10 @@ void app_main(void)
     printf("Gyro Y:  %.3f dps\n", data.gyro_y);
     printf("Gyro Z:  %.3f dps\n", data.gyro_z);
 
-    corr = calibrate(mpu9250_2);
+    corr = calibrate(mpu9250_2, 1);
 
     printf("Device 2:\n");
-    data = burst_read(corr, mpu9250_2);
+    data = burst_read(corr, mpu9250_2, 1);
     printf("Accel X: %.3f g\n", data.accel_x);
     printf("Accel Y: %.3f g\n", data.accel_y);
     printf("Accel Z: %.3f g\n", data.accel_z);
@@ -274,8 +269,9 @@ void app_main(void)
     printf("Gyro Y:  %.3f dps\n", data.gyro_y);
     printf("Gyro Z:  %.3f dps\n", data.gyro_z);
 
+    corr = calibrate(mpu9250_3, 2);
     printf("Device 3:\n");
-    data = burst_read(corr, mpu9250_3);
+    data = burst_read(corr, mpu9250_3, 2);
     printf("Accel X: %.3f g\n", data.accel_x);
     printf("Accel Y: %.3f g\n", data.accel_y);
     printf("Accel Z: %.3f g\n", data.accel_z);
