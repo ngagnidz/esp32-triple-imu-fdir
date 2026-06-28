@@ -1,21 +1,48 @@
 #include <stdio.h>
 #include "driver/spi_master.h"
 #include "driver/gpio.h"
+#include "esp_attr.h"
 
 #define PIN_SCLK 18
 #define PIN_MOSI 23
 #define PIN_MISO 19
-#define PIN_CS 5
+#define PIN_CS1 5
+#define PIN_CS2 4
+#define PIN_CS3 15
 
 spi_transaction_t whoami_trans;
-spi_device_handle_t mpu9250;
+spi_device_handle_t mpu9250_1;
+spi_device_handle_t mpu9250_2;
+spi_device_handle_t mpu9250_3;
+
+static DRAM_ATTR uint8_t buf[14];
+#define ACCEL_SENSITIVITY 4096.0f
+#define GYRO_SENSITIVITY 65.5f
+#define TEMP_SENSITIVITY 333.87f
+#define TEMP_OFFSET 21.0f
+#define CALIBRATION_SAMPLES 1000
+#define GRAVITY 1.0f
 
 typedef struct
 {
-    float x;
-    float y;
-    float z;
-} gyro_corrections;
+    float accel_x;
+    float accel_y;
+    float accel_z;
+    float gyro_x;
+    float gyro_y;
+    float gyro_z;
+} correction_data_t;
+
+typedef struct
+{
+    float accel_x;
+    float accel_y;
+    float accel_z;
+    float temp;
+    float gyro_x;
+    float gyro_y;
+    float gyro_z;
+} burst_read_data_t;
 
 // setup the SPI bus on SPI3 with DMA so CPU is free during transfers
 void bus_config()
@@ -35,19 +62,41 @@ void bus_config()
 // command_bits=1 is the read/write bit, address_bits=7 is the register address
 void device_config()
 {
-    spi_device_interface_config_t devConfig = {
+    spi_device_interface_config_t devConfig1 = {
         .mode = 3,
         .clock_speed_hz = 1000000,
         .command_bits = 1,
         .address_bits = 7,
         .dummy_bits = 0,
         .queue_size = 1,
-        .spics_io_num = PIN_CS,
+        .spics_io_num = PIN_CS1,
     };
-    spi_bus_add_device(SPI3_HOST, &devConfig, &mpu9250);
+    spi_bus_add_device(SPI3_HOST, &devConfig1, &mpu9250_1);
+
+    spi_device_interface_config_t devConfig2 = {
+        .mode = 3,
+        .clock_speed_hz = 1000000,
+        .command_bits = 1,
+        .address_bits = 7,
+        .dummy_bits = 0,
+        .queue_size = 1,
+        .spics_io_num = PIN_CS2,
+    };
+    spi_bus_add_device(SPI3_HOST, &devConfig2, &mpu9250_2);
+
+    spi_device_interface_config_t devConfig3 = {
+        .mode = 3,
+        .clock_speed_hz = 1000000,
+        .command_bits = 1,
+        .address_bits = 7,
+        .dummy_bits = 0,
+        .queue_size = 1,
+        .spics_io_num = PIN_CS3,
+    };
+    spi_bus_add_device(SPI3_HOST, &devConfig3, &mpu9250_3);
 }
 
-int setup()
+int setup(spi_device_handle_t dev)
 {
 
     spi_transaction_t wakeup_trans = {
@@ -57,7 +106,7 @@ int setup()
         .flags = SPI_TRANS_USE_RXDATA | SPI_TRANS_USE_TXDATA,
         .tx_data = {0x01},
     };
-    spi_device_polling_transmit(mpu9250, &wakeup_trans);
+    spi_device_polling_transmit(dev, &wakeup_trans);
 
     spi_transaction_t wakeup_read = {
         .cmd = 1,
@@ -66,7 +115,7 @@ int setup()
         .flags = SPI_TRANS_USE_RXDATA,
     };
     // blocking transmit, result lands in rx_data[0]
-    spi_device_polling_transmit(mpu9250, &wakeup_read);
+    spi_device_polling_transmit(dev, &wakeup_read);
 
     printf("SLEEPING_MODE_STATUS: 0x%02X\n", wakeup_read.rx_data[0]);
     if (wakeup_read.rx_data[0] == 0x01)
@@ -80,7 +129,7 @@ int setup()
             .tx_data = {0x08},
         };
 
-        spi_device_polling_transmit(mpu9250, &gyro_range_write);
+        spi_device_polling_transmit(dev, &gyro_range_write);
 
         spi_transaction_t gyro_range_read = {
             .length = 8,
@@ -88,7 +137,7 @@ int setup()
             .addr = 0x1B,
             .flags = SPI_TRANS_USE_RXDATA,
         };
-        spi_device_polling_transmit(mpu9250, &gyro_range_read);
+        spi_device_polling_transmit(dev, &gyro_range_read);
         printf("Gyro Range: 0x%X\n", gyro_range_read.rx_data[0]);
 
         // +-8g
@@ -100,7 +149,7 @@ int setup()
             .tx_data = {0x10},
         };
 
-        spi_device_polling_transmit(mpu9250, &accel_range_write);
+        spi_device_polling_transmit(dev, &accel_range_write);
 
         spi_transaction_t accel_range_read = {
             .length = 8,
@@ -108,7 +157,7 @@ int setup()
             .addr = 0x1C,
             .flags = SPI_TRANS_USE_RXDATA,
         };
-        spi_device_polling_transmit(mpu9250, &accel_range_read);
+        spi_device_polling_transmit(dev, &accel_range_read);
         printf("Accel Range: 0x%X\n", accel_range_read.rx_data[0]);
 
         return 1;
@@ -117,7 +166,7 @@ int setup()
         return 0;
 }
 
-void whoami()
+void whoami(spi_device_handle_t dev)
 {
     // read WHO_AM_I register 0x75
     // should come back as 0x71 for MPU-9250 or 0x70 for MPU-6500
@@ -129,188 +178,63 @@ void whoami()
         .flags = SPI_TRANS_USE_RXDATA,
     };
     // blocking transmit, result lands in rx_data[0]
-    spi_device_polling_transmit(mpu9250, &whoami_trans);
+    spi_device_polling_transmit(dev, &whoami_trans);
     printf("WHO_AM_I: 0x%02X\n", whoami_trans.rx_data[0]);
 }
 
-typedef struct
-{
-    float x;
-    float y;
-    float z;
-} accelometer_data_t;
-
-typedef struct
-{
-    float x;
-    float y;
-    float z;
-} accelometer_correction;
-
-accelometer_data_t read_accelometer(accelometer_correction corr)
-{
-    accelometer_data_t accel;
-
-    spi_transaction_t accel_x_high = {
-        .cmd = 1,
-        .addr = 0x3B, // accel high
-        .length = 8,
-        .flags = SPI_TRANS_USE_RXDATA,
-    };
-    spi_transaction_t accel_x_low = {
-        .cmd = 1,
-        .addr = 0x3C, // accel low
-        .length = 8,
-        .flags = SPI_TRANS_USE_RXDATA,
-    };
-
-    spi_transaction_t accel_y_high = {
-        .cmd = 1,
-        .addr = 0x3D, // accel high
-        .length = 8,
-        .flags = SPI_TRANS_USE_RXDATA,
-    };
-    spi_transaction_t accel_y_low = {
-        .cmd = 1,
-        .addr = 0x3E, // accel low
-        .length = 8,
-        .flags = SPI_TRANS_USE_RXDATA,
-    };
-
-    spi_transaction_t accel_z_high = {
-        .cmd = 1,
-        .addr = 0x3F, // accel high
-        .length = 8,
-        .flags = SPI_TRANS_USE_RXDATA,
-    };
-    spi_transaction_t accel_z_low = {
-        .cmd = 1,
-        .addr = 0x40, // accel low
-        .length = 8,
-        .flags = SPI_TRANS_USE_RXDATA,
-    };
-
-    spi_device_polling_transmit(mpu9250, &accel_x_high);
-    spi_device_polling_transmit(mpu9250, &accel_x_low);
-    float accel_x = ((int16_t)((accel_x_high.rx_data[0] << 8) | accel_x_low.rx_data[0]) / 4096.0f) - corr.x;
-
-    spi_device_polling_transmit(mpu9250, &accel_y_high);
-    spi_device_polling_transmit(mpu9250, &accel_y_low);
-    float accel_y = ((int16_t)((accel_y_high.rx_data[0] << 8) | accel_y_low.rx_data[0]) / 4096.0f) - corr.y;
-
-    spi_device_polling_transmit(mpu9250, &accel_z_high);
-    spi_device_polling_transmit(mpu9250, &accel_z_low);
-    float accel_z = ((int16_t)((accel_z_high.rx_data[0] << 8) | accel_z_low.rx_data[0]) / 4096.0f) - corr.z;
-
-    accel.x = accel_x;
-    accel.y = accel_y;
-    accel.z = accel_z;
-    return accel;
-}
-typedef struct
-{
-    float x;
-    float y;
-    float z;
-} gyro_data_t;
-
-gyro_data_t read_gyro(gyro_corrections corr)
+burst_read_data_t burst_read(correction_data_t corr, spi_device_handle_t dev)
 {
 
-    gyro_data_t gyro;
+    burst_read_data_t read;
 
-    spi_transaction_t gyro_x_high = {
+    spi_transaction_t burst_accel_read = {
+
         .cmd = 1,
-        .addr = 0x43, // accel high
-        .length = 8,
-        .flags = SPI_TRANS_USE_RXDATA,
-    };
-    spi_transaction_t gyro_x_low = {
-        .cmd = 1,
-        .addr = 0x44, // accel low
-        .length = 8,
-        .flags = SPI_TRANS_USE_RXDATA,
+        .length = 8 * 14,
+        .rx_buffer = buf,
+        .addr = 0x3B,
+
     };
 
-    spi_transaction_t gyro_y_high = {
-        .cmd = 1,
-        .addr = 0x45, // accel high
-        .length = 8,
-        .flags = SPI_TRANS_USE_RXDATA,
-    };
-    spi_transaction_t gyro_y_low = {
-        .cmd = 1,
-        .addr = 0x46, // accel low
-        .length = 8,
-        .flags = SPI_TRANS_USE_RXDATA,
-    };
+    spi_device_polling_transmit(dev, &burst_accel_read);
+    read.accel_x = ((int16_t)((buf[0] << 8) | buf[1]) / ACCEL_SENSITIVITY) - corr.accel_x;
+    read.accel_y = ((int16_t)((buf[2] << 8) | buf[3]) / ACCEL_SENSITIVITY) - corr.accel_y;
+    read.accel_z = ((int16_t)((buf[4] << 8) | buf[5]) / ACCEL_SENSITIVITY) - corr.accel_z;
 
-    spi_transaction_t gyro_z_high = {
-        .cmd = 1,
-        .addr = 0x47, // accel high
-        .length = 8,
-        .flags = SPI_TRANS_USE_RXDATA,
-    };
-    spi_transaction_t gyro_z_low = {
-        .cmd = 1,
-        .addr = 0x48, // accel low
-        .length = 8,
-        .flags = SPI_TRANS_USE_RXDATA,
-    };
+    read.temp = ((int16_t)((buf[6] << 8) | buf[7]) / TEMP_SENSITIVITY) + TEMP_OFFSET;
 
-    spi_device_polling_transmit(mpu9250, &gyro_x_high);
-    spi_device_polling_transmit(mpu9250, &gyro_x_low);
-    float gyro_x = (int16_t)((gyro_x_high.rx_data[0] << 8) | gyro_x_low.rx_data[0]) / 65.5 - corr.x;
-
-    spi_device_polling_transmit(mpu9250, &gyro_y_high);
-    spi_device_polling_transmit(mpu9250, &gyro_y_low);
-    float gyro_y = (int16_t)((gyro_y_high.rx_data[0] << 8) | gyro_y_low.rx_data[0]) / 65.5 - corr.y;
-
-    spi_device_polling_transmit(mpu9250, &gyro_z_high);
-    spi_device_polling_transmit(mpu9250, &gyro_z_low);
-    float gyro_z = (int16_t)((gyro_z_high.rx_data[0] << 8) | gyro_z_low.rx_data[0]) / 65.5 - corr.z;
-
-    gyro.x = gyro_x;
-    gyro.y = gyro_y;
-    gyro.z = gyro_z;
-
-    return gyro;
+    read.gyro_x = ((int16_t)((buf[8] << 8) | buf[9]) / GYRO_SENSITIVITY) - corr.gyro_x;
+    read.gyro_y = ((int16_t)((buf[10] << 8) | buf[11]) / GYRO_SENSITIVITY) - corr.gyro_y;
+    read.gyro_z = ((int16_t)((buf[12] << 8) | buf[13]) / GYRO_SENSITIVITY) - corr.gyro_z;
+    return read;
 }
 
-gyro_corrections calibrate_gyro()
+correction_data_t calibrate(spi_device_handle_t dev)
 {
-    gyro_corrections corr = {0};
-    gyro_corrections zero = {0};
+    correction_data_t corr = {0};
+    correction_data_t zero = {0};
 
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < CALIBRATION_SAMPLES; i++)
     {
-        gyro_data_t gyro = read_gyro(zero);
-        corr.x += gyro.x;
-        corr.y += gyro.y;
-        corr.z += gyro.z;
-    }
-    corr.x /= 1000;
-    corr.y /= 1000;
-    corr.z /= 1000;
-    return corr;
-}
 
-accelometer_correction calibrate_accel()
-{
-    accelometer_correction corr = {0};
-    accelometer_correction zero = {0};
+        burst_read_data_t burst_read_result = burst_read(zero, dev);
+        corr.accel_x += burst_read_result.accel_x;
+        corr.accel_y += burst_read_result.accel_y;
+        corr.accel_z += burst_read_result.accel_z;
 
-    for (int i = 0; i < 1000; i++)
-    {
-        accelometer_data_t accel = read_accelometer(zero);
-        corr.x += accel.x;
-        corr.y += accel.y;
-        corr.z += accel.z;
+        corr.gyro_x += burst_read_result.gyro_x;
+        corr.gyro_y += burst_read_result.gyro_y;
+        corr.gyro_z += burst_read_result.gyro_z;
     }
-    corr.x /= 1000;
-    corr.y /= 1000;
-    corr.z /= 1000;
-    corr.z += 1;
+
+    corr.accel_x /= CALIBRATION_SAMPLES;
+    corr.accel_y /= CALIBRATION_SAMPLES;
+    corr.accel_z /= CALIBRATION_SAMPLES;
+    corr.accel_z -= GRAVITY;
+
+    corr.gyro_x /= CALIBRATION_SAMPLES;
+    corr.gyro_y /= CALIBRATION_SAMPLES;
+    corr.gyro_z /= CALIBRATION_SAMPLES;
     return corr;
 }
 
@@ -318,18 +242,45 @@ void app_main(void)
 {
     bus_config();
     device_config();
-    setup();
+    whoami(mpu9250_2);
 
-    gyro_corrections gyro_corrections = calibrate_gyro();
-    gyro_data_t gyro = read_gyro(gyro_corrections);
+    if (!setup(mpu9250_2))
+    {
+        printf("IMU setup failed\n");
+        return;
+    }
 
-    accelometer_correction accelometer_corrections = calibrate_accel();
-    accelometer_data_t accel = read_accelometer(accelometer_corrections);
+    correction_data_t corr = calibrate(mpu9250_1);
 
-    printf("%f\n", accel.x);
-    printf("%f\n", accel.y);
-    printf("%f\n", accel.z);
-    printf("%f\n", gyro.x);
-    printf("%f\n", gyro.y);
-    printf("%f\n", gyro.z);
+    printf("Device 1:\n");
+    burst_read_data_t data = burst_read(corr, mpu9250_1);
+    printf("Accel X: %.3f g\n", data.accel_x);
+    printf("Accel Y: %.3f g\n", data.accel_y);
+    printf("Accel Z: %.3f g\n", data.accel_z);
+    printf("Temp:    %.2f C\n", data.temp);
+    printf("Gyro X:  %.3f dps\n", data.gyro_x);
+    printf("Gyro Y:  %.3f dps\n", data.gyro_y);
+    printf("Gyro Z:  %.3f dps\n", data.gyro_z);
+
+    corr = calibrate(mpu9250_2);
+
+    printf("Device 2:\n");
+    data = burst_read(corr, mpu9250_2);
+    printf("Accel X: %.3f g\n", data.accel_x);
+    printf("Accel Y: %.3f g\n", data.accel_y);
+    printf("Accel Z: %.3f g\n", data.accel_z);
+    printf("Temp:    %.2f C\n", data.temp);
+    printf("Gyro X:  %.3f dps\n", data.gyro_x);
+    printf("Gyro Y:  %.3f dps\n", data.gyro_y);
+    printf("Gyro Z:  %.3f dps\n", data.gyro_z);
+
+    printf("Device 3:\n");
+    data = burst_read(corr, mpu9250_3);
+    printf("Accel X: %.3f g\n", data.accel_x);
+    printf("Accel Y: %.3f g\n", data.accel_y);
+    printf("Accel Z: %.3f g\n", data.accel_z);
+    printf("Temp:    %.2f C\n", data.temp);
+    printf("Gyro X:  %.3f dps\n", data.gyro_x);
+    printf("Gyro Y:  %.3f dps\n", data.gyro_y);
+    printf("Gyro Z:  %.3f dps\n", data.gyro_z);
 }
