@@ -1,48 +1,15 @@
 #include <stdio.h>
 #include "driver/spi_master.h"
 #include "driver/gpio.h"
-#include "esp_attr.h"
-
-#define PIN_SCLK 18
-#define PIN_MOSI 23
-#define PIN_MISO 19
-#define PIN_CS1 5
-#define PIN_CS2 4
-#define PIN_CS3 15
+#include "mpu9250.h"
+#include "voting.h"
+#include "fdir.h"
 
 spi_transaction_t whoami_trans;
 spi_device_handle_t mpu9250_1;
 spi_device_handle_t mpu9250_2;
 spi_device_handle_t mpu9250_3;
-
 static DRAM_ATTR uint8_t buf[3][14];
-#define ACCEL_SENSITIVITY 4096.0f
-#define GYRO_SENSITIVITY 65.5f
-#define TEMP_SENSITIVITY 333.87f
-#define TEMP_OFFSET 21.0f
-#define CALIBRATION_SAMPLES 1000
-#define GRAVITY 1.0f
-
-typedef struct
-{
-    float accel_x;
-    float accel_y;
-    float accel_z;
-    float gyro_x;
-    float gyro_y;
-    float gyro_z;
-} correction_data_t;
-
-typedef struct
-{
-    float accel_x;
-    float accel_y;
-    float accel_z;
-    float temp;
-    float gyro_x;
-    float gyro_y;
-    float gyro_z;
-} burst_read_data_t;
 
 // setup the SPI bus on SPI3 with DMA so CPU is free during transfers
 void bus_config()
@@ -248,35 +215,46 @@ void app_main(void)
     correction_data_t corr = calibrate(mpu9250_1, 0);
 
     printf("Device 1:\n");
-    burst_read_data_t data = burst_read(corr, mpu9250_1, 0);
-    printf("Accel X: %.3f g\n", data.accel_x);
-    printf("Accel Y: %.3f g\n", data.accel_y);
-    printf("Accel Z: %.3f g\n", data.accel_z);
-    printf("Temp:    %.2f C\n", data.temp);
-    printf("Gyro X:  %.3f dps\n", data.gyro_x);
-    printf("Gyro Y:  %.3f dps\n", data.gyro_y);
-    printf("Gyro Z:  %.3f dps\n", data.gyro_z);
+    burst_read_data_t data1 = burst_read(corr, mpu9250_1, 0);
+    printf("Accel X: %.3f g\n", data1.accel_x);
+    printf("Accel Y: %.3f g\n", data1.accel_y);
+    printf("Accel Z: %.3f g\n", data1.accel_z);
+    printf("Temp:    %.2f C\n", data1.temp);
+    printf("Gyro X:  %.3f dps\n", data1.gyro_x);
+    printf("Gyro Y:  %.3f dps\n", data1.gyro_y);
+    printf("Gyro Z:  %.3f dps\n", data1.gyro_z);
 
     corr = calibrate(mpu9250_2, 1);
 
     printf("Device 2:\n");
-    data = burst_read(corr, mpu9250_2, 1);
-    printf("Accel X: %.3f g\n", data.accel_x);
-    printf("Accel Y: %.3f g\n", data.accel_y);
-    printf("Accel Z: %.3f g\n", data.accel_z);
-    printf("Temp:    %.2f C\n", data.temp);
-    printf("Gyro X:  %.3f dps\n", data.gyro_x);
-    printf("Gyro Y:  %.3f dps\n", data.gyro_y);
-    printf("Gyro Z:  %.3f dps\n", data.gyro_z);
+    burst_read_data_t data2 = burst_read(corr, mpu9250_2, 1);
+    printf("Accel X: %.3f g\n", data2.accel_x);
+    printf("Accel Y: %.3f g\n", data2.accel_y);
+    printf("Accel Z: %.3f g\n", data2.accel_z);
+    printf("Temp:    %.2f C\n", data2.temp);
+    printf("Gyro X:  %.3f dps\n", data2.gyro_x);
+    printf("Gyro Y:  %.3f dps\n", data2.gyro_y);
+    printf("Gyro Z:  %.3f dps\n", data2.gyro_z);
 
     corr = calibrate(mpu9250_3, 2);
     printf("Device 3:\n");
-    data = burst_read(corr, mpu9250_3, 2);
-    printf("Accel X: %.3f g\n", data.accel_x);
-    printf("Accel Y: %.3f g\n", data.accel_y);
-    printf("Accel Z: %.3f g\n", data.accel_z);
-    printf("Temp:    %.2f C\n", data.temp);
-    printf("Gyro X:  %.3f dps\n", data.gyro_x);
-    printf("Gyro Y:  %.3f dps\n", data.gyro_y);
-    printf("Gyro Z:  %.3f dps\n", data.gyro_z);
+    burst_read_data_t data3 = burst_read(corr, mpu9250_3, 2);
+    printf("Accel X: %.3f g\n", data3.accel_x);
+    printf("Accel Y: %.3f g\n", data3.accel_y);
+    printf("Accel Z: %.3f g\n", data3.accel_z);
+    printf("Temp:    %.2f C\n", data3.temp);
+    printf("Gyro X:  %.3f dps\n", data3.gyro_x);
+    printf("Gyro Y:  %.3f dps\n", data3.gyro_y);
+    printf("Gyro Z:  %.3f dps\n", data3.gyro_z);
+
+    voting_result result =
+        voter(data1, data2, data3);
+
+    const char *test = get_state_string(result);
+    printf("%s\n", test);
+
+    system_condition cond = update_state(result);
+    const char *test2 = get_status(cond);
+
+    printf("%s\n", test2);
 }
