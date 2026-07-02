@@ -4,6 +4,8 @@
 #include "mpu9250.h"
 #include "voting.h"
 #include "fdir.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
 spi_transaction_t whoami_trans;
 spi_device_handle_t mpu9250_1;
@@ -212,49 +214,45 @@ void app_main(void)
     setup(mpu9250_2);
     setup(mpu9250_3);
 
-    correction_data_t corr = calibrate(mpu9250_1, 0);
+    correction_data_t corr1 = calibrate(mpu9250_1, 0);
+    correction_data_t corr2 = calibrate(mpu9250_2, 1);
+    correction_data_t corr3 = calibrate(mpu9250_3, 2);
 
-    printf("Device 1:\n");
-    burst_read_data_t data1 = burst_read(corr, mpu9250_1, 0);
-    printf("Accel X: %.3f g\n", data1.accel_x);
-    printf("Accel Y: %.3f g\n", data1.accel_y);
-    printf("Accel Z: %.3f g\n", data1.accel_z);
-    printf("Temp:    %.2f C\n", data1.temp);
-    printf("Gyro X:  %.3f dps\n", data1.gyro_x);
-    printf("Gyro Y:  %.3f dps\n", data1.gyro_y);
-    printf("Gyro Z:  %.3f dps\n", data1.gyro_z);
+    for (int i = 0; i < 20; i++)
+    {
+        printf("--- Test iteration %d ---\n", i + 1);
 
-    corr = calibrate(mpu9250_2, 1);
+        whoami(mpu9250_1);
+        whoami(mpu9250_2);
+        whoami(mpu9250_3);
 
-    printf("Device 2:\n");
-    burst_read_data_t data2 = burst_read(corr, mpu9250_2, 1);
-    printf("Accel X: %.3f g\n", data2.accel_x);
-    printf("Accel Y: %.3f g\n", data2.accel_y);
-    printf("Accel Z: %.3f g\n", data2.accel_z);
-    printf("Temp:    %.2f C\n", data2.temp);
-    printf("Gyro X:  %.3f dps\n", data2.gyro_x);
-    printf("Gyro Y:  %.3f dps\n", data2.gyro_y);
-    printf("Gyro Z:  %.3f dps\n", data2.gyro_z);
+        burst_read_data_t data1 = burst_read(corr1, mpu9250_1, 0);
+        burst_read_data_t data2 = burst_read(corr2, mpu9250_2, 1);
+        burst_read_data_t data3 = burst_read(corr3, mpu9250_3, 2);
 
-    corr = calibrate(mpu9250_3, 2);
-    printf("Device 3:\n");
-    burst_read_data_t data3 = burst_read(corr, mpu9250_3, 2);
-    printf("Accel X: %.3f g\n", data3.accel_x);
-    printf("Accel Y: %.3f g\n", data3.accel_y);
-    printf("Accel Z: %.3f g\n", data3.accel_z);
-    printf("Temp:    %.2f C\n", data3.temp);
-    printf("Gyro X:  %.3f dps\n", data3.gyro_x);
-    printf("Gyro Y:  %.3f dps\n", data3.gyro_y);
-    printf("Gyro Z:  %.3f dps\n", data3.gyro_z);
+        printf("Device 1 - Accel X: %7.3f  Accel Y: %7.3f  Accel Z: %7.3f  |  "
+               "Gyro X: %8.3f  Gyro Y: %8.3f  Gyro Z: %8.3f  |  Temp: %5.2f C\n",
+               data1.accel_x, data1.accel_y, data1.accel_z,
+               data1.gyro_x, data1.gyro_y, data1.gyro_z, data1.temp);
 
-    voting_result result =
-        voter(data1, data2, data3);
+        printf("Device 2 - Accel X: %7.3f  Accel Y: %7.3f  Accel Z: %7.3f  |  "
+               "Gyro X: %8.3f  Gyro Y: %8.3f  Gyro Z: %8.3f  |  Temp: %5.2f C\n",
+               data2.accel_x, data2.accel_y, data2.accel_z,
+               data2.gyro_x, data2.gyro_y, data2.gyro_z, data2.temp);
 
-    const char *test = get_state_string(result);
-    printf("%s\n", test);
+        printf("Device 3 - Accel X: %7.3f  Accel Y: %7.3f  Accel Z: %7.3f  |  "
+               "Gyro X: %8.3f  Gyro Y: %8.3f  Gyro Z: %8.3f  |  Temp: %5.2f C\n",
+               data3.accel_x, data3.accel_y, data3.accel_z,
+               data3.gyro_x, data3.gyro_y, data3.gyro_z, data3.temp);
 
-    system_condition cond = update_state(result);
-    const char *test2 = get_status(cond);
+        voting_result result = voter(data1, data2, data3);
+        const char *test = return_result(result);
+        printf("%s\n", test);
 
-    printf("%s\n", test2);
+        system_condition cond = update_state(result);
+        const char *test2 = state_name(cond);
+        printf("%s\n", test2);
+
+        vTaskDelay(pdMS_TO_TICKS(5000)); // window to plug/unplug before next read
+    }
 }

@@ -4,6 +4,8 @@
 
 #define ACCEL_THRESHHOLD 1
 #define GYRO_THRESHHOLD 5
+#define TEMP_THRESHHOLD 3
+#define ALL_AGREE_N 3
 
 typedef enum
 {
@@ -14,6 +16,6 @@ typedef enum
     ALL_DISAGREE
 } voting_result;
 voting_result voter(burst_read_data_t data1, burst_read_data_t data2, burst_read_data_t data3);
-const char *get_state_string(voting_result result);
+const char *return_result(voting_result result);
 
 #endif

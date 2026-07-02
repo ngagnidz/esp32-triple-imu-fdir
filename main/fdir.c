@@ -1,4 +1,6 @@
 #include "voting.h"
+
+// States
 typedef enum
 {
     NOMINAL,
@@ -6,17 +8,117 @@ typedef enum
     FAILED,
 } system_condition;
 
+// MPUs
 typedef enum
 {
     MPU1,
     MPU2,
     MPU3,
+    MPU_NONE,
 } faulty;
 
-system_condition status = NOMINAL;
-faulty faulty_mpu;
+static system_condition status;
+static faulty faulty_mpu = MPU_NONE;
+static int clean_streak = 0;
 
-const char *get_status(system_condition status)
+system_condition
+update_state(voting_result result)
+{
+
+    /*
+       If 2 MPUs (MPU2, MPU3( get broken falty_mpu becomes MPU1.
+       When that happens, during first reading, faulty MPU is MPU3 and status is failed and faulty MPU becomes MPU1.
+       However, for second reading, MPU1_DISAGREE case is launched and else block is executed and status becomes degraded.
+       To avoid this, if status is failed, we just return failed
+    */
+
+    if (status == FAILED && result == ALL_AGREE)
+    {
+        printf("%d", clean_streak);
+        clean_streak++;
+        if (clean_streak >= ALL_AGREE_N)
+        {
+            status = NOMINAL;
+            faulty_mpu = MPU_NONE;
+            clean_streak = 0;
+            return status;
+        }
+    }
+
+    if (status == FAILED)
+    {
+        return status;
+    }
+
+    switch (result)
+    {
+
+    case MPU1_DISAGREE:
+        clean_streak = 0;
+
+        if (status == DEGRADED && faulty_mpu != MPU1)
+            status = FAILED;
+        else
+        {
+            status = DEGRADED;
+        }
+        faulty_mpu = MPU1;
+        break;
+
+    case MPU2_DISAGREE:
+        clean_streak = 0;
+
+        if (status == DEGRADED && faulty_mpu != MPU2)
+            status = FAILED;
+        else
+        {
+            status = DEGRADED;
+        }
+        faulty_mpu = MPU2;
+        break;
+
+    case MPU3_DISAGREE:
+        clean_streak = 0;
+
+        if (status == DEGRADED && faulty_mpu != MPU3)
+            status = FAILED;
+        else
+        {
+            status = DEGRADED;
+        }
+        faulty_mpu = MPU3;
+        break;
+
+    case ALL_AGREE:
+        if (status == DEGRADED || status == FAILED)
+        {
+            clean_streak++;
+        }
+        if (status == DEGRADED && clean_streak >= ALL_AGREE_N)
+        {
+            printf("%d", clean_streak);
+            status = NOMINAL;
+            clean_streak = 0;
+
+            faulty_mpu = MPU_NONE;
+        }
+        break;
+
+    case ALL_DISAGREE:
+        clean_streak = 0;
+
+        status = FAILED;
+        break;
+
+    default:
+        status = FAILED;
+        break;
+    }
+
+    return status;
+}
+
+const char *state_name(system_condition status)
 {
     switch (status)
     {
@@ -33,51 +135,4 @@ const char *get_status(system_condition status)
         return "NOMINAL";
         break;
     };
-}
-
-system_condition update_state(voting_result result)
-{
-    switch (result)
-    {
-    case MPU1_DISAGREE:
-        if (status == DEGRADED && faulty_mpu != MPU1)
-            status = FAILED;
-        else
-        {
-            status = DEGRADED;
-        }
-        faulty_mpu = MPU1;
-        break;
-
-    case MPU2_DISAGREE:
-        if (status == DEGRADED && faulty_mpu != MPU2)
-            status = FAILED;
-        else
-        {
-            status = DEGRADED;
-        }
-        faulty_mpu = MPU1;
-        break;
-
-    case MPU3_DISAGREE:
-        if (status == DEGRADED && faulty_mpu != MPU3)
-            status = FAILED;
-        else
-        {
-            status = DEGRADED;
-        }
-        faulty_mpu = MPU1;
-
-        break;
-
-    case ALL_AGREE:
-        status = NOMINAL;
-        break;
-
-    default:
-        status = FAILED;
-        break;
-    }
-
-    return status;
 }
