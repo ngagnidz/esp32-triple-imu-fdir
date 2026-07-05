@@ -6,12 +6,21 @@
 #include "fdir.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "freertos/semphr.h"
 
 spi_transaction_t whoami_trans;
 spi_device_handle_t mpu9250_1;
 spi_device_handle_t mpu9250_2;
 spi_device_handle_t mpu9250_3;
 static DRAM_ATTR uint8_t buf[3][14];
+static SemaphoreHandle_t data_rec_semaphore;
+
+void static IRAM_ATTR interrupt_handler(spi_transaction_t *t)
+{
+    BaseType_t higher_prior_task_woken = pdFALSE;
+    xSemaphoreGiveFromISR(data_rec_semaphore, &higher_prior_task_woken);
+    portYIELD_FROM_ISR(higher_prior_task_woken);
+}
 
 // setup the SPI bus on SPI3 with DMA so CPU is free during transfers
 void bus_config()
@@ -39,6 +48,8 @@ void device_config()
         .dummy_bits = 0,
         .queue_size = 1,
         .spics_io_num = PIN_CS1,
+        .post_cb = interrupt_handler,
+
     };
     spi_bus_add_device(SPI3_HOST, &devConfig1, &mpu9250_1);
 
@@ -50,6 +61,8 @@ void device_config()
         .dummy_bits = 0,
         .queue_size = 1,
         .spics_io_num = PIN_CS2,
+        .post_cb = interrupt_handler,
+
     };
     spi_bus_add_device(SPI3_HOST, &devConfig2, &mpu9250_2);
 
@@ -61,12 +74,15 @@ void device_config()
         .dummy_bits = 0,
         .queue_size = 1,
         .spics_io_num = PIN_CS3,
+        .post_cb = interrupt_handler,
     };
     spi_bus_add_device(SPI3_HOST, &devConfig3, &mpu9250_3);
 }
 
 int setup(spi_device_handle_t dev)
 {
+
+    data_rec_semaphore = xSemaphoreCreateBinary();
 
     spi_transaction_t wakeup_trans = {
         .length = 8,
@@ -162,7 +178,7 @@ burst_read_data_t burst_read(correction_data_t corr, spi_device_handle_t dev, in
         .addr = 0x3B,
     };
 
-    spi_device_polling_transmit(dev, &burst_accel_read);
+    spi_device_queue_trans(dev, &burst_accel_read, portMAX_DELAY);
 
     read.accel_x = ((int16_t)((buf[idx][0] << 8) | buf[idx][1]) / ACCEL_SENSITIVITY) - corr.accel_x;
     read.accel_y = ((int16_t)((buf[idx][2] << 8) | buf[idx][3]) / ACCEL_SENSITIVITY) - corr.accel_y;
@@ -215,10 +231,19 @@ void app_main(void)
     setup(mpu9250_3);
 
     correction_data_t corr1 = calibrate(mpu9250_1, 0);
-    correction_data_t corr2 = calibrate(mpu9250_2, 1);
-    correction_data_t corr3 = calibrate(mpu9250_3, 2);
+    // correction_data_t corr2 = calibrate(mpu9250_2, 1);
+    // correction_data_t corr3 = calibrate(mpu9250_3, 2);
 
-    for (int i = 0; i < 20; i++)
+    burst_read_data_t data1 = burst_read(corr1, mpu9250_1, 0);
+
+    xSemaphoreTake(data_rec_semaphore, portMAX_DELAY);
+
+    printf("Device 1 - Accel X: %7.3f  Accel Y: %7.3f  Accel Z: %7.3f  |  "
+           "Gyro X: %8.3f  Gyro Y: %8.3f  Gyro Z: %8.3f  |  Temp: %5.2f C\n",
+           data1.accel_x, data1.accel_y, data1.accel_z,
+           data1.gyro_x, data1.gyro_y, data1.gyro_z, data1.temp);
+    /*
+     for (int i = 0; i < 20; i++)
     {
         printf("--- Test iteration %d ---\n", i + 1);
 
@@ -226,7 +251,6 @@ void app_main(void)
         whoami(mpu9250_2);
         whoami(mpu9250_3);
 
-        burst_read_data_t data1 = burst_read(corr1, mpu9250_1, 0);
         burst_read_data_t data2 = burst_read(corr2, mpu9250_2, 1);
         burst_read_data_t data3 = burst_read(corr3, mpu9250_3, 2);
 
@@ -254,5 +278,5 @@ void app_main(void)
         printf("%s\n", test2);
 
         vTaskDelay(pdMS_TO_TICKS(5000)); // window to plug/unplug before next read
-    }
+    }*/
 }

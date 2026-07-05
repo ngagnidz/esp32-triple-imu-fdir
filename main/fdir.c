@@ -1,4 +1,5 @@
 #include "voting.h"
+#include "mpu9250.h"
 
 // States
 typedef enum
@@ -24,14 +25,6 @@ static int clean_streak = 0;
 system_condition
 update_state(voting_result result)
 {
-
-    /*
-       If 2 MPUs (MPU2, MPU3( get broken falty_mpu becomes MPU1.
-       When that happens, during first reading, faulty MPU is MPU3 and status is failed and faulty MPU becomes MPU1.
-       However, for second reading, MPU1_DISAGREE case is launched and else block is executed and status becomes degraded.
-       To avoid this, if status is failed, we just return failed
-    */
-
     if (status == FAILED && result == ALL_AGREE)
     {
         printf("%d", clean_streak);
@@ -99,7 +92,6 @@ update_state(voting_result result)
             printf("%d", clean_streak);
             status = NOMINAL;
             clean_streak = 0;
-
             faulty_mpu = MPU_NONE;
         }
         break;
