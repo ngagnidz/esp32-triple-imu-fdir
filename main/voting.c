@@ -2,7 +2,10 @@
 #include "mpu9250.h"
 #include "voting.h"
 
-const char *return_result(voting_result result)
+int mpu_fault[3] = {0, 0, 0};
+
+const char *
+return_result(voting_result result)
 {
     switch (result)
     {
@@ -42,19 +45,43 @@ voting_result voter(burst_read_data_t data1, burst_read_data_t data2, burst_read
     bool d13 = disagree(data1, data3);
     bool d23 = disagree(data2, data3);
 
-    int disagreements[3] = {
-        d12 + d13,
-        d23 + d12,
-        d23 + d13,
-    };
+    if (d12 && d13 && !d23)
+    {
+        mpu_fault[0] = 1;
+        mpu_fault[1] = 0;
+        mpu_fault[2] = 0;
 
-    if (disagreements[0] == 2)
         return MPU1_DISAGREE;
-    if (disagreements[1] == 2)
+    }
+
+    if (d23 && d12 && !d13)
+    {
+        mpu_fault[0] = 0;
+        mpu_fault[1] = 1;
+        mpu_fault[2] = 0;
         return MPU2_DISAGREE;
-    if (disagreements[2] == 2)
+    }
+
+    if (d23 && d13 && !d12)
+    {
+        mpu_fault[0] = 0;
+        mpu_fault[1] = 0;
+        mpu_fault[2] = 1;
         return MPU3_DISAGREE;
-    if (disagreements[0] && disagreements[1] && disagreements[2])
+    }
+
+    if (!d13 && !d23 && !d12)
+    {
+        mpu_fault[0] = 0;
+        mpu_fault[1] = 0;
+        mpu_fault[2] = 0;
+        return ALL_AGREE;
+    }
+    else
+    {
+        mpu_fault[0] = 1;
+        mpu_fault[1] = 1;
+        mpu_fault[2] = 1;
         return ALL_DISAGREE;
-    return ALL_AGREE;
+    }
 }

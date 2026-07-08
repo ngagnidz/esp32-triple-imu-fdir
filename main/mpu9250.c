@@ -7,20 +7,21 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/semphr.h"
+#include "esp_timer.h"
 
 spi_transaction_t whoami_trans;
+
 spi_device_handle_t mpu9250_1;
 spi_device_handle_t mpu9250_2;
 spi_device_handle_t mpu9250_3;
-static DRAM_ATTR uint8_t buf[3][14];
-static SemaphoreHandle_t data_rec_semaphore;
 
-void static IRAM_ATTR interrupt_handler(spi_transaction_t *t)
-{
-    BaseType_t higher_prior_task_woken = pdFALSE;
-    xSemaphoreGiveFromISR(data_rec_semaphore, &higher_prior_task_woken);
-    portYIELD_FROM_ISR(higher_prior_task_woken);
-}
+QueueHandle_t queues[3];
+
+static QueueHandle_t queue_1;
+static QueueHandle_t queue_2;
+static QueueHandle_t queue_3;
+
+static DRAM_ATTR uint8_t buf[3][14];
 
 // setup the SPI bus on SPI3 with DMA so CPU is free during transfers
 void bus_config()
@@ -48,7 +49,6 @@ void device_config()
         .dummy_bits = 0,
         .queue_size = 1,
         .spics_io_num = PIN_CS1,
-        .post_cb = interrupt_handler,
 
     };
     spi_bus_add_device(SPI3_HOST, &devConfig1, &mpu9250_1);
@@ -61,7 +61,6 @@ void device_config()
         .dummy_bits = 0,
         .queue_size = 1,
         .spics_io_num = PIN_CS2,
-        .post_cb = interrupt_handler,
 
     };
     spi_bus_add_device(SPI3_HOST, &devConfig2, &mpu9250_2);
@@ -74,15 +73,12 @@ void device_config()
         .dummy_bits = 0,
         .queue_size = 1,
         .spics_io_num = PIN_CS3,
-        .post_cb = interrupt_handler,
     };
     spi_bus_add_device(SPI3_HOST, &devConfig3, &mpu9250_3);
 }
 
 int setup(spi_device_handle_t dev)
 {
-
-    data_rec_semaphore = xSemaphoreCreateBinary();
 
     spi_transaction_t wakeup_trans = {
         .length = 8,
@@ -180,6 +176,9 @@ burst_read_data_t burst_read(correction_data_t corr, spi_device_handle_t dev, in
 
     spi_device_queue_trans(dev, &burst_accel_read, portMAX_DELAY);
 
+    spi_transaction_t *rtrans;
+    spi_device_get_trans_result(dev, &rtrans, portMAX_DELAY);
+
     read.accel_x = ((int16_t)((buf[idx][0] << 8) | buf[idx][1]) / ACCEL_SENSITIVITY) - corr.accel_x;
     read.accel_y = ((int16_t)((buf[idx][2] << 8) | buf[idx][3]) / ACCEL_SENSITIVITY) - corr.accel_y;
     read.accel_z = ((int16_t)((buf[idx][4] << 8) | buf[idx][5]) / ACCEL_SENSITIVITY) - corr.accel_z;
@@ -222,6 +221,56 @@ correction_data_t calibrate(spi_device_handle_t dev, int idx)
     return corr;
 }
 
+typedef struct
+{
+    correction_data_t corr[3];
+    spi_device_handle_t dev[3];
+} reader_arguments;
+
+void reader_task(void *pv)
+{
+    reader_arguments *args = (reader_arguments *)pv;
+
+    while (1)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            burst_read_data_t reading = burst_read(args->corr[i], args->dev[i], i);
+            xQueueSend(queues[i], &reading, portMAX_DELAY);
+            // printf("Voter Task\n");
+        }
+    }
+}
+
+static reader_arguments args;
+
+// voting_result voter(burst_read_data_t data1, burst_read_data_t data2, burst_read_data_t data3);
+void voter_task(void *pv)
+{
+    burst_read_data_t readings[3];
+    while (1)
+    {
+
+        vTaskDelay(pdMS_TO_TICKS(2000));
+
+        int64_t t_start = esp_timer_get_time();
+        for (int i = 0; i < 3; i++)
+        {
+            xQueueReceive(queues[i], &readings[i], portMAX_DELAY);
+        }
+        voting_result result = voter(readings[0], readings[1], readings[2]);
+        system_condition condition = update_state(result);
+        char *state = state_name(condition);
+        // printf("Test");
+        printf("%s\n", state);
+
+        int64_t t_end = esp_timer_get_time();
+
+        printf("[t=%lld us, dt=%lld us] result=%d state=%s\n",
+               t_start, t_end - t_start, result, state);
+    }
+}
+
 void app_main(void)
 {
     bus_config();
@@ -230,53 +279,30 @@ void app_main(void)
     setup(mpu9250_2);
     setup(mpu9250_3);
 
-    correction_data_t corr1 = calibrate(mpu9250_1, 0);
-    // correction_data_t corr2 = calibrate(mpu9250_2, 1);
-    // correction_data_t corr3 = calibrate(mpu9250_3, 2);
+    spi_device_handle_t handlers[3];
+    handlers[0] = mpu9250_1;
+    handlers[1] = mpu9250_2;
+    handlers[2] = mpu9250_3;
 
-    burst_read_data_t data1 = burst_read(corr1, mpu9250_1, 0);
+    correction_data_t corrections[3];
+    corrections[0] = calibrate(mpu9250_1, 0);
+    corrections[1] = calibrate(mpu9250_2, 1);
+    corrections[2] = calibrate(mpu9250_3, 2);
 
-    xSemaphoreTake(data_rec_semaphore, portMAX_DELAY);
-
-    printf("Device 1 - Accel X: %7.3f  Accel Y: %7.3f  Accel Z: %7.3f  |  "
-           "Gyro X: %8.3f  Gyro Y: %8.3f  Gyro Z: %8.3f  |  Temp: %5.2f C\n",
-           data1.accel_x, data1.accel_y, data1.accel_z,
-           data1.gyro_x, data1.gyro_y, data1.gyro_z, data1.temp);
-    /*
-     for (int i = 0; i < 20; i++)
+    for (int i = 0; i < 3; i++)
     {
-        printf("--- Test iteration %d ---\n", i + 1);
+        args.corr[i] = corrections[i];
+        args.dev[i] = handlers[i];
+    }
 
-        whoami(mpu9250_1);
-        whoami(mpu9250_2);
-        whoami(mpu9250_3);
+    queue_1 = xQueueCreate(1, sizeof(burst_read_data_t));
+    queue_2 = xQueueCreate(1, sizeof(burst_read_data_t));
+    queue_3 = xQueueCreate(1, sizeof(burst_read_data_t));
 
-        burst_read_data_t data2 = burst_read(corr2, mpu9250_2, 1);
-        burst_read_data_t data3 = burst_read(corr3, mpu9250_3, 2);
+    queues[0] = queue_1;
+    queues[1] = queue_2;
+    queues[2] = queue_3;
 
-        printf("Device 1 - Accel X: %7.3f  Accel Y: %7.3f  Accel Z: %7.3f  |  "
-               "Gyro X: %8.3f  Gyro Y: %8.3f  Gyro Z: %8.3f  |  Temp: %5.2f C\n",
-               data1.accel_x, data1.accel_y, data1.accel_z,
-               data1.gyro_x, data1.gyro_y, data1.gyro_z, data1.temp);
-
-        printf("Device 2 - Accel X: %7.3f  Accel Y: %7.3f  Accel Z: %7.3f  |  "
-               "Gyro X: %8.3f  Gyro Y: %8.3f  Gyro Z: %8.3f  |  Temp: %5.2f C\n",
-               data2.accel_x, data2.accel_y, data2.accel_z,
-               data2.gyro_x, data2.gyro_y, data2.gyro_z, data2.temp);
-
-        printf("Device 3 - Accel X: %7.3f  Accel Y: %7.3f  Accel Z: %7.3f  |  "
-               "Gyro X: %8.3f  Gyro Y: %8.3f  Gyro Z: %8.3f  |  Temp: %5.2f C\n",
-               data3.accel_x, data3.accel_y, data3.accel_z,
-               data3.gyro_x, data3.gyro_y, data3.gyro_z, data3.temp);
-
-        voting_result result = voter(data1, data2, data3);
-        const char *test = return_result(result);
-        printf("%s\n", test);
-
-        system_condition cond = update_state(result);
-        const char *test2 = state_name(cond);
-        printf("%s\n", test2);
-
-        vTaskDelay(pdMS_TO_TICKS(5000)); // window to plug/unplug before next read
-    }*/
+    xTaskCreate(reader_task, "reader", 4096, &args, 5, NULL);
+    xTaskCreate(voter_task, "voter", 4096, &args, 6, NULL);
 }
