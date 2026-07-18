@@ -249,6 +249,9 @@ void queue_creation()
 
 void reader_task(void *pv)
 {
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+    const TickType_t xPeriod = pdMS_TO_TICKS(10);
+
     while (1)
     {
         burst_read();
@@ -258,6 +261,8 @@ void reader_task(void *pv)
             xQueueSend(queues[i], &reading, portMAX_DELAY);
         }
     }
+
+    vTaskDelayUntil(&xLastWakeTime, xPeriod);
 }
 
 void voter_task(void *pv)
@@ -265,8 +270,6 @@ void voter_task(void *pv)
     burst_read_data_t readings[3];
     while (1)
     {
-        vTaskDelay(pdMS_TO_TICKS(2000));
-
         for (int i = 0; i < 3; i++)
         {
             xQueueReceive(queues[i], &readings[i], portMAX_DELAY);

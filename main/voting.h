@@ -2,9 +2,8 @@
 #define VOTING_H
 #include "mpu9250.h"
 
-#define ACCEL_THRESHHOLD 5
-#define GYRO_THRESHHOLD 5
-#define TEMP_THRESHHOLD 10
+#define ACCEL_THRESHHOLD 3
+#define GYRO_THRESHHOLD 3
 #define ALL_AGREE_N 3
 
 typedef enum

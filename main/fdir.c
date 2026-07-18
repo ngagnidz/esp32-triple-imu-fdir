@@ -21,6 +21,7 @@ typedef enum
 
 static system_condition status;
 static int clean_streak = 0;
+static int error_streak = 0;
 extern int mpu_fault[3];
 
 char *state_name(system_condition status)
@@ -41,11 +42,6 @@ char *state_name(system_condition status)
 system_condition
 update_state(voting_result result)
 {
-    if (mpu_fault[0] == 1 && mpu_fault[1] == 1 && mpu_fault[2] == 1)
-    {
-        status = FAILED;
-    }
-
     if (status == FAILED)
     {
         if (result == ALL_AGREE || result == MPU1_DISAGREE ||
@@ -97,10 +93,17 @@ update_state(voting_result result)
         printf("[FDIR] %s in %s: streak reset (was %d), -> DEGRADED\n",
                return_result(result), state_name(status), clean_streak);
         clean_streak = 0;
-        status = DEGRADED;
+        error_streak++;
+        if (error_streak >= 10)
+        {
+            status = DEGRADED;
+            error_streak = 0;
+            break;
+        }
         break;
 
     case ALL_AGREE:
+        error_streak = 0;
         if (status == DEGRADED)
         {
             clean_streak++;
@@ -118,7 +121,13 @@ update_state(voting_result result)
         printf("[FDIR] ALL_DISAGREE in %s: streak reset (was %d), -> FAILED\n",
                state_name(status), clean_streak);
         clean_streak = 0;
-        status = FAILED;
+        error_streak++;
+        if (error_streak >= 10)
+        {
+            status = FAILED;
+            error_streak = 0;
+            break;
+        }
         break;
 
     default:
