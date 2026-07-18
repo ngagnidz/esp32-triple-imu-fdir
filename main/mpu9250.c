@@ -10,22 +10,12 @@
 #include "esp_timer.h"
 
 spi_transaction_t whoami_trans;
-
-spi_device_handle_t mpu9250_1;
-spi_device_handle_t mpu9250_2;
-spi_device_handle_t mpu9250_3;
-
-QueueHandle_t queues[3];
-
-static QueueHandle_t queue_1;
-static QueueHandle_t queue_2;
-static QueueHandle_t queue_3;
-
-static DRAM_ATTR uint8_t buf[3][14];
+spi_device_handle_t device_list[3];
 
 // setup the SPI bus on SPI3 with DMA so CPU is free during transfers
 void bus_config()
 {
+
     spi_bus_config_t busConfig = {
         .sclk_io_num = PIN_SCLK,
         .mosi_io_num = PIN_MOSI,
@@ -41,6 +31,7 @@ void bus_config()
 // command_bits=1 is the read/write bit, address_bits=7 is the register address
 void device_config()
 {
+
     spi_device_interface_config_t devConfig1 = {
         .mode = 3,
         .clock_speed_hz = 1000000,
@@ -51,7 +42,7 @@ void device_config()
         .spics_io_num = PIN_CS1,
 
     };
-    spi_bus_add_device(SPI3_HOST, &devConfig1, &mpu9250_1);
+    spi_bus_add_device(SPI3_HOST, &devConfig1, &device_list[0]);
 
     spi_device_interface_config_t devConfig2 = {
         .mode = 3,
@@ -63,7 +54,7 @@ void device_config()
         .spics_io_num = PIN_CS2,
 
     };
-    spi_bus_add_device(SPI3_HOST, &devConfig2, &mpu9250_2);
+    spi_bus_add_device(SPI3_HOST, &devConfig2, &device_list[1]);
 
     spi_device_interface_config_t devConfig3 = {
         .mode = 3,
@@ -74,7 +65,7 @@ void device_config()
         .queue_size = 1,
         .spics_io_num = PIN_CS3,
     };
-    spi_bus_add_device(SPI3_HOST, &devConfig3, &mpu9250_3);
+    spi_bus_add_device(SPI3_HOST, &devConfig3, &device_list[2]);
 }
 
 int setup(spi_device_handle_t dev)
@@ -90,18 +81,17 @@ int setup(spi_device_handle_t dev)
     spi_device_polling_transmit(dev, &wakeup_trans);
 
     spi_transaction_t wakeup_read = {
+        .length = 8,
         .cmd = 1,
         .addr = 0x6B,
-        .length = 8,
         .flags = SPI_TRANS_USE_RXDATA,
     };
-    // blocking transmit, result lands in rx_data[0]
     spi_device_polling_transmit(dev, &wakeup_read);
 
     printf("SLEEPING_MODE_STATUS: 0x%02X\n", wakeup_read.rx_data[0]);
+
     if (wakeup_read.rx_data[0] == 0x01)
     {
-        // +- 500dps
         spi_transaction_t gyro_range_write = {
             .length = 8,
             .cmd = 0,
@@ -121,7 +111,6 @@ int setup(spi_device_handle_t dev)
         spi_device_polling_transmit(dev, &gyro_range_read);
         printf("Gyro Range: 0x%X\n", gyro_range_read.rx_data[0]);
 
-        // +-8g
         spi_transaction_t accel_range_write = {
             .length = 8,
             .cmd = 0,
@@ -149,125 +138,144 @@ int setup(spi_device_handle_t dev)
 
 void whoami(spi_device_handle_t dev)
 {
-    // read WHO_AM_I register 0x75
-    // should come back as 0x71 for MPU-9250 or 0x70 for MPU-6500
-    // only 1 byte back so using inline rx_data instead of a separate buffer
+
     whoami_trans = (spi_transaction_t){
         .cmd = 1,
         .addr = 0x75,
         .length = 8,
         .flags = SPI_TRANS_USE_RXDATA,
     };
-    // blocking transmit, result lands in rx_data[0]
     spi_device_polling_transmit(dev, &whoami_trans);
     printf("WHO_AM_I: 0x%02X\n", whoami_trans.rx_data[0]);
 }
 
-burst_read_data_t burst_read(correction_data_t corr, spi_device_handle_t dev, int idx)
+uint8_t buf[3][14];
+
+void burst_read()
 {
-    burst_read_data_t read = {0};
 
-    spi_transaction_t burst_accel_read = {
-        .cmd = 1,
-        .length = 8 * 14,
-        .rx_buffer = buf[idx],
-        .addr = 0x3B,
-    };
-
-    spi_device_queue_trans(dev, &burst_accel_read, portMAX_DELAY);
-
-    spi_transaction_t *rtrans;
-    spi_device_get_trans_result(dev, &rtrans, portMAX_DELAY);
-
-    read.accel_x = ((int16_t)((buf[idx][0] << 8) | buf[idx][1]) / ACCEL_SENSITIVITY) - corr.accel_x;
-    read.accel_y = ((int16_t)((buf[idx][2] << 8) | buf[idx][3]) / ACCEL_SENSITIVITY) - corr.accel_y;
-    read.accel_z = ((int16_t)((buf[idx][4] << 8) | buf[idx][5]) / ACCEL_SENSITIVITY) - corr.accel_z;
-
-    read.temp = ((int16_t)((buf[idx][6] << 8) | buf[idx][7]) / TEMP_SENSITIVITY) + TEMP_OFFSET;
-
-    read.gyro_x = ((int16_t)((buf[idx][8] << 8) | buf[idx][9]) / GYRO_SENSITIVITY) - corr.gyro_x;
-    read.gyro_y = ((int16_t)((buf[idx][10] << 8) | buf[idx][11]) / GYRO_SENSITIVITY) - corr.gyro_y;
-    read.gyro_z = ((int16_t)((buf[idx][12] << 8) | buf[idx][13]) / GYRO_SENSITIVITY) - corr.gyro_z;
-
-    return read;
-}
-
-correction_data_t calibrate(spi_device_handle_t dev, int idx)
-{
-    correction_data_t corr = {0};
-    correction_data_t zero = {0};
-
-    for (int i = 0; i < CALIBRATION_SAMPLES; i++)
+    spi_device_handle_t dev;
+    for (int idx = 0; idx < 3; idx++)
     {
+        spi_transaction_t burst_read = {
+            .cmd = 1,
+            .length = 8 * 14,
+            .rx_buffer = buf[idx],
+            .addr = 0x3B,
+        };
 
-        burst_read_data_t burst_read_result = burst_read(zero, dev, idx);
-        corr.accel_x += burst_read_result.accel_x;
-        corr.accel_y += burst_read_result.accel_y;
-        corr.accel_z += burst_read_result.accel_z;
+        dev = device_list[idx];
 
-        corr.gyro_x += burst_read_result.gyro_x;
-        corr.gyro_y += burst_read_result.gyro_y;
-        corr.gyro_z += burst_read_result.gyro_z;
+        // Gives the transaction to the driver's pending queue and returns
+        // Blocks only if the pending queue is full
+        spi_device_queue_trans(dev, &burst_read, portMAX_DELAY);
+
+        spi_transaction_t *dummy;
+        // Blocks until a transaction completes and goes into the ready queueurst_read.
+        // dummy will be pointing to &burst_read
+        spi_device_get_trans_result(dev, &dummy, portMAX_DELAY);
     }
-
-    corr.accel_x /= CALIBRATION_SAMPLES;
-    corr.accel_y /= CALIBRATION_SAMPLES;
-    corr.accel_z /= CALIBRATION_SAMPLES;
-    corr.accel_z -= GRAVITY;
-
-    corr.gyro_x /= CALIBRATION_SAMPLES;
-    corr.gyro_y /= CALIBRATION_SAMPLES;
-    corr.gyro_z /= CALIBRATION_SAMPLES;
-    return corr;
 }
 
 typedef struct
 {
-    correction_data_t corr[3];
-    spi_device_handle_t dev[3];
-} reader_arguments;
+    float ax;
+    float ay;
+    float az;
+    float gx;
+    float gy;
+    float gz;
+} mpu_offset;
+
+mpu_offset offsets[3];
+
+burst_read_data_t reading_extraction(int idx)
+{
+    burst_read_data_t read = {0};
+
+    read.accel_x = ((int16_t)((buf[idx][0] << 8) | buf[idx][1]) / ACCEL_SENSITIVITY) - offsets[idx].ax;
+    read.accel_y = ((int16_t)((buf[idx][2] << 8) | buf[idx][3]) / ACCEL_SENSITIVITY) - offsets[idx].ay;
+    read.accel_z = ((int16_t)((buf[idx][4] << 8) | buf[idx][5]) / ACCEL_SENSITIVITY) - offsets[idx].az;
+
+    read.temp = ((int16_t)((buf[idx][6] << 8) | buf[idx][7]) / TEMP_SENSITIVITY) + TEMP_OFFSET;
+
+    read.gyro_x = ((int16_t)((buf[idx][8] << 8) | buf[idx][9]) / GYRO_SENSITIVITY) - offsets[idx].gx;
+    read.gyro_y = ((int16_t)((buf[idx][10] << 8) | buf[idx][11]) / GYRO_SENSITIVITY) - offsets[idx].gy;
+    read.gyro_z = ((int16_t)((buf[idx][12] << 8) | buf[idx][13]) / GYRO_SENSITIVITY) - offsets[idx].gz;
+
+    return read;
+}
+
+void calibrate(int samples)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        float ay = 0;
+        float ax = 0;
+        float az = 0;
+        float gx = 0;
+        float gy = 0;
+        float gz = 0;
+
+        for (int n = 0; n < samples; n++)
+        {
+            burst_read();
+            burst_read_data_t reading = reading_extraction(i);
+            ax += reading.accel_x;
+            ay += reading.accel_y;
+            az += reading.accel_z;
+            gx += reading.gyro_x;
+            gy += reading.gyro_y;
+            gz += reading.gyro_z;
+        }
+
+        offsets[i].ax = ax / samples;
+        offsets[i].ay = ay / samples;
+        offsets[i].az = az / samples - 1.0;
+        offsets[i].gx = gx / samples;
+        offsets[i].gy = gy / samples;
+        offsets[i].gz = gz / samples;
+    }
+}
+
+QueueHandle_t queues[3];
+void queue_creation()
+{
+    for (int i = 0; i < 3; i++)
+    {
+        queues[i] = xQueueCreate(1, sizeof(burst_read_data_t));
+    }
+}
 
 void reader_task(void *pv)
 {
-    reader_arguments *args = (reader_arguments *)pv;
-
     while (1)
     {
+        burst_read();
         for (int i = 0; i < 3; i++)
         {
-            burst_read_data_t reading = burst_read(args->corr[i], args->dev[i], i);
+            burst_read_data_t reading = reading_extraction(i);
             xQueueSend(queues[i], &reading, portMAX_DELAY);
-            // printf("Voter Task\n");
         }
     }
 }
 
-static reader_arguments args;
-
-// voting_result voter(burst_read_data_t data1, burst_read_data_t data2, burst_read_data_t data3);
 void voter_task(void *pv)
 {
     burst_read_data_t readings[3];
     while (1)
     {
-
         vTaskDelay(pdMS_TO_TICKS(2000));
 
-        int64_t t_start = esp_timer_get_time();
         for (int i = 0; i < 3; i++)
         {
             xQueueReceive(queues[i], &readings[i], portMAX_DELAY);
         }
+
         voting_result result = voter(readings[0], readings[1], readings[2]);
         system_condition condition = update_state(result);
         char *state = state_name(condition);
-        // printf("Test");
-        printf("%s\n", state);
-
-        int64_t t_end = esp_timer_get_time();
-
-        printf("[t=%lld us, dt=%lld us] result=%d state=%s\n",
-               t_start, t_end - t_start, result, state);
+        printf("state: %s\n\n", state);
     }
 }
 
@@ -275,34 +283,17 @@ void app_main(void)
 {
     bus_config();
     device_config();
-    setup(mpu9250_1);
-    setup(mpu9250_2);
-    setup(mpu9250_3);
+    setup(device_list[0]);
+    setup(device_list[1]);
+    setup(device_list[2]);
 
-    spi_device_handle_t handlers[3];
-    handlers[0] = mpu9250_1;
-    handlers[1] = mpu9250_2;
-    handlers[2] = mpu9250_3;
+    queue_creation();
 
-    correction_data_t corrections[3];
-    corrections[0] = calibrate(mpu9250_1, 0);
-    corrections[1] = calibrate(mpu9250_2, 1);
-    corrections[2] = calibrate(mpu9250_3, 2);
+    offsets[0] = (mpu_offset){0};
+    offsets[1] = (mpu_offset){0};
+    offsets[2] = (mpu_offset){0};
+    calibrate(500);
 
-    for (int i = 0; i < 3; i++)
-    {
-        args.corr[i] = corrections[i];
-        args.dev[i] = handlers[i];
-    }
-
-    queue_1 = xQueueCreate(1, sizeof(burst_read_data_t));
-    queue_2 = xQueueCreate(1, sizeof(burst_read_data_t));
-    queue_3 = xQueueCreate(1, sizeof(burst_read_data_t));
-
-    queues[0] = queue_1;
-    queues[1] = queue_2;
-    queues[2] = queue_3;
-
-    xTaskCreate(reader_task, "reader", 4096, &args, 5, NULL);
-    xTaskCreate(voter_task, "voter", 4096, &args, 6, NULL);
+    xTaskCreate(reader_task, "reader", 4096, NULL, 5, NULL);
+    xTaskCreate(voter_task, "voter", 4096, NULL, 4, NULL);
 }

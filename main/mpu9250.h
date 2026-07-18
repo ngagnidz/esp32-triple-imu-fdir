@@ -7,7 +7,6 @@
 #define GYRO_SENSITIVITY 65.5f
 #define TEMP_SENSITIVITY 333.87f
 #define TEMP_OFFSET 21.0f
-#define CALIBRATION_SAMPLES 1000
 #define GRAVITY 1.0f
 
 #define PIN_SCLK 18
@@ -38,6 +37,6 @@ typedef struct
     float gyro_z;
 } burst_read_data_t;
 
-burst_read_data_t burst_read(correction_data_t corr, spi_device_handle_t dev, int idx);
+void burst_read();
 
 #endif

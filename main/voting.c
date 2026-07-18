@@ -34,8 +34,7 @@ bool disagree(burst_read_data_t data1, burst_read_data_t data2)
                ACCEL_THRESHHOLD ||
            fabs(data1.gyro_x - data2.gyro_x) > GYRO_THRESHHOLD ||
            fabs(data1.gyro_y - data2.gyro_y) > GYRO_THRESHHOLD ||
-           fabs(data1.gyro_z - data2.gyro_z) > GYRO_THRESHHOLD ||
-           fabs(data1.temp - data2.temp) > TEMP_THRESHHOLD;
+           fabs(data1.gyro_z - data2.gyro_z) > GYRO_THRESHHOLD;
 }
 
 voting_result voter(burst_read_data_t data1, burst_read_data_t data2, burst_read_data_t data3)
@@ -82,6 +81,7 @@ voting_result voter(burst_read_data_t data1, burst_read_data_t data2, burst_read
         mpu_fault[0] = 1;
         mpu_fault[1] = 1;
         mpu_fault[2] = 1;
+
         return ALL_DISAGREE;
     }
 }

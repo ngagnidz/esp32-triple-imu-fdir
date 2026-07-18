@@ -37,11 +37,10 @@ char *state_name(system_condition status)
         return "UNKNOWN";
     };
 }
+
 system_condition
 update_state(voting_result result)
 {
-    system_condition prev = status;
-
     if (mpu_fault[0] == 1 && mpu_fault[1] == 1 && mpu_fault[2] == 1)
     {
         status = FAILED;
@@ -87,12 +86,6 @@ update_state(voting_result result)
                    return_result(result), clean_streak);
             clean_streak = 0;
         }
-
-        if (status != prev)
-        {
-            printf("[FDIR] STATE CHANGE: %s -> %s\n",
-                   state_name(prev), state_name(status));
-        }
         return status;
     }
 
@@ -136,10 +129,5 @@ update_state(voting_result result)
         break;
     }
 
-    if (status != prev)
-    {
-        printf("[FDIR] STATE CHANGE: %s -> %s\n",
-               state_name(prev), state_name(status));
-    }
     return status;
 }
