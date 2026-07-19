@@ -1,21 +1,35 @@
 #include <stdio.h>
 #include "driver/spi_master.h"
 #include "driver/gpio.h"
+#include "esp_attr.h"
 #include "mpu9250.h"
-#include "voting.h"
-#include "fdir.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "freertos/semphr.h"
-#include "esp_timer.h"
 
-spi_transaction_t whoami_trans;
-spi_device_handle_t device_list[3];
+#define PIN_SCLK 18
+#define PIN_MOSI 23
+#define PIN_MISO 19
+#define PIN_CS1 5
+#define PIN_CS2 4
+#define PIN_CS3 15
 
-// setup the SPI bus on SPI3 with DMA so CPU is free during transfers
-void bus_config()
+static spi_device_handle_t device_list[3];
+static WORD_ALIGNED_ATTR uint8_t buf[3][16];
+
+typedef struct
 {
+    float ax;
+    float ay;
+    float az;
+    float gx;
+    float gy;
+    float gz;
+} mpu_offset;
 
+static mpu_offset offsets[3];
+
+static void bus_config(void)
+{
     spi_bus_config_t busConfig = {
         .sclk_io_num = PIN_SCLK,
         .mosi_io_num = PIN_MOSI,
@@ -26,51 +40,27 @@ void bus_config()
     spi_bus_initialize(SPI3_HOST, &busConfig, SPI_DMA_CH_AUTO);
 }
 
-// add the IMU as a device on the bus
-// 1MHz because datasheet says config registers cant go faster, sensor reads can do 20MHz later
-// command_bits=1 is the read/write bit, address_bits=7 is the register address
-void device_config()
+static void device_config(void)
 {
+    const int cs_pins[3] = {PIN_CS1, PIN_CS2, PIN_CS3};
 
-    spi_device_interface_config_t devConfig1 = {
-        .mode = 3,
-        .clock_speed_hz = 1000000,
-        .command_bits = 1,
-        .address_bits = 7,
-        .dummy_bits = 0,
-        .queue_size = 1,
-        .spics_io_num = PIN_CS1,
-
-    };
-    spi_bus_add_device(SPI3_HOST, &devConfig1, &device_list[0]);
-
-    spi_device_interface_config_t devConfig2 = {
-        .mode = 3,
-        .clock_speed_hz = 1000000,
-        .command_bits = 1,
-        .address_bits = 7,
-        .dummy_bits = 0,
-        .queue_size = 1,
-        .spics_io_num = PIN_CS2,
-
-    };
-    spi_bus_add_device(SPI3_HOST, &devConfig2, &device_list[1]);
-
-    spi_device_interface_config_t devConfig3 = {
-        .mode = 3,
-        .clock_speed_hz = 1000000,
-        .command_bits = 1,
-        .address_bits = 7,
-        .dummy_bits = 0,
-        .queue_size = 1,
-        .spics_io_num = PIN_CS3,
-    };
-    spi_bus_add_device(SPI3_HOST, &devConfig3, &device_list[2]);
+    for (int i = 0; i < 3; i++)
+    {
+        spi_device_interface_config_t devConfig = {
+            .mode = 3,
+            .clock_speed_hz = 1000000,
+            .command_bits = 1,
+            .address_bits = 7,
+            .dummy_bits = 0,
+            .queue_size = 1,
+            .spics_io_num = cs_pins[i],
+        };
+        spi_bus_add_device(SPI3_HOST, &devConfig, &device_list[i]);
+    }
 }
 
-int setup(spi_device_handle_t dev)
+static int setup(spi_device_handle_t dev)
 {
-
     spi_transaction_t wakeup_trans = {
         .length = 8,
         .cmd = 0,
@@ -99,7 +89,6 @@ int setup(spi_device_handle_t dev)
             .flags = SPI_TRANS_USE_RXDATA | SPI_TRANS_USE_TXDATA,
             .tx_data = {0x08},
         };
-
         spi_device_polling_transmit(dev, &gyro_range_write);
 
         spi_transaction_t gyro_range_read = {
@@ -118,7 +107,6 @@ int setup(spi_device_handle_t dev)
             .flags = SPI_TRANS_USE_RXDATA | SPI_TRANS_USE_TXDATA,
             .tx_data = {0x10},
         };
-
         spi_device_polling_transmit(dev, &accel_range_write);
 
         spi_transaction_t accel_range_read = {
@@ -132,64 +120,28 @@ int setup(spi_device_handle_t dev)
 
         return 1;
     }
-    else
-        return 0;
+    return 0;
 }
 
-void whoami(spi_device_handle_t dev)
+static void burst_read(void)
 {
-
-    whoami_trans = (spi_transaction_t){
-        .cmd = 1,
-        .addr = 0x75,
-        .length = 8,
-        .flags = SPI_TRANS_USE_RXDATA,
-    };
-    spi_device_polling_transmit(dev, &whoami_trans);
-    printf("WHO_AM_I: 0x%02X\n", whoami_trans.rx_data[0]);
-}
-
-uint8_t buf[3][14];
-
-void burst_read()
-{
-
-    spi_device_handle_t dev;
     for (int idx = 0; idx < 3; idx++)
     {
-        spi_transaction_t burst_read = {
+        spi_transaction_t trans = {
             .cmd = 1,
             .length = 8 * 14,
             .rx_buffer = buf[idx],
             .addr = 0x3B,
         };
 
-        dev = device_list[idx];
-
-        // Gives the transaction to the driver's pending queue and returns
-        // Blocks only if the pending queue is full
-        spi_device_queue_trans(dev, &burst_read, portMAX_DELAY);
+        spi_device_queue_trans(device_list[idx], &trans, portMAX_DELAY);
 
         spi_transaction_t *dummy;
-        // Blocks until a transaction completes and goes into the ready queueurst_read.
-        // dummy will be pointing to &burst_read
-        spi_device_get_trans_result(dev, &dummy, portMAX_DELAY);
+        spi_device_get_trans_result(device_list[idx], &dummy, portMAX_DELAY);
     }
 }
 
-typedef struct
-{
-    float ax;
-    float ay;
-    float az;
-    float gx;
-    float gy;
-    float gz;
-} mpu_offset;
-
-mpu_offset offsets[3];
-
-burst_read_data_t reading_extraction(int idx)
+static burst_read_data_t reading_extraction(int idx)
 {
     burst_read_data_t read = {0};
 
@@ -203,19 +155,39 @@ burst_read_data_t reading_extraction(int idx)
     read.gyro_y = ((int16_t)((buf[idx][10] << 8) | buf[idx][11]) / GYRO_SENSITIVITY) - offsets[idx].gy;
     read.gyro_z = ((int16_t)((buf[idx][12] << 8) | buf[idx][13]) / GYRO_SENSITIVITY) - offsets[idx].gz;
 
+    printf("IMU %d | Accel X: %8.3f  Y: %8.3f  Z: %8.3f | Gyro X: %8.3f  Y: %8.3f  Z: %8.3f\n",
+           idx,
+           read.accel_x, read.accel_y, read.accel_z,
+           read.gyro_x, read.gyro_y, read.gyro_z);
+
     return read;
 }
 
-void calibrate(int samples)
+void mpu_init(void)
+{
+    bus_config();
+    device_config();
+    for (int i = 0; i < 3; i++)
+    {
+        setup(device_list[i]);
+    }
+}
+
+void mpu_read_all(burst_read_data_t out[3])
+{
+    burst_read();
+    for (int i = 0; i < 3; i++)
+    {
+        out[i] = reading_extraction(i);
+    }
+}
+
+void mpu_calibrate(int samples)
 {
     for (int i = 0; i < 3; i++)
     {
-        float ay = 0;
-        float ax = 0;
-        float az = 0;
-        float gx = 0;
-        float gy = 0;
-        float gz = 0;
+        float ax = 0, ay = 0, az = 0;
+        float gx = 0, gy = 0, gz = 0;
 
         for (int n = 0; n < samples; n++)
         {
@@ -231,72 +203,9 @@ void calibrate(int samples)
 
         offsets[i].ax = ax / samples;
         offsets[i].ay = ay / samples;
-        offsets[i].az = az / samples - 1.0;
+        offsets[i].az = az / samples - (-1.0f);
         offsets[i].gx = gx / samples;
         offsets[i].gy = gy / samples;
         offsets[i].gz = gz / samples;
     }
-}
-
-QueueHandle_t queues[3];
-void queue_creation()
-{
-    for (int i = 0; i < 3; i++)
-    {
-        queues[i] = xQueueCreate(1, sizeof(burst_read_data_t));
-    }
-}
-
-void reader_task(void *pv)
-{
-    TickType_t xLastWakeTime = xTaskGetTickCount();
-    const TickType_t xPeriod = pdMS_TO_TICKS(10);
-
-    while (1)
-    {
-        burst_read();
-        for (int i = 0; i < 3; i++)
-        {
-            burst_read_data_t reading = reading_extraction(i);
-            xQueueSend(queues[i], &reading, portMAX_DELAY);
-        }
-    }
-
-    vTaskDelayUntil(&xLastWakeTime, xPeriod);
-}
-
-void voter_task(void *pv)
-{
-    burst_read_data_t readings[3];
-    while (1)
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            xQueueReceive(queues[i], &readings[i], portMAX_DELAY);
-        }
-
-        voting_result result = voter(readings[0], readings[1], readings[2]);
-        system_condition condition = update_state(result);
-        char *state = state_name(condition);
-        printf("state: %s\n\n", state);
-    }
-}
-
-void app_main(void)
-{
-    bus_config();
-    device_config();
-    setup(device_list[0]);
-    setup(device_list[1]);
-    setup(device_list[2]);
-
-    queue_creation();
-
-    offsets[0] = (mpu_offset){0};
-    offsets[1] = (mpu_offset){0};
-    offsets[2] = (mpu_offset){0};
-    calibrate(500);
-
-    xTaskCreate(reader_task, "reader", 4096, NULL, 5, NULL);
-    xTaskCreate(voter_task, "voter", 4096, NULL, 4, NULL);
 }

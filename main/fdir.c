@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "voting.h"
-#include "mpu9250.h"
 
 // States
 typedef enum

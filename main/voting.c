@@ -1,5 +1,4 @@
 #include "math.h"
-#include "mpu9250.h"
 #include "voting.h"
 
 int mpu_fault[3] = {0, 0, 0};
@@ -44,6 +43,10 @@ voting_result voter(burst_read_data_t data1, burst_read_data_t data2, burst_read
     bool d13 = disagree(data1, data3);
     bool d23 = disagree(data2, data3);
 
+    // 1 2 disagrees
+    // 1 3 disagrees
+    // 2 3 agrees
+    // 1 is outlier
     if (d12 && d13 && !d23)
     {
         mpu_fault[0] = 1;
@@ -53,6 +56,10 @@ voting_result voter(burst_read_data_t data1, burst_read_data_t data2, burst_read
         return MPU1_DISAGREE;
     }
 
+    // 2 3 disagrees
+    // 1 2 disagrees
+    // 1 3 agrees
+    // 2 is outlier
     if (d23 && d12 && !d13)
     {
         mpu_fault[0] = 0;
@@ -61,6 +68,10 @@ voting_result voter(burst_read_data_t data1, burst_read_data_t data2, burst_read
         return MPU2_DISAGREE;
     }
 
+    // 2 3 disagrees
+    // 1 3 disagrees
+    // 1 2 agrees
+    // 3 is outlier
     if (d23 && d13 && !d12)
     {
         mpu_fault[0] = 0;
@@ -69,6 +80,11 @@ voting_result voter(burst_read_data_t data1, burst_read_data_t data2, burst_read
         return MPU3_DISAGREE;
     }
 
+    // 1 3 agrees
+    // 1 2 disagrees
+    // 2 3 disagrees
+
+    // No one agrees
     if (!d13 && !d23 && !d12)
     {
         mpu_fault[0] = 0;
