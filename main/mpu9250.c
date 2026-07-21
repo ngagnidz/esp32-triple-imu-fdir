@@ -6,9 +6,9 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
-#define PIN_SCLK 18
-#define PIN_MOSI 23
-#define PIN_MISO 19
+#define PIN_SCLK 23 // White jumper
+#define PIN_MOSI 22 // Green Jumper
+#define PIN_MISO 21 // Yellow Jumper
 #define PIN_CS1 5
 #define PIN_CS2 4
 #define PIN_CS3 15

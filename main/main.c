@@ -4,6 +4,7 @@
 #include "freertos/queue.h"
 #include "mpu9250.h"
 #include "voting.h"
+#include "cantrans.h"
 #include "fdir.h"
 
 static QueueHandle_t queues[3];
@@ -45,7 +46,9 @@ static void voter_task(void *pv)
 
         voting_result result = voter(readings[0], readings[1], readings[2]);
         system_condition condition = update_state(result);
-        char *state = state_name(condition);
+        char *state = get_state_name(condition);
+        int state_number = get_state_number(condition);
+        transmit(state_number);
         printf("state: %s\n\n", state);
     }
 }
@@ -55,6 +58,9 @@ void app_main(void)
     mpu_init();
     queue_creation();
     // mpu_calibrate(200);
+
+    // CAN config
+    config();
 
     xTaskCreate(reader_task, "reader", 4096, NULL, 5, NULL);
     xTaskCreate(voter_task, "voter", 4096, NULL, 4, NULL);

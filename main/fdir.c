@@ -23,7 +23,7 @@ static int clean_streak = 0;
 static int error_streak = 0;
 extern int mpu_fault[3];
 
-char *state_name(system_condition status)
+char *get_state_name(system_condition status)
 {
     switch (status)
     {
@@ -35,6 +35,21 @@ char *state_name(system_condition status)
         return "FAILED";
     default:
         return "UNKNOWN";
+    };
+}
+
+int get_state_number(system_condition status)
+{
+    switch (status)
+    {
+    case NOMINAL:
+        return 1;
+    case DEGRADED:
+        return 2;
+    case FAILED:
+        return 3;
+    default:
+        return 4;
     };
 }
 
@@ -90,7 +105,7 @@ update_state(voting_result result)
     case MPU2_DISAGREE:
     case MPU3_DISAGREE:
         printf("[FDIR] %s in %s: streak reset (was %d), -> DEGRADED\n",
-               return_result(result), state_name(status), clean_streak);
+               return_result(result), get_state_name(status), clean_streak);
         clean_streak = 0;
         error_streak++;
         if (error_streak >= 10)
@@ -118,7 +133,7 @@ update_state(voting_result result)
 
     case ALL_DISAGREE:
         printf("[FDIR] ALL_DISAGREE in %s: streak reset (was %d), -> FAILED\n",
-               state_name(status), clean_streak);
+               get_state_name(status), clean_streak);
         clean_streak = 0;
         error_streak++;
         if (error_streak >= 10)
@@ -131,7 +146,7 @@ update_state(voting_result result)
 
     default:
         printf("[FDIR] UNKNOWN result %d in %s -> FAILED\n",
-               result, state_name(status));
+               result, get_state_name(status));
         clean_streak = 0;
         status = FAILED;
         break;
