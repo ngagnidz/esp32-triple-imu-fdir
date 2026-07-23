@@ -135,7 +135,6 @@ static void burst_read(void)
         };
 
         spi_device_queue_trans(device_list[idx], &trans, portMAX_DELAY);
-
         spi_transaction_t *dummy;
         spi_device_get_trans_result(device_list[idx], &dummy, portMAX_DELAY);
     }

@@ -25,7 +25,7 @@ void config(void)
     twai_node_enable(node_hdl);
 }
 
-void transmit(int status_code)
+void transmit_status(int status_code)
 {
 
     uint8_t send_buff[1] = {(uint8_t)status_code};
@@ -36,11 +36,44 @@ void transmit(int status_code)
         .buffer_len = sizeof(send_buff),
     };
 
-    esp_err_t result = twai_node_transmit(node_hdl, &tx_frame, 1000);
+    esp_err_t result = twai_node_transmit(node_hdl, &tx_frame, 0);
     if (result == ESP_OK)
     {
-        twai_node_transmit_wait_all_done(node_hdl, 1000);
+        twai_node_transmit_wait_all_done(node_hdl, 0);
         ESP_LOGI(TAG, "CAN TX ok: status=%d", status_code);
+    }
+    else
+    {
+        ESP_LOGW(TAG, "CAN TX failed: %s", esp_err_to_name(result));
+    }
+}
+
+void transmit_data(burst_read_data_t *reading)
+{
+
+    uint8_t buf[6];
+    uint16_t ax = (uint16_t)reading->accel_x;
+    uint16_t ay = (uint16_t)reading->accel_y;
+    uint16_t az = (uint16_t)reading->accel_z;
+
+    buf[0] = (uint8_t)(ax >> 8);
+    buf[1] = (uint8_t)(ax & 0xFF);
+    buf[2] = (uint8_t)(ay >> 8);
+    buf[3] = (uint8_t)(ay & 0xFF);
+    buf[4] = (uint8_t)(az >> 8);
+    buf[5] = (uint8_t)(az & 0xFF);
+
+    twai_frame_t tx_frame = {
+        .header.id = 0x101,
+        .buffer = buf,
+        .buffer_len = 6,
+    };
+
+    esp_err_t result = twai_node_transmit(node_hdl, &tx_frame, 0);
+    if (result == ESP_OK)
+    {
+        twai_node_transmit_wait_all_done(node_hdl, 0);
+        ESP_LOGI(TAG, "CAN TX ok: SENT");
     }
     else
     {

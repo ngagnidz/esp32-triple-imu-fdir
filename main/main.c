@@ -6,6 +6,8 @@
 #include "voting.h"
 #include "cantrans.h"
 #include "fdir.h"
+#include "fusion.h"
+#include <string.h>
 
 static QueueHandle_t queues[3];
 
@@ -48,7 +50,12 @@ static void voter_task(void *pv)
         system_condition condition = update_state(result);
         char *state = get_state_name(condition);
         int state_number = get_state_number(condition);
-        transmit(state_number);
+        if (strcmp(state, "FAILED") != 0)
+        {
+            // burst_read_data_t fused = average_good(readings, result);
+            transmit_status(state_number);
+            transmit_data(readings);
+        }
         printf("state: %s\n\n", state);
     }
 }

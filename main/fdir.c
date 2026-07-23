@@ -1,13 +1,6 @@
 #include <stdio.h>
 #include "voting.h"
-
-// States
-typedef enum
-{
-    NOMINAL,
-    DEGRADED,
-    FAILED,
-} system_condition;
+#include "fdir.h"
 
 // MPUs
 typedef enum
