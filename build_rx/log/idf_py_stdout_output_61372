@@ -1,0 +1,4254 @@
+Command: /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/tools/idf_monitor.py -p /dev/cu.usbserial-4 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/mpu9250_driver.elf /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/bootloader/bootloader.elf -m '/Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python' '/Users/nikagagnidze/Desktop/esp/esp-idf/tools/idf.py' '-B' 'build_rx'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15820
+load:0x40080400,len:3988
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.1-dev-4996-gc1b7f38212 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Jul 23 2026 20:12:11[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0a630h ( 42544) map[0m
+[0;32mI (103) esp_image: segment 1: paddr=0001a658 vaddr=3ffb0000 size=02b2ch ( 11052) load[0m
+[0;32mI (108) esp_image: segment 2: paddr=0001d18c vaddr=40080000 size=02e8ch ( 11916) load[0m
+[0;32mI (113) esp_image: segment 3: paddr=00020020 vaddr=400d0020 size=1151ch ( 70940) map[0m
+[0;32mI (140) esp_image: segment 4: paddr=00031544 vaddr=40082e8c size=08498h ( 33944) load[0m
+[0;32mI (154) esp_image: segment 5: paddr=000399e4 vaddr=50000000 size=00028h (    40) load[0m
+[0;32mI (160) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (160) boot: Disabling RNG early entropy source...[0m
+[0;32mI (172) cpu_start: Multicore app[0m
+[0;32mI (180) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (180) cpu_start: Pro cpu start user code[0m
+[0;32mI (180) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (182) app_init: Application information:[0m
+[0;32mI (186) app_init: Project name:     mpu9250_driver[0m
+[0;32mI (191) app_init: App version:      6721a32-dirty[0m
+[0;32mI (195) app_init: Compile time:     Jul 23 2026 20:12:04[0m
+[0;32mI (200) app_init: ELF file SHA256:  6eb316936...[0m
+[0;32mI (204) app_init: ESP-IDF:          v6.1-dev-4996-gc1b7f38212[0m
+[0;32mI (210) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (214) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (218) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (222) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (228) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (233) heap_init: At 3FFB3660 len 0002C9A0 (178 KiB): DRAM[0m
+[0;32mI (238) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (244) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (249) heap_init: At 4008B324 len 00014CDC (83 KiB): IRAM[0m
+[0;33mW (256) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig[0m
+[0;32mI (268) spi_flash: detected chip: generic[0m
+[0;32mI (271) spi_flash: flash io: dio[0m
+[0;33mW (274) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (288) main_task: Started on CPU0[0m
+[0;32mI (288) main_task: Calling app_main()[0m
+[0;32mI (288) CAN_RX: RX up: tx=21 rx=22 500000 bit/s (normal mode)[0m
+[0;32mI (298) CAN_RX: RX #1 ID=0x100 len=1[0m
+[0;32mI (298) CAN_RX: 01[0m
+[0;32mI (298) CAN_RX: RX #2 ID=0x100 len=1[0m
+[0;32mI (298) CAN_RX: 01[0m
+[0;32mI (308) CAN_RX: RX #3 ID=0x100 len=1[0m
+[0;32mI (308) CAN_RX: 01[0m
+[0;32mI (308) CAN_RX: RX #4 ID=0x100 len=1[0m
+[0;32mI (308) CAN_RX: 01[0m
+[0;32mI (318) CAN_RX: RX #5 ID=0x100 len=1[0m
+[0;32mI (318) CAN_RX: 01[0m
+[0;32mI (318) CAN_RX: RX #6 ID=0x100 len=1[0m
+[0;32mI (318) CAN_RX: 01[0m
+[0;32mI (328) CAN_RX: RX #7 ID=0x100 len=1[0m
+[0;32mI (328) CAN_RX: 01[0m
+[0;32mI (328) CAN_RX: RX #8 ID=0x100 len=1[0m
+[0;32mI (328) CAN_RX: 01[0m
+[0;32mI (338) CAN_RX: RX #9 ID=0x100 len=1[0m
+[0;32mI (338) CAN_RX: 01[0m
+[0;32mI (338) CAN_RX: RX #10 ID=0x100 len=1[0m
+[0;32mI (338) CAN_RX: 01[0m
+[0;32mI (348) CAN_RX: RX #11 ID=0x100 len=1[0m
+[0;32mI (348) CAN_RX: 01[0m
+[0;32mI (348) CAN_RX: RX #12 ID=0x100 len=1[0m
+[0;32mI (348) CAN_RX: 01[0m
+[0;32mI (358) CAN_RX: RX #13 ID=0x100 len=1[0m
+[0;32mI (358) CAN_RX: 01[0m
+[0;32mI (358) CAN_RX: RX #14 ID=0x100 len=1[0m
+[0;32mI (358) CAN_RX: 01[0m
+[0;32mI (368) CAN_RX: RX #15 ID=0x100 len=1[0m
+[0;32mI (368) CAN_RX: 01[0m
+[0;32mI (368) CAN_RX: RX #16 ID=0x100 len=1[0m
+[0;32mI (378) CAN_RX: 01[0m
+[0;32mI (378) CAN_RX: RX #17 ID=0x100 len=1[0m
+[0;32mI (378) CAN_RX: 01[0m
+[0;32mI (378) CAN_RX: RX #18 ID=0x100 len=1[0m
+[0;32mI (388) CAN_RX: 01[0m
+[0;32mI (388) CAN_RX: RX #19 ID=0x100 len=1[0m
+[0;32mI (388) CAN_RX: 01[0m
+[0;32mI (388) CAN_RX: RX #20 ID=0x100 len=1[0m
+[0;32mI (398) CAN_RX: 01[0m
+[0;32mI (398) CAN_RX: RX #21 ID=0x100 len=1[0m
+[0;32mI (398) CAN_RX: 01[0m
+[0;32mI (398) CAN_RX: RX #22 ID=0x100 len=1[0m
+[0;32mI (408) CAN_RX: 01[0m
+[0;32mI (408) CAN_RX: RX #23 ID=0x100 len=1[0m
+[0;32mI (408) CAN_RX: 01[0m
+[0;32mI (408) CAN_RX: RX #24 ID=0x100 len=1[0m
+[0;32mI (418) CAN_RX: 01[0m
+[0;32mI (418) CAN_RX: RX #25 ID=0x100 len=1[0m
+[0;32mI (418) CAN_RX: 01[0m
+[0;32mI (418) CAN_RX: RX #26 ID=0x100 len=1[0m
+[0;32mI (428) CAN_RX: 01[0m
+[0;32mI (428) CAN_RX: RX #27 ID=0x100 len=1[0m
+[0;32mI (428) CAN_RX: 01[0m
+[0;32mI (428) CAN_RX: RX #28 ID=0x100 len=1[0m
+[0;32mI (438) CAN_RX: 01[0m
+[0;32mI (438) CAN_RX: RX #29 ID=0x100 len=1[0m
+[0;32mI (438) CAN_RX: 01[0m
+[0;32mI (438) CAN_RX: RX #30 ID=0x100 len=1[0m
+[0;32mI (448) CAN_RX: 01[0m
+[0;32mI (448) CAN_RX: RX #31 ID=0x100 len=1[0m
+[0;32mI (448) CAN_RX: 01[0m
+[0;32mI (448) CAN_RX: RX #32 ID=0x100 len=1[0m
+[0;32mI (458) CAN_RX: 01[0m
+[0;32mI (458) CAN_RX: RX #33 ID=0x100 len=1[0m
+[0;32mI (458) CAN_RX: 01[0m
+[0;32mI (458) CAN_RX: RX #34 ID=0x100 len=1[0m
+[0;32mI (468) CAN_RX: 01[0m
+[0;32mI (468) CAN_RX: RX #35 ID=0x100 len=1[0m
+[0;32mI (468) CAN_RX: 01[0m
+[0;32mI (468) CAN_RX: RX #36 ID=0x100 len=1[0m
+[0;32mI (478) CAN_RX: 01[0m
+[0;32mI (478) CAN_RX: RX #37 ID=0x100 len=1[0m
+[0;32mI (478) CAN_RX: 01[0m
+[0;32mI (478) CAN_RX: RX #38 ID=0x100 len=1[0m
+[0;32mI (488) CAN_RX: 01[0m
+[0;32mI (488) CAN_RX: RX #39 ID=0x100 len=1[0m
+[0;32mI (488) CAN_RX: 01[0m
+[0;32mI (488) CAN_RX: RX #40 ID=0x100 len=1[0m
+[0;32mI (498) CAN_RX: 01[0m
+[0;32mI (498) CAN_RX: RX #41 ID=0x100 len=1[0m
+[0;32mI (498) CAN_RX: 01[0m
+[0;32mI (498) CAN_RX: RX #42 ID=0x100 len=1[0m
+[0;32mI (508) CAN_RX: 01[0m
+[0;32mI (508) CAN_RX: RX #43 ID=0x100 len=1[0m
+[0;32mI (508) CAN_RX: 01[0m
+[0;32mI (518) CAN_RX: RX #44 ID=0x100 len=1[0m
+[0;32mI (518) CAN_RX: 01[0m
+[0;32mI (518) CAN_RX: RX #45 ID=0x100 len=1[0m
+[0;32mI (518) CAN_RX: 01[0m
+[0;32mI (528) CAN_RX: RX #46 ID=0x100 len=1[0m
+[0;32mI (528) CAN_RX: 01[0m
+[0;32mI (528) CAN_RX: RX #47 ID=0x100 len=1[0m
+[0;32mI (528) CAN_RX: 01[0m
+[0;32mI (538) CAN_RX: RX #48 ID=0x100 len=1[0m
+[0;32mI (538) CAN_RX: 01[0m
+[0;32mI (538) CAN_RX: RX #49 ID=0x100 len=1[0m
+[0;32mI (538) CAN_RX: 01[0m
+[0;32mI (548) CAN_RX: RX #50 ID=0x100 len=1[0m
+[0;32mI (548) CAN_RX: 01[0m
+[0;32mI (548) CAN_RX: RX #51 ID=0x100 len=1[0m
+[0;32mI (548) CAN_RX: 01[0m
+[0;32mI (558) CAN_RX: RX #52 ID=0x100 len=1[0m
+[0;32mI (558) CAN_RX: 01[0m
+[0;32mI (558) CAN_RX: RX #53 ID=0x100 len=1[0m
+[0;32mI (558) CAN_RX: 01[0m
+[0;32mI (568) CAN_RX: RX #54 ID=0x100 len=1[0m
+[0;32mI (568) CAN_RX: 01[0m
+[0;32mI (568) CAN_RX: RX #55 ID=0x100 len=1[0m
+[0;32mI (568) CAN_RX: 01[0m
+[0;32mI (578) CAN_RX: RX #56 ID=0x100 len=1[0m
+[0;32mI (578) CAN_RX: 01[0m
+[0;32mI (578) CAN_RX: RX #57 ID=0x100 len=1[0m
+[0;32mI (588) CAN_RX: 01[0m
+[0;32mI (588) CAN_RX: RX #58 ID=0x100 len=1[0m
+[0;32mI (588) CAN_RX: 01[0m
+[0;32mI (588) CAN_RX: RX #59 ID=0x100 len=1[0m
+[0;32mI (598) CAN_RX: 01[0m
+[0;32mI (598) CAN_RX: RX #60 ID=0x100 len=1[0m
+[0;32mI (598) CAN_RX: 01[0m
+[0;32mI (598) CAN_RX: RX #61 ID=0x100 len=1[0m
+[0;32mI (608) CAN_RX: 01[0m
+[0;32mI (608) CAN_RX: RX #62 ID=0x100 len=1[0m
+[0;32mI (608) CAN_RX: 01[0m
+[0;32mI (608) CAN_RX: RX #63 ID=0x100 len=1[0m
+[0;32mI (618) CAN_RX: 01[0m
+[0;32mI (618) CAN_RX: RX #64 ID=0x100 len=1[0m
+[0;32mI (618) CAN_RX: 01[0m
+[0;32mI (618) CAN_RX: RX #65 ID=0x100 len=1[0m
+[0;32mI (628) CAN_RX: 01[0m
+[0;32mI (628) CAN_RX: RX #66 ID=0x100 len=1[0m
+[0;32mI (628) CAN_RX: 01[0m
+[0;32mI (628) CAN_RX: RX #67 ID=0x100 len=1[0m
+[0;32mI (638) CAN_RX: 01[0m
+[0;32mI (638) CAN_RX: RX #68 ID=0x100 len=1[0m
+[0;32mI (638) CAN_RX: 01[0m
+[0;32mI (638) CAN_RX: RX #69 ID=0x100 len=1[0m
+[0;32mI (648) CAN_RX: 01[0m
+[0;32mI (648) CAN_RX: RX #70 ID=0x100 len=1[0m
+[0;32mI (648) CAN_RX: 01[0m
+[0;32mI (648) CAN_RX: RX #71 ID=0x100 len=1[0m
+[0;32mI (658) CAN_RX: 01[0m
+[0;32mI (658) CAN_RX: RX #72 ID=0x100 len=1[0m
+[0;32mI (658) CAN_RX: 01[0m
+[0;32mI (658) CAN_RX: RX #73 ID=0x100 len=1[0m
+[0;32mI (668) CAN_RX: 01[0m
+[0;32mI (668) CAN_RX: RX #74 ID=0x100 len=1[0m
+[0;32mI (668) CAN_RX: 01[0m
+[0;32mI (668) CAN_RX: RX #75 ID=0x100 len=1[0m
+[0;32mI (678) CAN_RX: 01[0m
+[0;32mI (678) CAN_RX: RX #76 ID=0x100 len=1[0m
+[0;32mI (678) CAN_RX: 01[0m
+[0;32mI (678) CAN_RX: RX #77 ID=0x100 len=1[0m
+[0;32mI (688) CAN_RX: 01[0m
+[0;32mI (688) CAN_RX: RX #78 ID=0x100 len=1[0m
+[0;32mI (688) CAN_RX: 01[0m
+[0;32mI (688) CAN_RX: RX #79 ID=0x100 len=1[0m
+[0;32mI (698) CAN_RX: 01[0m
+[0;32mI (698) CAN_RX: RX #80 ID=0x100 len=1[0m
+[0;32mI (698) CAN_RX: 01[0m
+[0;32mI (698) CAN_RX: RX #81 ID=0x100 len=1[0m
+[0;32mI (708) CAN_RX: 01[0m
+[0;32mI (708) CAN_RX: RX #82 ID=0x100 len=1[0m
+[0;32mI (708) CAN_RX: 01[0m
+[0;32mI (708) CAN_RX: RX #83 ID=0x100 len=1[0m
+[0;32mI (718) CAN_RX: 01[0m
+[0;32mI (718) CAN_RX: RX #84 ID=0x100 len=1[0m
+[0;32mI (718) CAN_RX: 01[0m
+[0;32mI (728) CAN_RX: RX #85 ID=0x100 len=1[0m
+[0;32mI (728) CAN_RX: 01[0m
+[0;32mI (728) CAN_RX: RX #86 ID=0x100 len=1[0m
+[0;32mI (728) CAN_RX: 01[0m
+[0;32mI (738) CAN_RX: RX #87 ID=0x100 len=1[0m
+[0;32mI (738) CAN_RX: 01[0m
+[0;32mI (738) CAN_RX: RX #88 ID=0x100 len=1[0m
+[0;32mI (738) CAN_RX: 01[0m
+[0;32mI (748) CAN_RX: RX #89 ID=0x100 len=1[0m
+[0;32mI (748) CAN_RX: 01[0m
+[0;32mI (748) CAN_RX: RX #90 ID=0x100 len=1[0m
+[0;32mI (748) CAN_RX: 01[0m
+[0;32mI (758) CAN_RX: RX #91 ID=0x100 len=1[0m
+[0;32mI (758) CAN_RX: 01[0m
+[0;32mI (758) CAN_RX: RX #92 ID=0x100 len=1[0m
+[0;32mI (758) CAN_RX: 01[0m
+[0;32mI (768) CAN_RX: RX #93 ID=0x100 len=1[0m
+[0;32mI (768) CAN_RX: 01[0m
+[0;32mI (768) CAN_RX: RX #94 ID=0x100 len=1[0m
+[0;32mI (768) CAN_RX: 01[0m
+[0;32mI (778) CAN_RX: RX #95 ID=0x100 len=1[0m
+[0;32mI (778) CAN_RX: 01[0m
+[0;32mI (778) CAN_RX: RX #96 ID=0x100 len=1[0m
+[0;32mI (778) CAN_RX: 01[0m
+[0;32mI (788) CAN_RX: RX #97 ID=0x100 len=1[0m
+[0;32mI (788) CAN_RX: 01[0m
+[0;32mI (788) CAN_RX: RX #98 ID=0x100 len=1[0m
+[0;32mI (798) CAN_RX: 01[0m
+[0;32mI (798) CAN_RX: RX #99 ID=0x100 len=1[0m
+[0;32mI (798) CAN_RX: 01[0m
+[0;32mI (798) CAN_RX: RX #100 ID=0x100 len=1[0m
+[0;32mI (808) CAN_RX: 01[0m
+[0;32mI (808) CAN_RX: RX #101 ID=0x100 len=1[0m
+[0;32mI (808) CAN_RX: 01[0m
+[0;32mI (808) CAN_RX: RX #102 ID=0x100 len=1[0m
+[0;32mI (818) CAN_RX: 01[0m
+[0;32mI (818) CAN_RX: RX #103 ID=0x100 len=1[0m
+[0;32mI (818) CAN_RX: 01[0m
+[0;32mI (818) CAN_RX: RX #104 ID=0x100 len=1[0m
+[0;32mI (828) CAN_RX: 01[0m
+[0;32mI (828) CAN_RX: RX #105 ID=0x100 len=1[0m
+[0;32mI (828) CAN_RX: 01[0m
+[0;32mI (828) CAN_RX: RX #106 ID=0x100 len=1[0m
+[0;32mI (838) CAN_RX: 01[0m
+[0;32mI (838) CAN_RX: RX #107 ID=0x100 len=1[0m
+[0;32mI (838) CAN_RX: 01[0m
+[0;32mI (838) CAN_RX: RX #108 ID=0x100 len=1[0m
+[0;32mI (848) CAN_RX: 01[0m
+[0;32mI (848) CAN_RX: RX #109 ID=0x100 len=1[0m
+[0;32mI (848) CAN_RX: 01[0m
+[0;32mI (848) CAN_RX: RX #110 ID=0x100 len=1[0m
+[0;32mI (858) CAN_RX: 01[0m
+[0;32mI (858) CAN_RX: RX #111 ID=0x100 len=1[0m
+[0;32mI (858) CAN_RX: 01[0m
+[0;32mI (858) CAN_RX: RX #112 ID=0x100 len=1[0m
+[0;32mI (868) CAN_RX: 01[0m
+[0;32mI (868) CAN_RX: RX #113 ID=0x100 len=1[0m
+[0;32mI (868) CAN_RX: 01[0m
+[0;32mI (868) CAN_RX: RX #114 ID=0x100 len=1[0m
+[0;32mI (878) CAN_RX: 01[0m
+[0;32mI (878) CAN_RX: RX #115 ID=0x100 len=1[0m
+[0;32mI (878) CAN_RX: 01[0m
+[0;32mI (888) CAN_RX: RX #116 ID=0x100 len=1[0m
+[0;32mI (888) CAN_RX: 01[0m
+[0;32mI (888) CAN_RX: RX #117 ID=0x100 len=1[0m
+[0;32mI (888) CAN_RX: 01[0m
+[0;32mI (898) CAN_RX: RX #118 ID=0x100 len=1[0m
+[0;32mI (898) CAN_RX: 01[0m
+[0;32mI (898) CAN_RX: RX #119 ID=0x100 len=1[0m
+[0;32mI (898) CAN_RX: 01[0m
+[0;32mI (908) CAN_RX: RX #120 ID=0x100 len=1[0m
+[0;32mI (908) CAN_RX: 01[0m
+[0;32mI (908) CAN_RX: RX #121 ID=0x100 len=1[0m
+[0;32mI (908) CAN_RX: 01[0m
+[0;32mI (918) CAN_RX: RX #122 ID=0x100 len=1[0m
+[0;32mI (918) CAN_RX: 01[0m
+[0;32mI (918) CAN_RX: RX #123 ID=0x100 len=1[0m
+[0;32mI (928) CAN_RX: 01[0m
+[0;32mI (928) CAN_RX: RX #124 ID=0x100 len=1[0m
+[0;32mI (928) CAN_RX: 01[0m
+[0;32mI (928) CAN_RX: RX #125 ID=0x100 len=1[0m
+[0;32mI (938) CAN_RX: 01[0m
+[0;32mI (938) CAN_RX: RX #126 ID=0x100 len=1[0m
+[0;32mI (938) CAN_RX: 01[0m
+[0;32mI (938) CAN_RX: RX #127 ID=0x100 len=1[0m
+[0;32mI (948) CAN_RX: 01[0m
+[0;32mI (948) CAN_RX: RX #128 ID=0x100 len=1[0m
+[0;32mI (948) CAN_RX: 01[0m
+[0;32mI (948) CAN_RX: RX #129 ID=0x100 len=1[0m
+[0;32mI (958) CAN_RX: 01[0m
+[0;32mI (958) CAN_RX: RX #130 ID=0x100 len=1[0m
+[0;32mI (958) CAN_RX: 01[0m
+[0;32mI (958) CAN_RX: RX #131 ID=0x100 len=1[0m
+[0;32mI (968) CAN_RX: 01[0m
+[0;32mI (968) CAN_RX: RX #132 ID=0x100 len=1[0m
+[0;32mI (968) CAN_RX: 01[0m
+[0;32mI (968) CAN_RX: RX #133 ID=0x100 len=1[0m
+[0;32mI (978) CAN_RX: 01[0m
+[0;32mI (978) CAN_RX: RX #134 ID=0x100 len=1[0m
+[0;32mI (978) CAN_RX: 01[0m
+[0;32mI (978) CAN_RX: RX #135 ID=0x100 len=1[0m
+[0;32mI (988) CAN_RX: 01[0m
+[0;32mI (988) CAN_RX: RX #136 ID=0x100 len=1[0m
+[0;32mI (988) CAN_RX: 01[0m
+[0;32mI (988) CAN_RX: RX #137 ID=0x100 len=1[0m
+[0;32mI (998) CAN_RX: 01[0m
+[0;32mI (998) CAN_RX: RX #138 ID=0x100 len=1[0m
+[0;32mI (998) CAN_RX: 01[0m
+[0;32mI (1008) CAN_RX: RX #139 ID=0x100 len=1[0m
+[0;32mI (1008) CAN_RX: 01[0m
+[0;32mI (1008) CAN_RX: RX #140 ID=0x100 len=1[0m
+[0;32mI (1008) CAN_RX: 01[0m
+[0;32mI (1018) CAN_RX: RX #141 ID=0x100 len=1[0m
+[0;32mI (1018) CAN_RX: 01[0m
+[0;32mI (1018) CAN_RX: RX #142 ID=0x100 len=1[0m
+[0;32mI (1018) CAN_RX: 01[0m
+[0;32mI (1028) CAN_RX: RX #143 ID=0x100 len=1[0m
+[0;32mI (1028) CAN_RX: 01[0m
+[0;32mI (1028) CAN_RX: RX #144 ID=0x100 len=1[0m
+[0;32mI (1038) CAN_RX: 01[0m
+[0;32mI (1038) CAN_RX: RX #145 ID=0x100 len=1[0m
+[0;32mI (1038) CAN_RX: 01[0m
+[0;32mI (1038) CAN_RX: RX #146 ID=0x100 len=1[0m
+[0;32mI (1048) CAN_RX: 01[0m
+[0;32mI (1048) CAN_RX: RX #147 ID=0x100 len=1[0m
+[0;32mI (1048) CAN_RX: 01[0m
+[0;32mI (1048) CAN_RX: RX #148 ID=0x100 len=1[0m
+[0;32mI (1058) CAN_RX: 01[0m
+[0;32mI (1058) CAN_RX: RX #149 ID=0x100 len=1[0m
+[0;32mI (1058) CAN_RX: 01[0m
+[0;32mI (1058) CAN_RX: RX #150 ID=0x100 len=1[0m
+[0;32mI (1068) CAN_RX: 01[0m
+[0;32mI (1068) CAN_RX: RX #151 ID=0x100 len=1[0m
+[0;32mI (1068) CAN_RX: 01[0m
+[0;32mI (1078) CAN_RX: RX #152 ID=0x100 len=1[0m
+[0;32mI (1078) CAN_RX: 01[0m
+[0;32mI (1078) CAN_RX: RX #153 ID=0x100 len=1[0m
+[0;32mI (1078) CAN_RX: 01[0m
+[0;32mI (1088) CAN_RX: RX #154 ID=0x100 len=1[0m
+[0;32mI (1088) CAN_RX: 01[0m
+[0;32mI (1088) CAN_RX: RX #155 ID=0x100 len=1[0m
+[0;32mI (1088) CAN_RX: 01[0m
+[0;32mI (1098) CAN_RX: RX #156 ID=0x100 len=1[0m
+[0;32mI (1098) CAN_RX: 01[0m
+[0;32mI (1098) CAN_RX: RX #157 ID=0x100 len=1[0m
+[0;32mI (1108) CAN_RX: 01[0m
+[0;32mI (1108) CAN_RX: RX #158 ID=0x100 len=1[0m
+[0;32mI (1108) CAN_RX: 01[0m
+[0;32mI (1108) CAN_RX: RX #159 ID=0x100 len=1[0m
+[0;32mI (1118) CAN_RX: 01[0m
+[0;32mI (1118) CAN_RX: RX #160 ID=0x100 len=1[0m
+[0;32mI (1118) CAN_RX: 01[0m
+[0;32mI (1118) CAN_RX: RX #161 ID=0x100 len=1[0m
+[0;32mI (1128) CAN_RX: 01[0m
+[0;32mI (1128) CAN_RX: RX #162 ID=0x100 len=1[0m
+[0;32mI (1128) CAN_RX: 01[0m
+[0;32mI (1128) CAN_RX: RX #163 ID=0x100 len=1[0m
+[0;32mI (1138) CAN_RX: 01[0m
+[0;32mI (1138) CAN_RX: RX #164 ID=0x100 len=1[0m
+[0;32mI (1138) CAN_RX: 01[0m
+[0;32mI (1138) CAN_RX: RX #165 ID=0x100 len=1[0m
+[0;32mI (1148) CAN_RX: 01[0m
+[0;32mI (1148) CAN_RX: RX #166 ID=0x100 len=1[0m
+[0;32mI (1148) CAN_RX: 01[0m
+[0;32mI (1158) CAN_RX: RX #167 ID=0x100 len=1[0m
+[0;32mI (1158) CAN_RX: 01[0m
+[0;32mI (1158) CAN_RX: RX #168 ID=0x100 len=1[0m
+[0;32mI (1158) CAN_RX: 01[0m
+[0;32mI (1168) CAN_RX: RX #169 ID=0x100 len=1[0m
+[0;32mI (1168) CAN_RX: 01[0m
+[0;32mI (1168) CAN_RX: RX #170 ID=0x100 len=1[0m
+[0;32mI (1178) CAN_RX: 01[0m
+[0;32mI (1178) CAN_RX: RX #171 ID=0x100 len=1[0m
+[0;32mI (1178) CAN_RX: 01[0m
+[0;32mI (1178) CAN_RX: RX #172 ID=0x100 len=1[0m
+[0;32mI (1188) CAN_RX: 01[0m
+[0;32mI (1188) CAN_RX: RX #173 ID=0x100 len=1[0m
+[0;32mI (1188) CAN_RX: 01[0m
+[0;32mI (1188) CAN_RX: RX #174 ID=0x100 len=1[0m
+[0;32mI (1198) CAN_RX: 01[0m
+[0;32mI (1198) CAN_RX: RX #175 ID=0x100 len=1[0m
+[0;32mI (1198) CAN_RX: 01[0m
+[0;32mI (1198) CAN_RX: RX #176 ID=0x100 len=1[0m
+[0;32mI (1208) CAN_RX: 01[0m
+[0;32mI (1208) CAN_RX: RX #177 ID=0x100 len=1[0m
+[0;32mI (1208) CAN_RX: 01[0m
+[0;32mI (1208) CAN_RX: RX #178 ID=0x100 len=1[0m
+[0;32mI (1218) CAN_RX: 01[0m
+[0;32mI (1218) CAN_RX: RX #179 ID=0x100 len=1[0m
+[0;32mI (1218) CAN_RX: 01[0m
+[0;32mI (1228) CAN_RX: RX #180 ID=0x100 len=1[0m
+[0;32mI (1228) CAN_RX: 01[0m
+[0;32mI (1228) CAN_RX: RX #181 ID=0x100 len=1[0m
+[0;32mI (1228) CAN_RX: 01[0m
+[0;32mI (1238) CAN_RX: RX #182 ID=0x100 len=1[0m
+[0;32mI (1238) CAN_RX: 01[0m
+[0;32mI (1238) CAN_RX: RX #183 ID=0x100 len=1[0m
+[0;32mI (1248) CAN_RX: 01[0m
+[0;32mI (1248) CAN_RX: RX #184 ID=0x100 len=1[0m
+[0;32mI (1248) CAN_RX: 01[0m
+[0;32mI (1248) CAN_RX: RX #185 ID=0x100 len=1[0m
+[0;32mI (1258) CAN_RX: 01[0m
+[0;32mI (1258) CAN_RX: RX #186 ID=0x100 len=1[0m
+[0;32mI (1258) CAN_RX: 01[0m
+[0;32mI (1258) CAN_RX: RX #187 ID=0x100 len=1[0m
+[0;32mI (1268) CAN_RX: 01[0m
+[0;32mI (1268) CAN_RX: RX #188 ID=0x100 len=1[0m
+[0;32mI (1268) CAN_RX: 01[0m
+[0;32mI (1268) CAN_RX: RX #189 ID=0x100 len=1[0m
+[0;32mI (1278) CAN_RX: 01[0m
+[0;32mI (1278) CAN_RX: RX #190 ID=0x100 len=1[0m
+[0;32mI (1278) CAN_RX: 01[0m
+[0;32mI (1278) CAN_RX: RX #191 ID=0x100 len=1[0m
+[0;32mI (1288) CAN_RX: 01[0m
+[0;32mI (1288) CAN_RX: RX #192 ID=0x100 len=1[0m
+[0;32mI (1288) CAN_RX: 01[0m
+[0;32mI (1298) CAN_RX: RX #193 ID=0x100 len=1[0m
+[0;32mI (1298) CAN_RX: 01[0m
+[0;32mI (1298) CAN_RX: RX #194 ID=0x100 len=1[0m
+[0;32mI (1298) CAN_RX: 01[0m
+[0;32mI (1308) CAN_RX: RX #195 ID=0x100 len=1[0m
+[0;32mI (1308) CAN_RX: 01[0m
+[0;32mI (1308) CAN_RX: RX #196 ID=0x100 len=1[0m
+[0;32mI (1318) CAN_RX: 01[0m
+[0;32mI (1318) CAN_RX: RX #197 ID=0x100 len=1[0m
+[0;32mI (1318) CAN_RX: 01[0m
+[0;32mI (1318) CAN_RX: RX #198 ID=0x100 len=1[0m
+[0;32mI (1328) CAN_RX: 01[0m
+[0;32mI (1328) CAN_RX: RX #199 ID=0x100 len=1[0m
+[0;32mI (1328) CAN_RX: 01[0m
+[0;32mI (1328) CAN_RX: RX #200 ID=0x100 len=1[0m
+[0;32mI (1338) CAN_RX: 01[0m
+[0;32mI (1338) CAN_RX: RX #201 ID=0x100 len=1[0m
+[0;32mI (1338) CAN_RX: 01[0m
+[0;32mI (1338) CAN_RX: RX #202 ID=0x100 len=1[0m
+[0;32mI (1348) CAN_RX: 01[0m
+[0;32mI (1348) CAN_RX: RX #203 ID=0x100 len=1[0m
+[0;32mI (1348) CAN_RX: 01[0m
+[0;32mI (1348) CAN_RX: RX #204 ID=0x100 len=1[0m
+[0;32mI (1358) CAN_RX: 01[0m
+[0;32mI (1358) CAN_RX: RX #205 ID=0x100 len=1[0m
+[0;32mI (1358) CAN_RX: 01[0m
+[0;32mI (1368) CAN_RX: RX #206 ID=0x100 len=1[0m
+[0;32mI (1368) CAN_RX: 01[0m
+[0;32mI (1368) CAN_RX: RX #207 ID=0x100 len=1[0m
+[0;32mI (1368) CAN_RX: 01[0m
+[0;32mI (1378) CAN_RX: RX #208 ID=0x100 len=1[0m
+[0;32mI (1378) CAN_RX: 01[0m
+[0;32mI (1378) CAN_RX: RX #209 ID=0x100 len=1[0m
+[0;32mI (1388) CAN_RX: 01[0m
+[0;32mI (1388) CAN_RX: RX #210 ID=0x100 len=1[0m
+[0;32mI (1388) CAN_RX: 01[0m
+[0;32mI (1388) CAN_RX: RX #211 ID=0x100 len=1[0m
+[0;32mI (1398) CAN_RX: 01[0m
+[0;32mI (1398) CAN_RX: RX #212 ID=0x100 len=1[0m
+[0;32mI (1398) CAN_RX: 01[0m
+[0;32mI (1398) CAN_RX: RX #213 ID=0x100 len=1[0m
+[0;32mI (1408) CAN_RX: 01[0m
+[0;32mI (1408) CAN_RX: RX #214 ID=0x100 len=1[0m
+[0;32mI (1408) CAN_RX: 01[0m
+[0;32mI (1408) CAN_RX: RX #215 ID=0x100 len=1[0m
+[0;32mI (1418) CAN_RX: 01[0m
+[0;32mI (1418) CAN_RX: RX #216 ID=0x100 len=1[0m
+[0;32mI (1418) CAN_RX: 01[0m
+[0;32mI (1418) CAN_RX: RX #217 ID=0x100 len=1[0m
+[0;32mI (1428) CAN_RX: 01[0m
+[0;32mI (1428) CAN_RX: RX #218 ID=0x100 len=1[0m
+[0;32mI (1428) CAN_RX: 01[0m
+[0;32mI (1438) CAN_RX: RX #219 ID=0x100 len=1[0m
+[0;32mI (1438) CAN_RX: 01[0m
+[0;32mI (1438) CAN_RX: RX #220 ID=0x100 len=1[0m
+[0;32mI (1438) CAN_RX: 01[0m
+[0;32mI (1448) CAN_RX: RX #221 ID=0x100 len=1[0m
+[0;32mI (1448) CAN_RX: 01[0m
+[0;32mI (1448) CAN_RX: RX #222 ID=0x100 len=1[0m
+[0;32mI (1458) CAN_RX: 01[0m
+[0;32mI (1458) CAN_RX: RX #223 ID=0x100 len=1[0m
+[0;32mI (1458) CAN_RX: 01[0m
+[0;32mI (1458) CAN_RX: RX #224 ID=0x100 len=1[0m
+[0;32mI (1468) CAN_RX: 01[0m
+[0;32mI (1468) CAN_RX: RX #225 ID=0x100 len=1[0m
+[0;32mI (1468) CAN_RX: 01[0m
+[0;32mI (1468) CAN_RX: RX #226 ID=0x100 len=1[0m
+[0;32mI (1478) CAN_RX: 01[0m
+[0;32mI (1478) CAN_RX: RX #227 ID=0x100 len=1[0m
+[0;32mI (1478) CAN_RX: 01[0m
+[0;32mI (1478) CAN_RX: RX #228 ID=0x100 len=1[0m
+[0;32mI (1488) CAN_RX: 01[0m
+[0;32mI (1488) CAN_RX: RX #229 ID=0x100 len=1[0m
+[0;32mI (1488) CAN_RX: 01[0m
+[0;32mI (1488) CAN_RX: RX #230 ID=0x100 len=1[0m
+[0;32mI (1498) CAN_RX: 01[0m
+[0;32mI (1498) CAN_RX: RX #231 ID=0x100 len=1[0m
+[0;32mI (1498) CAN_RX: 01[0m
+[0;32mI (1508) CAN_RX: RX #232 ID=0x100 len=1[0m
+[0;32mI (1508) CAN_RX: 01[0m
+[0;32mI (1508) CAN_RX: RX #233 ID=0x100 len=1[0m
+[0;32mI (1508) CAN_RX: 01[0m
+[0;32mI (1518) CAN_RX: RX #234 ID=0x100 len=1[0m
+[0;32mI (1518) CAN_RX: 01[0m
+[0;32mI (1518) CAN_RX: RX #235 ID=0x100 len=1[0m
+[0;32mI (1528) CAN_RX: 01[0m
+[0;32mI (1528) CAN_RX: RX #236 ID=0x100 len=1[0m
+[0;32mI (1528) CAN_RX: 01[0m
+[0;32mI (1528) CAN_RX: RX #237 ID=0x100 len=1[0m
+[0;32mI (1538) CAN_RX: 01[0m
+[0;32mI (1538) CAN_RX: RX #238 ID=0x100 len=1[0m
+[0;32mI (1538) CAN_RX: 01[0m
+[0;32mI (1538) CAN_RX: RX #239 ID=0x100 len=1[0m
+[0;32mI (1548) CAN_RX: 01[0m
+[0;32mI (1548) CAN_RX: RX #240 ID=0x100 len=1[0m
+[0;32mI (1548) CAN_RX: 01[0m
+[0;32mI (1548) CAN_RX: RX #241 ID=0x100 len=1[0m
+[0;32mI (1558) CAN_RX: 01[0m
+[0;32mI (1558) CAN_RX: RX #242 ID=0x100 len=1[0m
+[0;32mI (1558) CAN_RX: 01[0m
+[0;32mI (1558) CAN_RX: RX #243 ID=0x100 len=1[0m
+[0;32mI (1568) CAN_RX: 01[0m
+[0;32mI (1568) CAN_RX: RX #244 ID=0x100 len=1[0m
+[0;32mI (1568) CAN_RX: 01[0m
+[0;32mI (1578) CAN_RX: RX #245 ID=0x100 len=1[0m
+[0;32mI (1578) CAN_RX: 01[0m
+[0;32mI (1578) CAN_RX: RX #246 ID=0x100 len=1[0m
+[0;32mI (1578) CAN_RX: 01[0m
+[0;32mI (1588) CAN_RX: RX #247 ID=0x100 len=1[0m
+[0;32mI (1588) CAN_RX: 01[0m
+[0;32mI (1588) CAN_RX: RX #248 ID=0x100 len=1[0m
+[0;32mI (1598) CAN_RX: 01[0m
+[0;32mI (1598) CAN_RX: RX #249 ID=0x100 len=1[0m
+[0;32mI (1598) CAN_RX: 01[0m
+[0;32mI (1598) CAN_RX: RX #250 ID=0x100 len=1[0m
+[0;32mI (1608) CAN_RX: 01[0m
+[0;32mI (1608) CAN_RX: RX #251 ID=0x100 len=1[0m
+[0;32mI (1608) CAN_RX: 01[0m
+[0;32mI (1608) CAN_RX: RX #252 ID=0x100 len=1[0m
+[0;32mI (1618) CAN_RX: 01[0m
+[0;32mI (1618) CAN_RX: RX #253 ID=0x100 len=1[0m
+[0;32mI (1618) CAN_RX: 01[0m
+[0;32mI (1618) CAN_RX: RX #254 ID=0x100 len=1[0m
+[0;32mI (1628) CAN_RX: 01[0m
+[0;32mI (1628) CAN_RX: RX #255 ID=0x100 len=1[0m
+[0;32mI (1628) CAN_RX: 01[0m
+[0;32mI (1628) CAN_RX: RX #256 ID=0x100 len=1[0m
+[0;32mI (1638) CAN_RX: 01[0m
+[0;32mI (1638) CAN_RX: RX #257 ID=0x100 len=1[0m
+[0;32mI (1638) CAN_RX: 01[0m
+[0;32mI (1648) CAN_RX: RX #258 ID=0x100 len=1[0m
+[0;32mI (1648) CAN_RX: 01[0m
+[0;32mI (1648) CAN_RX: RX #259 ID=0x100 len=1[0m
+[0;32mI (1648) CAN_RX: 01[0m
+[0;32mI (1658) CAN_RX: RX #260 ID=0x100 len=1[0m
+[0;32mI (1658) CAN_RX: 01[0m
+[0;32mI (1658) CAN_RX: RX #261 ID=0x100 len=1[0m
+[0;32mI (1668) CAN_RX: 01[0m
+[0;32mI (1668) CAN_RX: RX #262 ID=0x100 len=1[0m
+[0;32mI (1668) CAN_RX: 01[0m
+[0;32mI (1668) CAN_RX: RX #263 ID=0x100 len=1[0m
+[0;32mI (1678) CAN_RX: 01[0m
+[0;32mI (1678) CAN_RX: RX #264 ID=0x100 len=1[0m
+[0;32mI (1678) CAN_RX: 01[0m
+[0;32mI (1678) CAN_RX: RX #265 ID=0x100 len=1[0m
+[0;32mI (1688) CAN_RX: 01[0m
+[0;32mI (1688) CAN_RX: RX #266 ID=0x100 len=1[0m
+[0;32mI (1688) CAN_RX: 01[0m
+[0;32mI (1688) CAN_RX: RX #267 ID=0x100 len=1[0m
+[0;32mI (1698) CAN_RX: 01[0m
+[0;32mI (1698) CAN_RX: RX #268 ID=0x100 len=1[0m
+[0;32mI (1698) CAN_RX: 01[0m
+[0;32mI (1698) CAN_RX: RX #269 ID=0x100 len=1[0m
+[0;32mI (1708) CAN_RX: 01[0m
+[0;32mI (1708) CAN_RX: RX #270 ID=0x100 len=1[0m
+[0;32mI (1708) CAN_RX: 01[0m
+[0;32mI (1718) CAN_RX: RX #271 ID=0x100 len=1[0m
+[0;32mI (1718) CAN_RX: 01[0m
+[0;32mI (1718) CAN_RX: RX #272 ID=0x100 len=1[0m
+[0;32mI (1718) CAN_RX: 01[0m
+[0;32mI (1728) CAN_RX: RX #273 ID=0x100 len=1[0m
+[0;32mI (1728) CAN_RX: 01[0m
+[0;32mI (1728) CAN_RX: RX #274 ID=0x100 len=1[0m
+[0;32mI (1738) CAN_RX: 01[0m
+[0;32mI (1738) CAN_RX: RX #275 ID=0x100 len=1[0m
+[0;32mI (1738) CAN_RX: 01[0m
+[0;32mI (1738) CAN_RX: RX #276 ID=0x100 len=1[0m
+[0;32mI (1748) CAN_RX: 01[0m
+[0;32mI (1748) CAN_RX: RX #277 ID=0x100 len=1[0m
+[0;32mI (1748) CAN_RX: 01[0m
+[0;32mI (1748) CAN_RX: RX #278 ID=0x100 len=1[0m
+[0;32mI (1758) CAN_RX: 01[0m
+[0;32mI (1758) CAN_RX: RX #279 ID=0x100 len=1[0m
+[0;32mI (1758) CAN_RX: 01[0m
+[0;32mI (1758) CAN_RX: RX #280 ID=0x100 len=1[0m
+[0;32mI (1768) CAN_RX: 01[0m
+[0;32mI (1768) CAN_RX: RX #281 ID=0x100 len=1[0m
+[0;32mI (1768) CAN_RX: 01[0m
+[0;32mI (1768) CAN_RX: RX #282 ID=0x100 len=1[0m
+[0;32mI (1778) CAN_RX: 01[0m
+[0;32mI (1778) CAN_RX: RX #283 ID=0x100 len=1[0m
+[0;32mI (1778) CAN_RX: 01[0m
+[0;32mI (1788) CAN_RX: RX #284 ID=0x100 len=1[0m
+[0;32mI (1788) CAN_RX: 01[0m
+[0;32mI (1788) CAN_RX: RX #285 ID=0x100 len=1[0m
+[0;32mI (1788) CAN_RX: 01[0m
+[0;32mI (1798) CAN_RX: RX #286 ID=0x100 len=1[0m
+[0;32mI (1798) CAN_RX: 01[0m
+[0;32mI (1798) CAN_RX: RX #287 ID=0x100 len=1[0m
+[0;32mI (1808) CAN_RX: 01[0m
+[0;32mI (1808) CAN_RX: RX #288 ID=0x100 len=1[0m
+[0;32mI (1808) CAN_RX: 01[0m
+[0;32mI (1808) CAN_RX: RX #289 ID=0x100 len=1[0m
+[0;32mI (1818) CAN_RX: 01[0m
+[0;32mI (1818) CAN_RX: RX #290 ID=0x100 len=1[0m
+[0;32mI (1818) CAN_RX: 01[0m
+[0;32mI (1818) CAN_RX: RX #291 ID=0x100 len=1[0m
+[0;32mI (1828) CAN_RX: 01[0m
+[0;32mI (1828) CAN_RX: RX #292 ID=0x100 len=1[0m
+[0;32mI (1828) CAN_RX: 01[0m
+[0;32mI (1828) CAN_RX: RX #293 ID=0x100 len=1[0m
+[0;32mI (1838) CAN_RX: 01[0m
+[0;32mI (1838) CAN_RX: RX #294 ID=0x100 len=1[0m
+[0;32mI (1838) CAN_RX: 01[0m
+[0;32mI (1838) CAN_RX: RX #295 ID=0x100 len=1[0m
+[0;32mI (1848) CAN_RX: 01[0m
+[0;32mI (1848) CAN_RX: RX #296 ID=0x100 len=1[0m
+[0;32mI (1848) CAN_RX: 01[0m
+[0;32mI (1858) CAN_RX: RX #297 ID=0x100 len=1[0m
+[0;32mI (1858) CAN_RX: 01[0m
+[0;32mI (1858) CAN_RX: RX #298 ID=0x100 len=1[0m
+[0;32mI (1858) CAN_RX: 01[0m
+[0;32mI (1868) CAN_RX: RX #299 ID=0x100 len=1[0m
+[0;32mI (1868) CAN_RX: 01[0m
+[0;32mI (1868) CAN_RX: RX #300 ID=0x100 len=1[0m
+[0;32mI (1878) CAN_RX: 01[0m
+[0;32mI (1878) CAN_RX: RX #301 ID=0x100 len=1[0m
+[0;32mI (1878) CAN_RX: 01[0m
+[0;32mI (1878) CAN_RX: RX #302 ID=0x100 len=1[0m
+[0;32mI (1888) CAN_RX: 01[0m
+[0;32mI (1888) CAN_RX: RX #303 ID=0x100 len=1[0m
+[0;32mI (1888) CAN_RX: 01[0m
+[0;32mI (1888) CAN_RX: RX #304 ID=0x100 len=1[0m
+[0;32mI (1898) CAN_RX: 01[0m
+[0;32mI (1898) CAN_RX: RX #305 ID=0x100 len=1[0m
+[0;32mI (1898) CAN_RX: 01[0m
+[0;32mI (1898) CAN_RX: RX #306 ID=0x100 len=1[0m
+[0;32mI (1908) CAN_RX: 01[0m
+[0;32mI (1908) CAN_RX: RX #307 ID=0x100 len=1[0m
+[0;32mI (1908) CAN_RX: 01[0m
+[0;32mI (1908) CAN_RX: RX #308 ID=0x100 len=1[0m
+[0;32mI (1918) CAN_RX: 01[0m
+[0;32mI (1918) CAN_RX: RX #309 ID=0x100 len=1[0m
+[0;32mI (1918) CAN_RX: 01[0m
+[0;32mI (1928) CAN_RX: RX #310 ID=0x100 len=1[0m
+[0;32mI (1928) CAN_RX: 01[0m
+[0;32mI (1928) CAN_RX: RX #311 ID=0x100 len=1[0m
+[0;32mI (1928) CAN_RX: 01[0m
+[0;32mI (1938) CAN_RX: RX #312 ID=0x100 len=1[0m
+[0;32mI (1938) CAN_RX: 01[0m
+[0;32mI (1938) CAN_RX: RX #313 ID=0x100 len=1[0m
+[0;32mI (1948) CAN_RX: 01[0m
+[0;32mI (1948) CAN_RX: RX #314 ID=0x100 len=1[0m
+[0;32mI (1948) CAN_RX: 01[0m
+[0;32mI (1948) CAN_RX: RX #315 ID=0x100 len=1[0m
+[0;32mI (1958) CAN_RX: 01[0m
+[0;32mI (1958) CAN_RX: RX #316 ID=0x100 len=1[0m
+[0;32mI (1958) CAN_RX: 01[0m
+[0;32mI (1958) CAN_RX: RX #317 ID=0x100 len=1[0m
+[0;32mI (1968) CAN_RX: 01[0m
+[0;32mI (1968) CAN_RX: RX #318 ID=0x100 len=1[0m
+[0;32mI (1968) CAN_RX: 01[0m
+[0;32mI (1968) CAN_RX: RX #319 ID=0x100 len=1[0m
+[0;32mI (1978) CAN_RX: 01[0m
+[0;32mI (1978) CAN_RX: RX #320 ID=0x100 len=1[0m
+[0;32mI (1978) CAN_RX: 01[0m
+[0;32mI (1978) CAN_RX: RX #321 ID=0x100 len=1[0m
+[0;32mI (1988) CAN_RX: 01[0m
+[0;32mI (1988) CAN_RX: RX #322 ID=0x100 len=1[0m
+[0;32mI (1988) CAN_RX: 01[0m
+[0;32mI (1998) CAN_RX: RX #323 ID=0x100 len=1[0m
+[0;32mI (1998) CAN_RX: 01[0m
+[0;32mI (1998) CAN_RX: RX #324 ID=0x100 len=1[0m
+[0;32mI (1998) CAN_RX: 01[0m
+[0;32mI (2008) CAN_RX: RX #325 ID=0x100 len=1[0m
+[0;32mI (2008) CAN_RX: 01[0m
+[0;32mI (2008) CAN_RX: RX #326 ID=0x100 len=1[0m
+[0;32mI (2008) CAN_RX: 01[0m
+[0;32mI (2018) CAN_RX: RX #327 ID=0x100 len=1[0m
+[0;32mI (2018) CAN_RX: 01[0m
+[0;32mI (2018) CAN_RX: RX #328 ID=0x100 len=1[0m
+[0;32mI (2028) CAN_RX: 01[0m
+[0;32mI (2028) CAN_RX: RX #329 ID=0x100 len=1[0m
+[0;32mI (2028) CAN_RX: 01[0m
+[0;32mI (2028) CAN_RX: RX #330 ID=0x100 len=1[0m
+[0;32mI (2038) CAN_RX: 01[0m
+[0;32mI (2038) CAN_RX: RX #331 ID=0x100 len=1[0m
+[0;32mI (2038) CAN_RX: 01[0m
+[0;32mI (2038) CAN_RX: RX #332 ID=0x100 len=1[0m
+[0;32mI (2048) CAN_RX: 01[0m
+[0;32mI (2048) CAN_RX: RX #333 ID=0x100 len=1[0m
+[0;32mI (2048) CAN_RX: 01[0m
+[0;32mI (2048) CAN_RX: RX #334 ID=0x100 len=1[0m
+[0;32mI (2058) CAN_RX: 01[0m
+[0;32mI (2058) CAN_RX: RX #335 ID=0x100 len=1[0m
+[0;32mI (2058) CAN_RX: 01[0m
+[0;32mI (2068) CAN_RX: RX #336 ID=0x100 len=1[0m
+[0;32mI (2068) CAN_RX: 01[0m
+[0;32mI (2068) CAN_RX: RX #337 ID=0x100 len=1[0m
+[0;32mI (2068) CAN_RX: 01[0m
+[0;32mI (2078) CAN_RX: RX #338 ID=0x100 len=1[0m
+[0;32mI (2078) CAN_RX: 01[0m
+[0;32mI (2078) CAN_RX: RX #339 ID=0x100 len=1[0m
+[0;32mI (2078) CAN_RX: 01[0m
+[0;32mI (2088) CAN_RX: RX #340 ID=0x100 len=1[0m
+[0;32mI (2088) CAN_RX: 01[0m
+[0;32mI (2088) CAN_RX: RX #341 ID=0x100 len=1[0m
+[0;32mI (2098) CAN_RX: 01[0m
+[0;32mI (2098) CAN_RX: RX #342 ID=0x100 len=1[0m
+[0;32mI (2098) CAN_RX: 01[0m
+[0;32mI (2098) CAN_RX: RX #343 ID=0x100 len=1[0m
+[0;32mI (2108) CAN_RX: 01[0m
+[0;32mI (2108) CAN_RX: RX #344 ID=0x100 len=1[0m
+[0;32mI (2108) CAN_RX: 01[0m
+[0;32mI (2108) CAN_RX: RX #345 ID=0x100 len=1[0m
+[0;32mI (2118) CAN_RX: 01[0m
+[0;32mI (2118) CAN_RX: RX #346 ID=0x100 len=1[0m
+[0;32mI (2118) CAN_RX: 01[0m
+[0;32mI (2118) CAN_RX: RX #347 ID=0x100 len=1[0m
+[0;32mI (2128) CAN_RX: 01[0m
+[0;32mI (2128) CAN_RX: RX #348 ID=0x100 len=1[0m
+[0;32mI (2128) CAN_RX: 01[0m
+[0;32mI (2138) CAN_RX: RX #349 ID=0x100 len=1[0m
+[0;32mI (2138) CAN_RX: 01[0m
+[0;32mI (2138) CAN_RX: RX #350 ID=0x100 len=1[0m
+[0;32mI (2138) CAN_RX: 01[0m
+[0;32mI (2148) CAN_RX: RX #351 ID=0x100 len=1[0m
+[0;32mI (2148) CAN_RX: 01[0m
+[0;32mI (2148) CAN_RX: RX #352 ID=0x100 len=1[0m
+[0;32mI (2148) CAN_RX: 01[0m
+[0;32mI (2158) CAN_RX: RX #353 ID=0x100 len=1[0m
+[0;32mI (2158) CAN_RX: 01[0m
+[0;32mI (2158) CAN_RX: RX #354 ID=0x100 len=1[0m
+[0;32mI (2168) CAN_RX: 01[0m
+[0;32mI (2168) CAN_RX: RX #355 ID=0x100 len=1[0m
+[0;32mI (2168) CAN_RX: 01[0m
+[0;32mI (2168) CAN_RX: RX #356 ID=0x100 len=1[0m
+[0;32mI (2178) CAN_RX: 01[0m
+[0;32mI (2178) CAN_RX: RX #357 ID=0x100 len=1[0m
+[0;32mI (2178) CAN_RX: 01[0m
+[0;32mI (2178) CAN_RX: RX #358 ID=0x100 len=1[0m
+[0;32mI (2188) CAN_RX: 01[0m
+[0;32mI (2188) CAN_RX: RX #359 ID=0x100 len=1[0m
+[0;32mI (2188) CAN_RX: 01[0m
+[0;32mI (2188) CAN_RX: RX #360 ID=0x100 len=1[0m
+[0;32mI (2198) CAN_RX: 01[0m
+[0;32mI (2198) CAN_RX: RX #361 ID=0x100 len=1[0m
+[0;32mI (2198) CAN_RX: 01[0m
+[0;32mI (2208) CAN_RX: RX #362 ID=0x100 len=1[0m
+[0;32mI (2208) CAN_RX: 01[0m
+[0;32mI (2208) CAN_RX: RX #363 ID=0x100 len=1[0m
+[0;32mI (2208) CAN_RX: 01[0m
+[0;32mI (2218) CAN_RX: RX #364 ID=0x100 len=1[0m
+[0;32mI (2218) CAN_RX: 01[0m
+[0;32mI (2218) CAN_RX: RX #365 ID=0x100 len=1[0m
+[0;32mI (2218) CAN_RX: 01[0m
+[0;32mI (2228) CAN_RX: RX #366 ID=0x100 len=1[0m
+[0;32mI (2228) CAN_RX: 01[0m
+[0;32mI (2228) CAN_RX: RX #367 ID=0x100 len=1[0m
+[0;32mI (2238) CAN_RX: 01[0m
+[0;32mI (2238) CAN_RX: RX #368 ID=0x100 len=1[0m
+[0;32mI (2238) CAN_RX: 01[0m
+[0;32mI (2238) CAN_RX: RX #369 ID=0x100 len=1[0m
+[0;32mI (2248) CAN_RX: 01[0m
+[0;32mI (2248) CAN_RX: RX #370 ID=0x100 len=1[0m
+[0;32mI (2248) CAN_RX: 01[0m
+[0;32mI (2248) CAN_RX: RX #371 ID=0x100 len=1[0m
+[0;32mI (2258) CAN_RX: 01[0m
+[0;32mI (2258) CAN_RX: RX #372 ID=0x100 len=1[0m
+[0;32mI (2258) CAN_RX: 01[0m
+[0;32mI (2258) CAN_RX: RX #373 ID=0x100 len=1[0m
+[0;32mI (2268) CAN_RX: 01[0m
+[0;32mI (2268) CAN_RX: RX #374 ID=0x100 len=1[0m
+[0;32mI (2268) CAN_RX: 01[0m
+[0;32mI (2278) CAN_RX: RX #375 ID=0x100 len=1[0m
+[0;32mI (2278) CAN_RX: 01[0m
+[0;32mI (2278) CAN_RX: RX #376 ID=0x100 len=1[0m
+[0;32mI (2278) CAN_RX: 01[0m
+[0;32mI (2288) CAN_RX: RX #377 ID=0x100 len=1[0m
+[0;32mI (2288) CAN_RX: 01[0m
+[0;32mI (2288) CAN_RX: RX #378 ID=0x100 len=1[0m
+[0;32mI (2288) CAN_RX: 01[0m
+[0;32mI (2298) CAN_RX: RX #379 ID=0x100 len=1[0m
+[0;32mI (2298) CAN_RX: 01[0m
+[0;32mI (2298) CAN_RX: RX #380 ID=0x100 len=1[0m
+[0;32mI (2308) CAN_RX: 01[0m
+[0;32mI (2308) CAN_RX: RX #381 ID=0x100 len=1[0m
+[0;32mI (2308) CAN_RX: 01[0m
+[0;32mI (2308) CAN_RX: RX #382 ID=0x100 len=1[0m
+[0;32mI (2318) CAN_RX: 01[0m
+[0;32mI (2318) CAN_RX: RX #383 ID=0x100 len=1[0m
+[0;32mI (2318) CAN_RX: 01[0m
+[0;32mI (2318) CAN_RX: RX #384 ID=0x100 len=1[0m
+[0;32mI (2328) CAN_RX: 01[0m
+[0;32mI (2328) CAN_RX: RX #385 ID=0x100 len=1[0m
+[0;32mI (2328) CAN_RX: 01[0m
+[0;32mI (2328) CAN_RX: RX #386 ID=0x100 len=1[0m
+[0;32mI (2338) CAN_RX: 01[0m
+[0;32mI (2338) CAN_RX: RX #387 ID=0x100 len=1[0m
+[0;32mI (2338) CAN_RX: 01[0m
+[0;32mI (2348) CAN_RX: RX #388 ID=0x100 len=1[0m
+[0;32mI (2348) CAN_RX: 01[0m
+[0;32mI (2348) CAN_RX: RX #389 ID=0x100 len=1[0m
+[0;32mI (2348) CAN_RX: 01[0m
+[0;32mI (2358) CAN_RX: RX #390 ID=0x100 len=1[0m
+[0;32mI (2358) CAN_RX: 01[0m
+[0;32mI (2358) CAN_RX: RX #391 ID=0x100 len=1[0m
+[0;32mI (2358) CAN_RX: 01[0m
+[0;32mI (2368) CAN_RX: RX #392 ID=0x100 len=1[0m
+[0;32mI (2368) CAN_RX: 01[0m
+[0;32mI (2368) CAN_RX: RX #393 ID=0x100 len=1[0m
+[0;32mI (2378) CAN_RX: 01[0m
+[0;32mI (2378) CAN_RX: RX #394 ID=0x100 len=1[0m
+[0;32mI (2378) CAN_RX: 01[0m
+[0;32mI (2378) CAN_RX: RX #395 ID=0x100 len=1[0m
+[0;32mI (2388) CAN_RX: 01[0m
+[0;32mI (2388) CAN_RX: RX #396 ID=0x100 len=1[0m
+[0;32mI (2388) CAN_RX: 01[0m
+[0;32mI (2388) CAN_RX: RX #397 ID=0x100 len=1[0m
+[0;32mI (2398) CAN_RX: 01[0m
+[0;32mI (2398) CAN_RX: RX #398 ID=0x100 len=1[0m
+[0;32mI (2398) CAN_RX: 01[0m
+[0;32mI (2398) CAN_RX: RX #399 ID=0x100 len=1[0m
+[0;32mI (2408) CAN_RX: 01[0m
+[0;32mI (2408) CAN_RX: RX #400 ID=0x100 len=1[0m
+[0;32mI (2408) CAN_RX: 01[0m
+[0;32mI (2418) CAN_RX: RX #401 ID=0x100 len=1[0m
+[0;32mI (2418) CAN_RX: 01[0m
+[0;32mI (2418) CAN_RX: RX #402 ID=0x100 len=1[0m
+[0;32mI (2418) CAN_RX: 01[0m
+[0;32mI (2428) CAN_RX: RX #403 ID=0x100 len=1[0m
+[0;32mI (2428) CAN_RX: 01[0m
+[0;32mI (2428) CAN_RX: RX #404 ID=0x100 len=1[0m
+[0;32mI (2428) CAN_RX: 01[0m
+[0;32mI (2438) CAN_RX: RX #405 ID=0x100 len=1[0m
+[0;32mI (2438) CAN_RX: 01[0m
+[0;32mI (2438) CAN_RX: RX #406 ID=0x100 len=1[0m
+[0;32mI (2448) CAN_RX: 01[0m
+[0;32mI (2448) CAN_RX: RX #407 ID=0x100 len=1[0m
+[0;32mI (2448) CAN_RX: 01[0m
+[0;32mI (2448) CAN_RX: RX #408 ID=0x100 len=1[0m
+[0;32mI (2458) CAN_RX: 01[0m
+[0;32mI (2458) CAN_RX: RX #409 ID=0x100 len=1[0m
+[0;32mI (2458) CAN_RX: 01[0m
+[0;32mI (2458) CAN_RX: RX #410 ID=0x100 len=1[0m
+[0;32mI (2468) CAN_RX: 01[0m
+[0;32mI (2468) CAN_RX: RX #411 ID=0x100 len=1[0m
+[0;32mI (2468) CAN_RX: 01[0m
+[0;32mI (2468) CAN_RX: RX #412 ID=0x100 len=1[0m
+[0;32mI (2478) CAN_RX: 01[0m
+[0;32mI (2478) CAN_RX: RX #413 ID=0x100 len=1[0m
+[0;32mI (2478) CAN_RX: 01[0m
+[0;32mI (2488) CAN_RX: RX #414 ID=0x100 len=1[0m
+[0;32mI (2488) CAN_RX: 01[0m
+[0;32mI (2488) CAN_RX: RX #415 ID=0x100 len=1[0m
+[0;32mI (2488) CAN_RX: 01[0m
+[0;32mI (2498) CAN_RX: RX #416 ID=0x100 len=1[0m
+[0;32mI (2498) CAN_RX: 01[0m
+[0;32mI (2498) CAN_RX: RX #417 ID=0x100 len=1[0m
+[0;32mI (2498) CAN_RX: 01[0m
+[0;32mI (2508) CAN_RX: RX #418 ID=0x100 len=1[0m
+[0;32mI (2508) CAN_RX: 01[0m
+[0;32mI (2508) CAN_RX: RX #419 ID=0x100 len=1[0m
+[0;32mI (2518) CAN_RX: 01[0m
+[0;32mI (2518) CAN_RX: RX #420 ID=0x100 len=1[0m
+[0;32mI (2518) CAN_RX: 01[0m
+[0;32mI (2518) CAN_RX: RX #421 ID=0x100 len=1[0m
+[0;32mI (2528) CAN_RX: 01[0m
+[0;32mI (2528) CAN_RX: RX #422 ID=0x100 len=1[0m
+[0;32mI (2528) CAN_RX: 01[0m
+[0;32mI (2528) CAN_RX: RX #423 ID=0x100 len=1[0m
+[0;32mI (2538) CAN_RX: 01[0m
+[0;32mI (2538) CAN_RX: RX #424 ID=0x100 len=1[0m
+[0;32mI (2538) CAN_RX: 01[0m
+[0;32mI (2538) CAN_RX: RX #425 ID=0x100 len=1[0m
+[0;32mI (2548) CAN_RX: 01[0m
+[0;32mI (2548) CAN_RX: RX #426 ID=0x100 len=1[0m
+[0;32mI (2548) CAN_RX: 01[0m
+[0;32mI (2558) CAN_RX: RX #427 ID=0x100 len=1[0m
+[0;32mI (2558) CAN_RX: 01[0m
+[0;32mI (2558) CAN_RX: RX #428 ID=0x100 len=1[0m
+[0;32mI (2558) CAN_RX: 01[0m
+[0;32mI (2568) CAN_RX: RX #429 ID=0x100 len=1[0m
+[0;32mI (2568) CAN_RX: 01[0m
+[0;32mI (2568) CAN_RX: RX #430 ID=0x100 len=1[0m
+[0;32mI (2568) CAN_RX: 01[0m
+[0;32mI (2578) CAN_RX: RX #431 ID=0x100 len=1[0m
+[0;32mI (2578) CAN_RX: 01[0m
+[0;32mI (2578) CAN_RX: RX #432 ID=0x100 len=1[0m
+[0;32mI (2588) CAN_RX: 01[0m
+[0;32mI (2588) CAN_RX: RX #433 ID=0x100 len=1[0m
+[0;32mI (2588) CAN_RX: 01[0m
+[0;32mI (2588) CAN_RX: RX #434 ID=0x100 len=1[0m
+[0;32mI (2598) CAN_RX: 01[0m
+[0;32mI (2598) CAN_RX: RX #435 ID=0x100 len=1[0m
+[0;32mI (2598) CAN_RX: 01[0m
+[0;32mI (2598) CAN_RX: RX #436 ID=0x100 len=1[0m
+[0;32mI (2608) CAN_RX: 01[0m
+[0;32mI (2608) CAN_RX: RX #437 ID=0x100 len=1[0m
+[0;32mI (2608) CAN_RX: 01[0m
+[0;32mI (2608) CAN_RX: RX #438 ID=0x100 len=1[0m
+[0;32mI (2618) CAN_RX: 01[0m
+[0;32mI (2618) CAN_RX: RX #439 ID=0x100 len=1[0m
+[0;32mI (2618) CAN_RX: 01[0m
+[0;32mI (2618) CAN_RX: RX #440 ID=0x100 len=1[0m
+[0;32mI (2628) CAN_RX: 01[0m
+[0;32mI (2628) CAN_RX: RX #441 ID=0x100 len=1[0m
+[0;32mI (2628) CAN_RX: 01[0m
+[0;32mI (2638) CAN_RX: RX #442 ID=0x100 len=1[0m
+[0;32mI (2638) CAN_RX: 01[0m
+[0;32mI (2638) CAN_RX: RX #443 ID=0x100 len=1[0m
+[0;32mI (2638) CAN_RX: 01[0m
+[0;32mI (2648) CAN_RX: RX #444 ID=0x100 len=1[0m
+[0;32mI (2648) CAN_RX: 01[0m
+[0;32mI (2648) CAN_RX: RX #445 ID=0x100 len=1[0m
+[0;32mI (2658) CAN_RX: 01[0m
+[0;32mI (2658) CAN_RX: RX #446 ID=0x100 len=1[0m
+[0;32mI (2658) CAN_RX: 01[0m
+[0;32mI (2658) CAN_RX: RX #447 ID=0x100 len=1[0m
+[0;32mI (2668) CAN_RX: 01[0m
+[0;32mI (2668) CAN_RX: RX #448 ID=0x100 len=1[0m
+[0;32mI (2668) CAN_RX: 01[0m
+[0;32mI (2668) CAN_RX: RX #449 ID=0x100 len=1[0m
+[0;32mI (2678) CAN_RX: 01[0m
+[0;32mI (2678) CAN_RX: RX #450 ID=0x100 len=1[0m
+[0;32mI (2678) CAN_RX: 01[0m
+[0;32mI (2678) CAN_RX: RX #451 ID=0x100 len=1[0m
+[0;32mI (2688) CAN_RX: 01[0m
+[0;32mI (2688) CAN_RX: RX #452 ID=0x100 len=1[0m
+[0;32mI (2688) CAN_RX: 01[0m
+[0;32mI (2688) CAN_RX: RX #453 ID=0x100 len=1[0m
+[0;32mI (2698) CAN_RX: 01[0m
+[0;32mI (2698) CAN_RX: RX #454 ID=0x100 len=1[0m
+[0;32mI (2698) CAN_RX: 01[0m
+[0;32mI (2708) CAN_RX: RX #455 ID=0x100 len=1[0m
+[0;32mI (2708) CAN_RX: 01[0m
+[0;32mI (2708) CAN_RX: RX #456 ID=0x100 len=1[0m
+[0;32mI (2708) CAN_RX: 01[0m
+[0;32mI (2718) CAN_RX: RX #457 ID=0x100 len=1[0m
+[0;32mI (2718) CAN_RX: 01[0m
+[0;32mI (2718) CAN_RX: RX #458 ID=0x100 len=1[0m
+[0;32mI (2728) CAN_RX: 01[0m
+[0;32mI (2728) CAN_RX: RX #459 ID=0x100 len=1[0m
+[0;32mI (2728) CAN_RX: 01[0m
+[0;32mI (2728) CAN_RX: RX #460 ID=0x100 len=1[0m
+[0;32mI (2738) CAN_RX: 01[0m
+[0;32mI (2738) CAN_RX: RX #461 ID=0x100 len=1[0m
+[0;32mI (2738) CAN_RX: 01[0m
+[0;32mI (2738) CAN_RX: RX #462 ID=0x100 len=1[0m
+[0;32mI (2748) CAN_RX: 01[0m
+[0;32mI (2748) CAN_RX: RX #463 ID=0x100 len=1[0m
+[0;32mI (2748) CAN_RX: 01[0m
+[0;32mI (2748) CAN_RX: RX #464 ID=0x100 len=1[0m
+[0;32mI (2758) CAN_RX: 01[0m
+[0;32mI (2758) CAN_RX: RX #465 ID=0x100 len=1[0m
+[0;32mI (2758) CAN_RX: 01[0m
+[0;32mI (2758) CAN_RX: RX #466 ID=0x100 len=1[0m
+[0;32mI (2768) CAN_RX: 01[0m
+[0;32mI (2768) CAN_RX: RX #467 ID=0x100 len=1[0m
+[0;32mI (2768) CAN_RX: 01[0m
+[0;32mI (2778) CAN_RX: RX #468 ID=0x100 len=1[0m
+[0;32mI (2778) CAN_RX: 01[0m
+[0;32mI (2778) CAN_RX: RX #469 ID=0x100 len=1[0m
+[0;32mI (2778) CAN_RX: 01[0m
+[0;32mI (2788) CAN_RX: RX #470 ID=0x100 len=1[0m
+[0;32mI (2788) CAN_RX: 01[0m
+[0;32mI (2788) CAN_RX: RX #471 ID=0x100 len=1[0m
+[0;32mI (2798) CAN_RX: 01[0m
+[0;32mI (2798) CAN_RX: RX #472 ID=0x100 len=1[0m
+[0;32mI (2798) CAN_RX: 01[0m
+[0;32mI (2798) CAN_RX: RX #473 ID=0x100 len=1[0m
+[0;32mI (2808) CAN_RX: 01[0m
+[0;32mI (2808) CAN_RX: RX #474 ID=0x100 len=1[0m
+[0;32mI (2808) CAN_RX: 01[0m
+[0;32mI (2808) CAN_RX: RX #475 ID=0x100 len=1[0m
+[0;32mI (2818) CAN_RX: 01[0m
+[0;32mI (2818) CAN_RX: RX #476 ID=0x100 len=1[0m
+[0;32mI (2818) CAN_RX: 01[0m
+[0;32mI (2818) CAN_RX: RX #477 ID=0x100 len=1[0m
+[0;32mI (2828) CAN_RX: 01[0m
+[0;32mI (2828) CAN_RX: RX #478 ID=0x100 len=1[0m
+[0;32mI (2828) CAN_RX: 01[0m
+[0;32mI (2828) CAN_RX: RX #479 ID=0x100 len=1[0m
+[0;32mI (2838) CAN_RX: 01[0m
+[0;32mI (2838) CAN_RX: RX #480 ID=0x100 len=1[0m
+[0;32mI (2838) CAN_RX: 01[0m
+[0;32mI (2848) CAN_RX: RX #481 ID=0x100 len=1[0m
+[0;32mI (2848) CAN_RX: 01[0m
+[0;32mI (2848) CAN_RX: RX #482 ID=0x100 len=1[0m
+[0;32mI (2848) CAN_RX: 01[0m
+[0;32mI (2858) CAN_RX: RX #483 ID=0x100 len=1[0m
+[0;32mI (2858) CAN_RX: 01[0m
+[0;32mI (2858) CAN_RX: RX #484 ID=0x100 len=1[0m
+[0;32mI (2868) CAN_RX: 01[0m
+[0;32mI (2868) CAN_RX: RX #485 ID=0x100 len=1[0m
+[0;32mI (2868) CAN_RX: 01[0m
+[0;32mI (2868) CAN_RX: RX #486 ID=0x100 len=1[0m
+[0;32mI (2878) CAN_RX: 01[0m
+[0;32mI (2878) CAN_RX: RX #487 ID=0x100 len=1[0m
+[0;32mI (2878) CAN_RX: 01[0m
+[0;32mI (2878) CAN_RX: RX #488 ID=0x100 len=1[0m
+[0;32mI (2888) CAN_RX: 01[0m
+[0;32mI (2888) CAN_RX: RX #489 ID=0x100 len=1[0m
+[0;32mI (2888) CAN_RX: 01[0m
+[0;32mI (2888) CAN_RX: RX #490 ID=0x100 len=1[0m
+[0;32mI (2898) CAN_RX: 01[0m
+[0;32mI (2898) CAN_RX: RX #491 ID=0x100 len=1[0m
+[0;32mI (2898) CAN_RX: 01[0m
+[0;32mI (2898) CAN_RX: RX #492 ID=0x100 len=1[0m
+[0;32mI (2908) CAN_RX: 01[0m
+[0;32mI (2908) CAN_RX: RX #493 ID=0x100 len=1[0m
+[0;32mI (2908) CAN_RX: 01[0m
+[0;32mI (2918) CAN_RX: RX #494 ID=0x100 len=1[0m
+[0;32mI (2918) CAN_RX: 01[0m
+[0;32mI (2918) CAN_RX: RX #495 ID=0x100 len=1[0m
+[0;32mI (2918) CAN_RX: 01[0m
+[0;32mI (2928) CAN_RX: RX #496 ID=0x100 len=1[0m
+[0;32mI (2928) CAN_RX: 01[0m
+[0;32mI (2928) CAN_RX: RX #497 ID=0x100 len=1[0m
+[0;32mI (2938) CAN_RX: 01[0m
+[0;32mI (2938) CAN_RX: RX #498 ID=0x100 len=1[0m
+[0;32mI (2938) CAN_RX: 01[0m
+[0;32mI (2938) CAN_RX: RX #499 ID=0x100 len=1[0m
+[0;32mI (2948) CAN_RX: 01[0m
+[0;32mI (2948) CAN_RX: RX #500 ID=0x100 len=1[0m
+[0;32mI (2948) CAN_RX: 01[0m
+[0;32mI (2948) CAN_RX: RX #501 ID=0x100 len=1[0m
+[0;32mI (2958) CAN_RX: 01[0m
+[0;32mI (2958) CAN_RX: RX #502 ID=0x100 len=1[0m
+[0;32mI (2958) CAN_RX: 01[0m
+[0;32mI (2958) CAN_RX: RX #503 ID=0x100 len=1[0m
+[0;32mI (2968) CAN_RX: 01[0m
+[0;32mI (2968) CAN_RX: RX #504 ID=0x100 len=1[0m
+[0;32mI (2968) CAN_RX: 01[0m
+[0;32mI (2968) CAN_RX: RX #505 ID=0x100 len=1[0m
+[0;32mI (2978) CAN_RX: 01[0m
+[0;32mI (2978) CAN_RX: RX #506 ID=0x100 len=1[0m
+[0;32mI (2978) CAN_RX: 01[0m
+[0;32mI (2988) CAN_RX: RX #507 ID=0x100 len=1[0m
+[0;32mI (2988) CAN_RX: 01[0m
+[0;32mI (2988) CAN_RX: RX #508 ID=0x100 len=1[0m
+[0;32mI (2988) CAN_RX: 01[0m
+[0;32mI (2998) CAN_RX: RX #509 ID=0x100 len=1[0m
+[0;32mI (2998) CAN_RX: 01[0m
+[0;32mI (2998) CAN_RX: RX #510 ID=0x100 len=1[0m
+[0;32mI (3008) CAN_RX: 01[0m
+[0;32mI (3008) CAN_RX: RX #511 ID=0x100 len=1[0m
+[0;32mI (3008) CAN_RX: 01[0m
+[0;32mI (3008) CAN_RX: RX #512 ID=0x100 len=1[0m
+[0;32mI (3018) CAN_RX: 01[0m
+[0;32mI (3018) CAN_RX: RX #513 ID=0x100 len=1[0m
+[0;32mI (3018) CAN_RX: 01[0m
+[0;32mI (3018) CAN_RX: RX #514 ID=0x100 len=1[0m
+[0;32mI (3028) CAN_RX: 01[0m
+[0;32mI (3028) CAN_RX: RX #515 ID=0x100 len=1[0m
+[0;32mI (3028) CAN_RX: 01[0m
+[0;32mI (3028) CAN_RX: RX #516 ID=0x100 len=1[0m
+[0;32mI (3038) CAN_RX: 01[0m
+[0;32mI (3038) CAN_RX: RX #517 ID=0x100 len=1[0m
+[0;32mI (3038) CAN_RX: 01[0m
+[0;32mI (3038) CAN_RX: RX #518 ID=0x100 len=1[0m
+[0;32mI (3048) CAN_RX: 01[0m
+[0;32mI (3048) CAN_RX: RX #519 ID=0x100 len=1[0m
+[0;32mI (3048) CAN_RX: 01[0m
+[0;32mI (3058) CAN_RX: RX #520 ID=0x100 len=1[0m
+[0;32mI (3058) CAN_RX: 01[0m
+[0;32mI (3058) CAN_RX: RX #521 ID=0x100 len=1[0m
+[0;32mI (3058) CAN_RX: 01[0m
+[0;32mI (3068) CAN_RX: RX #522 ID=0x100 len=1[0m
+[0;32mI (3068) CAN_RX: 01[0m
+[0;32mI (3068) CAN_RX: RX #523 ID=0x100 len=1[0m
+[0;32mI (3078) CAN_RX: 01[0m
+[0;32mI (3078) CAN_RX: RX #524 ID=0x100 len=1[0m
+[0;32mI (3078) CAN_RX: 01[0m
+[0;32mI (3078) CAN_RX: RX #525 ID=0x100 len=1[0m
+[0;32mI (3088) CAN_RX: 01[0m
+[0;32mI (3088) CAN_RX: RX #526 ID=0x100 len=1[0m
+[0;32mI (3088) CAN_RX: 01[0m
+[0;32mI (3088) CAN_RX: RX #527 ID=0x100 len=1[0m
+[0;32mI (3098) CAN_RX: 01[0m
+[0;32mI (3098) CAN_RX: RX #528 ID=0x100 len=1[0m
+[0;32mI (3098) CAN_RX: 01[0m
+[0;32mI (3098) CAN_RX: RX #529 ID=0x100 len=1[0m
+[0;32mI (3108) CAN_RX: 01[0m
+[0;32mI (3108) CAN_RX: RX #530 ID=0x100 len=1[0m
+[0;32mI (3108) CAN_RX: 01[0m
+[0;32mI (3108) CAN_RX: RX #531 ID=0x100 len=1[0m
+[0;32mI (3118) CAN_RX: 01[0m
+[0;32mI (3118) CAN_RX: RX #532 ID=0x100 len=1[0m
+[0;32mI (3118) CAN_RX: 01[0m
+[0;32mI (3128) CAN_RX: RX #533 ID=0x100 len=1[0m
+[0;32mI (3128) CAN_RX: 01[0m
+[0;32mI (3128) CAN_RX: RX #534 ID=0x100 len=1[0m
+[0;32mI (3128) CAN_RX: 01[0m
+[0;32mI (3138) CAN_RX: RX #535 ID=0x100 len=1[0m
+[0;32mI (3138) CAN_RX: 01[0m
+[0;32mI (3138) CAN_RX: RX #536 ID=0x100 len=1[0m
+[0;32mI (3148) CAN_RX: 01[0m
+[0;32mI (3148) CAN_RX: RX #537 ID=0x100 len=1[0m
+[0;32mI (3148) CAN_RX: 01[0m
+[0;32mI (3148) CAN_RX: RX #538 ID=0x100 len=1[0m
+[0;32mI (3158) CAN_RX: 01[0m
+[0;32mI (3158) CAN_RX: RX #539 ID=0x100 len=1[0m
+[0;32mI (3158) CAN_RX: 01[0m
+[0;32mI (3158) CAN_RX: RX #540 ID=0x100 len=1[0m
+[0;32mI (3168) CAN_RX: 01[0m
+[0;32mI (3168) CAN_RX: RX #541 ID=0x100 len=1[0m
+[0;32mI (3168) CAN_RX: 01[0m
+[0;32mI (3168) CAN_RX: RX #542 ID=0x100 len=1[0m
+[0;32mI (3178) CAN_RX: 01[0m
+[0;32mI (3178) CAN_RX: RX #543 ID=0x100 len=1[0m
+[0;32mI (3178) CAN_RX: 01[0m
+[0;32mI (3178) CAN_RX: RX #544 ID=0x100 len=1[0m
+[0;32mI (3188) CAN_RX: 01[0m
+[0;32mI (3188) CAN_RX: RX #545 ID=0x100 len=1[0m
+[0;32mI (3188) CAN_RX: 01[0m
+[0;32mI (3198) CAN_RX: RX #546 ID=0x100 len=1[0m
+[0;32mI (3198) CAN_RX: 01[0m
+[0;32mI (3198) CAN_RX: RX #547 ID=0x100 len=1[0m
+[0;32mI (3198) CAN_RX: 01[0m
+[0;32mI (3208) CAN_RX: RX #548 ID=0x100 len=1[0m
+[0;32mI (3208) CAN_RX: 01[0m
+[0;32mI (3208) CAN_RX: RX #549 ID=0x100 len=1[0m
+[0;32mI (3218) CAN_RX: 01[0m
+[0;32mI (3218) CAN_RX: RX #550 ID=0x100 len=1[0m
+[0;32mI (3218) CAN_RX: 01[0m
+[0;32mI (3218) CAN_RX: RX #551 ID=0x100 len=1[0m
+[0;32mI (3228) CAN_RX: 01[0m
+[0;32mI (3228) CAN_RX: RX #552 ID=0x100 len=1[0m
+[0;32mI (3228) CAN_RX: 01[0m
+[0;32mI (3228) CAN_RX: RX #553 ID=0x100 len=1[0m
+[0;32mI (3238) CAN_RX: 01[0m
+[0;32mI (3238) CAN_RX: RX #554 ID=0x100 len=1[0m
+[0;32mI (3238) CAN_RX: 01[0m
+[0;32mI (3238) CAN_RX: RX #555 ID=0x100 len=1[0m
+[0;32mI (3248) CAN_RX: 01[0m
+[0;32mI (3248) CAN_RX: RX #556 ID=0x100 len=1[0m
+[0;32mI (3248) CAN_RX: 01[0m
+[0;32mI (3248) CAN_RX: RX #557 ID=0x100 len=1[0m
+[0;32mI (3258) CAN_RX: 01[0m
+[0;32mI (3258) CAN_RX: RX #558 ID=0x100 len=1[0m
+[0;32mI (3258) CAN_RX: 01[0m
+[0;32mI (3268) CAN_RX: RX #559 ID=0x100 len=1[0m
+[0;32mI (3268) CAN_RX: 01[0m
+[0;32mI (3268) CAN_RX: RX #560 ID=0x100 len=1[0m
+[0;32mI (3268) CAN_RX: 01[0m
+[0;32mI (3278) CAN_RX: RX #561 ID=0x100 len=1[0m
+[0;32mI (3278) CAN_RX: 01[0m
+[0;32mI (3278) CAN_RX: RX #562 ID=0x100 len=1[0m
+[0;32mI (3288) CAN_RX: 01[0m
+[0;32mI (3288) CAN_RX: RX #563 ID=0x100 len=1[0m
+[0;32mI (3288) CAN_RX: 01[0m
+[0;32mI (3288) CAN_RX: RX #564 ID=0x100 len=1[0m
+[0;32mI (3298) CAN_RX: 01[0m
+[0;32mI (3298) CAN_RX: RX #565 ID=0x100 len=1[0m
+[0;32mI (3298) CAN_RX: 01[0m
+[0;32mI (3298) CAN_RX: RX #566 ID=0x100 len=1[0m
+[0;32mI (3308) CAN_RX: 01[0m
+[0;32mI (3308) CAN_RX: RX #567 ID=0x100 len=1[0m
+[0;32mI (3308) CAN_RX: 01[0m
+[0;32mI (3308) CAN_RX: RX #568 ID=0x100 len=1[0m
+[0;32mI (3318) CAN_RX: 01[0m
+[0;32mI (3318) CAN_RX: RX #569 ID=0x100 len=1[0m
+[0;32mI (3318) CAN_RX: 01[0m
+[0;32mI (3318) CAN_RX: RX #570 ID=0x100 len=1[0m
+[0;32mI (3328) CAN_RX: 01[0m
+[0;32mI (3328) CAN_RX: RX #571 ID=0x100 len=1[0m
+[0;32mI (3328) CAN_RX: 01[0m
+[0;32mI (3338) CAN_RX: RX #572 ID=0x100 len=1[0m
+[0;32mI (3338) CAN_RX: 01[0m
+[0;32mI (3338) CAN_RX: RX #573 ID=0x100 len=1[0m
+[0;32mI (3338) CAN_RX: 01[0m
+[0;32mI (3348) CAN_RX: RX #574 ID=0x100 len=1[0m
+[0;32mI (3348) CAN_RX: 01[0m
+[0;32mI (3348) CAN_RX: RX #575 ID=0x100 len=1[0m
+[0;32mI (3358) CAN_RX: 01[0m
+[0;32mI (3358) CAN_RX: RX #576 ID=0x100 len=1[0m
+[0;32mI (3358) CAN_RX: 01[0m
+[0;32mI (3358) CAN_RX: RX #577 ID=0x100 len=1[0m
+[0;32mI (3368) CAN_RX: 01[0m
+[0;32mI (3368) CAN_RX: RX #578 ID=0x100 len=1[0m
+[0;32mI (3368) CAN_RX: 01[0m
+[0;32mI (3368) CAN_RX: RX #579 ID=0x100 len=1[0m
+[0;32mI (3378) CAN_RX: 01[0m
+[0;32mI (3378) CAN_RX: RX #580 ID=0x100 len=1[0m
+[0;32mI (3378) CAN_RX: 01[0m
+[0;32mI (3378) CAN_RX: RX #581 ID=0x100 len=1[0m
+[0;32mI (3388) CAN_RX: 01[0m
+[0;32mI (3388) CAN_RX: RX #582 ID=0x100 len=1[0m
+[0;32mI (3388) CAN_RX: 01[0m
+[0;32mI (3388) CAN_RX: RX #583 ID=0x100 len=1[0m
+[0;32mI (3398) CAN_RX: 01[0m
+[0;32mI (3398) CAN_RX: RX #584 ID=0x100 len=1[0m
+[0;32mI (3398) CAN_RX: 01[0m
+[0;32mI (3408) CAN_RX: RX #585 ID=0x100 len=1[0m
+[0;32mI (3408) CAN_RX: 01[0m
+[0;32mI (3408) CAN_RX: RX #586 ID=0x100 len=1[0m
+[0;32mI (3408) CAN_RX: 01[0m
+[0;32mI (3418) CAN_RX: RX #587 ID=0x100 len=1[0m
+[0;32mI (3418) CAN_RX: 01[0m
+[0;32mI (3418) CAN_RX: RX #588 ID=0x100 len=1[0m
+[0;32mI (3428) CAN_RX: 01[0m
+[0;32mI (3428) CAN_RX: RX #589 ID=0x100 len=1[0m
+[0;32mI (3428) CAN_RX: 01[0m
+[0;32mI (3428) CAN_RX: RX #590 ID=0x100 len=1[0m
+[0;32mI (3438) CAN_RX: 01[0m
+[0;32mI (3438) CAN_RX: RX #591 ID=0x100 len=1[0m
+[0;32mI (3438) CAN_RX: 01[0m
+[0;32mI (3438) CAN_RX: RX #592 ID=0x100 len=1[0m
+[0;32mI (3448) CAN_RX: 01[0m
+[0;32mI (3448) CAN_RX: RX #593 ID=0x100 len=1[0m
+[0;32mI (3448) CAN_RX: 01[0m
+[0;32mI (3448) CAN_RX: RX #594 ID=0x100 len=1[0m
+[0;32mI (3458) CAN_RX: 01[0m
+[0;32mI (3458) CAN_RX: RX #595 ID=0x100 len=1[0m
+[0;32mI (3458) CAN_RX: 01[0m
+[0;32mI (3458) CAN_RX: RX #596 ID=0x100 len=1[0m
+[0;32mI (3468) CAN_RX: 01[0m
+[0;32mI (3468) CAN_RX: RX #597 ID=0x100 len=1[0m
+[0;32mI (3468) CAN_RX: 01[0m
+[0;32mI (3478) CAN_RX: RX #598 ID=0x100 len=1[0m
+[0;32mI (3478) CAN_RX: 01[0m
+[0;32mI (3478) CAN_RX: RX #599 ID=0x100 len=1[0m
+[0;32mI (3478) CAN_RX: 01[0m
+[0;32mI (3488) CAN_RX: RX #600 ID=0x100 len=1[0m
+[0;32mI (3488) CAN_RX: 01[0m
+[0;32mI (3488) CAN_RX: RX #601 ID=0x100 len=1[0m
+[0;32mI (3498) CAN_RX: 01[0m
+[0;32mI (3498) CAN_RX: RX #602 ID=0x100 len=1[0m
+[0;32mI (3498) CAN_RX: 01[0m
+[0;32mI (3498) CAN_RX: RX #603 ID=0x100 len=1[0m
+[0;32mI (3508) CAN_RX: 01[0m
+[0;32mI (3508) CAN_RX: RX #604 ID=0x100 len=1[0m
+[0;32mI (3508) CAN_RX: 01[0m
+[0;32mI (3508) CAN_RX: RX #605 ID=0x100 len=1[0m
+[0;32mI (3518) CAN_RX: 01[0m
+[0;32mI (3518) CAN_RX: RX #606 ID=0x100 len=1[0m
+[0;32mI (3518) CAN_RX: 01[0m
+[0;32mI (3518) CAN_RX: RX #607 ID=0x100 len=1[0m
+[0;32mI (3528) CAN_RX: 01[0m
+[0;32mI (3528) CAN_RX: RX #608 ID=0x100 len=1[0m
+[0;32mI (3528) CAN_RX: 01[0m
+[0;32mI (3528) CAN_RX: RX #609 ID=0x100 len=1[0m
+[0;32mI (3538) CAN_RX: 01[0m
+[0;32mI (3538) CAN_RX: RX #610 ID=0x100 len=1[0m
+[0;32mI (3538) CAN_RX: 01[0m
+[0;32mI (3548) CAN_RX: RX #611 ID=0x100 len=1[0m
+[0;32mI (3548) CAN_RX: 01[0m
+[0;32mI (3548) CAN_RX: RX #612 ID=0x100 len=1[0m
+[0;32mI (3548) CAN_RX: 01[0m
+[0;32mI (3558) CAN_RX: RX #613 ID=0x100 len=1[0m
+[0;32mI (3558) CAN_RX: 01[0m
+[0;32mI (3558) CAN_RX: RX #614 ID=0x100 len=1[0m
+[0;32mI (3558) CAN_RX: 01[0m
+[0;32mI (3568) CAN_RX: RX #615 ID=0x100 len=1[0m
+[0;32mI (3568) CAN_RX: 01[0m
+[0;32mI (3568) CAN_RX: RX #616 ID=0x100 len=1[0m
+[0;32mI (3578) CAN_RX: 01[0m
+[0;32mI (3578) CAN_RX: RX #617 ID=0x100 len=1[0m
+[0;32mI (3578) CAN_RX: 01[0m
+[0;32mI (3578) CAN_RX: RX #618 ID=0x100 len=1[0m
+[0;32mI (3588) CAN_RX: 01[0m
+[0;32mI (3588) CAN_RX: RX #619 ID=0x100 len=1[0m
+[0;32mI (3588) CAN_RX: 01[0m
+[0;32mI (3588) CAN_RX: RX #620 ID=0x100 len=1[0m
+[0;32mI (3598) CAN_RX: 01[0m
+[0;32mI (3598) CAN_RX: RX #621 ID=0x100 len=1[0m
+[0;32mI (3598) CAN_RX: 01[0m
+[0;32mI (3598) CAN_RX: RX #622 ID=0x100 len=1[0m
+[0;32mI (3608) CAN_RX: 01[0m
+[0;32mI (3608) CAN_RX: RX #623 ID=0x100 len=1[0m
+[0;32mI (3608) CAN_RX: 01[0m
+[0;32mI (3618) CAN_RX: RX #624 ID=0x100 len=1[0m
+[0;32mI (3618) CAN_RX: 01[0m
+[0;32mI (3618) CAN_RX: RX #625 ID=0x100 len=1[0m
+[0;32mI (3618) CAN_RX: 01[0m
+[0;32mI (3628) CAN_RX: RX #626 ID=0x100 len=1[0m
+[0;32mI (3628) CAN_RX: 01[0m
+[0;32mI (3628) CAN_RX: RX #627 ID=0x100 len=1[0m
+[0;32mI (3628) CAN_RX: 01[0m
+[0;32mI (3638) CAN_RX: RX #628 ID=0x100 len=1[0m
+[0;32mI (3638) CAN_RX: 01[0m
+[0;32mI (3638) CAN_RX: RX #629 ID=0x100 len=1[0m
+[0;32mI (3648) CAN_RX: 01[0m
+[0;32mI (3648) CAN_RX: RX #630 ID=0x100 len=1[0m
+[0;32mI (3648) CAN_RX: 01[0m
+[0;32mI (3648) CAN_RX: RX #631 ID=0x100 len=1[0m
+[0;32mI (3658) CAN_RX: 01[0m
+[0;32mI (3658) CAN_RX: RX #632 ID=0x100 len=1[0m
+[0;32mI (3658) CAN_RX: 01[0m
+[0;32mI (3658) CAN_RX: RX #633 ID=0x100 len=1[0m
+[0;32mI (3668) CAN_RX: 01[0m
+[0;32mI (3668) CAN_RX: RX #634 ID=0x100 len=1[0m
+[0;32mI (3668) CAN_RX: 01[0m
+[0;32mI (3668) CAN_RX: RX #635 ID=0x100 len=1[0m
+[0;32mI (3678) CAN_RX: 01[0m
+[0;32mI (3678) CAN_RX: RX #636 ID=0x100 len=1[0m
+[0;32mI (3678) CAN_RX: 01[0m
+[0;32mI (3688) CAN_RX: RX #637 ID=0x100 len=1[0m
+[0;32mI (3688) CAN_RX: 01[0m
+[0;32mI (3688) CAN_RX: RX #638 ID=0x100 len=1[0m
+[0;32mI (3688) CAN_RX: 01[0m
+[0;32mI (3698) CAN_RX: RX #639 ID=0x100 len=1[0m
+[0;32mI (3698) CAN_RX: 01[0m
+[0;32mI (3698) CAN_RX: RX #640 ID=0x100 len=1[0m
+[0;32mI (3698) CAN_RX: 01[0m
+[0;32mI (3708) CAN_RX: RX #641 ID=0x100 len=1[0m
+[0;32mI (3708) CAN_RX: 01[0m
+[0;32mI (3708) CAN_RX: RX #642 ID=0x100 len=1[0m
+[0;32mI (3718) CAN_RX: 01[0m
+[0;32mI (3718) CAN_RX: RX #643 ID=0x100 len=1[0m
+[0;32mI (3718) CAN_RX: 01[0m
+[0;32mI (3718) CAN_RX: RX #644 ID=0x100 len=1[0m
+[0;32mI (3728) CAN_RX: 01[0m
+[0;32mI (3728) CAN_RX: RX #645 ID=0x100 len=1[0m
+[0;32mI (3728) CAN_RX: 01[0m
+[0;32mI (3728) CAN_RX: RX #646 ID=0x100 len=1[0m
+[0;32mI (3738) CAN_RX: 01[0m
+[0;32mI (3738) CAN_RX: RX #647 ID=0x100 len=1[0m
+[0;32mI (3738) CAN_RX: 01[0m
+[0;32mI (3738) CAN_RX: RX #648 ID=0x100 len=1[0m
+[0;32mI (3748) CAN_RX: 01[0m
+[0;32mI (3748) CAN_RX: RX #649 ID=0x100 len=1[0m
+[0;32mI (3748) CAN_RX: 01[0m
+[0;32mI (3758) CAN_RX: RX #650 ID=0x100 len=1[0m
+[0;32mI (3758) CAN_RX: 01[0m
+[0;32mI (3758) CAN_RX: RX #651 ID=0x100 len=1[0m
+[0;32mI (3758) CAN_RX: 01[0m
+[0;32mI (3768) CAN_RX: RX #652 ID=0x100 len=1[0m
+[0;32mI (3768) CAN_RX: 01[0m
+[0;32mI (3768) CAN_RX: RX #653 ID=0x100 len=1[0m
+[0;32mI (3768) CAN_RX: 01[0m
+[0;32mI (3778) CAN_RX: RX #654 ID=0x100 len=1[0m
+[0;32mI (3778) CAN_RX: 01[0m
+[0;32mI (3778) CAN_RX: RX #655 ID=0x100 len=1[0m
+[0;32mI (3788) CAN_RX: 01[0m
+[0;32mI (3788) CAN_RX: RX #656 ID=0x100 len=1[0m
+[0;32mI (3788) CAN_RX: 01[0m
+[0;32mI (3788) CAN_RX: RX #657 ID=0x100 len=1[0m
+[0;32mI (3798) CAN_RX: 01[0m
+[0;32mI (3798) CAN_RX: RX #658 ID=0x100 len=1[0m
+[0;32mI (3798) CAN_RX: 01[0m
+[0;32mI (3798) CAN_RX: RX #659 ID=0x100 len=1[0m
+[0;32mI (3808) CAN_RX: 01[0m
+[0;32mI (3808) CAN_RX: RX #660 ID=0x100 len=1[0m
+[0;32mI (3808) CAN_RX: 01[0m
+[0;32mI (3808) CAN_RX: RX #661 ID=0x100 len=1[0m
+[0;32mI (3818) CAN_RX: 01[0m
+[0;32mI (3818) CAN_RX: RX #662 ID=0x100 len=1[0m
+[0;32mI (3818) CAN_RX: 01[0m
+[0;32mI (3828) CAN_RX: RX #663 ID=0x100 len=1[0m
+[0;32mI (3828) CAN_RX: 01[0m
+[0;32mI (3828) CAN_RX: RX #664 ID=0x100 len=1[0m
+[0;32mI (3828) CAN_RX: 01[0m
+[0;32mI (3838) CAN_RX: RX #665 ID=0x100 len=1[0m
+[0;32mI (3838) CAN_RX: 01[0m
+[0;32mI (3838) CAN_RX: RX #666 ID=0x100 len=1[0m
+[0;32mI (3838) CAN_RX: 01[0m
+[0;32mI (3848) CAN_RX: RX #667 ID=0x100 len=1[0m
+[0;32mI (3848) CAN_RX: 01[0m
+[0;32mI (3848) CAN_RX: RX #668 ID=0x100 len=1[0m
+[0;32mI (3858) CAN_RX: 01[0m
+[0;32mI (3858) CAN_RX: RX #669 ID=0x100 len=1[0m
+[0;32mI (3858) CAN_RX: 01[0m
+[0;32mI (3858) CAN_RX: RX #670 ID=0x100 len=1[0m
+[0;32mI (3868) CAN_RX: 01[0m
+[0;32mI (3868) CAN_RX: RX #671 ID=0x100 len=1[0m
+[0;32mI (3868) CAN_RX: 01[0m
+[0;32mI (3868) CAN_RX: RX #672 ID=0x100 len=1[0m
+[0;32mI (3878) CAN_RX: 01[0m
+[0;32mI (3878) CAN_RX: RX #673 ID=0x100 len=1[0m
+[0;32mI (3878) CAN_RX: 01[0m
+[0;32mI (3878) CAN_RX: RX #674 ID=0x100 len=1[0m
+[0;32mI (3888) CAN_RX: 01[0m
+[0;32mI (3888) CAN_RX: RX #675 ID=0x100 len=1[0m
+[0;32mI (3888) CAN_RX: 01[0m
+[0;32mI (3898) CAN_RX: RX #676 ID=0x100 len=1[0m
+[0;32mI (3898) CAN_RX: 01[0m
+[0;32mI (3898) CAN_RX: RX #677 ID=0x100 len=1[0m
+[0;32mI (3898) CAN_RX: 01[0m
+[0;32mI (3908) CAN_RX: RX #678 ID=0x100 len=1[0m
+[0;32mI (3908) CAN_RX: 01[0m
+[0;32mI (3908) CAN_RX: RX #679 ID=0x100 len=1[0m
+[0;32mI (3908) CAN_RX: 01[0m
+[0;32mI (3918) CAN_RX: RX #680 ID=0x100 len=1[0m
+[0;32mI (3918) CAN_RX: 01[0m
+[0;32mI (3918) CAN_RX: RX #681 ID=0x100 len=1[0m
+[0;32mI (3928) CAN_RX: 01[0m
+[0;32mI (3928) CAN_RX: RX #682 ID=0x100 len=1[0m
+[0;32mI (3928) CAN_RX: 01[0m
+[0;32mI (3928) CAN_RX: RX #683 ID=0x100 len=1[0m
+[0;32mI (3938) CAN_RX: 01[0m
+[0;32mI (3938) CAN_RX: RX #684 ID=0x100 len=1[0m
+[0;32mI (3938) CAN_RX: 01[0m
+[0;32mI (3938) CAN_RX: RX #685 ID=0x100 len=1[0m
+[0;32mI (3948) CAN_RX: 01[0m
+[0;32mI (3948) CAN_RX: RX #686 ID=0x100 len=1[0m
+[0;32mI (3948) CAN_RX: 01[0m
+[0;32mI (3948) CAN_RX: RX #687 ID=0x100 len=1[0m
+[0;32mI (3958) CAN_RX: 01[0m
+[0;32mI (3958) CAN_RX: RX #688 ID=0x100 len=1[0m
+[0;32mI (3958) CAN_RX: 01[0m
+[0;32mI (3968) CAN_RX: RX #689 ID=0x100 len=1[0m
+[0;32mI (3968) CAN_RX: 01[0m
+[0;32mI (3968) CAN_RX: RX #690 ID=0x100 len=1[0m
+[0;32mI (3968) CAN_RX: 01[0m
+[0;32mI (3978) CAN_RX: RX #691 ID=0x100 len=1[0m
+[0;32mI (3978) CAN_RX: 01[0m
+[0;32mI (3978) CAN_RX: RX #692 ID=0x100 len=1[0m
+[0;32mI (3978) CAN_RX: 01[0m
+[0;32mI (3988) CAN_RX: RX #693 ID=0x100 len=1[0m
+[0;32mI (3988) CAN_RX: 01[0m
+[0;32mI (3988) CAN_RX: RX #694 ID=0x100 len=1[0m
+[0;32mI (3998) CAN_RX: 01[0m
+[0;32mI (3998) CAN_RX: RX #695 ID=0x100 len=1[0m
+[0;32mI (3998) CAN_RX: 01[0m
+[0;32mI (3998) CAN_RX: RX #696 ID=0x100 len=1[0m
+[0;32mI (4008) CAN_RX: 01[0m
+[0;32mI (4008) CAN_RX: RX #697 ID=0x100 len=1[0m
+[0;32mI (4008) CAN_RX: 01[0m
+[0;32mI (4008) CAN_RX: RX #698 ID=0x100 len=1[0m
+[0;32mI (4018) CAN_RX: 01[0m
+[0;32mI (4018) CAN_RX: RX #699 ID=0x100 len=1[0m
+[0;32mI (4018) CAN_RX: 01[0m
+[0;32mI (4018) CAN_RX: RX #700 ID=0x100 len=1[0m
+[0;32mI (4028) CAN_RX: 01[0m
+[0;32mI (4028) CAN_RX: RX #701 ID=0x100 len=1[0m
+[0;32mI (4028) CAN_RX: 01[0m
+[0;32mI (4038) CAN_RX: RX #702 ID=0x100 len=1[0m
+[0;32mI (4038) CAN_RX: 01[0m
+[0;32mI (4038) CAN_RX: RX #703 ID=0x100 len=1[0m
+[0;32mI (4038) CAN_RX: 01[0m
+[0;32mI (4048) CAN_RX: RX #704 ID=0x100 len=1[0m
+[0;32mI (4048) CAN_RX: 01[0m
+[0;32mI (4048) CAN_RX: RX #705 ID=0x100 len=1[0m
+[0;32mI (4048) CAN_RX: 01[0m
+[0;32mI (4058) CAN_RX: RX #706 ID=0x100 len=1[0m
+[0;32mI (4058) CAN_RX: 01[0m
+[0;32mI (4058) CAN_RX: RX #707 ID=0x100 len=1[0m
+[0;32mI (4068) CAN_RX: 01[0m
+[0;32mI (4068) CAN_RX: RX #708 ID=0x100 len=1[0m
+[0;32mI (4068) CAN_RX: 01[0m
+[0;32mI (4068) CAN_RX: RX #709 ID=0x100 len=1[0m
+[0;32mI (4078) CAN_RX: 01[0m
+[0;32mI (4078) CAN_RX: RX #710 ID=0x100 len=1[0m
+[0;32mI (4078) CAN_RX: 01[0m
+[0;32mI (4078) CAN_RX: RX #711 ID=0x100 len=1[0m
+[0;32mI (4088) CAN_RX: 01[0m
+[0;32mI (4088) CAN_RX: RX #712 ID=0x100 len=1[0m
+[0;32mI (4088) CAN_RX: 01[0m
+[0;32mI (4088) CAN_RX: RX #713 ID=0x100 len=1[0m
+[0;32mI (4098) CAN_RX: 01[0m
+[0;32mI (4098) CAN_RX: RX #714 ID=0x100 len=1[0m
+[0;32mI (4098) CAN_RX: 01[0m
+[0;32mI (4108) CAN_RX: RX #715 ID=0x100 len=1[0m
+[0;32mI (4108) CAN_RX: 01[0m
+[0;32mI (4108) CAN_RX: RX #716 ID=0x100 len=1[0m
+[0;32mI (4108) CAN_RX: 01[0m
+[0;32mI (4118) CAN_RX: RX #717 ID=0x100 len=1[0m
+[0;32mI (4118) CAN_RX: 01[0m
+[0;32mI (4118) CAN_RX: RX #718 ID=0x100 len=1[0m
+[0;32mI (4118) CAN_RX: 01[0m
+[0;32mI (4128) CAN_RX: RX #719 ID=0x100 len=1[0m
+[0;32mI (4128) CAN_RX: 01[0m
+[0;32mI (4128) CAN_RX: RX #720 ID=0x100 len=1[0m
+[0;32mI (4138) CAN_RX: 01[0m
+[0;32mI (4138) CAN_RX: RX #721 ID=0x100 len=1[0m
+[0;32mI (4138) CAN_RX: 01[0m
+[0;32mI (4138) CAN_RX: RX #722 ID=0x100 len=1[0m
+[0;32mI (4148) CAN_RX: 01[0m
+[0;32mI (4148) CAN_RX: RX #723 ID=0x100 len=1[0m
+[0;32mI (4148) CAN_RX: 01[0m
+[0;32mI (4148) CAN_RX: RX #724 ID=0x100 len=1[0m
+[0;32mI (4158) CAN_RX: 01[0m
+[0;32mI (4158) CAN_RX: RX #725 ID=0x100 len=1[0m
+[0;32mI (4158) CAN_RX: 01[0m
+[0;32mI (4158) CAN_RX: RX #726 ID=0x100 len=1[0m
+[0;32mI (4168) CAN_RX: 01[0m
+[0;32mI (4168) CAN_RX: RX #727 ID=0x100 len=1[0m
+[0;32mI (4168) CAN_RX: 01[0m
+[0;32mI (4168) CAN_RX: RX #728 ID=0x100 len=1[0m
+[0;32mI (4178) CAN_RX: 01[0m
+[0;32mI (4178) CAN_RX: RX #729 ID=0x100 len=1[0m
+[0;32mI (4178) CAN_RX: 01[0m
+[0;32mI (4188) CAN_RX: RX #730 ID=0x100 len=1[0m
+[0;32mI (4188) CAN_RX: 01[0m
+[0;32mI (4188) CAN_RX: RX #731 ID=0x100 len=1[0m
+[0;32mI (4188) CAN_RX: 01[0m
+[0;32mI (4198) CAN_RX: RX #732 ID=0x100 len=1[0m
+[0;32mI (4198) CAN_RX: 01[0m
+[0;32mI (4198) CAN_RX: RX #733 ID=0x100 len=1[0m
+[0;32mI (4208) CAN_RX: 01[0m
+[0;32mI (4208) CAN_RX: RX #734 ID=0x100 len=1[0m
+[0;32mI (4208) CAN_RX: 01[0m
+[0;32mI (4208) CAN_RX: RX #735 ID=0x100 len=1[0m
+[0;32mI (4218) CAN_RX: 01[0m
+[0;32mI (4218) CAN_RX: RX #736 ID=0x100 len=1[0m
+[0;32mI (4218) CAN_RX: 01[0m
+[0;32mI (4218) CAN_RX: RX #737 ID=0x100 len=1[0m
+[0;32mI (4228) CAN_RX: 01[0m
+[0;32mI (4228) CAN_RX: RX #738 ID=0x100 len=1[0m
+[0;32mI (4228) CAN_RX: 01[0m
+[0;32mI (4228) CAN_RX: RX #739 ID=0x100 len=1[0m
+[0;32mI (4238) CAN_RX: 01[0m
+[0;32mI (4238) CAN_RX: RX #740 ID=0x100 len=1[0m
+[0;32mI (4238) CAN_RX: 01[0m
+[0;32mI (4238) CAN_RX: RX #741 ID=0x100 len=1[0m
+[0;32mI (4248) CAN_RX: 01[0m
+[0;32mI (4248) CAN_RX: RX #742 ID=0x100 len=1[0m
+[0;32mI (4248) CAN_RX: 01[0m
+[0;32mI (4258) CAN_RX: RX #743 ID=0x100 len=1[0m
+[0;32mI (4258) CAN_RX: 01[0m
+[0;32mI (4258) CAN_RX: RX #744 ID=0x100 len=1[0m
+[0;32mI (4258) CAN_RX: 01[0m
+[0;32mI (4268) CAN_RX: RX #745 ID=0x100 len=1[0m
+[0;32mI (4268) CAN_RX: 01[0m
+[0;32mI (4268) CAN_RX: RX #746 ID=0x100 len=1[0m
+[0;32mI (4278) CAN_RX: 01[0m
+[0;32mI (4278) CAN_RX: RX #747 ID=0x100 len=1[0m
+[0;32mI (4278) CAN_RX: 01[0m
+[0;32mI (4278) CAN_RX: RX #748 ID=0x100 len=1[0m
+[0;32mI (4288) CAN_RX: 01[0m
+[0;32mI (4288) CAN_RX: RX #749 ID=0x100 len=1[0m
+[0;32mI (4288) CAN_RX: 01[0m
+[0;32mI (4288) CAN_RX: RX #750 ID=0x100 len=1[0m
+[0;32mI (4298) CAN_RX: 01[0m
+[0;32mI (4298) CAN_RX: RX #751 ID=0x100 len=1[0m
+[0;32mI (4298) CAN_RX: 01[0m
+[0;32mI (4298) CAN_RX: RX #752 ID=0x100 len=1[0m
+[0;32mI (4308) CAN_RX: 01[0m
+[0;32mI (4308) CAN_RX: RX #753 ID=0x100 len=1[0m
+[0;32mI (4308) CAN_RX: 01[0m
+[0;32mI (4308) CAN_RX: RX #754 ID=0x100 len=1[0m
+[0;32mI (4318) CAN_RX: 01[0m
+[0;32mI (4318) CAN_RX: RX #755 ID=0x100 len=1[0m
+[0;32mI (4318) CAN_RX: 01[0m
+[0;32mI (4328) CAN_RX: RX #756 ID=0x100 len=1[0m
+[0;32mI (4328) CAN_RX: 01[0m
+[0;32mI (4328) CAN_RX: RX #757 ID=0x100 len=1[0m
+[0;32mI (4328) CAN_RX: 01[0m
+[0;32mI (4338) CAN_RX: RX #758 ID=0x100 len=1[0m
+[0;32mI (4338) CAN_RX: 01[0m
+[0;32mI (4338) CAN_RX: RX #759 ID=0x100 len=1[0m
+[0;32mI (4348) CAN_RX: 01[0m
+[0;32mI (4348) CAN_RX: RX #760 ID=0x100 len=1[0m
+[0;32mI (4348) CAN_RX: 01[0m
+[0;32mI (4348) CAN_RX: RX #761 ID=0x100 len=1[0m
+[0;32mI (4358) CAN_RX: 01[0m
+[0;32mI (4358) CAN_RX: RX #762 ID=0x100 len=1[0m
+[0;32mI (4358) CAN_RX: 01[0m
+[0;32mI (4358) CAN_RX: RX #763 ID=0x100 len=1[0m
+[0;32mI (4368) CAN_RX: 01[0m
+[0;32mI (4368) CAN_RX: RX #764 ID=0x100 len=1[0m
+[0;32mI (4368) CAN_RX: 01[0m
+[0;32mI (4368) CAN_RX: RX #765 ID=0x100 len=1[0m
+[0;32mI (4378) CAN_RX: 01[0m
+[0;32mI (4378) CAN_RX: RX #766 ID=0x100 len=1[0m
+[0;32mI (4378) CAN_RX: 01[0m
+[0;32mI (4378) CAN_RX: RX #767 ID=0x100 len=1[0m
+[0;32mI (4388) CAN_RX: 01[0m
+[0;32mI (4388) CAN_RX: RX #768 ID=0x100 len=1[0m
+[0;32mI (4388) CAN_RX: 01[0m
+[0;32mI (4398) CAN_RX: RX #769 ID=0x100 len=1[0m
+[0;32mI (4398) CAN_RX: 01[0m
+[0;32mI (4398) CAN_RX: RX #770 ID=0x100 len=1[0m
+[0;32mI (4398) CAN_RX: 01[0m
+[0;32mI (4408) CAN_RX: RX #771 ID=0x100 len=1[0m
+[0;32mI (4408) CAN_RX: 01[0m
+[0;32mI (4408) CAN_RX: RX #772 ID=0x100 len=1[0m
+[0;32mI (4418) CAN_RX: 01[0m
+[0;32mI (4418) CAN_RX: RX #773 ID=0x100 len=1[0m
+[0;32mI (4418) CAN_RX: 01[0m
+[0;32mI (4418) CAN_RX: RX #774 ID=0x100 len=1[0m
+[0;32mI (4428) CAN_RX: 01[0m
+[0;32mI (4428) CAN_RX: RX #775 ID=0x100 len=1[0m
+[0;32mI (4428) CAN_RX: 01[0m
+[0;32mI (4428) CAN_RX: RX #776 ID=0x100 len=1[0m
+[0;32mI (4438) CAN_RX: 01[0m
+[0;32mI (4438) CAN_RX: RX #777 ID=0x100 len=1[0m
+[0;32mI (4438) CAN_RX: 01[0m
+[0;32mI (4438) CAN_RX: RX #778 ID=0x100 len=1[0m
+[0;32mI (4448) CAN_RX: 01[0m
+[0;32mI (4448) CAN_RX: RX #779 ID=0x100 len=1[0m
+[0;32mI (4448) CAN_RX: 01[0m
+[0;32mI (4448) CAN_RX: RX #780 ID=0x100 len=1[0m
+[0;32mI (4458) CAN_RX: 01[0m
+[0;32mI (4458) CAN_RX: RX #781 ID=0x100 len=1[0m
+[0;32mI (4458) CAN_RX: 01[0m
+[0;32mI (4468) CAN_RX: RX #782 ID=0x100 len=1[0m
+[0;32mI (4468) CAN_RX: 01[0m
+[0;32mI (4468) CAN_RX: RX #783 ID=0x100 len=1[0m
+[0;32mI (4468) CAN_RX: 01[0m
+[0;32mI (4478) CAN_RX: RX #784 ID=0x100 len=1[0m
+[0;32mI (4478) CAN_RX: 01[0m
+[0;32mI (4478) CAN_RX: RX #785 ID=0x100 len=1[0m
+[0;32mI (4488) CAN_RX: 01[0m
+[0;32mI (4488) CAN_RX: RX #786 ID=0x100 len=1[0m
+[0;32mI (4488) CAN_RX: 01[0m
+[0;32mI (4488) CAN_RX: RX #787 ID=0x100 len=1[0m
+[0;32mI (4498) CAN_RX: 01[0m
+[0;32mI (4498) CAN_RX: RX #788 ID=0x100 len=1[0m
+[0;32mI (4498) CAN_RX: 01[0m
+[0;32mI (4498) CAN_RX: RX #789 ID=0x100 len=1[0m
+[0;32mI (4508) CAN_RX: 01[0m
+[0;32mI (4508) CAN_RX: RX #790 ID=0x100 len=1[0m
+[0;32mI (4508) CAN_RX: 01[0m
+[0;32mI (4508) CAN_RX: RX #791 ID=0x100 len=1[0m
+[0;32mI (4518) CAN_RX: 01[0m
+[0;32mI (4518) CAN_RX: RX #792 ID=0x100 len=1[0m
+[0;32mI (4518) CAN_RX: 01[0m
+[0;32mI (4518) CAN_RX: RX #793 ID=0x100 len=1[0m
+[0;32mI (4528) CAN_RX: 01[0m
+[0;32mI (4528) CAN_RX: RX #794 ID=0x100 len=1[0m
+[0;32mI (4528) CAN_RX: 01[0m
+[0;32mI (4538) CAN_RX: RX #795 ID=0x100 len=1[0m
+[0;32mI (4538) CAN_RX: 01[0m
+[0;32mI (4538) CAN_RX: RX #796 ID=0x100 len=1[0m
+[0;32mI (4538) CAN_RX: 01[0m
+[0;32mI (4548) CAN_RX: RX #797 ID=0x100 len=1[0m
+[0;32mI (4548) CAN_RX: 01[0m
+[0;32mI (4548) CAN_RX: RX #798 ID=0x100 len=1[0m
+[0;32mI (4558) CAN_RX: 01[0m
+[0;32mI (4558) CAN_RX: RX #799 ID=0x100 len=1[0m
+[0;32mI (4558) CAN_RX: 01[0m
+[0;32mI (4558) CAN_RX: RX #800 ID=0x100 len=1[0m
+[0;32mI (4568) CAN_RX: 01[0m
+[0;32mI (4568) CAN_RX: RX #801 ID=0x100 len=1[0m
+[0;32mI (4568) CAN_RX: 01[0m
+[0;32mI (4568) CAN_RX: RX #802 ID=0x100 len=1[0m
+[0;32mI (4578) CAN_RX: 01[0m
+[0;32mI (4578) CAN_RX: RX #803 ID=0x100 len=1[0m
+[0;32mI (4578) CAN_RX: 01[0m
+[0;32mI (4578) CAN_RX: RX #804 ID=0x100 len=1[0m
+[0;32mI (4588) CAN_RX: 01[0m
+[0;32mI (4588) CAN_RX: RX #805 ID=0x100 len=1[0m
+[0;32mI (4588) CAN_RX: 01[0m
+[0;32mI (4588) CAN_RX: RX #806 ID=0x100 len=1[0m
+[0;32mI (4598) CAN_RX: 01[0m
+[0;32mI (4598) CAN_RX: RX #807 ID=0x100 len=1[0m
+[0;32mI (4598) CAN_RX: 01[0m
+[0;32mI (4608) CAN_RX: RX #808 ID=0x100 len=1[0m
+[0;32mI (4608) CAN_RX: 01[0m
+[0;32mI (4608) CAN_RX: RX #809 ID=0x100 len=1[0m
+[0;32mI (4608) CAN_RX: 01[0m
+[0;32mI (4618) CAN_RX: RX #810 ID=0x100 len=1[0m
+[0;32mI (4618) CAN_RX: 01[0m
+[0;32mI (4618) CAN_RX: RX #811 ID=0x100 len=1[0m
+[0;32mI (4628) CAN_RX: 01[0m
+[0;32mI (4628) CAN_RX: RX #812 ID=0x100 len=1[0m
+[0;32mI (4628) CAN_RX: 01[0m
+[0;32mI (4628) CAN_RX: RX #813 ID=0x100 len=1[0m
+[0;32mI (4638) CAN_RX: 01[0m
+[0;32mI (4638) CAN_RX: RX #814 ID=0x100 len=1[0m
+[0;32mI (4638) CAN_RX: 01[0m
+[0;32mI (4638) CAN_RX: RX #815 ID=0x100 len=1[0m
+[0;32mI (4648) CAN_RX: 01[0m
+[0;32mI (4648) CAN_RX: RX #816 ID=0x100 len=1[0m
+[0;32mI (4648) CAN_RX: 01[0m
+[0;32mI (4648) CAN_RX: RX #817 ID=0x100 len=1[0m
+[0;32mI (4658) CAN_RX: 01[0m
+[0;32mI (4658) CAN_RX: RX #818 ID=0x100 len=1[0m
+[0;32mI (4658) CAN_RX: 01[0m
+[0;32mI (4658) CAN_RX: RX #819 ID=0x100 len=1[0m
+[0;32mI (4668) CAN_RX: 01[0m
+[0;32mI (4668) CAN_RX: RX #820 ID=0x100 len=1[0m
+[0;32mI (4668) CAN_RX: 01[0m
+[0;32mI (4678) CAN_RX: RX #821 ID=0x100 len=1[0m
+[0;32mI (4678) CAN_RX: 01[0m
+[0;32mI (4678) CAN_RX: RX #822 ID=0x100 len=1[0m
+[0;32mI (4678) CAN_RX: 01[0m
+[0;32mI (4688) CAN_RX: RX #823 ID=0x100 len=1[0m
+[0;32mI (4688) CAN_RX: 01[0m
+[0;32mI (4688) CAN_RX: RX #824 ID=0x100 len=1[0m
+[0;32mI (4698) CAN_RX: 01[0m
+[0;32mI (4698) CAN_RX: RX #825 ID=0x100 len=1[0m
+[0;32mI (4698) CAN_RX: 01[0m
+[0;32mI (4698) CAN_RX: RX #826 ID=0x100 len=1[0m
+[0;32mI (4708) CAN_RX: 01[0m
+[0;32mI (4708) CAN_RX: RX #827 ID=0x100 len=1[0m
+[0;32mI (4708) CAN_RX: 01[0m
+[0;32mI (4708) CAN_RX: RX #828 ID=0x100 len=1[0m
+[0;32mI (4718) CAN_RX: 01[0m
+[0;32mI (4718) CAN_RX: RX #829 ID=0x100 len=1[0m
+[0;32mI (4718) CAN_RX: 01[0m
+[0;32mI (4718) CAN_RX: RX #830 ID=0x100 len=1[0m
+[0;32mI (4728) CAN_RX: 01[0m
+[0;32mI (4728) CAN_RX: RX #831 ID=0x100 len=1[0m
+[0;32mI (4728) CAN_RX: 01[0m
+[0;32mI (4728) CAN_RX: RX #832 ID=0x100 len=1[0m
+[0;32mI (4738) CAN_RX: 01[0m
+[0;32mI (4738) CAN_RX: RX #833 ID=0x100 len=1[0m
+[0;32mI (4738) CAN_RX: 01[0m
+[0;32mI (4748) CAN_RX: RX #834 ID=0x100 len=1[0m
+[0;32mI (4748) CAN_RX: 01[0m
+[0;32mI (4748) CAN_RX: RX #835 ID=0x100 len=1[0m
+[0;32mI (4748) CAN_RX: 01[0m
+[0;32mI (4758) CAN_RX: RX #836 ID=0x100 len=1[0m
+[0;32mI (4758) CAN_RX: 01[0m
+[0;32mI (4758) CAN_RX: RX #837 ID=0x100 len=1[0m
+[0;32mI (4768) CAN_RX: 01[0m
+[0;32mI (4768) CAN_RX: RX #838 ID=0x100 len=1[0m
+[0;32mI (4768) CAN_RX: 01[0m
+[0;32mI (4768) CAN_RX: RX #839 ID=0x100 len=1[0m
+[0;32mI (4778) CAN_RX: 01[0m
+[0;32mI (4778) CAN_RX: RX #840 ID=0x100 len=1[0m
+[0;32mI (4778) CAN_RX: 01[0m
+[0;32mI (4778) CAN_RX: RX #841 ID=0x100 len=1[0m
+[0;32mI (4788) CAN_RX: 01[0m
+[0;32mI (4788) CAN_RX: RX #842 ID=0x100 len=1[0m
+[0;32mI (4788) CAN_RX: 01[0m
+[0;32mI (4788) CAN_RX: RX #843 ID=0x100 len=1[0m
+[0;32mI (4798) CAN_RX: 01[0m
+[0;32mI (4798) CAN_RX: RX #844 ID=0x100 len=1[0m
+[0;32mI (4798) CAN_RX: 01[0m
+[0;32mI (4798) CAN_RX: RX #845 ID=0x100 len=1[0m
+[0;32mI (4808) CAN_RX: 01[0m
+[0;32mI (4808) CAN_RX: RX #846 ID=0x100 len=1[0m
+[0;32mI (4808) CAN_RX: 01[0m
+[0;32mI (4818) CAN_RX: RX #847 ID=0x100 len=1[0m
+[0;32mI (4818) CAN_RX: 01[0m
+[0;32mI (4818) CAN_RX: RX #848 ID=0x100 len=1[0m
+[0;32mI (4818) CAN_RX: 01[0m
+[0;32mI (4828) CAN_RX: RX #849 ID=0x100 len=1[0m
+[0;32mI (4828) CAN_RX: 01[0m
+[0;32mI (4828) CAN_RX: RX #850 ID=0x100 len=1[0m
+[0;32mI (4838) CAN_RX: 01[0m
+[0;32mI (4838) CAN_RX: RX #851 ID=0x100 len=1[0m
+[0;32mI (4838) CAN_RX: 01[0m
+[0;32mI (4838) CAN_RX: RX #852 ID=0x100 len=1[0m
+[0;32mI (4848) CAN_RX: 01[0m
+[0;32mI (4848) CAN_RX: RX #853 ID=0x100 len=1[0m
+[0;32mI (4848) CAN_RX: 01[0m
+[0;32mI (4848) CAN_RX: RX #854 ID=0x100 len=1[0m
+[0;32mI (4858) CAN_RX: 01[0m
+[0;32mI (4858) CAN_RX: RX #855 ID=0x100 len=1[0m
+[0;32mI (4858) CAN_RX: 01[0m
+[0;32mI (4858) CAN_RX: RX #856 ID=0x100 len=1[0m
+[0;32mI (4868) CAN_RX: 01[0m
+[0;32mI (4868) CAN_RX: RX #857 ID=0x100 len=1[0m
+[0;32mI (4868) CAN_RX: 01[0m
+[0;32mI (4868) CAN_RX: RX #858 ID=0x100 len=1[0m
+[0;32mI (4878) CAN_RX: 01[0m
+[0;32mI (4878) CAN_RX: RX #859 ID=0x100 len=1[0m
+[0;32mI (4878) CAN_RX: 01[0m
+[0;32mI (4888) CAN_RX: RX #860 ID=0x100 len=1[0m
+[0;32mI (4888) CAN_RX: 01[0m
+[0;32mI (4888) CAN_RX: RX #861 ID=0x100 len=1[0m
+[0;32mI (4888) CAN_RX: 01[0m
+[0;32mI (4898) CAN_RX: RX #862 ID=0x100 len=1[0m
+[0;32mI (4898) CAN_RX: 01[0m
+[0;32mI (4898) CAN_RX: RX #863 ID=0x100 len=1[0m
+[0;32mI (4908) CAN_RX: 01[0m
+[0;32mI (4908) CAN_RX: RX #864 ID=0x100 len=1[0m
+[0;32mI (4908) CAN_RX: 01[0m
+[0;32mI (4908) CAN_RX: RX #865 ID=0x100 len=1[0m
+[0;32mI (4918) CAN_RX: 01[0m
+[0;32mI (4918) CAN_RX: RX #866 ID=0x100 len=1[0m
+[0;32mI (4918) CAN_RX: 01[0m
+[0;32mI (4918) CAN_RX: RX #867 ID=0x100 len=1[0m
+[0;32mI (4928) CAN_RX: 01[0m
+[0;32mI (4928) CAN_RX: RX #868 ID=0x100 len=1[0m
+[0;32mI (4928) CAN_RX: 01[0m
+[0;32mI (4928) CAN_RX: RX #869 ID=0x100 len=1[0m
+[0;32mI (4938) CAN_RX: 01[0m
+[0;32mI (4938) CAN_RX: RX #870 ID=0x100 len=1[0m
+[0;32mI (4938) CAN_RX: 01[0m
+[0;32mI (4938) CAN_RX: RX #871 ID=0x100 len=1[0m
+[0;32mI (4948) CAN_RX: 01[0m
+[0;32mI (4948) CAN_RX: RX #872 ID=0x100 len=1[0m
+[0;32mI (4948) CAN_RX: 01[0m
+[0;32mI (4958) CAN_RX: RX #873 ID=0x100 len=1[0m
+[0;32mI (4958) CAN_RX: 01[0m
+[0;32mI (4958) CAN_RX: RX #874 ID=0x100 len=1[0m
+[0;32mI (4958) CAN_RX: 01[0m
+[0;32mI (4968) CAN_RX: RX #875 ID=0x100 len=1[0m
+[0;32mI (4968) CAN_RX: 01[0m
+[0;32mI (4968) CAN_RX: RX #876 ID=0x100 len=1[0m
+[0;32mI (4978) CAN_RX: 01[0m
+[0;32mI (4978) CAN_RX: RX #877 ID=0x100 len=1[0m
+[0;32mI (4978) CAN_RX: 01[0m
+[0;32mI (4978) CAN_RX: RX #878 ID=0x100 len=1[0m
+[0;32mI (4988) CAN_RX: 01[0m
+[0;32mI (4988) CAN_RX: RX #879 ID=0x100 len=1[0m
+[0;32mI (4988) CAN_RX: 01[0m
+[0;32mI (4988) CAN_RX: RX #880 ID=0x100 len=1[0m
+[0;32mI (4998) CAN_RX: 01[0m
+[0;32mI (4998) CAN_RX: RX #881 ID=0x100 len=1[0m
+[0;32mI (4998) CAN_RX: 01[0m
+[0;32mI (4998) CAN_RX: RX #882 ID=0x100 len=1[0m
+[0;32mI (5008) CAN_RX: 01[0m
+[0;32mI (5008) CAN_RX: RX #883 ID=0x100 len=1[0m
+[0;32mI (5008) CAN_RX: 01[0m
+[0;32mI (5008) CAN_RX: RX #884 ID=0x100 len=1[0m
+[0;32mI (5018) CAN_RX: 01[0m
+[0;32mI (5018) CAN_RX: RX #885 ID=0x100 len=1[0m
+[0;32mI (5018) CAN_RX: 01[0m
+[0;32mI (5028) CAN_RX: RX #886 ID=0x100 len=1[0m
+[0;32mI (5028) CAN_RX: 01[0m
+[0;32mI (5028) CAN_RX: RX #887 ID=0x100 len=1[0m
+[0;32mI (5028) CAN_RX: 01[0m
+[0;32mI (5038) CAN_RX: RX #888 ID=0x100 len=1[0m
+[0;32mI (5038) CAN_RX: 01[0m
+[0;32mI (5038) CAN_RX: RX #889 ID=0x100 len=1[0m
+[0;32mI (5048) CAN_RX: 01[0m
+[0;32mI (5048) CAN_RX: RX #890 ID=0x100 len=1[0m
+[0;32mI (5048) CAN_RX: 01[0m
+[0;32mI (5048) CAN_RX: RX #891 ID=0x100 len=1[0m
+[0;32mI (5058) CAN_RX: 01[0m
+[0;32mI (5058) CAN_RX: RX #892 ID=0x100 len=1[0m
+[0;32mI (5058) CAN_RX: 01[0m
+[0;32mI (5058) CAN_RX: RX #893 ID=0x100 len=1[0m
+[0;32mI (5068) CAN_RX: 01[0m
+[0;32mI (5068) CAN_RX: RX #894 ID=0x100 len=1[0m
+[0;32mI (5068) CAN_RX: 01[0m
+[0;32mI (5068) CAN_RX: RX #895 ID=0x100 len=1[0m
+[0;32mI (5078) CAN_RX: 01[0m
+[0;32mI (5078) CAN_RX: RX #896 ID=0x100 len=1[0m
+[0;32mI (5078) CAN_RX: 01[0m
+[0;32mI (5078) CAN_RX: RX #897 ID=0x100 len=1[0m
+[0;32mI (5088) CAN_RX: 01[0m
+[0;32mI (5088) CAN_RX: RX #898 ID=0x100 len=1[0m
+[0;32mI (5088) CAN_RX: 01[0m
+[0;32mI (5098) CAN_RX: RX #899 ID=0x100 len=1[0m
+[0;32mI (5098) CAN_RX: 01[0m
+[0;32mI (5098) CAN_RX: RX #900 ID=0x100 len=1[0m
+[0;32mI (5098) CAN_RX: 01[0m
+[0;32mI (5108) CAN_RX: RX #901 ID=0x100 len=1[0m
+[0;32mI (5108) CAN_RX: 01[0m
+[0;32mI (5108) CAN_RX: RX #902 ID=0x100 len=1[0m
+[0;32mI (5108) CAN_RX: 01[0m
+[0;32mI (5118) CAN_RX: RX #903 ID=0x100 len=1[0m
+[0;32mI (5118) CAN_RX: 01[0m
+[0;32mI (5118) CAN_RX: RX #904 ID=0x100 len=1[0m
+[0;32mI (5128) CAN_RX: 01[0m
+[0;32mI (5128) CAN_RX: RX #905 ID=0x100 len=1[0m
+[0;32mI (5128) CAN_RX: 01[0m
+[0;32mI (5128) CAN_RX: RX #906 ID=0x100 len=1[0m
+[0;32mI (5138) CAN_RX: 01[0m
+[0;32mI (5138) CAN_RX: RX #907 ID=0x100 len=1[0m
+[0;32mI (5138) CAN_RX: 01[0m
+[0;32mI (5138) CAN_RX: RX #908 ID=0x100 len=1[0m
+[0;32mI (5148) CAN_RX: 01[0m
+[0;32mI (5148) CAN_RX: RX #909 ID=0x100 len=1[0m
+[0;32mI (5148) CAN_RX: 01[0m
+[0;32mI (5148) CAN_RX: RX #910 ID=0x100 len=1[0m
+[0;32mI (5158) CAN_RX: 01[0m
+[0;32mI (5158) CAN_RX: RX #911 ID=0x100 len=1[0m
+[0;32mI (5158) CAN_RX: 01[0m
+[0;32mI (5168) CAN_RX: RX #912 ID=0x100 len=1[0m
+[0;32mI (5168) CAN_RX: 01[0m
+[0;32mI (5168) CAN_RX: RX #913 ID=0x100 len=1[0m
+[0;32mI (5168) CAN_RX: 01[0m
+[0;32mI (5178) CAN_RX: RX #914 ID=0x100 len=1[0m
+[0;32mI (5178) CAN_RX: 01[0m
+[0;32mI (5178) CAN_RX: RX #915 ID=0x100 len=1[0m
+[0;32mI (5178) CAN_RX: 01[0m
+[0;32mI (5188) CAN_RX: RX #916 ID=0x100 len=1[0m
+[0;32mI (5188) CAN_RX: 01[0m
+[0;32mI (5188) CAN_RX: RX #917 ID=0x100 len=1[0m
+[0;32mI (5198) CAN_RX: 01[0m
+[0;32mI (5198) CAN_RX: RX #918 ID=0x100 len=1[0m
+[0;32mI (5198) CAN_RX: 01[0m
+[0;32mI (5198) CAN_RX: RX #919 ID=0x100 len=1[0m
+[0;32mI (5208) CAN_RX: 01[0m
+[0;32mI (5208) CAN_RX: RX #920 ID=0x100 len=1[0m
+[0;32mI (5208) CAN_RX: 01[0m
+[0;32mI (5208) CAN_RX: RX #921 ID=0x100 len=1[0m
+[0;32mI (5218) CAN_RX: 01[0m
+[0;32mI (5218) CAN_RX: RX #922 ID=0x100 len=1[0m
+[0;32mI (5218) CAN_RX: 01[0m
+[0;32mI (5218) CAN_RX: RX #923 ID=0x100 len=1[0m
+[0;32mI (5228) CAN_RX: 01[0m
+[0;32mI (5228) CAN_RX: RX #924 ID=0x100 len=1[0m
+[0;32mI (5228) CAN_RX: 01[0m
+[0;32mI (5238) CAN_RX: RX #925 ID=0x100 len=1[0m
+[0;32mI (5238) CAN_RX: 01[0m
+[0;32mI (5238) CAN_RX: RX #926 ID=0x100 len=1[0m
+[0;32mI (5238) CAN_RX: 01[0m
+[0;32mI (5248) CAN_RX: RX #927 ID=0x100 len=1[0m
+[0;32mI (5248) CAN_RX: 01[0m
+[0;32mI (5248) CAN_RX: RX #928 ID=0x100 len=1[0m
+[0;32mI (5248) CAN_RX: 01[0m
+[0;32mI (5258) CAN_RX: RX #929 ID=0x100 len=1[0m
+[0;32mI (5258) CAN_RX: 01[0m
+[0;32mI (5258) CAN_RX: RX #930 ID=0x100 len=1[0m
+[0;32mI (5268) CAN_RX: 01[0m
+[0;32mI (5268) CAN_RX: RX #931 ID=0x100 len=1[0m
+[0;32mI (5268) CAN_RX: 01[0m
+[0;32mI (5268) CAN_RX: RX #932 ID=0x100 len=1[0m
+[0;32mI (5278) CAN_RX: 01[0m
+[0;32mI (5278) CAN_RX: RX #933 ID=0x100 len=1[0m
+[0;32mI (5278) CAN_RX: 01[0m
+[0;32mI (5278) CAN_RX: RX #934 ID=0x100 len=1[0m
+[1;31mE (5288) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
+[1;31mE (5288) task_wdt:  - IDLE0 (CPU 0)[0m
+[1;31mE (5288) task_wdt: Tasks currently running:[0m
+[1;31mE (5288) task_wdt: CPU 0: main[0m
+[1;31mE (5288) task_wdt: CPU 1: IDLE1[0m
+[1;31mE (5288) task_wdt: Print CPU 0 (current core) backtrace[0m
+
+
+Backtrace: 0x400DAC82:0x3FFB1250 0x400DB054:0x3FFB1270 0x40082E8D:0x3FFB12A0 0x400D581A:0x3FFB45A0 0x400D5ADC:0x3FFB45D0 0x400D6161:0x3FFB4600 0x400D4C7E:0x3FFB4620 0x400D1379:0x3FFB4640 0x400D6161:0x3FFB4660 0x400D4C7E:0x3FFB4680 0x400DDA09:0x3FFB46A0 0x400DB9FE:0x3FFB46D0 0x400DBE19:0x3FFB46F0 0x400DC8B7:0x3FFB4770 0x400896AB:0x3FFB47A0 0x400DB2C6:0x3FFB4800 0x400DB2E9:0x3FFB4850 0x400D68D2:0x3FFB48A0 0x400D447D:0x3FFB4940 0x400DEBB1:0x3FFB4970
+
+[0;32mI (5288) CAN_RX: 01[0m
+[0;32mI (5358) CAN_RX: RX #935 ID=0x100 len=1[0m
+[0;32mI (5358) CAN_RX: 01[0m
+[0;32mI (5358) CAN_RX: RX #936 ID=0x100 len=1[0m
+[0;32mI (5368) CAN_RX: 01[0m
+[0;32mI (5368) CAN_RX: RX #937 ID=0x100 len=1[0m
+[0;32mI (5368) CAN_RX: 01[0m
+[0;32mI (5368) CAN_RX: RX #938 ID=0x100 len=1[0m
+[0;32mI (5378) CAN_RX: 01[0m
+[0;32mI (5378) CAN_RX: RX #939 ID=0x100 len=1[0m
+[0;32mI (5378) CAN_RX: 01[0m
+[0;32mI (5378) CAN_RX: RX #940 ID=0x100 len=1[0m
+[0;32mI (5388) CAN_RX: 01[0m
+[0;32mI (5388) CAN_RX: RX #941 ID=0x100 len=1[0m
+[0;32mI (5388) CAN_RX: 01[0m
+[0;32mI (5388) CAN_RX: RX #942 ID=0x100 len=1[0m
+[0;32mI (5398) CAN_RX: 01[0m
+[0;32mI (5398) CAN_RX: RX #943 ID=0x100 len=1[0m
+[0;32mI (5398) CAN_RX: 01[0m
+[0;32mI (5398) CAN_RX: RX #944 ID=0x100 len=1[0m
+[0;32mI (5408) CAN_RX: 01[0m
+[0;32mI (5408) CAN_RX: RX #945 ID=0x100 len=1[0m
+[0;32mI (5408) CAN_RX: 01[0m
+[0;32mI (5418) CAN_RX: RX #946 ID=0x100 len=1[0m
+[0;32mI (5418) CAN_RX: 01[0m
+[0;32mI (5418) CAN_RX: RX #947 ID=0x100 len=1[0m
+[0;32mI (5418) CAN_RX: 01[0m
+[0;32mI (5428) CAN_RX: RX #948 ID=0x100 len=1[0m
+[0;32mI (5428) CAN_RX: 01[0m
+[0;32mI (5428) CAN_RX: RX #949 ID=0x100 len=1[0m
+[0;32mI (5438) CAN_RX: 01[0m
+[0;32mI (5438) CAN_RX: RX #950 ID=0x100 len=1[0m
+[0;32mI (5438) CAN_RX: 01[0m
+[0;32mI (5438) CAN_RX: RX #951 ID=0x100 len=1[0m
+[0;32mI (5448) CAN_RX: 01[0m
+[0;32mI (5448) CAN_RX: RX #952 ID=0x100 len=1[0m
+[0;32mI (5448) CAN_RX: 01[0m
+[0;32mI (5448) CAN_RX: RX #953 ID=0x100 len=1[0m
+[0;32mI (5458) CAN_RX: 01[0m
+[0;32mI (5458) CAN_RX: RX #954 ID=0x100 len=1[0m
+[0;32mI (5458) CAN_RX: 01[0m
+[0;32mI (5458) CAN_RX: RX #955 ID=0x100 len=1[0m
+[0;32mI (5468) CAN_RX: 01[0m
+[0;32mI (5468) CAN_RX: RX #956 ID=0x100 len=1[0m
+[0;32mI (5468) CAN_RX: 01[0m
+[0;32mI (5468) CAN_RX: RX #957 ID=0x100 len=1[0m
+[0;32mI (5478) CAN_RX: 01[0m
+[0;32mI (5478) CAN_RX: RX #958 ID=0x100 len=1[0m
+[0;32mI (5478) CAN_RX: 01[0m
+[0;32mI (5488) CAN_RX: RX #959 ID=0x100 len=1[0m
+[0;32mI (5488) CAN_RX: 01[0m
+[0;32mI (5488) CAN_RX: RX #960 ID=0x100 len=1[0m
+[0;32mI (5488) CAN_RX: 01[0m
+[0;32mI (5498) CAN_RX: RX #961 ID=0x100 len=1[0m
+[0;32mI (5498) CAN_RX: 01[0m
+[0;32mI (5498) CAN_RX: RX #962 ID=0x100 len=1[0m
+[0;32mI (5508) CAN_RX: 01[0m
+[0;32mI (5508) CAN_RX: RX #963 ID=0x100 len=1[0m
+[0;32mI (5508) CAN_RX: 01[0m
+[0;32mI (5508) CAN_RX: RX #964 ID=0x100 len=1[0m
+[0;32mI (5518) CAN_RX: 01[0m
+[0;32mI (5518) CAN_RX: RX #965 ID=0x100 len=1[0m
+[0;32mI (5518) CAN_RX: 01[0m
+[0;32mI (5518) CAN_RX: RX #966 ID=0x100 len=1[0m
+[0;32mI (5528) CAN_RX: 01[0m
+[0;32mI (5528) CAN_RX: RX #967 ID=0x100 len=1[0m
+[0;32mI (5528) CAN_RX: 01[0m
+[0;32mI (5528) CAN_RX: RX #968 ID=0x100 len=1[0m
+[0;32mI (5538) CAN_RX: 01[0m
+[0;32mI (5538) CAN_RX: RX #969 ID=0x100 len=1[0m
+[0;32mI (5538) CAN_RX: 01[0m
+[0;32mI (5538) CAN_RX: RX #970 ID=0x100 len=1[0m
+[0;32mI (5548) CAN_RX: 01[0m
+[0;32mI (5548) CAN_RX: RX #971 ID=0x100 len=1[0m
+[0;32mI (5548) CAN_RX: 01[0m
+[0;32mI (5558) CAN_RX: RX #972 ID=0x100 len=1[0m
+[0;32mI (5558) CAN_RX: 01[0m
+[0;32mI (5558) CAN_RX: RX #973 ID=0x100 len=1[0m
+[0;32mI (5558) CAN_RX: 01[0m
+[0;32mI (5568) CAN_RX: RX #974 ID=0x100 len=1[0m
+[0;32mI (5568) CAN_RX: 01[0m
+[0;32mI (5568) CAN_RX: RX #975 ID=0x100 len=1[0m
+[0;32mI (5568) CAN_RX: 01[0m
+[0;32mI (5578) CAN_RX: RX #976 ID=0x100 len=1[0m
+[0;32mI (5578) CAN_RX: 01[0m
+[0;32mI (5578) CAN_RX: RX #977 ID=0x100 len=1[0m
+[0;32mI (5588) CAN_RX: 01[0m
+[0;32mI (5588) CAN_RX: RX #978 ID=0x100 len=1[0m
+[0;32mI (5588) CAN_RX: 01[0m
+[0;32mI (5588) CAN_RX: RX #979 ID=0x100 len=1[0m
+[0;32mI (5598) CAN_RX: 01[0m
+[0;32mI (5598) CAN_RX: RX #980 ID=0x100 len=1[0m
+[0;32mI (5598) CAN_RX: 01[0m
+[0;32mI (5598) CAN_RX: RX #981 ID=0x100 len=1[0m
+[0;32mI (5608) CAN_RX: 01[0m
+[0;32mI (5608) CAN_RX: RX #982 ID=0x100 len=1[0m
+[0;32mI (5608) CAN_RX: 01[0m
+[0;32mI (5608) CAN_RX: RX #983 ID=0x100 len=1[0m
+[0;32mI (5618) CAN_RX: 01[0m
+[0;32mI (5618) CAN_RX: RX #984 ID=0x100 len=1[0m
+[0;32mI (5618) CAN_RX: 01[0m
+[0;32mI (5628) CAN_RX: RX #985 ID=0x100 len=1[0m
+[0;32mI (5628) CAN_RX: 01[0m
+[0;32mI (5628) CAN_RX: RX #986 ID=0x100 len=1[0m
+[0;32mI (5628) CAN_RX: 01[0m
+[0;32mI (5638) CAN_RX: RX #987 ID=0x100 len=1[0m
+[0;32mI (5638) CAN_RX: 01[0m
+[0;32mI (5638) CAN_RX: RX #988 ID=0x100 len=1[0m
+[0;32mI (5638) CAN_RX: 01[0m
+[0;32mI (5648) CAN_RX: RX #989 ID=0x100 len=1[0m
+[0;32mI (5648) CAN_RX: 01[0m
+[0;32mI (5648) CAN_RX: RX #990 ID=0x100 len=1[0m
+[0;32mI (5658) CAN_RX: 01[0m
+[0;32mI (5658) CAN_RX: RX #991 ID=0x100 len=1[0m
+[0;32mI (5658) CAN_RX: 01[0m
+[0;32mI (5658) CAN_RX: RX #992 ID=0x100 len=1[0m
+[0;32mI (5668) CAN_RX: 01[0m
+[0;32mI (5668) CAN_RX: RX #993 ID=0x100 len=1[0m
+[0;32mI (5668) CAN_RX: 01[0m
+[0;32mI (5668) CAN_RX: RX #994 ID=0x100 len=1[0m
+[0;32mI (5678) CAN_RX: 01[0m
+[0;32mI (5678) CAN_RX: RX #995 ID=0x100 len=1[0m
+[0;32mI (5678) CAN_RX: 01[0m
+[0;32mI (5678) CAN_RX: RX #996 ID=0x100 len=1[0m
+[0;32mI (5688) CAN_RX: 01[0m
+[0;32mI (5688) CAN_RX: RX #997 ID=0x100 len=1[0m
+[0;32mI (5688) CAN_RX: 01[0m
+[0;32mI (5698) CAN_RX: RX #998 ID=0x100 len=1[0m
+[0;32mI (5698) CAN_RX: 01[0m
+[0;32mI (5698) CAN_RX: RX #999 ID=0x100 len=1[0m
+[0;32mI (5698) CAN_RX: 01[0m
+[0;32mI (5708) CAN_RX: RX #1000 ID=0x100 len=1[0m
+[0;32mI (5708) CAN_RX: 01[0m
+[0;32mI (5708) CAN_RX: RX #1001 ID=0x100 len=1[0m
+[0;32mI (5718) CAN_RX: 01[0m
+[0;32mI (5718) CAN_RX: RX #1002 ID=0x100 len=1[0m
+[0;32mI (5718) CAN_RX: 01[0m
+[0;32mI (5718) CAN_RX: RX #1003 ID=0x100 len=1[0m
+[0;32mI (5728) CAN_RX: 01[0m
+[0;32mI (5728) CAN_RX: RX #1004 ID=0x100 len=1[0m
+[0;32mI (5728) CAN_RX: 01[0m
+[0;32mI (5728) CAN_RX: RX #1005 ID=0x100 len=1[0m
+[0;32mI (5738) CAN_RX: 01[0m
+[0;32mI (5738) CAN_RX: RX #1006 ID=0x100 len=1[0m
+[0;32mI (5738) CAN_RX: 01[0m
+[0;32mI (5738) CAN_RX: RX #1007 ID=0x100 len=1[0m
+[0;32mI (5748) CAN_RX: 01[0m
+[0;32mI (5748) CAN_RX: RX #1008 ID=0x100 len=1[0m
+[0;32mI (5748) CAN_RX: 01[0m
+[0;32mI (5758) CAN_RX: RX #1009 ID=0x100 len=1[0m
+[0;32mI (5758) CAN_RX: 01[0m
+[0;32mI (5758) CAN_RX: RX #1010 ID=0x100 len=1[0m
+[0;32mI (5758) CAN_RX: 01[0m
+[0;32mI (5768) CAN_RX: RX #1011 ID=0x100 len=1[0m
+[0;32mI (5768) CAN_RX: 01[0m
+[0;32mI (5768) CAN_RX: RX #1012 ID=0x100 len=1[0m
+[0;32mI (5778) CAN_RX: 01[0m
+[0;32mI (5778) CAN_RX: RX #1013 ID=0x100 len=1[0m
+[0;32mI (5778) CAN_RX: 01[0m
+[0;32mI (5778) CAN_RX: RX #1014 ID=0x100 len=1[0m
+[0;32mI (5788) CAN_RX: 01[0m
+[0;32mI (5788) CAN_RX: RX #1015 ID=0x100 len=1[0m
+[0;32mI (5788) CAN_RX: 01[0m
+[0;32mI (5788) CAN_RX: RX #1016 ID=0x100 len=1[0m
+[0;32mI (5798) CAN_RX: 01[0m
+[0;32mI (5798) CAN_RX: RX #1017 ID=0x100 len=1[0m
+[0;32mI (5798) CAN_RX: 01[0m
+[0;32mI (5798) CAN_RX: RX #1018 ID=0x100 len=1[0m
+[0;32mI (5808) CAN_RX: 01[0m
+[0;32mI (5808) CAN_RX: RX #1019 ID=0x100 len=1[0m
+[0;32mI (5808) CAN_RX: 01[0m
+[0;32mI (5818) CAN_RX: RX #1020 ID=0x100 len=1[0m
+[0;32mI (5818) CAN_RX: 01[0m
+[0;32mI (5818) CAN_RX: RX #1021 ID=0x100 len=1[0m
+[0;32mI (5818) CAN_RX: 01[0m
+[0;32mI (5828) CAN_RX: RX #1022 ID=0x100 len=1[0m
+[0;32mI (5828) CAN_RX: 01[0m
+[0;32mI (5828) CAN_RX: RX #1023 ID=0x100 len=1[0m
+[0;32mI (5838) CAN_RX: 01[0m
+[0;32mI (5938) CAN_RX: STAT state=2 tec=0 rec=128 bus_err=1 total=1023[0m
+[0;32mI (6938) CAN_RX: STAT state=2 tec=0 rec=128 bus_err=1 total=1023[0m
+[0;32mI (7938) CAN_RX: STAT state=2 tec=0 rec=128 bus_err=1 total=1023[0m
+[0;32mI (8938) CAN_RX: STAT state=2 tec=0 rec=128 bus_err=1 total=1023[0m
+[0;32mI (9938) CAN_RX: STAT state=2 tec=0 rec=128 bus_err=1 total=1023[0m
+[0;32mI (10938) CAN_RX: STAT state=2 tec=0 rec=128 bus_err=1 total=1023[0m
+[0;32mI (11938) CAN_RX: STAT state=2 tec=0 rec=128 bus_err=1 total=1023[0m
+[0;32mI (12938) CAN_RX: STAT state=2 tec=0 rec=128 bus_err=1 total=1023[0m
+[0;32mI (13858) CAN_RX: RX #1024 ID=0x100 len=1[0m
+[0;32mI (13858) CAN_RX: 01[0m
+[0;32mI (13858) CAN_RX: RX #1025 ID=0x100 len=1[0m
+[0;32mI (13858) CAN_RX: 01[0m
+[0;32mI (13858) CAN_RX: RX #1026 ID=0x100 len=1[0m
+[0;32mI (13858) CAN_RX: 01[0m
+[0;32mI (13858) CAN_RX: RX #1027 ID=0x100 len=1[0m
+[0;32mI (13868) CAN_RX: 01[0m
+[0;32mI (13868) CAN_RX: RX #1028 ID=0x100 len=1[0m
+[0;32mI (13868) CAN_RX: 01[0m
+[0;32mI (13878) CAN_RX: RX #1029 ID=0x100 len=1[0m
+[0;32mI (13878) CAN_RX: 01[0m
+[0;32mI (13878) CAN_RX: RX #1030 ID=0x100 len=1[0m
+[0;32mI (13878) CAN_RX: 01[0m
+[0;32mI (13888) CAN_RX: RX #1031 ID=0x100 len=1[0m
+[0;32mI (13888) CAN_RX: 01[0m
+[0;32mI (13888) CAN_RX: RX #1032 ID=0x100 len=1[0m
+[0;32mI (13898) CAN_RX: 01[0m
+[0;32mI (13898) CAN_RX: RX #1033 ID=0x100 len=1[0m
+[0;32mI (13898) CAN_RX: 01[0m
+[0;32mI (13898) CAN_RX: RX #1034 ID=0x100 len=1[0m
+[0;32mI (13908) CAN_RX: 01[0m
+[0;32mI (13908) CAN_RX: RX #1035 ID=0x100 len=1[0m
+[0;32mI (13908) CAN_RX: 01[0m
+[0;32mI (13908) CAN_RX: RX #1036 ID=0x100 len=1[0m
+[0;32mI (13918) CAN_RX: 01[0m
+[0;32mI (13918) CAN_RX: RX #1037 ID=0x100 len=1[0m
+[0;32mI (13918) CAN_RX: 01[0m
+[0;32mI (13928) CAN_RX: RX #1038 ID=0x100 len=1[0m
+[0;32mI (13928) CAN_RX: 01[0m
+[0;32mI (13928) CAN_RX: RX #1039 ID=0x100 len=1[0m
+[0;32mI (13938) CAN_RX: 01[0m
+[0;32mI (13938) CAN_RX: RX #1040 ID=0x100 len=1[0m
+[0;32mI (13938) CAN_RX: 01[0m
+[0;32mI (13938) CAN_RX: RX #1041 ID=0x100 len=1[0m
+[0;32mI (13948) CAN_RX: 01[0m
+[0;32mI (13948) CAN_RX: RX #1042 ID=0x100 len=1[0m
+[0;32mI (13948) CAN_RX: 01[0m
+[0;32mI (13948) CAN_RX: RX #1043 ID=0x100 len=1[0m
+[0;32mI (13958) CAN_RX: 01[0m
+[0;32mI (13958) CAN_RX: RX #1044 ID=0x100 len=1[0m
+[0;32mI (13958) CAN_RX: 01[0m
+[0;32mI (13968) CAN_RX: RX #1045 ID=0x100 len=1[0m
+[0;32mI (13968) CAN_RX: 01[0m
+[0;32mI (13968) CAN_RX: RX #1046 ID=0x100 len=1[0m
+[0;32mI (13968) CAN_RX: 01[0m
+[0;32mI (13978) CAN_RX: RX #1047 ID=0x100 len=1[0m
+[0;32mI (13978) CAN_RX: 01[0m
+[0;32mI (13978) CAN_RX: RX #1048 ID=0x100 len=1[0m
+[0;32mI (13988) CAN_RX: 01[0m
+[0;32mI (13988) CAN_RX: RX #1049 ID=0x100 len=1[0m
+[0;32mI (13988) CAN_RX: 01[0m
+[0;32mI (13988) CAN_RX: RX #1050 ID=0x100 len=1[0m
+[0;32mI (13998) CAN_RX: 01[0m
+[0;32mI (13998) CAN_RX: RX #1051 ID=0x100 len=1[0m
+[0;32mI (13998) CAN_RX: 01[0m
+[0;32mI (13998) CAN_RX: RX #1052 ID=0x100 len=1[0m
+[0;32mI (14008) CAN_RX: 01[0m
+[0;32mI (14008) CAN_RX: RX #1053 ID=0x100 len=1[0m
+[0;32mI (14008) CAN_RX: 01[0m
+[0;32mI (14018) CAN_RX: RX #1054 ID=0x100 len=1[0m
+[0;32mI (14018) CAN_RX: 01[0m
+[0;32mI (14018) CAN_RX: RX #1055 ID=0x100 len=1[0m
+[0;32mI (14028) CAN_RX: 01[0m
+[0;32mI (14028) CAN_RX: RX #1056 ID=0x100 len=1[0m
+[0;32mI (14028) CAN_RX: 01[0m
+[0;32mI (14028) CAN_RX: RX #1057 ID=0x100 len=1[0m
+[0;32mI (14038) CAN_RX: 01[0m
+[0;32mI (14038) CAN_RX: RX #1058 ID=0x100 len=1[0m
+[0;32mI (14038) CAN_RX: 01[0m
+[0;32mI (14038) CAN_RX: RX #1059 ID=0x100 len=1[0m
+[0;32mI (14048) CAN_RX: 01[0m
+[0;32mI (14048) CAN_RX: RX #1060 ID=0x100 len=1[0m
+[0;32mI (14048) CAN_RX: 01[0m
+[0;32mI (14058) CAN_RX: RX #1061 ID=0x100 len=1[0m
+[0;32mI (14058) CAN_RX: 01[0m
+[0;32mI (14058) CAN_RX: RX #1062 ID=0x100 len=1[0m
+[0;32mI (14068) CAN_RX: 01[0m
+[0;32mI (14068) CAN_RX: RX #1063 ID=0x100 len=1[0m
+[0;32mI (14068) CAN_RX: 01[0m
+[0;32mI (14068) CAN_RX: RX #1064 ID=0x100 len=1[0m
+[0;32mI (14078) CAN_RX: 01[0m
+[0;32mI (14078) CAN_RX: RX #1065 ID=0x100 len=1[0m
+[0;32mI (14078) CAN_RX: 01[0m
+[0;32mI (14078) CAN_RX: RX #1066 ID=0x100 len=1[0m
+[0;32mI (14088) CAN_RX: 01[0m
+[0;32mI (14088) CAN_RX: RX #1067 ID=0x100 len=1[0m
+[0;32mI (14088) CAN_RX: 01[0m
+[0;32mI (14098) CAN_RX: RX #1068 ID=0x100 len=1[0m
+[0;32mI (14098) CAN_RX: 01[0m
+[0;32mI (14098) CAN_RX: RX #1069 ID=0x100 len=1[0m
+[0;32mI (14098) CAN_RX: 01[0m
+[0;32mI (14108) CAN_RX: RX #1070 ID=0x100 len=1[0m
+[0;32mI (14108) CAN_RX: 01[0m
+[0;32mI (14108) CAN_RX: RX #1071 ID=0x100 len=1[0m
+[0;32mI (14118) CAN_RX: 01[0m
+[0;32mI (14118) CAN_RX: RX #1072 ID=0x100 len=1[0m
+[0;32mI (14118) CAN_RX: 01[0m
+[0;32mI (14118) CAN_RX: RX #1073 ID=0x100 len=1[0m
+[0;32mI (14128) CAN_RX: 01[0m
+[0;32mI (14128) CAN_RX: RX #1074 ID=0x100 len=1[0m
+[0;32mI (14128) CAN_RX: 01[0m
+[0;32mI (14128) CAN_RX: RX #1075 ID=0x100 len=1[0m
+[0;32mI (14138) CAN_RX: 01[0m
+[0;32mI (14138) CAN_RX: RX #1076 ID=0x100 len=1[0m
+[0;32mI (14138) CAN_RX: 01[0m
+[0;32mI (14148) CAN_RX: RX #1077 ID=0x100 len=1[0m
+[0;32mI (14148) CAN_RX: 01[0m
+[0;32mI (14148) CAN_RX: RX #1078 ID=0x100 len=1[0m
+[0;32mI (14158) CAN_RX: 01[0m
+[0;32mI (14158) CAN_RX: RX #1079 ID=0x100 len=1[0m
+[0;32mI (14158) CAN_RX: 01[0m
+[0;32mI (14158) CAN_RX: RX #1080 ID=0x100 len=1[0m
+[0;32mI (14168) CAN_RX: 01[0m
+[0;32mI (14168) CAN_RX: RX #1081 ID=0x100 len=1[0m
+[0;32mI (14168) CAN_RX: 01[0m
+[0;32mI (14168) CAN_RX: RX #1082 ID=0x100 len=1[0m
+[0;32mI (14178) CAN_RX: 01[0m
+[0;32mI (14178) CAN_RX: RX #1083 ID=0x100 len=1[0m
+[0;32mI (14178) CAN_RX: 01[0m
+[0;32mI (14188) CAN_RX: RX #1084 ID=0x100 len=1[0m
+[0;32mI (14188) CAN_RX: 01[0m
+[0;32mI (14188) CAN_RX: RX #1085 ID=0x100 len=1[0m
+[0;32mI (14188) CAN_RX: 01[0m
+[0;32mI (14198) CAN_RX: RX #1086 ID=0x100 len=1[0m
+[0;32mI (14198) CAN_RX: 01[0m
+[0;32mI (14198) CAN_RX: RX #1087 ID=0x100 len=1[0m
+[0;32mI (14208) CAN_RX: 01[0m
+[0;32mI (14208) CAN_RX: RX #1088 ID=0x100 len=1[0m
+[0;32mI (14208) CAN_RX: 01[0m
+[0;32mI (14208) CAN_RX: RX #1089 ID=0x100 len=1[0m
+[0;32mI (14218) CAN_RX: 01[0m
+[0;32mI (14218) CAN_RX: RX #1090 ID=0x100 len=1[0m
+[0;32mI (14218) CAN_RX: 01[0m
+[0;32mI (14218) CAN_RX: RX #1091 ID=0x100 len=1[0m
+[0;32mI (14228) CAN_RX: 01[0m
+[0;32mI (14228) CAN_RX: RX #1092 ID=0x100 len=1[0m
+[0;32mI (14228) CAN_RX: 01[0m
+[0;32mI (14238) CAN_RX: RX #1093 ID=0x100 len=1[0m
+[0;32mI (14238) CAN_RX: 01[0m
+[0;32mI (14238) CAN_RX: RX #1094 ID=0x100 len=1[0m
+[0;32mI (14248) CAN_RX: 01[0m
+[0;32mI (14248) CAN_RX: RX #1095 ID=0x100 len=1[0m
+[0;32mI (14248) CAN_RX: 01[0m
+[0;32mI (14248) CAN_RX: RX #1096 ID=0x100 len=1[0m
+[0;32mI (14258) CAN_RX: 01[0m
+[0;32mI (14258) CAN_RX: RX #1097 ID=0x100 len=1[0m
+[0;32mI (14258) CAN_RX: 01[0m
+[0;32mI (14258) CAN_RX: RX #1098 ID=0x100 len=1[0m
+[0;32mI (14268) CAN_RX: 01[0m
+[0;32mI (14268) CAN_RX: RX #1099 ID=0x100 len=1[0m
+[0;32mI (14268) CAN_RX: 01[0m
+[0;32mI (14278) CAN_RX: RX #1100 ID=0x100 len=1[0m
+[0;32mI (14278) CAN_RX: 01[0m
+[0;32mI (14278) CAN_RX: RX #1101 ID=0x100 len=1[0m
+[0;32mI (14288) CAN_RX: 01[0m
+[0;32mI (14288) CAN_RX: RX #1102 ID=0x100 len=1[0m
+[0;32mI (14288) CAN_RX: 01[0m
+[0;32mI (14288) CAN_RX: RX #1103 ID=0x100 len=1[0m
+[0;32mI (14298) CAN_RX: 01[0m
+[0;32mI (14298) CAN_RX: RX #1104 ID=0x100 len=1[0m
+[0;32mI (14298) CAN_RX: 01[0m
+[0;32mI (14298) CAN_RX: RX #1105 ID=0x100 len=1[0m
+[0;32mI (14308) CAN_RX: 01[0m
+[0;32mI (14308) CAN_RX: RX #1106 ID=0x100 len=1[0m
+[0;32mI (14308) CAN_RX: 01[0m
+[0;32mI (14318) CAN_RX: RX #1107 ID=0x100 len=1[0m
+[0;32mI (14318) CAN_RX: 01[0m
+[0;32mI (14318) CAN_RX: RX #1108 ID=0x100 len=1[0m
+[0;32mI (14318) CAN_RX: 01[0m
+[0;32mI (14328) CAN_RX: RX #1109 ID=0x100 len=1[0m
+[0;32mI (14328) CAN_RX: 01[0m
+[0;32mI (14328) CAN_RX: RX #1110 ID=0x100 len=1[0m
+[0;32mI (14338) CAN_RX: 01[0m
+[0;32mI (14338) CAN_RX: RX #1111 ID=0x100 len=1[0m
+[0;32mI (14338) CAN_RX: 01[0m
+[0;32mI (14338) CAN_RX: RX #1112 ID=0x100 len=1[0m
+[0;32mI (14348) CAN_RX: 01[0m
+[0;32mI (14348) CAN_RX: RX #1113 ID=0x100 len=1[0m
+[0;32mI (14348) CAN_RX: 01[0m
+[0;32mI (14348) CAN_RX: RX #1114 ID=0x100 len=1[0m
+[0;32mI (14358) CAN_RX: 01[0m
+[0;32mI (14358) CAN_RX: RX #1115 ID=0x100 len=1[0m
+[0;32mI (14358) CAN_RX: 01[0m
+[0;32mI (14368) CAN_RX: RX #1116 ID=0x100 len=1[0m
+[0;32mI (14368) CAN_RX: 01[0m
+[0;32mI (14368) CAN_RX: RX #1117 ID=0x100 len=1[0m
+[0;32mI (14378) CAN_RX: 01[0m
+[0;32mI (14378) CAN_RX: RX #1118 ID=0x100 len=1[0m
+[0;32mI (14378) CAN_RX: 01[0m
+[0;32mI (14378) CAN_RX: RX #1119 ID=0x100 len=1[0m
+[0;32mI (14388) CAN_RX: 01[0m
+[0;32mI (14388) CAN_RX: RX #1120 ID=0x100 len=1[0m
+[0;32mI (14388) CAN_RX: 01[0m
+[0;32mI (14388) CAN_RX: RX #1121 ID=0x100 len=1[0m
+[0;32mI (14398) CAN_RX: 01[0m
+[0;32mI (14398) CAN_RX: RX #1122 ID=0x100 len=1[0m
+[0;32mI (14398) CAN_RX: 01[0m
+[0;32mI (14408) CAN_RX: RX #1123 ID=0x100 len=1[0m
+[0;32mI (14408) CAN_RX: 01[0m
+[0;32mI (14408) CAN_RX: RX #1124 ID=0x100 len=1[0m
+[0;32mI (14408) CAN_RX: 01[0m
+[0;32mI (14418) CAN_RX: RX #1125 ID=0x100 len=1[0m
+[0;32mI (14418) CAN_RX: 01[0m
+[0;32mI (14418) CAN_RX: RX #1126 ID=0x100 len=1[0m
+[0;32mI (14428) CAN_RX: 01[0m
+[0;32mI (14428) CAN_RX: RX #1127 ID=0x100 len=1[0m
+[0;32mI (14428) CAN_RX: 01[0m
+[0;32mI (14428) CAN_RX: RX #1128 ID=0x100 len=1[0m
+[0;32mI (14438) CAN_RX: 01[0m
+[0;32mI (14438) CAN_RX: RX #1129 ID=0x100 len=1[0m
+[0;32mI (14438) CAN_RX: 01[0m
+[0;32mI (14438) CAN_RX: RX #1130 ID=0x100 len=1[0m
+[0;32mI (14448) CAN_RX: 01[0m
+[0;32mI (14448) CAN_RX: RX #1131 ID=0x100 len=1[0m
+[0;32mI (14448) CAN_RX: 01[0m
+[0;32mI (14458) CAN_RX: RX #1132 ID=0x100 len=1[0m
+[0;32mI (14458) CAN_RX: 01[0m
+[0;32mI (14458) CAN_RX: RX #1133 ID=0x100 len=1[0m
+[0;32mI (14468) CAN_RX: 01[0m
+[0;32mI (14468) CAN_RX: RX #1134 ID=0x100 len=1[0m
+[0;32mI (14468) CAN_RX: 01[0m
+[0;32mI (14468) CAN_RX: RX #1135 ID=0x100 len=1[0m
+[0;32mI (14478) CAN_RX: 01[0m
+[0;32mI (14478) CAN_RX: RX #1136 ID=0x100 len=1[0m
+[0;32mI (14478) CAN_RX: 01[0m
+[0;32mI (14478) CAN_RX: RX #1137 ID=0x100 len=1[0m
+[0;32mI (14488) CAN_RX: 01[0m
+[0;32mI (14488) CAN_RX: RX #1138 ID=0x100 len=1[0m
+[0;32mI (14488) CAN_RX: 01[0m
+[0;32mI (14498) CAN_RX: RX #1139 ID=0x100 len=1[0m
+[0;32mI (14498) CAN_RX: 01[0m
+[0;32mI (14498) CAN_RX: RX #1140 ID=0x100 len=1[0m
+[0;32mI (14508) CAN_RX: 01[0m
+[0;32mI (14508) CAN_RX: RX #1141 ID=0x100 len=1[0m
+[0;32mI (14508) CAN_RX: 01[0m
+[0;32mI (14508) CAN_RX: RX #1142 ID=0x100 len=1[0m
+[0;32mI (14518) CAN_RX: 01[0m
+[0;32mI (14518) CAN_RX: RX #1143 ID=0x100 len=1[0m
+[0;32mI (14518) CAN_RX: 01[0m
+[0;32mI (14518) CAN_RX: RX #1144 ID=0x100 len=1[0m
+[0;32mI (14528) CAN_RX: 01[0m
+[0;32mI (14528) CAN_RX: RX #1145 ID=0x100 len=1[0m
+[0;32mI (14528) CAN_RX: 01[0m
+[0;32mI (14538) CAN_RX: RX #1146 ID=0x100 len=1[0m
+[0;32mI (14538) CAN_RX: 01[0m
+[0;32mI (14538) CAN_RX: RX #1147 ID=0x100 len=1[0m
+[0;32mI (14538) CAN_RX: 01[0m
+[0;32mI (14548) CAN_RX: RX #1148 ID=0x100 len=1[0m
+[0;32mI (14548) CAN_RX: 01[0m
+[0;32mI (14548) CAN_RX: RX #1149 ID=0x100 len=1[0m
+[0;32mI (14558) CAN_RX: 01[0m
+[0;32mI (14558) CAN_RX: RX #1150 ID=0x100 len=1[0m
+[0;32mI (14558) CAN_RX: 01[0m
+[0;32mI (14558) CAN_RX: RX #1151 ID=0x100 len=1[0m
+[0;32mI (14568) CAN_RX: 01[0m
+[0;32mI (14568) CAN_RX: RX #1152 ID=0x100 len=1[0m
+[0;32mI (14568) CAN_RX: 01[0m
+[0;32mI (14568) CAN_RX: RX #1153 ID=0x100 len=1[0m
+[0;32mI (14578) CAN_RX: 01[0m
+[0;32mI (14578) CAN_RX: RX #1154 ID=0x100 len=1[0m
+[0;32mI (14578) CAN_RX: 01[0m
+[0;32mI (14588) CAN_RX: RX #1155 ID=0x100 len=1[0m
+[0;32mI (14588) CAN_RX: 01[0m
+[0;32mI (14588) CAN_RX: RX #1156 ID=0x100 len=1[0m
+[0;32mI (14598) CAN_RX: 01[0m
+[0;32mI (14598) CAN_RX: RX #1157 ID=0x100 len=1[0m
+[0;32mI (14598) CAN_RX: 01[0m
+[0;32mI (14598) CAN_RX: RX #1158 ID=0x100 len=1[0m
+[0;32mI (14608) CAN_RX: 01[0m
+[0;32mI (14608) CAN_RX: RX #1159 ID=0x100 len=1[0m
+[0;32mI (14608) CAN_RX: 01[0m
+[0;32mI (14608) CAN_RX: RX #1160 ID=0x100 len=1[0m
+[0;32mI (14618) CAN_RX: 01[0m
+[0;32mI (14618) CAN_RX: RX #1161 ID=0x100 len=1[0m
+[0;32mI (14618) CAN_RX: 01[0m
+[0;32mI (14628) CAN_RX: RX #1162 ID=0x100 len=1[0m
+[0;32mI (14628) CAN_RX: 01[0m
+[0;32mI (14628) CAN_RX: RX #1163 ID=0x100 len=1[0m
+[0;32mI (14628) CAN_RX: 01[0m
+[0;32mI (14638) CAN_RX: RX #1164 ID=0x100 len=1[0m
+[0;32mI (14638) CAN_RX: 01[0m
+[0;32mI (14638) CAN_RX: RX #1165 ID=0x100 len=1[0m
+[0;32mI (14648) CAN_RX: 01[0m
+[0;32mI (14648) CAN_RX: RX #1166 ID=0x100 len=1[0m
+[0;32mI (14648) CAN_RX: 01[0m
+[0;32mI (14648) CAN_RX: RX #1167 ID=0x100 len=1[0m
+[0;32mI (14658) CAN_RX: 01[0m
+[0;32mI (14658) CAN_RX: RX #1168 ID=0x100 len=1[0m
+[0;32mI (14658) CAN_RX: 01[0m
+[0;32mI (14668) CAN_RX: RX #1169 ID=0x100 len=1[0m
+[0;32mI (14668) CAN_RX: 01[0m
+[0;32mI (14668) CAN_RX: RX #1170 ID=0x100 len=1[0m
+[0;32mI (14668) CAN_RX: 01[0m
+[0;32mI (14678) CAN_RX: RX #1171 ID=0x100 len=1[0m
+[0;32mI (14678) CAN_RX: 01[0m
+[0;32mI (14678) CAN_RX: RX #1172 ID=0x100 len=1[0m
+[0;32mI (14688) CAN_RX: 01[0m
+[0;32mI (14688) CAN_RX: RX #1173 ID=0x100 len=1[0m
+[0;32mI (14688) CAN_RX: 01[0m
+[0;32mI (14688) CAN_RX: RX #1174 ID=0x100 len=1[0m
+[0;32mI (14698) CAN_RX: 01[0m
+[0;32mI (14698) CAN_RX: RX #1175 ID=0x100 len=1[0m
+[0;32mI (14698) CAN_RX: 01[0m
+[0;32mI (14698) CAN_RX: RX #1176 ID=0x100 len=1[0m
+[0;32mI (14708) CAN_RX: 01[0m
+[0;32mI (14708) CAN_RX: RX #1177 ID=0x100 len=1[0m
+[0;32mI (14708) CAN_RX: 01[0m
+[0;32mI (14718) CAN_RX: RX #1178 ID=0x100 len=1[0m
+[0;32mI (14718) CAN_RX: 01[0m
+[0;32mI (14718) CAN_RX: RX #1179 ID=0x100 len=1[0m
+[0;32mI (14728) CAN_RX: 01[0m
+[0;32mI (14728) CAN_RX: RX #1180 ID=0x100 len=1[0m
+[0;32mI (14728) CAN_RX: 01[0m
+[0;32mI (14728) CAN_RX: RX #1181 ID=0x100 len=1[0m
+[0;32mI (14738) CAN_RX: 01[0m
+[0;32mI (14738) CAN_RX: RX #1182 ID=0x100 len=1[0m
+[0;32mI (14738) CAN_RX: 01[0m
+[0;32mI (14738) CAN_RX: RX #1183 ID=0x100 len=1[0m
+[0;32mI (14748) CAN_RX: 01[0m
+[0;32mI (14748) CAN_RX: RX #1184 ID=0x100 len=1[0m
+[0;32mI (14748) CAN_RX: 01[0m
+[0;32mI (14758) CAN_RX: RX #1185 ID=0x100 len=1[0m
+[0;32mI (14758) CAN_RX: 01[0m
+[0;32mI (14758) CAN_RX: RX #1186 ID=0x100 len=1[0m
+[0;32mI (14758) CAN_RX: 01[0m
+[0;32mI (14768) CAN_RX: RX #1187 ID=0x100 len=1[0m
+[0;32mI (14768) CAN_RX: 01[0m
+[0;32mI (14768) CAN_RX: RX #1188 ID=0x100 len=1[0m
+[0;32mI (14778) CAN_RX: 01[0m
+[0;32mI (14778) CAN_RX: RX #1189 ID=0x100 len=1[0m
+[0;32mI (14778) CAN_RX: 01[0m
+[0;32mI (14778) CAN_RX: RX #1190 ID=0x100 len=1[0m
+[0;32mI (14788) CAN_RX: 01[0m
+[0;32mI (14788) CAN_RX: RX #1191 ID=0x100 len=1[0m
+[0;32mI (14788) CAN_RX: 01[0m
+[0;32mI (14788) CAN_RX: RX #1192 ID=0x100 len=1[0m
+[0;32mI (14798) CAN_RX: 01[0m
+[0;32mI (14798) CAN_RX: RX #1193 ID=0x100 len=1[0m
+[0;32mI (14798) CAN_RX: 01[0m
+[0;32mI (14808) CAN_RX: RX #1194 ID=0x100 len=1[0m
+[0;32mI (14808) CAN_RX: 01[0m
+[0;32mI (14808) CAN_RX: RX #1195 ID=0x100 len=1[0m
+[0;32mI (14818) CAN_RX: 01[0m
+[0;32mI (14818) CAN_RX: RX #1196 ID=0x100 len=1[0m
+[0;32mI (14818) CAN_RX: 01[0m
+[0;32mI (14818) CAN_RX: RX #1197 ID=0x100 len=1[0m
+[0;32mI (14828) CAN_RX: 01[0m
+[0;32mI (14828) CAN_RX: RX #1198 ID=0x100 len=1[0m
+[0;32mI (14828) CAN_RX: 01[0m
+[0;32mI (14828) CAN_RX: RX #1199 ID=0x100 len=1[0m
+[0;32mI (14838) CAN_RX: 01[0m
+[0;32mI (14838) CAN_RX: RX #1200 ID=0x100 len=1[0m
+[0;32mI (14838) CAN_RX: 01[0m
+[0;32mI (14848) CAN_RX: RX #1201 ID=0x100 len=1[0m
+[0;32mI (14848) CAN_RX: 01[0m
+[0;32mI (14848) CAN_RX: RX #1202 ID=0x100 len=1[0m
+[0;32mI (14848) CAN_RX: 01[0m
+[0;32mI (14858) CAN_RX: RX #1203 ID=0x100 len=1[0m
+[0;32mI (14858) CAN_RX: 01[0m
+[0;32mI (14858) CAN_RX: RX #1204 ID=0x100 len=1[0m
+[0;32mI (14868) CAN_RX: 01[0m
+[0;32mI (14868) CAN_RX: RX #1205 ID=0x100 len=1[0m
+[0;32mI (14868) CAN_RX: 01[0m
+[0;32mI (14868) CAN_RX: RX #1206 ID=0x100 len=1[0m
+[0;32mI (14878) CAN_RX: 01[0m
+[0;32mI (14878) CAN_RX: RX #1207 ID=0x100 len=1[0m
+[0;32mI (14878) CAN_RX: 01[0m
+[0;32mI (14888) CAN_RX: RX #1208 ID=0x100 len=1[0m
+[0;32mI (14888) CAN_RX: 01[0m
+[0;32mI (14888) CAN_RX: RX #1209 ID=0x100 len=1[0m
+[0;32mI (14888) CAN_RX: 01[0m
+[0;32mI (14898) CAN_RX: RX #1210 ID=0x100 len=1[0m
+[0;32mI (14898) CAN_RX: 01[0m
+[0;32mI (14898) CAN_RX: RX #1211 ID=0x100 len=1[0m
+[0;32mI (14908) CAN_RX: 01[0m
+[0;32mI (14908) CAN_RX: RX #1212 ID=0x100 len=1[0m
+[0;32mI (14908) CAN_RX: 01[0m
+[0;32mI (14908) CAN_RX: RX #1213 ID=0x100 len=1[0m
+[0;32mI (14918) CAN_RX: 01[0m
+[0;32mI (14918) CAN_RX: RX #1214 ID=0x100 len=1[0m
+[0;32mI (14918) CAN_RX: 01[0m
+[0;32mI (14918) CAN_RX: RX #1215 ID=0x100 len=1[0m
+[0;32mI (14928) CAN_RX: 01[0m
+[0;32mI (14928) CAN_RX: RX #1216 ID=0x100 len=1[0m
+[0;32mI (14928) CAN_RX: 01[0m
+[0;32mI (14938) CAN_RX: RX #1217 ID=0x100 len=1[0m
+[0;32mI (14938) CAN_RX: 01[0m
+[0;32mI (14938) CAN_RX: RX #1218 ID=0x100 len=1[0m
+[0;32mI (14948) CAN_RX: 01[0m
+[0;32mI (14948) CAN_RX: RX #1219 ID=0x100 len=1[0m
+[0;32mI (14948) CAN_RX: 01[0m
+[0;32mI (14948) CAN_RX: RX #1220 ID=0x100 len=1[0m
+[0;32mI (14958) CAN_RX: 01[0m
+[0;32mI (14958) CAN_RX: RX #1221 ID=0x100 len=1[0m
+[0;32mI (14958) CAN_RX: 01[0m
+[0;32mI (14958) CAN_RX: RX #1222 ID=0x100 len=1[0m
+[0;32mI (14968) CAN_RX: 01[0m
+[0;32mI (14968) CAN_RX: RX #1223 ID=0x100 len=1[0m
+[0;32mI (14968) CAN_RX: 01[0m
+[0;32mI (14978) CAN_RX: RX #1224 ID=0x100 len=1[0m
+[0;32mI (14978) CAN_RX: 01[0m
+[0;32mI (14978) CAN_RX: RX #1225 ID=0x100 len=1[0m
+[0;32mI (14978) CAN_RX: 01[0m
+[0;32mI (14988) CAN_RX: RX #1226 ID=0x100 len=1[0m
+[0;32mI (14988) CAN_RX: 01[0m
+[0;32mI (14988) CAN_RX: RX #1227 ID=0x100 len=1[0m
+[0;32mI (14998) CAN_RX: 01[0m
+[0;32mI (14998) CAN_RX: RX #1228 ID=0x100 len=1[0m
+[0;32mI (14998) CAN_RX: 01[0m
+[0;32mI (14998) CAN_RX: RX #1229 ID=0x100 len=1[0m
+[0;32mI (15008) CAN_RX: 01[0m
+[0;32mI (15008) CAN_RX: RX #1230 ID=0x100 len=1[0m
+[0;32mI (15008) CAN_RX: 01[0m
+[0;32mI (15008) CAN_RX: RX #1231 ID=0x100 len=1[0m
+[0;32mI (15018) CAN_RX: 01[0m
+[0;32mI (15018) CAN_RX: RX #1232 ID=0x100 len=1[0m
+[0;32mI (15018) CAN_RX: 01[0m
+[0;32mI (15028) CAN_RX: RX #1233 ID=0x100 len=1[0m
+[0;32mI (15028) CAN_RX: 01[0m
+[0;32mI (15028) CAN_RX: RX #1234 ID=0x100 len=1[0m
+[0;32mI (15038) CAN_RX: 01[0m
+[0;32mI (15038) CAN_RX: RX #1235 ID=0x100 len=1[0m
+[0;32mI (15038) CAN_RX: 01[0m
+[0;32mI (15038) CAN_RX: RX #1236 ID=0x100 len=1[0m
+[0;32mI (15048) CAN_RX: 01[0m
+[0;32mI (15048) CAN_RX: RX #1237 ID=0x100 len=1[0m
+[0;32mI (15048) CAN_RX: 01[0m
+[0;32mI (15048) CAN_RX: RX #1238 ID=0x100 len=1[0m
+[0;32mI (15058) CAN_RX: 01[0m
+[0;32mI (15058) CAN_RX: RX #1239 ID=0x100 len=1[0m
+[0;32mI (15058) CAN_RX: 01[0m
+[0;32mI (15068) CAN_RX: RX #1240 ID=0x100 len=1[0m
+[0;32mI (15068) CAN_RX: 01[0m
+[0;32mI (15068) CAN_RX: RX #1241 ID=0x100 len=1[0m
+[0;32mI (15068) CAN_RX: 01[0m
+[0;32mI (15078) CAN_RX: RX #1242 ID=0x100 len=1[0m
+[0;32mI (15078) CAN_RX: 01[0m
+[0;32mI (15078) CAN_RX: RX #1243 ID=0x100 len=1[0m
+[0;32mI (15088) CAN_RX: 01[0m
+[0;32mI (15088) CAN_RX: RX #1244 ID=0x100 len=1[0m
+[0;32mI (15088) CAN_RX: 01[0m
+[0;32mI (15088) CAN_RX: RX #1245 ID=0x100 len=1[0m
+[0;32mI (15098) CAN_RX: 01[0m
+[0;32mI (15098) CAN_RX: RX #1246 ID=0x100 len=1[0m
+[0;32mI (15098) CAN_RX: 01[0m
+[0;32mI (15108) CAN_RX: RX #1247 ID=0x100 len=1[0m
+[0;32mI (15108) CAN_RX: 01[0m
+[0;32mI (15108) CAN_RX: RX #1248 ID=0x100 len=1[0m
+[0;32mI (15108) CAN_RX: 01[0m
+[0;32mI (15118) CAN_RX: RX #1249 ID=0x100 len=1[0m
+[0;32mI (15118) CAN_RX: 01[0m
+[0;32mI (15118) CAN_RX: RX #1250 ID=0x100 len=1[0m
+[0;32mI (15128) CAN_RX: 01[0m
+[0;32mI (15128) CAN_RX: RX #1251 ID=0x100 len=1[0m
+[0;32mI (15128) CAN_RX: 01[0m
+[0;32mI (15128) CAN_RX: RX #1252 ID=0x100 len=1[0m
+[0;32mI (15138) CAN_RX: 01[0m
+[0;32mI (15138) CAN_RX: RX #1253 ID=0x100 len=1[0m
+[0;32mI (15138) CAN_RX: 01[0m
+[0;32mI (15138) CAN_RX: RX #1254 ID=0x100 len=1[0m
+[0;32mI (15148) CAN_RX: 01[0m
+[0;32mI (15148) CAN_RX: RX #1255 ID=0x100 len=1[0m
+[0;32mI (15148) CAN_RX: 01[0m
+[0;32mI (15158) CAN_RX: RX #1256 ID=0x100 len=1[0m
+[0;32mI (15158) CAN_RX: 01[0m
+[0;32mI (15158) CAN_RX: RX #1257 ID=0x100 len=1[0m
+[0;32mI (15168) CAN_RX: 01[0m
+[0;32mI (15168) CAN_RX: RX #1258 ID=0x100 len=1[0m
+[0;32mI (15168) CAN_RX: 01[0m
+[0;32mI (15168) CAN_RX: RX #1259 ID=0x100 len=1[0m
+[0;32mI (15178) CAN_RX: 01[0m
+[0;32mI (15178) CAN_RX: RX #1260 ID=0x100 len=1[0m
+[0;32mI (15178) CAN_RX: 01[0m
+[0;32mI (15178) CAN_RX: RX #1261 ID=0x100 len=1[0m
+[0;32mI (15188) CAN_RX: 01[0m
+[0;32mI (15188) CAN_RX: RX #1262 ID=0x100 len=1[0m
+[0;32mI (15188) CAN_RX: 01[0m
+[0;32mI (15198) CAN_RX: RX #1263 ID=0x100 len=1[0m
+[0;32mI (15198) CAN_RX: 01[0m
+[0;32mI (15198) CAN_RX: RX #1264 ID=0x100 len=1[0m
+[0;32mI (15198) CAN_RX: 01[0m
+[0;32mI (15208) CAN_RX: RX #1265 ID=0x100 len=1[0m
+[0;32mI (15208) CAN_RX: 01[0m
+[0;32mI (15208) CAN_RX: RX #1266 ID=0x100 len=1[0m
+[0;32mI (15218) CAN_RX: 01[0m
+[0;32mI (15218) CAN_RX: RX #1267 ID=0x100 len=1[0m
+[0;32mI (15218) CAN_RX: 01[0m
+[0;32mI (15218) CAN_RX: RX #1268 ID=0x100 len=1[0m
+[0;32mI (15228) CAN_RX: 01[0m
+[0;32mI (15228) CAN_RX: RX #1269 ID=0x100 len=1[0m
+[0;32mI (15228) CAN_RX: 01[0m
+[0;32mI (15228) CAN_RX: RX #1270 ID=0x100 len=1[0m
+[0;32mI (15238) CAN_RX: 01[0m
+[0;32mI (15238) CAN_RX: RX #1271 ID=0x100 len=1[0m
+[0;32mI (15238) CAN_RX: 01[0m
+[0;32mI (15248) CAN_RX: RX #1272 ID=0x100 len=1[0m
+[0;32mI (15248) CAN_RX: 01[0m
+[0;32mI (15248) CAN_RX: RX #1273 ID=0x100 len=1[0m
+[0;32mI (15258) CAN_RX: 01[0m
+[0;32mI (15258) CAN_RX: RX #1274 ID=0x100 len=1[0m
+[0;32mI (15258) CAN_RX: 01[0m
+[0;32mI (15258) CAN_RX: RX #1275 ID=0x100 len=1[0m
+[0;32mI (15268) CAN_RX: 01[0m
+[0;32mI (15268) CAN_RX: RX #1276 ID=0x100 len=1[0m
+[0;32mI (15268) CAN_RX: 01[0m
+[0;32mI (15268) CAN_RX: RX #1277 ID=0x100 len=1[0m
+[0;32mI (15278) CAN_RX: 01[0m
+[0;32mI (15278) CAN_RX: RX #1278 ID=0x100 len=1[0m
+[0;32mI (15278) CAN_RX: 01[0m
+[0;32mI (15288) CAN_RX: RX #1279 ID=0x100 len=1[0m
+[0;32mI (15288) CAN_RX: 01[0m
+[0;32mI (15288) CAN_RX: RX #1280 ID=0x100 len=1[0m
+[0;32mI (15298) CAN_RX: 01[0m
+[0;32mI (15298) CAN_RX: RX #1281 ID=0x100 len=1[0m
+[0;32mI (15298) CAN_RX: 01[0m
+[0;32mI (15298) CAN_RX: RX #1282 ID=0x100 len=1[0m
+[0;32mI (15308) CAN_RX: 01[0m
+[0;32mI (15308) CAN_RX: RX #1283 ID=0x100 len=1[0m
+[0;32mI (15308) CAN_RX: 01[0m
+[0;32mI (15308) CAN_RX: RX #1284 ID=0x100 len=1[0m
+[0;32mI (15318) CAN_RX: 01[0m
+[0;32mI (15318) CAN_RX: RX #1285 ID=0x100 len=1[0m
+[0;32mI (15318) CAN_RX: 01[0m
+[0;32mI (15328) CAN_RX: RX #1286 ID=0x100 len=1[0m
+[0;32mI (15328) CAN_RX: 01[0m
+[0;32mI (15328) CAN_RX: RX #1287 ID=0x100 len=1[0m
+[0;32mI (15328) CAN_RX: 01[0m
+[0;32mI (15338) CAN_RX: RX #1288 ID=0x100 len=1[0m
+[0;32mI (15338) CAN_RX: 01[0m
+[0;32mI (15338) CAN_RX: RX #1289 ID=0x100 len=1[0m
+[0;32mI (15348) CAN_RX: 01[0m
+[0;32mI (15348) CAN_RX: RX #1290 ID=0x100 len=1[0m
+[0;32mI (15348) CAN_RX: 01[0m
+[0;32mI (15348) CAN_RX: RX #1291 ID=0x100 len=1[0m
+[0;32mI (15358) CAN_RX: 01[0m
+[0;32mI (15358) CAN_RX: RX #1292 ID=0x100 len=1[0m
+[0;32mI (15358) CAN_RX: 01[0m
+[0;32mI (15358) CAN_RX: RX #1293 ID=0x100 len=1[0m
+[0;32mI (15368) CAN_RX: 01[0m
+[0;32mI (15368) CAN_RX: RX #1294 ID=0x100 len=1[0m
+[0;32mI (15368) CAN_RX: 01[0m
+[0;32mI (15378) CAN_RX: RX #1295 ID=0x100 len=1[0m
+[0;32mI (15378) CAN_RX: 01[0m
+[0;32mI (15378) CAN_RX: RX #1296 ID=0x100 len=1[0m
+[0;32mI (15388) CAN_RX: 01[0m
+[0;32mI (15388) CAN_RX: RX #1297 ID=0x100 len=1[0m
+[0;32mI (15388) CAN_RX: 01[0m
+[0;32mI (15388) CAN_RX: RX #1298 ID=0x100 len=1[0m
+[0;32mI (15398) CAN_RX: 01[0m
+[0;32mI (15398) CAN_RX: RX #1299 ID=0x100 len=1[0m
+[0;32mI (15398) CAN_RX: 01[0m
+[0;32mI (15398) CAN_RX: RX #1300 ID=0x100 len=1[0m
+[0;32mI (15408) CAN_RX: 01[0m
+[0;32mI (15408) CAN_RX: RX #1301 ID=0x100 len=1[0m
+[0;32mI (15408) CAN_RX: 01[0m
+[0;32mI (15418) CAN_RX: RX #1302 ID=0x100 len=1[0m
+[0;32mI (15418) CAN_RX: 01[0m
+[0;32mI (15418) CAN_RX: RX #1303 ID=0x100 len=1[0m
+[0;32mI (15418) CAN_RX: 01[0m
+[0;32mI (15428) CAN_RX: RX #1304 ID=0x100 len=1[0m
+[0;32mI (15428) CAN_RX: 01[0m
+[0;32mI (15428) CAN_RX: RX #1305 ID=0x100 len=1[0m
+[0;32mI (15438) CAN_RX: 01[0m
+[0;32mI (15438) CAN_RX: RX #1306 ID=0x100 len=1[0m
+[0;32mI (15438) CAN_RX: 01[0m
+[0;32mI (15438) CAN_RX: RX #1307 ID=0x100 len=1[0m
+[0;32mI (15448) CAN_RX: 01[0m
+[0;32mI (15448) CAN_RX: RX #1308 ID=0x100 len=1[0m
+[0;32mI (15448) CAN_RX: 01[0m
+[0;32mI (15448) CAN_RX: RX #1309 ID=0x100 len=1[0m
+[0;32mI (15458) CAN_RX: 01[0m
+[0;32mI (15458) CAN_RX: RX #1310 ID=0x100 len=1[0m
+[0;32mI (15458) CAN_RX: 01[0m
+[0;32mI (15468) CAN_RX: RX #1311 ID=0x100 len=1[0m
+[0;32mI (15468) CAN_RX: 01[0m
+[0;32mI (15468) CAN_RX: RX #1312 ID=0x100 len=1[0m
+[0;32mI (15478) CAN_RX: 01[0m
+[0;32mI (15478) CAN_RX: RX #1313 ID=0x100 len=1[0m
+[0;32mI (15478) CAN_RX: 01[0m
+[0;32mI (15478) CAN_RX: RX #1314 ID=0x100 len=1[0m
+[0;32mI (15488) CAN_RX: 01[0m
+[0;32mI (15488) CAN_RX: RX #1315 ID=0x100 len=1[0m
+[0;32mI (15488) CAN_RX: 01[0m
+[0;32mI (15488) CAN_RX: RX #1316 ID=0x100 len=1[0m
+[0;32mI (15498) CAN_RX: 01[0m
+[0;32mI (15498) CAN_RX: RX #1317 ID=0x100 len=1[0m
+[0;32mI (15498) CAN_RX: 01[0m
+[0;32mI (15508) CAN_RX: RX #1318 ID=0x100 len=1[0m
+[0;32mI (15508) CAN_RX: 01[0m
+[0;32mI (15508) CAN_RX: RX #1319 ID=0x100 len=1[0m
+[0;32mI (15518) CAN_RX: 01[0m
+[0;32mI (15518) CAN_RX: RX #1320 ID=0x100 len=1[0m
+[0;32mI (15518) CAN_RX: 01[0m
+[0;32mI (15518) CAN_RX: RX #1321 ID=0x100 len=1[0m
+[0;32mI (15528) CAN_RX: 01[0m
+[0;32mI (15528) CAN_RX: RX #1322 ID=0x100 len=1[0m
+[0;32mI (15528) CAN_RX: 01[0m
+[0;32mI (15528) CAN_RX: RX #1323 ID=0x100 len=1[0m
+[0;32mI (15538) CAN_RX: 01[0m
+[0;32mI (15538) CAN_RX: RX #1324 ID=0x100 len=1[0m
+[0;32mI (15538) CAN_RX: 01[0m
+[0;32mI (15548) CAN_RX: RX #1325 ID=0x100 len=1[0m
+[0;32mI (15548) CAN_RX: 01[0m
+[0;32mI (15548) CAN_RX: RX #1326 ID=0x100 len=1[0m
+[0;32mI (15548) CAN_RX: 01[0m
+[0;32mI (15558) CAN_RX: RX #1327 ID=0x100 len=1[0m
+[0;32mI (15558) CAN_RX: 01[0m
+[0;32mI (15558) CAN_RX: RX #1328 ID=0x100 len=1[0m
+[0;32mI (15568) CAN_RX: 01[0m
+[0;32mI (15568) CAN_RX: RX #1329 ID=0x100 len=1[0m
+[0;32mI (15568) CAN_RX: 01[0m
+[0;32mI (15568) CAN_RX: RX #1330 ID=0x100 len=1[0m
+[0;32mI (15578) CAN_RX: 01[0m
+[0;32mI (15578) CAN_RX: RX #1331 ID=0x100 len=1[0m
+[0;32mI (15578) CAN_RX: 01[0m
+[0;32mI (15578) CAN_RX: RX #1332 ID=0x100 len=1[0m
+[0;32mI (15588) CAN_RX: 01[0m
+[0;32mI (15588) CAN_RX: RX #1333 ID=0x100 len=1[0m
+[0;32mI (15588) CAN_RX: 01[0m
+[0;32mI (15598) CAN_RX: RX #1334 ID=0x100 len=1[0m
+[0;32mI (15598) CAN_RX: 01[0m
+[0;32mI (15598) CAN_RX: RX #1335 ID=0x100 len=1[0m
+[0;32mI (15608) CAN_RX: 01[0m
+[0;32mI (15608) CAN_RX: RX #1336 ID=0x100 len=1[0m
+[0;32mI (15608) CAN_RX: 01[0m
+[0;32mI (15608) CAN_RX: RX #1337 ID=0x100 len=1[0m
+[0;32mI (15618) CAN_RX: 01[0m
+[0;32mI (15618) CAN_RX: RX #1338 ID=0x100 len=1[0m
+[0;32mI (15618) CAN_RX: 01[0m
+[0;32mI (15618) CAN_RX: RX #1339 ID=0x100 len=1[0m
+[0;32mI (15628) CAN_RX: 01[0m
+[0;32mI (15628) CAN_RX: RX #1340 ID=0x100 len=1[0m
+[0;32mI (15628) CAN_RX: 01[0m
+[0;32mI (15638) CAN_RX: RX #1341 ID=0x100 len=1[0m
+[0;32mI (15638) CAN_RX: 01[0m
+[0;32mI (15638) CAN_RX: RX #1342 ID=0x100 len=1[0m
+[0;32mI (15638) CAN_RX: 01[0m
+[0;32mI (15648) CAN_RX: RX #1343 ID=0x100 len=1[0m
+[0;32mI (15648) CAN_RX: 01[0m
+[0;32mI (15648) CAN_RX: RX #1344 ID=0x100 len=1[0m
+[0;32mI (15658) CAN_RX: 01[0m
+[0;32mI (15658) CAN_RX: RX #1345 ID=0x100 len=1[0m
+[0;32mI (15658) CAN_RX: 01[0m
+[0;32mI (15658) CAN_RX: RX #1346 ID=0x100 len=1[0m
+[0;32mI (15668) CAN_RX: 01[0m
+[0;32mI (15668) CAN_RX: RX #1347 ID=0x100 len=1[0m
+[0;32mI (15668) CAN_RX: 01[0m
+[0;32mI (15668) CAN_RX: RX #1348 ID=0x100 len=1[0m
+[0;32mI (15678) CAN_RX: 01[0m
+[0;32mI (15678) CAN_RX: RX #1349 ID=0x100 len=1[0m
+[0;32mI (15678) CAN_RX: 01[0m
+[0;32mI (15688) CAN_RX: RX #1350 ID=0x100 len=1[0m
+[0;32mI (15688) CAN_RX: 01[0m
+[0;32mI (15688) CAN_RX: RX #1351 ID=0x100 len=1[0m
+[0;32mI (15698) CAN_RX: 01[0m
+[0;32mI (15698) CAN_RX: RX #1352 ID=0x100 len=1[0m
+[0;32mI (15698) CAN_RX: 01[0m
+[0;32mI (15698) CAN_RX: RX #1353 ID=0x100 len=1[0m
+[0;32mI (15708) CAN_RX: 01[0m
+[0;32mI (15708) CAN_RX: RX #1354 ID=0x100 len=1[0m
+[0;32mI (15708) CAN_RX: 01[0m
+[0;32mI (15708) CAN_RX: RX #1355 ID=0x100 len=1[0m
+[0;32mI (15718) CAN_RX: 01[0m
+[0;32mI (15718) CAN_RX: RX #1356 ID=0x100 len=1[0m
+[0;32mI (15718) CAN_RX: 01[0m
+[0;32mI (15728) CAN_RX: RX #1357 ID=0x100 len=1[0m
+[0;32mI (15728) CAN_RX: 01[0m
+[0;32mI (15728) CAN_RX: RX #1358 ID=0x100 len=1[0m
+[0;32mI (15738) CAN_RX: 01[0m
+[0;32mI (15738) CAN_RX: RX #1359 ID=0x100 len=1[0m
+[0;32mI (15738) CAN_RX: 01[0m
+[0;32mI (15738) CAN_RX: RX #1360 ID=0x100 len=1[0m
+[0;32mI (15748) CAN_RX: 01[0m
+[0;32mI (15748) CAN_RX: RX #1361 ID=0x100 len=1[0m
+[0;32mI (15748) CAN_RX: 01[0m
+[0;32mI (15748) CAN_RX: RX #1362 ID=0x100 len=1[0m
+[0;32mI (15758) CAN_RX: 01[0m
+[0;32mI (15758) CAN_RX: RX #1363 ID=0x100 len=1[0m
+[0;32mI (15758) CAN_RX: 01[0m
+[0;32mI (15768) CAN_RX: RX #1364 ID=0x100 len=1[0m
+[0;32mI (15768) CAN_RX: 01[0m
+[0;32mI (15768) CAN_RX: RX #1365 ID=0x100 len=1[0m
+[0;32mI (15768) CAN_RX: 01[0m
+[0;32mI (15778) CAN_RX: RX #1366 ID=0x100 len=1[0m
+[0;32mI (15778) CAN_RX: 01[0m
+[0;32mI (15778) CAN_RX: RX #1367 ID=0x100 len=1[0m
+[0;32mI (15788) CAN_RX: 01[0m
+[0;32mI (15788) CAN_RX: RX #1368 ID=0x100 len=1[0m
+[0;32mI (15788) CAN_RX: 01[0m
+[0;32mI (15788) CAN_RX: RX #1369 ID=0x100 len=1[0m
+[0;32mI (15798) CAN_RX: 01[0m
+[0;32mI (15798) CAN_RX: RX #1370 ID=0x100 len=1[0m
+[0;32mI (15798) CAN_RX: 01[0m
+[0;32mI (15798) CAN_RX: RX #1371 ID=0x100 len=1[0m
+[0;32mI (15808) CAN_RX: 01[0m
+[0;32mI (15808) CAN_RX: RX #1372 ID=0x100 len=1[0m
+[0;32mI (15808) CAN_RX: 01[0m
+[0;32mI (15818) CAN_RX: RX #1373 ID=0x100 len=1[0m
+[0;32mI (15818) CAN_RX: 01[0m
+[0;32mI (15818) CAN_RX: RX #1374 ID=0x100 len=1[0m
+[0;32mI (15828) CAN_RX: 01[0m
+[0;32mI (15828) CAN_RX: RX #1375 ID=0x100 len=1[0m
+[0;32mI (15828) CAN_RX: 01[0m
+[0;32mI (15828) CAN_RX: RX #1376 ID=0x100 len=1[0m
+[0;32mI (15838) CAN_RX: 01[0m
+[0;32mI (15838) CAN_RX: RX #1377 ID=0x100 len=1[0m
+[0;32mI (15838) CAN_RX: 01[0m
+[0;32mI (15838) CAN_RX: RX #1378 ID=0x100 len=1[0m
+[0;32mI (15848) CAN_RX: 01[0m
+[0;32mI (15848) CAN_RX: RX #1379 ID=0x100 len=1[0m
+[0;32mI (15848) CAN_RX: 01[0m
+[0;32mI (15858) CAN_RX: RX #1380 ID=0x100 len=1[0m
+[0;32mI (15858) CAN_RX: 01[0m
+[0;32mI (15858) CAN_RX: RX #1381 ID=0x100 len=1[0m
+[0;32mI (15858) CAN_RX: 01[0m
+[0;32mI (15868) CAN_RX: RX #1382 ID=0x100 len=1[0m
+[0;32mI (15868) CAN_RX: 01[0m
+[0;32mI (15868) CAN_RX: RX #1383 ID=0x100 len=1[0m
+[0;32mI (15878) CAN_RX: 01[0m
+[0;32mI (15878) CAN_RX: RX #1384 ID=0x100 len=1[0m
+[0;32mI (15878) CAN_RX: 01[0m
+[0;32mI (15878) CAN_RX: RX #1385 ID=0x100 len=1[0m
+[0;32mI (15888) CAN_RX: 01[0m
+[0;32mI (15888) CAN_RX: RX #1386 ID=0x100 len=1[0m
+[0;32mI (15888) CAN_RX: 01[0m
+[0;32mI (15898) CAN_RX: RX #1387 ID=0x100 len=1[0m
+[0;32mI (15898) CAN_RX: 01[0m
+[0;32mI (15898) CAN_RX: RX #1388 ID=0x100 len=1[0m
+[0;32mI (15898) CAN_RX: 01[0m
+[0;32mI (15908) CAN_RX: RX #1389 ID=0x100 len=1[0m
+[0;32mI (15908) CAN_RX: 01[0m
+[0;32mI (15908) CAN_RX: RX #1390 ID=0x100 len=1[0m
+[0;32mI (15918) CAN_RX: 01[0m
+[0;32mI (15918) CAN_RX: RX #1391 ID=0x100 len=1[0m
+[0;32mI (15918) CAN_RX: 01[0m
+[0;32mI (15918) CAN_RX: RX #1392 ID=0x100 len=1[0m
+[0;32mI (15928) CAN_RX: 01[0m
+[0;32mI (15928) CAN_RX: RX #1393 ID=0x100 len=1[0m
+[0;32mI (15928) CAN_RX: 01[0m
+[0;32mI (15928) CAN_RX: RX #1394 ID=0x100 len=1[0m
+[0;32mI (15938) CAN_RX: 01[0m
+[0;32mI (15938) CAN_RX: RX #1395 ID=0x100 len=1[0m
+[0;32mI (15938) CAN_RX: 01[0m
+[0;32mI (15948) CAN_RX: RX #1396 ID=0x100 len=1[0m
+[0;32mI (15948) CAN_RX: 01[0m
+[0;32mI (15948) CAN_RX: RX #1397 ID=0x100 len=1[0m
+[0;32mI (15958) CAN_RX: 01[0m
+[0;32mI (15958) CAN_RX: RX #1398 ID=0x100 len=1[0m
+[0;32mI (15958) CAN_RX: 01[0m
+[0;32mI (15958) CAN_RX: RX #1399 ID=0x100 len=1[0m
+[0;32mI (15968) CAN_RX: 01[0m
+[0;32mI (15968) CAN_RX: RX #1400 ID=0x100 len=1[0m
+[0;32mI (15968) CAN_RX: 01[0m
+[0;32mI (15968) CAN_RX: RX #1401 ID=0x100 len=1[0m
+[0;32mI (15978) CAN_RX: 01[0m
+[0;32mI (15978) CAN_RX: RX #1402 ID=0x100 len=1[0m
+[0;32mI (15978) CAN_RX: 01[0m
+[0;32mI (15988) CAN_RX: RX #1403 ID=0x100 len=1[0m
+[0;32mI (15988) CAN_RX: 01[0m
+[0;32mI (15988) CAN_RX: RX #1404 ID=0x100 len=1[0m
+[0;32mI (15988) CAN_RX: 01[0m
+[0;32mI (15998) CAN_RX: RX #1405 ID=0x100 len=1[0m
+[0;32mI (15998) CAN_RX: 01[0m
+[0;32mI (15998) CAN_RX: RX #1406 ID=0x100 len=1[0m
+[0;32mI (16008) CAN_RX: 01[0m
+[0;32mI (16008) CAN_RX: RX #1407 ID=0x100 len=1[0m
+[0;32mI (16008) CAN_RX: 01[0m
+[0;32mI (16008) CAN_RX: RX #1408 ID=0x100 len=1[0m
+[0;32mI (16018) CAN_RX: 01[0m
+[0;32mI (16018) CAN_RX: RX #1409 ID=0x100 len=1[0m
+[0;32mI (16018) CAN_RX: 01[0m
+[0;32mI (16018) CAN_RX: RX #1410 ID=0x100 len=1[0m
+[0;32mI (16028) CAN_RX: 01[0m
+[0;32mI (16028) CAN_RX: RX #1411 ID=0x100 len=1[0m
+[0;32mI (16028) CAN_RX: 01[0m
+[0;32mI (16038) CAN_RX: RX #1412 ID=0x100 len=1[0m
+[0;32mI (16038) CAN_RX: 01[0m
+[0;32mI (16038) CAN_RX: RX #1413 ID=0x100 len=1[0m
+[0;32mI (16048) CAN_RX: 01[0m
+[0;32mI (16048) CAN_RX: RX #1414 ID=0x100 len=1[0m
+[0;32mI (16048) CAN_RX: 01[0m
+[0;32mI (16048) CAN_RX: RX #1415 ID=0x100 len=1[0m
+[0;32mI (16058) CAN_RX: 01[0m
+[0;32mI (16058) CAN_RX: RX #1416 ID=0x100 len=1[0m
+[0;32mI (16058) CAN_RX: 01[0m
+[0;32mI (16058) CAN_RX: RX #1417 ID=0x100 len=1[0m
+[0;32mI (16068) CAN_RX: 01[0m
+[0;32mI (16068) CAN_RX: RX #1418 ID=0x100 len=1[0m
+[0;32mI (16068) CAN_RX: 01[0m
+[0;32mI (16078) CAN_RX: RX #1419 ID=0x100 len=1[0m
+[0;32mI (16078) CAN_RX: 01[0m
+[0;32mI (16078) CAN_RX: RX #1420 ID=0x100 len=1[0m
+[0;32mI (16078) CAN_RX: 01[0m
+[0;32mI (16088) CAN_RX: RX #1421 ID=0x100 len=1[0m
+[0;32mI (16088) CAN_RX: 01[0m
+[0;32mI (16088) CAN_RX: RX #1422 ID=0x100 len=1[0m
+[0;32mI (16098) CAN_RX: 01[0m
+[0;32mI (16098) CAN_RX: RX #1423 ID=0x100 len=1[0m
+[0;32mI (16098) CAN_RX: 01[0m
+[0;32mI (16098) CAN_RX: RX #1424 ID=0x100 len=1[0m
+[0;32mI (16108) CAN_RX: 01[0m
+[0;32mI (16108) CAN_RX: RX #1425 ID=0x100 len=1[0m
+[0;32mI (16108) CAN_RX: 01[0m
+[0;32mI (16118) CAN_RX: RX #1426 ID=0x100 len=1[0m
+[0;32mI (16118) CAN_RX: 01[0m
+[0;32mI (16118) CAN_RX: RX #1427 ID=0x100 len=1[0m
+[0;32mI (16118) CAN_RX: 01[0m
+[0;32mI (16128) CAN_RX: RX #1428 ID=0x100 len=1[0m
+[0;32mI (16128) CAN_RX: 01[0m
+[0;32mI (16128) CAN_RX: RX #1429 ID=0x100 len=1[0m
+[0;32mI (16138) CAN_RX: 01[0m
+[0;32mI (16138) CAN_RX: RX #1430 ID=0x100 len=1[0m
+[0;32mI (16138) CAN_RX: 01[0m
+[0;32mI (16138) CAN_RX: RX #1431 ID=0x100 len=1[0m
+[0;32mI (16148) CAN_RX: 01[0m
+[0;32mI (16148) CAN_RX: RX #1432 ID=0x100 len=1[0m
+[0;32mI (16148) CAN_RX: 01[0m
+[0;32mI (16148) CAN_RX: RX #1433 ID=0x100 len=1[0m
+[0;32mI (16158) CAN_RX: 01[0m
+[0;32mI (16158) CAN_RX: RX #1434 ID=0x100 len=1[0m
+[0;32mI (16158) CAN_RX: 01[0m
+[0;32mI (16168) CAN_RX: RX #1435 ID=0x100 len=1[0m
+[0;32mI (16168) CAN_RX: 01[0m
+[0;32mI (16168) CAN_RX: RX #1436 ID=0x100 len=1[0m
+[0;32mI (16178) CAN_RX: 01[0m
+[0;32mI (16178) CAN_RX: RX #1437 ID=0x100 len=1[0m
+[0;32mI (16178) CAN_RX: 01[0m
+[0;32mI (16178) CAN_RX: RX #1438 ID=0x100 len=1[0m
+[0;32mI (16188) CAN_RX: 01[0m
+[0;32mI (16188) CAN_RX: RX #1439 ID=0x100 len=1[0m
+[0;32mI (16188) CAN_RX: 01[0m
+[0;32mI (16188) CAN_RX: RX #1440 ID=0x100 len=1[0m
+[0;32mI (16198) CAN_RX: 01[0m
+[0;32mI (16198) CAN_RX: RX #1441 ID=0x100 len=1[0m
+[0;32mI (16198) CAN_RX: 01[0m
+[0;32mI (16208) CAN_RX: RX #1442 ID=0x100 len=1[0m
+[0;32mI (16208) CAN_RX: 01[0m
+[0;32mI (16208) CAN_RX: RX #1443 ID=0x100 len=1[0m
+[0;32mI (16208) CAN_RX: 01[0m
+[0;32mI (16218) CAN_RX: RX #1444 ID=0x100 len=1[0m
+[0;32mI (16218) CAN_RX: 01[0m
+[0;32mI (16218) CAN_RX: RX #1445 ID=0x100 len=1[0m
+[0;32mI (16228) CAN_RX: 01[0m
+[0;32mI (16228) CAN_RX: RX #1446 ID=0x100 len=1[0m
+[0;32mI (16228) CAN_RX: 01[0m
+[0;32mI (16228) CAN_RX: RX #1447 ID=0x100 len=1[0m
+[0;32mI (16238) CAN_RX: 01[0m
+[0;32mI (16238) CAN_RX: RX #1448 ID=0x100 len=1[0m
+[0;32mI (16238) CAN_RX: 01[0m
+[0;32mI (16238) CAN_RX: RX #1449 ID=0x100 len=1[0m
+[0;32mI (16248) CAN_RX: 01[0m
+[0;32mI (16248) CAN_RX: RX #1450 ID=0x100 len=1[0m
+[0;32mI (16248) CAN_RX: 01[0m
+[0;32mI (16258) CAN_RX: RX #1451 ID=0x100 len=1[0m
+[0;32mI (16258) CAN_RX: 01[0m
+[0;32mI (16258) CAN_RX: RX #1452 ID=0x100 len=1[0m
+[0;32mI (16268) CAN_RX: 01[0m
+[0;32mI (16268) CAN_RX: RX #1453 ID=0x100 len=1[0m
+[0;32mI (16268) CAN_RX: 01[0m
+[0;32mI (16268) CAN_RX: RX #1454 ID=0x100 len=1[0m
+[0;32mI (16278) CAN_RX: 01[0m
+[0;32mI (16278) CAN_RX: RX #1455 ID=0x100 len=1[0m
+[0;32mI (16278) CAN_RX: 01[0m
+[0;32mI (16278) CAN_RX: RX #1456 ID=0x100 len=1[0m
+[0;32mI (16288) CAN_RX: 01[0m
+[0;32mI (16288) CAN_RX: RX #1457 ID=0x100 len=1[0m
+[0;32mI (16288) CAN_RX: 01[0m
+[0;32mI (16298) CAN_RX: RX #1458 ID=0x100 len=1[0m
+[0;32mI (16298) CAN_RX: 01[0m
+[0;32mI (16298) CAN_RX: RX #1459 ID=0x100 len=1[0m
+[0;32mI (16308) CAN_RX: 01[0m
+[0;32mI (16308) CAN_RX: RX #1460 ID=0x100 len=1[0m
+[0;32mI (16308) CAN_RX: 01[0m
+[0;32mI (16308) CAN_RX: RX #1461 ID=0x100 len=1[0m
+[0;32mI (16318) CAN_RX: 01[0m
+[0;32mI (16318) CAN_RX: RX #1462 ID=0x100 len=1[0m
+[0;32mI (16318) CAN_RX: 01[0m
+[0;32mI (16318) CAN_RX: RX #1463 ID=0x100 len=1[0m
+[0;32mI (16328) CAN_RX: 01[0m
+[0;32mI (16328) CAN_RX: RX #1464 ID=0x100 len=1[0m
+[0;32mI (16328) CAN_RX: 01[0m
+[0;32mI (16338) CAN_RX: RX #1465 ID=0x100 len=1[0m
+[0;32mI (16338) CAN_RX: 01[0m
+[0;32mI (16338) CAN_RX: RX #1466 ID=0x100 len=1[0m
+[0;32mI (16338) CAN_RX: 01[0m
+[0;32mI (16348) CAN_RX: RX #1467 ID=0x100 len=1[0m
+[0;32mI (16348) CAN_RX: 01[0m
+[0;32mI (16348) CAN_RX: RX #1468 ID=0x100 len=1[0m
+[0;32mI (16358) CAN_RX: 01[0m
+[0;32mI (16358) CAN_RX: RX #1469 ID=0x100 len=1[0m
+[0;32mI (16358) CAN_RX: 01[0m
+[0;32mI (16358) CAN_RX: RX #1470 ID=0x100 len=1[0m
+[0;32mI (16368) CAN_RX: 01[0m
+[0;32mI (16368) CAN_RX: RX #1471 ID=0x100 len=1[0m
+[0;32mI (16368) CAN_RX: 01[0m
+[0;32mI (16368) CAN_RX: RX #1472 ID=0x100 len=1[0m
+[0;32mI (16378) CAN_RX: 01[0m
+[0;32mI (16378) CAN_RX: RX #1473 ID=0x100 len=1[0m
+[0;32mI (16378) CAN_RX: 01[0m
+[0;32mI (16388) CAN_RX: RX #1474 ID=0x100 len=1[0m
+[0;32mI (16388) CAN_RX: 01[0m
+[0;32mI (16388) CAN_RX: RX #1475 ID=0x100 len=1[0m
+[0;32mI (16398) CAN_RX: 01[0m
+[0;32mI (16398) CAN_RX: RX #1476 ID=0x100 len=1[0m
+[0;32mI (16398) CAN_RX: 01[0m
+[0;32mI (16398) CAN_RX: RX #1477 ID=0x100 len=1[0m
+[0;32mI (16408) CAN_RX: 01[0m
+[0;32mI (16408) CAN_RX: RX #1478 ID=0x100 len=1[0m
+[0;32mI (16408) CAN_RX: 01[0m
+[0;32mI (16408) CAN_RX: RX #1479 ID=0x100 len=1[0m
+[0;32mI (16418) CAN_RX: 01[0m
+[0;32mI (16418) CAN_RX: RX #1480 ID=0x100 len=1[0m
+[0;32mI (16418) CAN_RX: 01[0m
+[0;32mI (16428) CAN_RX: RX #1481 ID=0x100 len=1[0m
+[0;32mI (16428) CAN_RX: 01[0m
+[0;32mI (16428) CAN_RX: RX #1482 ID=0x100 len=1[0m
+[0;32mI (16428) CAN_RX: 01[0m
+[0;32mI (16438) CAN_RX: RX #1483 ID=0x100 len=1[0m
+[0;32mI (16438) CAN_RX: 01[0m
+[0;32mI (16438) CAN_RX: RX #1484 ID=0x100 len=1[0m
+[0;32mI (16448) CAN_RX: 01[0m
+[0;32mI (16448) CAN_RX: RX #1485 ID=0x100 len=1[0m
+[0;32mI (16448) CAN_RX: 01[0m
+[0;32mI (16448) CAN_RX: RX #1486 ID=0x100 len=1[0m
+[0;32mI (16458) CAN_RX: 01[0m
+[0;32mI (16458) CAN_RX: RX #1487 ID=0x100 len=1[0m
+[0;32mI (16458) CAN_RX: 01[0m
+[0;32mI (16458) CAN_RX: RX #1488 ID=0x100 len=1[0m
+[0;32mI (16468) CAN_RX: 01[0m
+[0;32mI (16468) CAN_RX: RX #1489 ID=0x100 len=1[0m
+[0;32mI (16468) CAN_RX: 01[0m
+[0;32mI (16478) CAN_RX: RX #1490 ID=0x100 len=1[0m
+[0;32mI (16478) CAN_RX: 01[0m
+[0;32mI (16478) CAN_RX: RX #1491 ID=0x100 len=1[0m
+[0;32mI (16488) CAN_RX: 01[0m
+[0;32mI (16488) CAN_RX: RX #1492 ID=0x100 len=1[0m
+[0;32mI (16488) CAN_RX: 01[0m
+[0;32mI (16488) CAN_RX: RX #1493 ID=0x100 len=1[0m
+[0;32mI (16498) CAN_RX: 01[0m
+[0;32mI (16498) CAN_RX: RX #1494 ID=0x100 len=1[0m
+[0;32mI (16498) CAN_RX: 01[0m
+[0;32mI (16498) CAN_RX: RX #1495 ID=0x100 len=1[0m
+[0;32mI (16508) CAN_RX: 01[0m
+[0;32mI (16508) CAN_RX: RX #1496 ID=0x100 len=1[0m
+[0;32mI (16508) CAN_RX: 01[0m
+[0;32mI (16518) CAN_RX: RX #1497 ID=0x100 len=1[0m
+[0;32mI (16518) CAN_RX: 01[0m
+[0;32mI (16518) CAN_RX: RX #1498 ID=0x100 len=1[0m
+[0;32mI (16528) CAN_RX: 01[0m
+[0;32mI (16528) CAN_RX: RX #1499 ID=0x100 len=1[0m
+[0;32mI (16528) CAN_RX: 01[0m
+[0;32mI (16528) CAN_RX: RX #1500 ID=0x100 len=1[0m
+[0;32mI (16538) CAN_RX: 01[0m
+[0;32mI (16538) CAN_RX: RX #1501 ID=0x100 len=1[0m
+[0;32mI (16538) CAN_RX: 01[0m
+[0;32mI (16538) CAN_RX: RX #1502 ID=0x100 len=1[0m
+[0;32mI (16548) CAN_RX: 01[0m
+[0;32mI (16548) CAN_RX: RX #1503 ID=0x100 len=1[0m
+[0;32mI (16548) CAN_RX: 01[0m
+[0;32mI (16558) CAN_RX: RX #1504 ID=0x100 len=1[0m
+[0;32mI (16558) CAN_RX: 01[0m
+[0;32mI (16558) CAN_RX: RX #1505 ID=0x100 len=1[0m
+[0;32mI (16558) CAN_RX: 01[0m
+[0;32mI (16568) CAN_RX: RX #1506 ID=0x100 len=1[0m
+[0;32mI (16568) CAN_RX: 01[0m
+[0;32mI (16568) CAN_RX: RX #1507 ID=0x100 len=1[0m
+[0;32mI (16578) CAN_RX: 01[0m
+[0;32mI (16578) CAN_RX: RX #1508 ID=0x100 len=1[0m
+[0;32mI (16578) CAN_RX: 01[0m
+[0;32mI (16578) CAN_RX: RX #1509 ID=0x100 len=1[0m
+[0;32mI (16588) CAN_RX: 01[0m
+[0;32mI (16588) CAN_RX: RX #1510 ID=0x100 len=1[0m
+[0;32mI (16588) CAN_RX: 01[0m
+[0;32mI (16588) CAN_RX: RX #1511 ID=0x100 len=1[0m
+[0;32mI (16598) CAN_RX: 01[0m
+[0;32mI (16598) CAN_RX: RX #1512 ID=0x100 len=1[0m
+[0;32mI (16598) CAN_RX: 01[0m
+[0;32mI (16608) CAN_RX: RX #1513 ID=0x100 len=1[0m
+[0;32mI (16608) CAN_RX: 01[0m
+[0;32mI (16608) CAN_RX: RX #1514 ID=0x100 len=1[0m
+[0;32mI (16618) CAN_RX: 01[0m
+[0;32mI (16618) CAN_RX: RX #1515 ID=0x100 len=1[0m
+[0;32mI (16618) CAN_RX: 01[0m
+[0;32mI (16618) CAN_RX: RX #1516 ID=0x100 len=1[0m
+[0;32mI (16628) CAN_RX: 01[0m
+[0;32mI (16628) CAN_RX: RX #1517 ID=0x100 len=1[0m
+[0;32mI (16628) CAN_RX: 01[0m
+[0;32mI (16628) CAN_RX: RX #1518 ID=0x100 len=1[0m
+[0;32mI (16638) CAN_RX: 01[0m
+[0;32mI (16638) CAN_RX: RX #1519 ID=0x100 len=1[0m
+[0;32mI (16638) CAN_RX: 01[0m
+[0;32mI (16648) CAN_RX: RX #1520 ID=0x100 len=1[0m
+[0;32mI (16648) CAN_RX: 01[0m
+[0;32mI (16648) CAN_RX: RX #1521 ID=0x100 len=1[0m
+[0;32mI (16648) CAN_RX: 01[0m
+[0;32mI (16658) CAN_RX: RX #1522 ID=0x100 len=1[0m
+[0;32mI (16658) CAN_RX: 01[0m
+[0;32mI (16658) CAN_RX: RX #1523 ID=0x100 len=1[0m
+[0;32mI (16668) CAN_RX: 01[0m
+[0;32mI (16668) CAN_RX: RX #1524 ID=0x100 len=1[0m
+[0;32mI (16668) CAN_RX: 01[0m
+[0;32mI (16668) CAN_RX: RX #1525 ID=0x100 len=1[0m
+[0;32mI (16678) CAN_RX: 01[0m
+[0;32mI (16678) CAN_RX: RX #1526 ID=0x100 len=1[0m
+[0;32mI (16678) CAN_RX: 01[0m
+[0;32mI (16678) CAN_RX: RX #1527 ID=0x100 len=1[0m
+[0;32mI (16688) CAN_RX: 01[0m
+[0;32mI (16688) CAN_RX: RX #1528 ID=0x100 len=1[0m
+[0;32mI (16688) CAN_RX: 01[0m
+[0;32mI (16698) CAN_RX: RX #1529 ID=0x100 len=1[0m
+[0;32mI (16698) CAN_RX: 01[0m
+[0;32mI (16698) CAN_RX: RX #1530 ID=0x100 len=1[0m
+[0;32mI (16708) CAN_RX: 01[0m
+[0;32mI (16708) CAN_RX: RX #1531 ID=0x100 len=1[0m
+[0;32mI (16708) CAN_RX: 01[0m
+[0;32mI (16708) CAN_RX: RX #1532 ID=0x100 len=1[0m
+[0;32mI (16718) CAN_RX: 01[0m
+[0;32mI (16718) CAN_RX: RX #1533 ID=0x100 len=1[0m
+[0;32mI (16718) CAN_RX: 01[0m
+[0;32mI (16718) CAN_RX: RX #1534 ID=0x100 len=1[0m
+[0;32mI (16728) CAN_RX: 01[0m
+[0;32mI (16728) CAN_RX: RX #1535 ID=0x100 len=1[0m
+[0;32mI (16728) CAN_RX: 01[0m
+[0;32mI (16738) CAN_RX: RX #1536 ID=0x100 len=1[0m
+[0;32mI (16738) CAN_RX: 01[0m
+[0;32mI (16738) CAN_RX: RX #1537 ID=0x100 len=1[0m
+[0;32mI (16748) CAN_RX: 01[0m
+[0;32mI (16748) CAN_RX: RX #1538 ID=0x100 len=1[0m
+[0;32mI (16748) CAN_RX: 01[0m
+[0;32mI (16748) CAN_RX: RX #1539 ID=0x100 len=1[0m
+[0;32mI (16758) CAN_RX: 01[0m
+[0;32mI (16758) CAN_RX: RX #1540 ID=0x100 len=1[0m
+[0;32mI (16758) CAN_RX: 01[0m
+[0;32mI (16758) CAN_RX: RX #1541 ID=0x100 len=1[0m
+[0;32mI (16768) CAN_RX: 01[0m
+[0;32mI (16768) CAN_RX: RX #1542 ID=0x100 len=1[0m
+[0;32mI (16768) CAN_RX: 01[0m
+[0;32mI (16778) CAN_RX: RX #1543 ID=0x100 len=1[0m
+[0;32mI (16778) CAN_RX: 01[0m
+[0;32mI (16778) CAN_RX: RX #1544 ID=0x100 len=1[0m
+[0;32mI (16778) CAN_RX: 01[0m
+[0;32mI (16788) CAN_RX: RX #1545 ID=0x100 len=1[0m
+[0;32mI (16788) CAN_RX: 01[0m
+[0;32mI (16788) CAN_RX: RX #1546 ID=0x100 len=1[0m
+[0;32mI (16798) CAN_RX: 01[0m
+[0;32mI (16798) CAN_RX: RX #1547 ID=0x100 len=1[0m
+[0;32mI (16798) CAN_RX: 01[0m
+[0;32mI (16798) CAN_RX: RX #1548 ID=0x100 len=1[0m
+[0;32mI (16808) CAN_RX: 01[0m
+[0;32mI (16808) CAN_RX: RX #1549 ID=0x100 len=1[0m
+[0;32mI (16808) CAN_RX: 01[0m
+[0;32mI (16808) CAN_RX: RX #1550 ID=0x100 len=1[0m
+[0;32mI (16818) CAN_RX: 01[0m
+[0;32mI (16818) CAN_RX: RX #1551 ID=0x100 len=1[0m
+[0;32mI (16818) CAN_RX: 01[0m
+[0;32mI (16828) CAN_RX: RX #1552 ID=0x100 len=1[0m
+[0;32mI (16828) CAN_RX: 01[0m
+[0;32mI (16828) CAN_RX: RX #1553 ID=0x100 len=1[0m
+[0;32mI (16838) CAN_RX: 01[0m
+[0;32mI (16838) CAN_RX: RX #1554 ID=0x100 len=1[0m
+[0;32mI (16838) CAN_RX: 01[0m
+[0;32mI (16838) CAN_RX: RX #1555 ID=0x100 len=1[0m
+[0;32mI (16848) CAN_RX: 01[0m
+[0;32mI (16848) CAN_RX: RX #1556 ID=0x100 len=1[0m
+[0;32mI (16848) CAN_RX: 01[0m
+[0;32mI (16848) CAN_RX: RX #1557 ID=0x100 len=1[0m
+[0;32mI (16858) CAN_RX: 01[0m
+[0;32mI (16858) CAN_RX: RX #1558 ID=0x100 len=1[0m
+[0;32mI (16858) CAN_RX: 01[0m
+[0;32mI (16868) CAN_RX: RX #1559 ID=0x100 len=1[0m
+[0;32mI (16868) CAN_RX: 01[0m
+[0;32mI (16868) CAN_RX: RX #1560 ID=0x100 len=1[0m
+[0;32mI (16868) CAN_RX: 01[0m
+[0;32mI (16878) CAN_RX: RX #1561 ID=0x100 len=1[0m
+[0;32mI (16878) CAN_RX: 01[0m
+[0;32mI (16878) CAN_RX: RX #1562 ID=0x100 len=1[0m
+[0;32mI (16888) CAN_RX: 01[0m
+[0;32mI (16888) CAN_RX: RX #1563 ID=0x100 len=1[0m
+[0;32mI (16888) CAN_RX: 01[0m
+[0;32mI (16888) CAN_RX: RX #1564 ID=0x100 len=1[0m
+[0;32mI (16898) CAN_RX: 01[0m
+[0;32mI (16898) CAN_RX: RX #1565 ID=0x100 len=1[0m
+[0;32mI (16898) CAN_RX: 01[0m
+[0;32mI (16908) CAN_RX: RX #1566 ID=0x100 len=1[0m
+[0;32mI (16908) CAN_RX: 01[0m
+[0;32mI (16908) CAN_RX: RX #1567 ID=0x100 len=1[0m
+[0;32mI (16908) CAN_RX: 01[0m
+[0;32mI (16918) CAN_RX: RX #1568 ID=0x100 len=1[0m
+[0;32mI (16918) CAN_RX: 01[0m
+[0;32mI (16918) CAN_RX: RX #1569 ID=0x100 len=1[0m
+[0;32mI (16928) CAN_RX: 01[0m
+[0;32mI (16928) CAN_RX: RX #1570 ID=0x100 len=1[0m
+[0;32mI (16928) CAN_RX: 01[0m
+[0;32mI (16928) CAN_RX: RX #1571 ID=0x100 len=1[0m
+[0;32mI (16938) CAN_RX: 01[0m
+[0;32mI (16938) CAN_RX: RX #1572 ID=0x100 len=1[0m
+[0;32mI (16938) CAN_RX: 01[0m
+[0;32mI (16938) CAN_RX: RX #1573 ID=0x100 len=1[0m
+[0;32mI (16948) CAN_RX: 01[0m
+[0;32mI (16948) CAN_RX: RX #1574 ID=0x100 len=1[0m
+[0;32mI (16948) CAN_RX: 01[0m
+[0;32mI (16958) CAN_RX: RX #1575 ID=0x100 len=1[0m
+[0;32mI (16958) CAN_RX: 01[0m
+[0;32mI (16958) CAN_RX: RX #1576 ID=0x100 len=1[0m
+[0;32mI (16968) CAN_RX: 01[0m
+[0;32mI (16968) CAN_RX: RX #1577 ID=0x100 len=1[0m
+[0;32mI (16968) CAN_RX: 01[0m
+[0;32mI (16968) CAN_RX: RX #1578 ID=0x100 len=1[0m
+[0;32mI (16978) CAN_RX: 01[0m
+[0;32mI (16978) CAN_RX: RX #1579 ID=0x100 len=1[0m
+[0;32mI (16978) CAN_RX: 01[0m
+[0;32mI (16978) CAN_RX: RX #1580 ID=0x100 len=1[0m
+[0;32mI (16988) CAN_RX: 01[0m
+[0;32mI (16988) CAN_RX: RX #1581 ID=0x100 len=1[0m
+[0;32mI (16988) CAN_RX: 01[0m
+[0;32mI (16998) CAN_RX: RX #1582 ID=0x100 len=1[0m
+[0;32mI (16998) CAN_RX: 01[0m
+[0;32mI (16998) CAN_RX: RX #1583 ID=0x100 len=1[0m
+[0;32mI (16998) CAN_RX: 01[0m
+[0;32mI (17008) CAN_RX: RX #1584 ID=0x100 len=1[0m
+[0;32mI (17008) CAN_RX: 01[0m
+[0;32mI (17008) CAN_RX: RX #1585 ID=0x100 len=1[0m
+[0;32mI (17018) CAN_RX: 01[0m
+[0;32mI (17018) CAN_RX: RX #1586 ID=0x100 len=1[0m
+[0;32mI (17018) CAN_RX: 01[0m
+[0;32mI (17018) CAN_RX: RX #1587 ID=0x100 len=1[0m
+[0;32mI (17028) CAN_RX: 01[0m
+[0;32mI (17028) CAN_RX: RX #1588 ID=0x100 len=1[0m
+[0;32mI (17028) CAN_RX: 01[0m
+[0;32mI (17028) CAN_RX: RX #1589 ID=0x100 len=1[0m
+[0;32mI (17038) CAN_RX: 01[0m
+[0;32mI (17038) CAN_RX: RX #1590 ID=0x100 len=1[0m
+[0;32mI (17038) CAN_RX: 01[0m
+[0;32mI (17048) CAN_RX: RX #1591 ID=0x100 len=1[0m
+[0;32mI (17048) CAN_RX: 01[0m
+[0;32mI (17048) CAN_RX: RX #1592 ID=0x100 len=1[0m
+[0;32mI (17058) CAN_RX: 01[0m
+[0;32mI (17058) CAN_RX: RX #1593 ID=0x100 len=1[0m
+[0;32mI (17058) CAN_RX: 01[0m
+[0;32mI (17058) CAN_RX: RX #1594 ID=0x100 len=1[0m
+[0;32mI (17068) CAN_RX: 01[0m
+[0;32mI (17068) CAN_RX: RX #1595 ID=0x100 len=1[0m
+[0;32mI (17068) CAN_RX: 01[0m
+[0;32mI (17068) CAN_RX: RX #1596 ID=0x100 len=1[0m
+[0;32mI (17078) CAN_RX: 01[0m
+[0;32mI (17078) CAN_RX: RX #1597 ID=0x100 len=1[0m
+[0;32mI (17078) CAN_RX: 01[0m
+[0;32mI (17088) CAN_RX: RX #1598 ID=0x100 len=1[0m
+[0;32mI (17088) CAN_RX: 01[0m
+[0;32mI (17088) CAN_RX: RX #1599 ID=0x100 len=1[0m
+[0;32mI (17088) CAN_RX: 01[0m
+[0;32mI (17098) CAN_RX: RX #1600 ID=0x100 len=1[0m
+[0;32mI (17098) CAN_RX: 01[0m
+[0;32mI (17098) CAN_RX: RX #1601 ID=0x100 len=1[0m
+[0;32mI (17108) CAN_RX: 01[0m
+[0;32mI (17108) CAN_RX: RX #1602 ID=0x100 len=1[0m
+[0;32mI (17108) CAN_RX: 01[0m
+[0;32mI (17108) CAN_RX: RX #1603 ID=0x100 len=1[0m
+[0;32mI (17118) CAN_RX: 01[0m
+[0;32mI (17118) CAN_RX: RX #1604 ID=0x100 len=1[0m
+[0;32mI (17118) CAN_RX: 01[0m
+[0;32mI (17128) CAN_RX: RX #1605 ID=0x100 len=1[0m
+[0;32mI (17128) CAN_RX: 01[0m
+[0;32mI (17128) CAN_RX: RX #1606 ID=0x100 len=1[0m
+[0;32mI (17128) CAN_RX: 01[0m
+[0;32mI (17138) CAN_RX: RX #1607 ID=0x100 len=1[0m
+[0;32mI (17138) CAN_RX: 01[0m
+[0;32mI (17138) CAN_RX: RX #1608 ID=0x100 len=1[0m
+[0;32mI (17148) CAN_RX: 01[0m
+[0;32mI (17148) CAN_RX: RX #1609 ID=0x100 len=1[0m
+[0;32mI (17148) CAN_RX: 01[0m
+[0;32mI (17148) CAN_RX: RX #1610 ID=0x100 len=1[0m
+[0;32mI (17158) CAN_RX: 01[0m
+[0;32mI (17158) CAN_RX: RX #1611 ID=0x100 len=1[0m
+[0;32mI (17158) CAN_RX: 01[0m
+[0;32mI (17158) CAN_RX: RX #1612 ID=0x100 len=1[0m
+[0;32mI (17168) CAN_RX: 01[0m
+[0;32mI (17168) CAN_RX: RX #1613 ID=0x100 len=1[0m
+[0;32mI (17168) CAN_RX: 01[0m
+[0;32mI (17178) CAN_RX: RX #1614 ID=0x100 len=1[0m
+[0;32mI (17178) CAN_RX: 01[0m
+[0;32mI (17178) CAN_RX: RX #1615 ID=0x100 len=1[0m
+[0;32mI (17188) CAN_RX: 01[0m
+[0;32mI (17188) CAN_RX: RX #1616 ID=0x100 len=1[0m
+[0;32mI (17188) CAN_RX: 01[0m
+[0;32mI (17188) CAN_RX: RX #1617 ID=0x100 len=1[0m
+[0;32mI (17198) CAN_RX: 01[0m
+[0;32mI (17198) CAN_RX: RX #1618 ID=0x100 len=1[0m
+[0;32mI (17198) CAN_RX: 01[0m
+[0;32mI (17198) CAN_RX: RX #1619 ID=0x100 len=1[0m
+[0;32mI (17208) CAN_RX: 01[0m
+[0;32mI (17208) CAN_RX: RX #1620 ID=0x100 len=1[0m
+[0;32mI (17208) CAN_RX: 01[0m
+[0;32mI (17218) CAN_RX: RX #1621 ID=0x100 len=1[0m
+[0;32mI (17218) CAN_RX: 01[0m
+[0;32mI (17218) CAN_RX: RX #1622 ID=0x100 len=1[0m
+[0;32mI (17218) CAN_RX: 01[0m
+[0;32mI (17228) CAN_RX: RX #1623 ID=0x100 len=1[0m
+[0;32mI (17228) CAN_RX: 01[0m
+[0;32mI (17228) CAN_RX: RX #1624 ID=0x100 len=1[0m
+[0;32mI (17238) CAN_RX: 01[0m
+[0;32mI (17238) CAN_RX: RX #1625 ID=0x100 len=1[0m
+[0;32mI (17238) CAN_RX: 01[0m
+[0;32mI (17238) CAN_RX: RX #1626 ID=0x100 len=1[0m
+[0;32mI (17248) CAN_RX: 01[0m
+[0;32mI (17248) CAN_RX: RX #1627 ID=0x100 len=1[0m
+[0;32mI (17248) CAN_RX: 01[0m
+[0;32mI (17248) CAN_RX: RX #1628 ID=0x100 len=1[0m
+[0;32mI (17258) CAN_RX: 01[0m
+[0;32mI (17258) CAN_RX: RX #1629 ID=0x100 len=1[0m
+[0;32mI (17258) CAN_RX: 01[0m
+[0;32mI (17268) CAN_RX: RX #1630 ID=0x100 len=1[0m
+[0;32mI (17268) CAN_RX: 01[0m
+[0;32mI (17268) CAN_RX: RX #1631 ID=0x100 len=1[0m
+[0;32mI (17278) CAN_RX: 01[0m
+[0;32mI (17278) CAN_RX: RX #1632 ID=0x100 len=1[0m
+[0;32mI (17278) CAN_RX: 01[0m
+[0;32mI (17278) CAN_RX: RX #1633 ID=0x100 len=1[0m
+[0;32mI (17288) CAN_RX: 01[0m
+[0;32mI (17288) CAN_RX: RX #1634 ID=0x100 len=1[0m
+[0;32mI (17288) CAN_RX: 01[0m
+[0;32mI (17288) CAN_RX: RX #1635 ID=0x100 len=1[0m
+[0;32mI (17298) CAN_RX: 01[0m
+[0;32mI (17298) CAN_RX: RX #1636 ID=0x100 len=1[0m
+[0;32mI (17298) CAN_RX: 01[0m
+[0;32mI (17308) CAN_RX: RX #1637 ID=0x100 len=1[0m
+[0;32mI (17308) CAN_RX: 01[0m
+[0;32mI (17308) CAN_RX: RX #1638 ID=0x100 len=1[0m
+[0;32mI (17308) CAN_RX: 01[0m
+[0;32mI (17318) CAN_RX: RX #1639 ID=0x100 len=1[0m
+[0;32mI (17318) CAN_RX: 01[0m
+[0;32mI (17318) CAN_RX: RX #1640 ID=0x100 len=1[0m
+[0;32mI (17328) CAN_RX: 01[0m
+[0;32mI (17328) CAN_RX: RX #1641 ID=0x100 len=1[0m
+[0;32mI (17328) CAN_RX: 01[0m
+[0;32mI (17328) CAN_RX: RX #1642 ID=0x100 len=1[0m
+[0;32mI (17338) CAN_RX: 01[0m
+[0;32mI (17338) CAN_RX: RX #1643 ID=0x100 len=1[0m
+[0;32mI (17338) CAN_RX: 01[0m
+[0;32mI (17348) CAN_RX: RX #1644 ID=0x100 len=1[0m
+[0;32mI (17348) CAN_RX: 01[0m
+[0;32mI (17348) CAN_RX: RX #1645 ID=0x100 len=1[0m
+[0;32mI (17348) CAN_RX: 01[0m
+[0;32mI (17358) CAN_RX: RX #1646 ID=0x100 len=1[0m
+[0;32mI (17358) CAN_RX: 01[0m
+[0;32mI (17358) CAN_RX: RX #1647 ID=0x100 len=1[0m
+[0;32mI (17368) CAN_RX: 01[0m
+[0;32mI (17368) CAN_RX: RX #1648 ID=0x100 len=1[0m
+[0;32mI (17368) CAN_RX: 01[0m
+[0;32mI (17368) CAN_RX: RX #1649 ID=0x100 len=1[0m
+[0;32mI (17378) CAN_RX: 01[0m
+[0;32mI (17378) CAN_RX: RX #1650 ID=0x100 len=1[0m
+[0;32mI (17378) CAN_RX: 01[0m
+[0;32mI (17378) CAN_RX: RX #1651 ID=0x100 len=1[0m
+[0;32mI (17388) CAN_RX: 01[0m
+[0;32mI (17388) CAN_RX: RX #1652 ID=0x100 len=1[0m
+[0;32mI (17388) CAN_RX: 01[0m
+[0;32mI (17398) CAN_RX: RX #1653 ID=0x100 len=1[0m
+[0;32mI (17398) CAN_RX: 01[0m
+[0;32mI (17398) CAN_RX: RX #1654 ID=0x100 len=1[0m
+[0;32mI (17408) CAN_RX: 01[0m
+[0;32mI (17408) CAN_RX: RX #1655 ID=0x100 len=1[0m
+[0;32mI (17408) CAN_RX: 01[0m
+[0;32mI (17408) CAN_RX: RX #1656 ID=0x100 len=1[0m
+[0;32mI (17418) CAN_RX: 01[0m
+[0;32mI (17418) CAN_RX: RX #1657 ID=0x100 len=1[0m
+[0;32mI (17418) CAN_RX: 01[0m
+[0;32mI (17418) CAN_RX: RX #1658 ID=0x100 len=1[0m
+[0;32mI (17428) CAN_RX: 01[0m
+[0;32mI (17428) CAN_RX: RX #1659 ID=0x100 len=1[0m
+[0;32mI (17428) CAN_RX: 01[0m
+[0;32mI (17438) CAN_RX: RX #1660 ID=0x100 len=1[0m
+[0;32mI (17438) CAN_RX: 01[0m
+[0;32mI (17438) CAN_RX: RX #1661 ID=0x100 len=1[0m
+[0;32mI (17438) CAN_RX: 01[0m
+[0;32mI (17448) CAN_RX: RX #1662 ID=0x100 len=1[0m
+[0;32mI (17448) CAN_RX: 01[0m
+[0;32mI (17448) CAN_RX: RX #1663 ID=0x100 len=1[0m
+[0;32mI (17458) CAN_RX: 01[0m
+[0;32mI (17458) CAN_RX: RX #1664 ID=0x100 len=1[0m
+[0;32mI (17458) CAN_RX: 01[0m
+[0;32mI (17458) CAN_RX: RX #1665 ID=0x100 len=1[0m
+[0;32mI (17468) CAN_RX: 01[0m
+[0;32mI (17468) CAN_RX: RX #1666 ID=0x100 len=1[0m
+[0;32mI (17468) CAN_RX: 01[0m
+[0;32mI (17468) CAN_RX: RX #1667 ID=0x100 len=1[0m
+[0;32mI (17478) CAN_RX: 01[0m
+[0;32mI (17478) CAN_RX: RX #1668 ID=0x100 len=1[0m
+[0;32mI (17478) CAN_RX: 01[0m
+[0;32mI (17488) CAN_RX: RX #1669 ID=0x100 len=1[0m
+[0;32mI (17488) CAN_RX: 01[0m
+[0;32mI (17488) CAN_RX: RX #1670 ID=0x100 len=1[0m
+[0;32mI (17498) CAN_RX: 01[0m
+[0;32mI (17498) CAN_RX: RX #1671 ID=0x100 len=1[0m
+[0;32mI (17498) CAN_RX: 01[0m
+[0;32mI (17498) CAN_RX: RX #1672 ID=0x100 len=1[0m
+[0;32mI (17508) CAN_RX: 01[0m
+[0;32mI (17508) CAN_RX: RX #1673 ID=0x100 len=1[0m
+[0;32mI (17508) CAN_RX: 01[0m
+[0;32mI (17508) CAN_RX: RX #1674 ID=0x100 len=1[0m
+[0;32mI (17518) CAN_RX: 01[0m
+[0;32mI (17518) CAN_RX: RX #1675 ID=0x100 len=1[0m
+[0;32mI (17518) CAN_RX: 01[0m
+[0;32mI (17528) CAN_RX: RX #1676 ID=0x100 len=1[0m
+[0;32mI (17528) CAN_RX: 01[0m
+[0;32mI (17528) CAN_RX: RX #1677 ID=0x100 len=1[0m
+[0;32mI (17538) CAN_RX: 01[0m
+[0;32mI (17538) CAN_RX: RX #1678 ID=0x100 len=1[0m
+[0;32mI (17538) CAN_RX: 01[0m
+[0;32mI (17538) CAN_RX: RX #1679 ID=0x100 len=1[0m
+[0;32mI (17548) CAN_RX: 01[0m
+[0;32mI (17548) CAN_RX: RX #1680 ID=0x100 len=1[0m
+[0;32mI (17548) CAN_RX: 01[0m
+[0;32mI (17548) CAN_RX: RX #1681 ID=0x100 len=1[0m
+[0;32mI (17558) CAN_RX: 01[0m
+[0;32mI (17558) CAN_RX: RX #1682 ID=0x100 len=1[0m
+[0;32mI (17558) CAN_RX: 01[0m
+[0;32mI (17568) CAN_RX: RX #1683 ID=0x100 len=1[0m
+[0;32mI (17568) CAN_RX: 01[0m
+[0;32mI (17568) CAN_RX: RX #1684 ID=0x100 len=1[0m
+[0;32mI (17568) CAN_RX: 01[0m
+[0;32mI (17578) CAN_RX: RX #1685 ID=0x100 len=1[0m
+[0;32mI (17578) CAN_RX: 01[0m
+[0;32mI (17578) CAN_RX: RX #1686 ID=0x100 len=1[0m
+[0;32mI (17588) CAN_RX: 01[0m
+[0;32mI (17588) CAN_RX: RX #1687 ID=0x100 len=1[0m
+[0;32mI (17588) CAN_RX: 01[0m
+[0;32mI (17588) CAN_RX: RX #1688 ID=0x100 len=1[0m
+[0;32mI (17598) CAN_RX: 01[0m
+[0;32mI (17598) CAN_RX: RX #1689 ID=0x100 len=1[0m
+[0;32mI (17598) CAN_RX: 01[0m
+[0;32mI (17598) CAN_RX: RX #1690 ID=0x100 len=1[0m
+[0;32mI (17608) CAN_RX: 01[0m
+[0;32mI (17608) CAN_RX: RX #1691 ID=0x100 len=1[0m
+[0;32mI (17608) CAN_RX: 01[0m
+[0;32mI (17618) CAN_RX: RX #1692 ID=0x100 len=1[0m
+[0;32mI (17618) CAN_RX: 01[0m
+[0;32mI (17618) CAN_RX: RX #1693 ID=0x100 len=1[0m
+[0;32mI (17628) CAN_RX: 01[0m
+[0;32mI (17628) CAN_RX: RX #1694 ID=0x100 len=1[0m
+[0;32mI (17628) CAN_RX: 01[0m
+[0;32mI (17628) CAN_RX: RX #1695 ID=0x100 len=1[0m
+[0;32mI (17638) CAN_RX: 01[0m
+[0;32mI (17638) CAN_RX: RX #1696 ID=0x100 len=1[0m
+[0;32mI (17638) CAN_RX: 01[0m
+[0;32mI (17638) CAN_RX: RX #1697 ID=0x100 len=1[0m
+[0;32mI (17648) CAN_RX: 01[0m
+[0;32mI (17648) CAN_RX: RX #1698 ID=0x100 len=1[0m
+[0;32mI (17648) CAN_RX: 01[0m
+[0;32mI (17658) CAN_RX: RX #1699 ID=0x100 len=1[0m
+[0;32mI (17658) CAN_RX: 01[0m
+[0;32mI (17658) CAN_RX: RX #1700 ID=0x100 len=1[0m
+[0;32mI (17658) CAN_RX: 01[0m
+[0;32mI (17668) CAN_RX: RX #1701 ID=0x100 len=1[0m
+[0;32mI (17668) CAN_RX: 01[0m
+[0;32mI (17668) CAN_RX: RX #1702 ID=0x100 len=1[0m
+[0;32mI (17678) CAN_RX: 01[0m
+[0;32mI (17678) CAN_RX: RX #1703 ID=0x100 len=1[0m
+[0;32mI (17678) CAN_RX: 01[0m
+[0;32mI (17678) CAN_RX: RX #1704 ID=0x100 len=1[0m
+[0;32mI (17688) CAN_RX: 01[0m
+[0;32mI (17688) CAN_RX: RX #1705 ID=0x100 len=1[0m
+[0;32mI (17688) CAN_RX: 01[0m
+[0;32mI (17688) CAN_RX: RX #1706 ID=0x100 len=1[0m
+[0;32mI (17698) CAN_RX: 01[0m
+[0;32mI (17698) CAN_RX: RX #1707 ID=0x100 len=1[0m
+[0;32mI (17698) CAN_RX: 01[0m
+[0;32mI (17708) CAN_RX: RX #1708 ID=0x100 len=1[0m
+[0;32mI (17708) CAN_RX: 01[0m
+[0;32mI (17708) CAN_RX: RX #1709 ID=0x100 len=1[0m
+[0;32mI (17718) CAN_RX: 01[0m
+[0;32mI (17718) CAN_RX: RX #1710 ID=0x100 len=1[0m
+[0;32mI (17718) CAN_RX: 01[0m
+[0;32mI (17718) CAN_RX: RX #1711 ID=0x100 len=1[0m
+[0;32mI (17728) CAN_RX: 01[0m
+[0;32mI (17728) CAN_RX: RX #1712 ID=0x100 len=1[0m
+[0;32mI (17728) CAN_RX: 01[0m
+[0;32mI (17728) CAN_RX: RX #1713 ID=0x100 len=1[0m
+[0;32mI (17738) CAN_RX: 01[0m
+[0;32mI (17738) CAN_RX: RX #1714 ID=0x100 len=1[0m
+[0;32mI (17738) CAN_RX: 01[0m
+[0;32mI (17748) CAN_RX: RX #1715 ID=0x100 len=1[0m
+[0;32mI (17748) CAN_RX: 01[0m
+[0;32mI (17748) CAN_RX: RX #1716 ID=0x100 len=1[0m
+[0;32mI (17758) CAN_RX: 01[0m
+[0;32mI (17758) CAN_RX: RX #1717 ID=0x100 len=1[0m
+[0;32mI (17758) CAN_RX: 01[0m
+[0;32mI (17758) CAN_RX: RX #1718 ID=0x100 len=1[0m
+[0;32mI (17768) CAN_RX: 01[0m
+[0;32mI (17768) CAN_RX: RX #1719 ID=0x100 len=1[0m
+[0;32mI (17768) CAN_RX: 01[0m
+[0;32mI (17768) CAN_RX: RX #1720 ID=0x100 len=1[0m
+[0;32mI (17778) CAN_RX: 01[0m
+[0;32mI (17778) CAN_RX: RX #1721 ID=0x100 len=1[0m
+[0;32mI (17778) CAN_RX: 01[0m
+[0;32mI (17788) CAN_RX: RX #1722 ID=0x100 len=1[0m
+[0;32mI (17788) CAN_RX: 01[0m
+[0;32mI (17788) CAN_RX: RX #1723 ID=0x100 len=1[0m
+[0;32mI (17788) CAN_RX: 01[0m
+[0;32mI (17798) CAN_RX: RX #1724 ID=0x100 len=1[0m
+[0;32mI (17798) CAN_RX: 01[0m
+[0;32mI (17798) CAN_RX: RX #1725 ID=0x100 len=1[0m
+[0;32mI (17808) CAN_RX: 01[0m
+[0;32mI (17808) CAN_RX: RX #1726 ID=0x100 len=1[0m
+[0;32mI (17808) CAN_RX: 01[0m
+[0;32mI (17808) CAN_RX: RX #1727 ID=0x100 len=1[0m
+[0;32mI (17818) CAN_RX: 01[0m
+[0;32mI (17818) CAN_RX: RX #1728 ID=0x100 len=1[0m
+[0;32mI (17818) CAN_RX: 01[0m
+[0;32mI (17818) CAN_RX: RX #1729 ID=0x100 len=1[0m
+[0;32mI (17828) CAN_RX: 01[0m
+[0;32mI (17828) CAN_RX: RX #1730 ID=0x100 len=1[0m
+[0;32mI (17828) CAN_RX: 01[0m
+[0;32mI (17838) CAN_RX: RX #1731 ID=0x100 len=1[0m
+[0;32mI (17838) CAN_RX: 01[0m
+[0;32mI (17838) CAN_RX: RX #1732 ID=0x100 len=1[0m
+[0;32mI (17848) CAN_RX: 01[0m
+[0;32mI (17848) CAN_RX: RX #1733 ID=0x100 len=1[0m
+[0;32mI (17848) CAN_RX: 01[0m
+[0;32mI (17848) CAN_RX: RX #1734 ID=0x100 len=1[0m
+[0;32mI (17858) CAN_RX: 01[0m
+[0;32mI (17858) CAN_RX: RX #1735 ID=0x100 len=1[0m
+[0;32mI (17858) CAN_RX: 01[0m
+[0;32mI (17858) CAN_RX: RX #1736 ID=0x100 len=1[0m
+[0;32mI (17868) CAN_RX: 01[0m
+[0;32mI (17868) CAN_RX: RX #1737 ID=0x100 len=1[0m
+[0;32mI (17868) CAN_RX: 01[0m
+[0;32mI (17878) CAN_RX: RX #1738 ID=0x100 len=1[0m
+[0;32mI (17878) CAN_RX: 01[0m
+[0;32mI (17878) CAN_RX: RX #1739 ID=0x100 len=1[0m
+[0;32mI (17878) CAN_RX: 01[0m
+[0;32mI (17888) CAN_RX: RX #1740 ID=0x100 len=1[0m
+[0;32mI (17888) CAN_RX: 01[0m
+[0;32mI (17888) CAN_RX: RX #1741 ID=0x100 len=1[0m
+[0;32mI (17898) CAN_RX: 01[0m
+[0;32mI (17898) CAN_RX: RX #1742 ID=0x100 len=1[0m
+[0;32mI (17898) CAN_RX: 01[0m
+[0;32mI (17898) CAN_RX: RX #1743 ID=0x100 len=1[0m
+[0;32mI (17908) CAN_RX: 01[0m
+[0;32mI (17908) CAN_RX: RX #1744 ID=0x100 len=1[0m
+[0;32mI (17908) CAN_RX: 01[0m
+[0;32mI (17908) CAN_RX: RX #1745 ID=0x100 len=1[0m
+[0;32mI (17918) CAN_RX: 01[0m
+[0;32mI (17918) CAN_RX: RX #1746 ID=0x100 len=1[0m
+[0;32mI (17918) CAN_RX: 01[0m
+[0;32mI (17928) CAN_RX: RX #1747 ID=0x100 len=1[0m
+[0;32mI (17928) CAN_RX: 01[0m
+[0;32mI (17928) CAN_RX: RX #1748 ID=0x100 len=1[0m
+[0;32mI (17938) CAN_RX: 01[0m
+[0;32mI (17938) CAN_RX: RX #1749 ID=0x100 len=1[0m
+[0;32mI (17938) CAN_RX: 01[0m
+[0;32mI (17938) CAN_RX: RX #1750 ID=0x100 len=1[0m
+[0;32mI (17948) CAN_RX: 01[0m
+[0;32mI (17948) CAN_RX: RX #1751 ID=0x100 len=1[0m
+[0;32mI (17948) CAN_RX: 01[0m
+[0;32mI (17948) CAN_RX: RX #1752 ID=0x100 len=1[0m
+[0;32mI (17958) CAN_RX: 01[0m
+[0;32mI (17958) CAN_RX: RX #1753 ID=0x100 len=1[0m
+[0;32mI (17958) CAN_RX: 01[0m
+[0;32mI (17968) CAN_RX: RX #1754 ID=0x100 len=1[0m
+[0;32mI (17968) CAN_RX: 01[0m
+[0;32mI (17968) CAN_RX: RX #1755 ID=0x100 len=1[0m
+[0;32mI (17978) CAN_RX: 01[0m
+[0;32mI (17978) CAN_RX: RX #1756 ID=0x100 len=1[0m
+[0;32mI (17978) CAN_RX: 01[0m
+[0;32mI (17978) CAN_RX: RX #1757 ID=0x100 len=1[0m
+[0;32mI (17988) CAN_RX: 01[0m
+[0;32mI (17988) CAN_RX: RX #1758 ID=0x100 len=1[0m
+[0;32mI (17988) CAN_RX: 01[0m
+[0;32mI (17988) CAN_RX: RX #1759 ID=0x100 len=1[0m
+[0;32mI (17998) CAN_RX: 01[0m
+[0;32mI (17998) CAN_RX: RX #1760 ID=0x100 len=1[0m
+[0;32mI (17998) CAN_RX: 01[0m
+[0;32mI (18008) CAN_RX: RX #1761 ID=0x100 len=1[0m
+[0;32mI (18008) CAN_RX: 01[0m
+[0;32mI (18008) CAN_RX: RX #1762 ID=0x100 len=1[0m
+[0;32mI (18008) CAN_RX: 01[0m
+[0;32mI (18018) CAN_RX: RX #1763 ID=0x100 len=1[0m
+[0;32mI (18018) CAN_RX: 01[0m
+[0;32mI (18018) CAN_RX: RX #1764 ID=0x100 len=1[0m
+[0;32mI (18028) CAN_RX: 01[0m
+[0;32mI (18028) CAN_RX: RX #1765 ID=0x100 len=1[0m
+[0;32mI (18028) CAN_RX: 01[0m
+[0;32mI (18028) CAN_RX: RX #1766 ID=0x100 len=1[0m
+[0;32mI (18038) CAN_RX: 01[0m
+[0;32mI (18038) CAN_RX: RX #1767 ID=0x100 len=1[0m
+[0;32mI (18038) CAN_RX: 01[0m
+[0;32mI (18038) CAN_RX: RX #1768 ID=0x100 len=1[0m
+[0;32mI (18048) CAN_RX: 01[0m
+[0;32mI (18048) CAN_RX: RX #1769 ID=0x100 len=1[0m
+[0;32mI (18048) CAN_RX: 01[0m
+[0;32mI (18058) CAN_RX: RX #1770 ID=0x100 len=1[0m
+[0;32mI (18058) CAN_RX: 01[0m
+[0;32mI (18058) CAN_RX: RX #1771 ID=0x100 len=1[0m
+[0;32mI (18068) CAN_RX: 01[0m
+[0;32mI (18068) CAN_RX: RX #1772 ID=0x100 len=1[0m
+[0;32mI (18068) CAN_RX: 01[0m
+[0;32mI (18068) CAN_RX: RX #1773 ID=0x100 len=1[0m
+[0;32mI (18078) CAN_RX: 01[0m
+[0;32mI (18078) CAN_RX: RX #1774 ID=0x100 len=1[0m
+[0;32mI (18078) CAN_RX: 01[0m
+[0;32mI (18078) CAN_RX: RX #1775 ID=0x100 len=1[0m
+[0;32mI (18088) CAN_RX: 01[0m
+[0;32mI (18088) CAN_RX: RX #1776 ID=0x100 len=1[0m
+[0;32mI (18088) CAN_RX: 01[0m
+[0;32mI (18098) CAN_RX: RX #1777 ID=0x100 len=1[0m
+[0;32mI (18098) CAN_RX: 01[0m
+[0;32mI (18098) CAN_RX: RX #1778 ID=0x100 len=1[0m
+[0;32mI (18098) CAN_RX: 01[0m
+[0;32mI (18108) CAN_RX: RX #1779 ID=0x100 len=1[0m
+[0;32mI (18108) CAN_RX: 01[0m
+[0;32mI (18108) CAN_RX: RX #1780 ID=0x100 len=1[0m
+[0;32mI (18118) CAN_RX: 01[0m
+[0;32mI (18118) CAN_RX: RX #1781 ID=0x100 len=1[0m
+[0;32mI (18118) CAN_RX: 01[0m
+[0;32mI (18118) CAN_RX: RX #1782 ID=0x100 len=1[0m
+[0;32mI (18128) CAN_RX: 01[0m
+[0;32mI (18128) CAN_RX: RX #1783 ID=0x100 len=1[0m
+[0;32mI (18128) CAN_RX: 01[0m
+[0;32mI (18138) CAN_RX: RX #1784 ID=0x100 len=1[0m
+[0;32mI (18138) CAN_RX: 01[0m
+[0;32mI (18138) CAN_RX: RX #1785 ID=0x100 len=1[0m
+[0;32mI (18138) CAN_RX: 01[0m
+[0;32mI (18148) CAN_RX: RX #1786 ID=0x100 len=1[0m
+[0;32mI (18148) CAN_RX: 01[0m
+[0;32mI (18148) CAN_RX: RX #1787 ID=0x100 len=1[0m
+[0;32mI (18158) CAN_RX: 01[0m
+[0;32mI (18158) CAN_RX: RX #1788 ID=0x100 len=1[0m
+[0;32mI (18158) CAN_RX: 01[0m
+[0;32mI (18158) CAN_RX: RX #1789 ID=0x100 len=1[0m
+[0;32mI (18168) CAN_RX: 01[0m
+[0;32mI (18168) CAN_RX: RX #1790 ID=0x100 len=1[0m
+[0;32mI (18168) CAN_RX: 01[0m
+[0;32mI (18168) CAN_RX: RX #1791 ID=0x100 len=1[0m
+[0;32mI (18178) CAN_RX: 01[0m
+[0;32mI (18178) CAN_RX: RX #1792 ID=0x100 len=1[0m
+[0;32mI (18178) CAN_RX: 01[0m
+[0;32mI (18188) CAN_RX: RX #1793 ID=0x100 len=1[0m
+[0;32mI (18188) CAN_RX: 01[0m
+[0;32mI (18188) CAN_RX: RX #1794 ID=0x100 len=1[0m
+[0;32mI (18198) CAN_RX: 01[0m
+[0;32mI (18198) CAN_RX: RX #1795 ID=0x100 len=1[0m
+[0;32mI (18198) CAN_RX: 01[0m
+[0;32mI (18198) CAN_RX: RX #1796 ID=0x100 len=1[0m
+[0;32mI (18208) CAN_RX: 01[0m
+[0;32mI (18208) CAN_RX: RX #1797 ID=0x100 len=1[0m
+[0;32mI (18208) CAN_RX: 01[0m
+[0;32mI (18208) CAN_RX: RX #1798 ID=0x100 len=1[0m
+[0;32mI (18218) CAN_RX: 01[0m
+[0;32mI (18218) CAN_RX: RX #1799 ID=0x100 len=1[0m
+[0;32mI (18218) CAN_RX: 01[0m
+[0;32mI (18228) CAN_RX: RX #1800 ID=0x100 len=1[0m
+[0;32mI (18228) CAN_RX: 01[0m
+[0;32mI (18228) CAN_RX: RX #1801 ID=0x100 len=1[0m
+[0;32mI (18228) CAN_RX: 01[0m
+[0;32mI (18238) CAN_RX: RX #1802 ID=0x100 len=1[0m
+[0;32mI (18238) CAN_RX: 01[0m
+[0;32mI (18238) CAN_RX: RX #1803 ID=0x100 len=1[0m
+[0;32mI (18248) CAN_RX: 01[0m
+[0;32mI (18248) CAN_RX: RX #1804 ID=0x100 len=1[0m
+[0;32mI (18248) CAN_RX: 01[0m
+[0;32mI (18248) CAN_RX: RX #1805 ID=0x100 len=1[0m
+[0;32mI (18258) CAN_RX: 01[0m
+[0;32mI (18258) CAN_RX: RX #1806 ID=0x100 len=1[0m
+[0;32mI (18258) CAN_RX: 01[0m
+[0;32mI (18258) CAN_RX: RX #1807 ID=0x100 len=1[0m
+[0;32mI (18268) CAN_RX: 01[0m
+[0;32mI (18268) CAN_RX: RX #1808 ID=0x100 len=1[0m
+[0;32mI (18268) CAN_RX: 01[0m
+[0;32mI (18278) CAN_RX: RX #1809 ID=0x100 len=1[0m
+[0;32mI (18278) CAN_RX: 01[0m
+[0;32mI (18278) CAN_RX: RX #1810 ID=0x100 len=1[0m
+[0;32mI (18288) CAN_RX: 01[0m
+[0;32mI (18288) CAN_RX: RX #1811 ID=0x100 len=1[0m
+[0;32mI (18288) CAN_RX: 01[0m
+[0;32mI (18288) CAN_RX: RX #1812 ID=0x100 len=1[0m
+[0;32mI (18298) CAN_RX: 01[0m
+[0;32mI (18298) CAN_RX: RX #1813 ID=0x100 len=1[0m
+[0;32mI (18298) CAN_RX: 01[0m
+[0;32mI (18298) CAN_RX: RX #1814 ID=0x100 len=1[0m
+[0;32mI (18308) CAN_RX: 01[0m
+[0;32mI (18308) CAN_RX: RX #1815 ID=0x100 len=1[0m
+[0;32mI (18308) CAN_RX: 01[0m
+[0;32mI (18318) CAN_RX: RX #1816 ID=0x100 len=1[0m
+[0;32mI (18318) CAN_RX: 01[0m
+[0;32mI (18318) CAN_RX: RX #1817 ID=0x100 len=1[0m
+[0;32mI (18318) CAN_RX: 01[0m
+[0;32mI (18328) CAN_RX: RX #1818 ID=0x100 len=1[0m
+[0;32mI (18328) CAN_RX: 01[0m
+[0;32mI (18328) CAN_RX: RX #1819 ID=0x100 len=1[0m
+[0;32mI (18338) CAN_RX: 01[0m
+[0;32mI (18338) CAN_RX: RX #1820 ID=0x100 len=1[0m
+[0;32mI (18338) CAN_RX: 01[0m
+[0;32mI (18338) CAN_RX: RX #1821 ID=0x100 len=1[0m
+[0;32mI (18348) CAN_RX: 01[0m
+[0;32mI (18348) CAN_RX: RX #1822 ID=0x100 len=1[0m
+[0;32mI (18348) CAN_RX: 01[0m
+[0;32mI (18358) CAN_RX: RX #1823 ID=0x100 len=1[0m
+[0;32mI (18358) CAN_RX: 01[0m
+[0;32mI (18358) CAN_RX: RX #1824 ID=0x100 len=1[0m
+[0;32mI (18358) CAN_RX: 01[0m
+[0;32mI (18368) CAN_RX: RX #1825 ID=0x100 len=1[0m
+[0;32mI (18368) CAN_RX: 01[0m
+[0;32mI (18368) CAN_RX: RX #1826 ID=0x100 len=1[0m
+[0;32mI (18378) CAN_RX: 01[0m
+[0;32mI (18378) CAN_RX: RX #1827 ID=0x100 len=1[0m
+[0;32mI (18378) CAN_RX: 01[0m
+[0;32mI (18378) CAN_RX: RX #1828 ID=0x100 len=1[0m
+[0;32mI (18388) CAN_RX: 01[0m
+[0;32mI (18388) CAN_RX: RX #1829 ID=0x100 len=1[0m
+[0;32mI (18388) CAN_RX: 01[0m
+[0;32mI (18388) CAN_RX: RX #1830 ID=0x100 len=1[0m
+[0;32mI (18398) CAN_RX: 01[0m
+[0;32mI (18398) CAN_RX: RX #1831 ID=0x100 len=1[0m
+[0;32mI (18398) CAN_RX: 01[0m
+[0;32mI (18408) CAN_RX: RX #1832 ID=0x100 len=1[0m
+[0;32mI (18408) CAN_RX: 01[0m
+[0;32mI (18408) CAN_RX: RX #1833 ID=0x100 len=1[0m
+[0;32mI (18418) CAN_RX: 01[0m
+[0;32mI (18418) CAN_RX: RX #1834 ID=0x100 len=1[0m
+[0;32mI (18418) CAN_RX: 01[0m
+[0;32mI (18418) CAN_RX: RX #1835 ID=0x100 len=1[0m
+[0;32mI (18428) CAN_RX: 01[0m
+[0;32mI (18428) CAN_RX: RX #1836 ID=0x100 len=1[0m
+[0;32mI (18428) CAN_RX: 01[0m
+[0;32mI (18428) CAN_RX: RX #1837 ID=0x100 len=1[0m
+[0;32mI (18438) CAN_RX: 01[0m
+[0;32mI (18438) CAN_RX: RX #1838 ID=0x100 len=1[0m
+[0;32mI (18438) CAN_RX: 01[0m
+[0;32mI (18448) CAN_RX: RX #1839 ID=0x100 len=1[0m
+[0;32mI (18448) CAN_RX: 01[0m
+[0;32mI (18448) CAN_RX: RX #1840 ID=0x100 len=1[0m
+[0;32mI (18448) CAN_RX: 01[0m
+[0;32mI (18458) CAN_RX: RX #1841 ID=0x100 len=1[0m
+[0;32mI (18458) CAN_RX: 01[0m
+[0;32mI (18458) CAN_RX: RX #1842 ID=0x100 len=1[0m
+[0;32mI (18468) CAN_RX: 01[0m
+[0;32mI (18468) CAN_RX: RX #1843 ID=0x100 len=1[0m
+[0;32mI (18468) CAN_RX: 01[0m
+[0;32mI (18468) CAN_RX: RX #1844 ID=0x100 len=1[0m
+[0;32mI (18478) CAN_RX: 01[0m
+[0;32mI (18478) CAN_RX: RX #1845 ID=0x100 len=1[0m
+[0;32mI (18478) CAN_RX: 01[0m
+[0;32mI (18478) CAN_RX: RX #1846 ID=0x100 len=1[0m
+[0;32mI (18488) CAN_RX: 01[0m
+[0;32mI (18488) CAN_RX: RX #1847 ID=0x100 len=1[0m
+[0;32mI (18488) CAN_RX: 01[0m
+[0;32mI (18498) CAN_RX: RX #1848 ID=0x100 len=1[0m
+[0;32mI (18498) CAN_RX: 01[0m
+[0;32mI (18498) CAN_RX: RX #1849 ID=0x100 len=1[0m
+[0;32mI (18508) CAN_RX: 01[0m
+[0;32mI (18508) CAN_RX: RX #1850 ID=0x100 len=1[0m
+[0;32mI (18508) CAN_RX: 01[0m
+[0;32mI (18508) CAN_RX: RX #1851 ID=0x100 len=1[0m
+[0;32mI (18518) CAN_RX: 01[0m
+[0;32mI (18518) CAN_RX: RX #1852 ID=0x100 len=1[0m
+[0;32mI (18518) CAN_RX: 01[0m
+[0;32mI (18518) CAN_RX: RX #1853 ID=0x100 len=1[0m
+[0;32mI (18528) CAN_RX: 01[0m
+[0;32mI (18528) CAN_RX: RX #1854 ID=0x100 len=1[0m
+[0;32mI (18528) CAN_RX: 01[0m
+[0;32mI (18538) CAN_RX: RX #1855 ID=0x100 len=1[0m
+[0;32mI (18538) CAN_RX: 01[0m
+[0;32mI (18538) CAN_RX: RX #1856 ID=0x100 len=1[0m
+[0;32mI (18548) CAN_RX: 01[0m
+[0;32mI (18548) CAN_RX: RX #1857 ID=0x100 len=1[0m
+[0;32mI (18548) CAN_RX: 01[0m
+[0;32mI (18548) CAN_RX: RX #1858 ID=0x100 len=1[0m
+[0;32mI (18558) CAN_RX: 01[0m
+[0;32mI (18558) CAN_RX: RX #1859 ID=0x100 len=1[0m
+[0;32mI (18558) CAN_RX: 01[0m
+[0;32mI (18558) CAN_RX: RX #1860 ID=0x100 len=1[0m
+[0;32mI (18568) CAN_RX: 01[0m
+[0;32mI (18568) CAN_RX: RX #1861 ID=0x100 len=1[0m
+[0;32mI (18568) CAN_RX: 01[0m
+[0;32mI (18578) CAN_RX: RX #1862 ID=0x100 len=1[0m
+[0;32mI (18578) CAN_RX: 01[0m
+[0;32mI (18578) CAN_RX: RX #1863 ID=0x100 len=1[0m
+[0;32mI (18578) CAN_RX: 01[0m
+[0;32mI (18588) CAN_RX: RX #1864 ID=0x100 len=1[0m
+[0;32mI (18588) CAN_RX: 01[0m
+[0;32mI (18588) CAN_RX: RX #1865 ID=0x100 len=1[0m
+[0;32mI (18598) CAN_RX: 01[0m
+[0;32mI (18598) CAN_RX: RX #1866 ID=0x100 len=1[0m
+[0;32mI (18598) CAN_RX: 01[0m
+[0;32mI (18598) CAN_RX: RX #1867 ID=0x100 len=1[0m
+[0;32mI (18608) CAN_RX: 01[0m
+[0;32mI (18608) CAN_RX: RX #1868 ID=0x100 len=1[0m
+[0;32mI (18608) CAN_RX: 01[0m
+[0;32mI (18608) CAN_RX: RX #1869 ID=0x100 len=1[0m
+[0;32mI (18618) CAN_RX: 01[0m
+[0;32mI (18618) CAN_RX: RX #1870 ID=0x100 len=1[0m
+[0;32mI (18618) CAN_RX: 01[0m
+[0;32mI (18628) CAN_RX: RX #1871 ID=0x100 len=1[0m
+[0;32mI (18628) CAN_RX: 01[0m
+[0;32mI (18628) CAN_RX: RX #1872 ID=0x100 len=1[0m
+[0;32mI (18638) CAN_RX: 01[0m
+[0;32mI (18638) CAN_RX: RX #1873 ID=0x100 len=1[0m
+[0;32mI (18638) CAN_RX: 01[0m
+[0;32mI (18638) CAN_RX: RX #1874 ID=0x100 len=1[0m
+[0;32mI (18648) CAN_RX: 01[0m
+[0;32mI (18648) CAN_RX: RX #1875 ID=0x100 len=1[0m
+[0;32mI (18648) CAN_RX: 01[0m
+[0;32mI (18648) CAN_RX: RX #1876 ID=0x100 len=1[0m
+[0;32mI (18658) CAN_RX: 01[0m
+[0;32mI (18658) CAN_RX: RX #1877 ID=0x100 len=1[0m
+[0;32mI (18658) CAN_RX: 01[0m
+[0;32mI (18668) CAN_RX: RX #1878 ID=0x100 len=1[0m
+[0;32mI (18668) CAN_RX: 01[0m
+[0;32mI (18668) CAN_RX: RX #1879 ID=0x100 len=1[0m
+[0;32mI (18668) CAN_RX: 01[0m
+[0;32mI (18678) CAN_RX: RX #1880 ID=0x100 len=1[0m
+[0;32mI (18678) CAN_RX: 01[0m
+[0;32mI (18678) CAN_RX: RX #1881 ID=0x100 len=1[0m
+[0;32mI (18688) CAN_RX: 01[0m
+[0;32mI (18688) CAN_RX: RX #1882 ID=0x100 len=1[0m
+[0;32mI (18688) CAN_RX: 01[0m
+[0;32mI (18688) CAN_RX: RX #1883 ID=0x100 len=1[0m
+[0;32mI (18698) CAN_RX: 01[0m
+[0;32mI (18698) CAN_RX: RX #1884 ID=0x100 len=1[0m
+[0;32mI (18698) CAN_RX: 01[0m
+[0;32mI (18698) CAN_RX: RX #1885 ID=0x100 len=1[0m
+[0;32mI (18708) CAN_RX: 01[0m
+[0;32mI (18708) CAN_RX: RX #1886 ID=0x100 len=1[0m
+[0;32mI (18708) CAN_RX: 01[0m
+[0;32mI (18718) CAN_RX: RX #1887 ID=0x100 len=1[0m
+[0;32mI (18718) CAN_RX: 01[0m
+[0;32mI (18718) CAN_RX: RX #1888 ID=0x100 len=1[0m
+[0;32mI (18728) CAN_RX: 01[0m
+[0;32mI (18728) CAN_RX: RX #1889 ID=0x100 len=1[0m
+[0;32mI (18728) CAN_RX: 01[0m
+[0;32mI (18728) CAN_RX: RX #1890 ID=0x100 len=1[0m
+[0;32mI (18738) CAN_RX: 01[0m
+[0;32mI (18738) CAN_RX: RX #1891 ID=0x100 len=1[0m
+[0;32mI (18738) CAN_RX: 01[0m
+[0;32mI (18738) CAN_RX: RX #1892 ID=0x100 len=1[0m
+[0;32mI (18748) CAN_RX: 01[0m
+[0;32mI (18748) CAN_RX: RX #1893 ID=0x100 len=1[0m
+[0;32mI (18748) CAN_RX: 01[0m
+[0;32mI (18758) CAN_RX: RX #1894 ID=0x100 len=1[0m
+[0;32mI (18758) CAN_RX: 01[0m
+[0;32mI (18758) CAN_RX: RX #1895 ID=0x100 len=1[0m
+[0;32mI (18768) CAN_RX: 01[0m
+[0;32mI (18768) CAN_RX: RX #1896 ID=0x100 len=1[0m
+[0;32mI (18768) CAN_RX: 01[0m
+[0;32mI (18768) CAN_RX: RX #1897 ID=0x100 len=1[0m
+[0;32mI (18778) CAN_RX: 01[0m
+[0;32mI (18778) CAN_RX: RX #1898 ID=0x100 len=1[0m
+[0;32mI (18778) CAN_RX: 01[0m
+[0;32mI (18778) CAN_RX: RX #1899 ID=0x100 len=1[0m
+[0;32mI (18788) CAN_RX: 01[0m
+[0;32mI (18788) CAN_RX: RX #1900 ID=0x100 len=1[0m
+[0;32mI (18788) CAN_RX: 01[0m
+[0;32mI (18798) CAN_RX: RX #1901 ID=0x100 len=1[0m
+[0;32mI (18798) CAN_RX: 01[0m
+[0;32mI (18798) CAN_RX: RX #1902 ID=0x100 len=1[0m
+[0;32mI (18798) CAN_RX: 01[0m
+[0;32mI (18808) CAN_RX: RX #1903 ID=0x100 len=1[0m
+[0;32mI (18808) CAN_RX: 01[0m
+[0;32mI (18808) CAN_RX: RX #1904 ID=0x100 len=1[0m
+[0;32mI (18818) CAN_RX: 01[0m
+[0;32mI (18818) CAN_RX: RX #1905 ID=0x100 len=1[0m
+[0;32mI (18818) CAN_RX: 01[0m
+[0;32mI (18818) CAN_RX: RX #1906 ID=0x100 len=1[0m
+[0;32mI (18828) CAN_RX: 01[0m
+[0;32mI (18828) CAN_RX: RX #1907 ID=0x100 len=1[0m
+[0;32mI (18828) CAN_RX: 01[0m
+[0;32mI (18828) CAN_RX: RX #1908 ID=0x100 len=1[0m
+[0;32mI (18838) CAN_RX: 01[0m
+[0;32mI (18838) CAN_RX: RX #1909 ID=0x100 len=1[0m
+[0;32mI (18838) CAN_RX: 01[0m
+[0;32mI (18848) CAN_RX: RX #1910 ID=0x100 len=1[0m
+[0;32mI (18848) CAN_RX: 01[0m
+[0;32mI (18848) CAN_RX: RX #1911 ID=0x100 len=1[0m
+[0;32mI (18858) CAN_RX: 01[0m
+[0;32mI (18858) CAN_RX: RX #1912 ID=0x100 len=1[0m
+[0;32mI (18858) CAN_RX: 01[0m
+[0;32mI (18858) CAN_RX: RX #1913 ID=0x1E (18868) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
+[1;31mE (18868) task_wdt:  - IDLE0 (CPU 0)[0m
+[1;31mE (18868) task_wdt: Tasks currently running:[0m
+[1;31mE (18868) task_wdt: CPU 0: main[0m
+[1;31mE (18868) task_wdt: CPU 1: IDLE1[0m
+[1;31mE (18868) task_wdt: Print CPU 0 (current core) backtrace[0m
+
+
+Backtrace: 0x400DAC82:0x3FFB1250 0x400DB054:0x3FFB1270 0x40082E8D:0x3FFB12A0 0x400D5815:0x3FFB4640 0x400D5ADC:0x3FFB4670 0x400D6161:0x3FFB46A0 0x400D4C7E:0x3FFB46C0 0x400D1379:0x3FFB46E0 0x400D6161:0x3FFB4700 0x400D4C7E:0x3FFB4720 0x400DDA09:0x3FFB4740 0x400DB9FE:0x3FFB4770 0x400DBE19:0x3FFB4790 0x400DC8B7:0x3FFB4810 0x400896AB:0x3FFB4840 0x400D68C5:0x3FFB48A0 0x400D447D:0x3FFB4940 0x400DEBB1:0x3FFB4970
+
+00 len=1
+[0;32mI (18928) CAN_RX: 01[0m
+[0;32mI (18928) CAN_RX: RX #1914 ID=0x100 len=1[0m
+[0;32mI (18938) CAN_RX: 01[0m
+[0;32mI (18938) CAN_RX: RX #1915 ID=0x100 len=1[0m
+[0;32mI (18938) CAN_RX: 01[0m
+[0;32mI (18938) CAN_RX: RX #1916 ID=0x100 len=1[0m
+[0;32mI (18948) CAN_RX: 01[0m
+[0;32mI (18948) CAN_RX: RX #1917 ID=0x100 len=1[0m
+[0;32mI (18948) CAN_RX: 01[0m
+[0;32mI (18948) CAN_RX: RX #1918 ID=0x100 len=1[0m
+[0;32mI (18958) CAN_RX: 01[0m
+[0;32mI (18958) CAN_RX: RX #1919 ID=0x100 len=1[0m
+[0;32mI (18958) CAN_RX: 01[0m
+[0;32mI (18968) CAN_RX: RX #1920 ID=0x100 len=1[0m
+[0;32mI (18968) CAN_RX: 01[0m
+[0;32mI (18968) CAN_RX: RX #1921 ID=0x100 len=1[0m
+[0;32mI (18978) CAN_RX: 01[0m
+[0;32mI (18978) CAN_RX: RX #1922 ID=0x100 len=1[0m
+[0;32mI (18978) CAN_RX: 01[0m
+[0;32mI (18978) CAN_RX: RX #1923 ID=0x100 len=1[0m
+[0;32mI (18988) CAN_RX: 01[0m
+[0;32mI (18988) CAN_RX: RX #1924 ID=0x100 len=1[0m
+[0;32mI (18988) CAN_RX: 01[0m
+[0;32mI (18988) CAN_RX: RX #1925 ID=0x100 len=1[0m
+[0;32mI (18998) CAN_RX: 01[0m
+[0;32mI (18998) CAN_RX: RX #1926 ID=0x100 len=1[0m
+[0;32mI (18998) CAN_RX: 01[0m
+[0;32mI (19008) CAN_RX: RX #1927 ID=0x100 len=1[0m
+[0;32mI (19008) CAN_RX: 01[0m
+[0;32mI (19008) CAN_RX: RX #1928 ID=0x100 len=1[0m
+[0;32mI (19018) CAN_RX: 01[0m
+[0;32mI (19018) CAN_RX: RX #1929 ID=0x100 len=1[0m
+[0;32mI (19018) CAN_RX: 01[0m
+[0;32mI (19018) CAN_RX: RX #1930 ID=0x100 len=1[0m
+[0;32mI (19028) CAN_RX: 01[0m
+[0;32mI (19028) CAN_RX: RX #1931 ID=0x100 len=1[0m
+[0;32mI (19028) CAN_RX: 01[0m
+[0;32mI (19028) CAN_RX: RX #1932 ID=0x100 len=1[0m
+[0;32mI (19038) CAN_RX: 01[0m
+[0;32mI (19038) CAN_RX: RX #1933 ID=0x100 len=1[0m
+[0;32mI (19038) CAN_RX: 01[0m
+[0;32mI (19048) CAN_RX: RX #1934 ID=0x100 len=1[0m
+[0;32mI (19048) CAN_RX: 01[0m
+[0;32mI (19048) CAN_RX: RX #1935 ID=0x100 len=1[0m
+[0;32mI (19048) CAN_RX: 01[0m
+[0;32mI (19058) CAN_RX: RX #1936 ID=0x100 len=1[0m
+[0;32mI (19058) CAN_RX: 01[0m
+[0;32mI (19058) CAN_RX: RX #1937 ID=0x100 len=1[0m
+[0;32mI (19068) CAN_RX: 01[0m
+[0;32mI (19068) CAN_RX: RX #1938 ID=0x100 len=1[0m
+[0;32mI (19068) CAN_RX: 01[0m
+[0;32mI (19068) CAN_RX: RX #1939 ID=0x100 len=1[0m
+[0;32mI (19078) CAN_RX: 01[0m
+[0;32mI (19078) CAN_RX: RX #1940 ID=0x100 len=1[0m
+[0;32mI (19078) CAN_RX: 01[0m
+[0;32mI (19078) CAN_RX: RX #1941 ID=0x100 len=1[0m
+[0;32mI (19088) CAN_RX: 01[0m
+[0;32mI (19088) CAN_RX: RX #1942 ID=0x100 len=1[0m
+[0;32mI (19088) CAN_RX: 01[0m
+[0;32mI (19098) CAN_RX: RX #1943 ID=0x100 len=1[0m
+[0;32mI (19098) CAN_RX: 01[0m
+[0;32mI (19098) CAN_RX: RX #1944 ID=0x100 len=1[0m
+[0;32mI (19108) CAN_RX: 01[0m
+[0;32mI (19108) CAN_RX: RX #1945 ID=0x100 len=1[0m
+[0;32mI (19108) CAN_RX: 01[0m
+[0;32mI (19108) CAN_RX: RX #1946 ID=0x100 len=1[0m
+[0;32mI (19118) CAN_RX: 01[0m
+[0;32mI (19118) CAN_RX: RX #1947 ID=0x100 len=1[0m
+[0;32mI (19118) CAN_RX: 01[0m
+[0;32mI (19118) CAN_RX: RX #1948 ID=0x100 len=1[0m
+[0;32mI (19128) CAN_RX: 01[0m
+[0;32mI (19128) CAN_RX: RX #1949 ID=0x100 len=1[0m
+[0;32mI (19128) CAN_RX: 01[0m
+[0;32mI (19138) CAN_RX: RX #1950 ID=0x100 len=1[0m
+[0;32mI (19138) CAN_RX: 01[0m
+[0;32mI (19138) CAN_RX: RX #1951 ID=0x100 len=1[0m
+[0;32mI (19138) CAN_RX: 01[0m
+[0;32mI (19148) CAN_RX: RX #1952 ID=0x100 len=1[0m
+[0;32mI (19148) CAN_RX: 01[0m
+[0;32mI (19148) CAN_RX: RX #1953 ID=0x100 len=1[0m
+[0;32mI (19158) CAN_RX: 01[0m
+[0;32mI (19158) CAN_RX: RX #1954 ID=0x100 len=1[0m
+[0;32mI (19158) CAN_RX: 01[0m
+[0;32mI (19158) CAN_RX: RX #1955 ID=0x100 len=1[0m
+[0;32mI (19168) CAN_RX: 01[0m
+[0;32mI (19168) CAN_RX: RX #1956 ID=0x100 len=1[0m
+[0;32mI (19168) CAN_RX: 01[0m
+[0;32mI (19168) CAN_RX: RX #1957 ID=0x100 len=1[0m
+[0;32mI (19178) CAN_RX: 01[0m
+[0;32mI (19178) CAN_RX: RX #1958 ID=0x100 len=1[0m
+[0;32mI (19178) CAN_RX: 01[0m
+[0;32mI (19188) CAN_RX: RX #1959 ID=0x100 len=1[0m
+[0;32mI (19188) CAN_RX: 01[0m
+[0;32mI (19188) CAN_RX: RX #1960 ID=0x100 len=1[0m
+[0;32mI (19198) CAN_RX: 01[0m
+[0;32mI (19198) CAN_RX: RX #1961 ID=0x100 len=1[0m
+[0;32mI (19198) CAN_RX: 01[0m
+[0;32mI (19198) CAN_RX: RX #1962 ID=0x100 len=1[0m
+[0;32mI (19208) CAN_RX: 01[0m
+[0;32mI (19208) CAN_RX: RX #1963 ID=0x100 len=1[0m
+[0;32mI (19208) CAN_RX: 01[0m
+[0;32mI (19208) CAN_RX: RX #1964 ID=0x100 len=1[0m
+[0;32mI (19218) CAN_RX: 01[0m
+[0;32mI (19218) CAN_RX: RX #1965 ID=0x100 len=1[0m
+[0;32mI (19218) CAN_RX: 01[0m
+[0;32mI (19228) CAN_RX: RX #1966 ID=0x100 len=1[0m
+[0;32mI (19228) CAN_RX: 01[0m
+[0;32mI (19228) CAN_RX: RX #1967 ID=0x100 len=1[0m
+[0;32mI (19238) CAN_RX: 01[0m
+[0;32mI (19238) CAN_RX: RX #1968 ID=0x100 len=1[0m
+[0;32mI (19238) CAN_RX: 01[0m
+[0;32mI (19238) CAN_RX: RX #1969 ID=0x100 len=1[0m
+[0;32mI (19248) CAN_RX: 01[0m
+[0;32mI (19248) CAN_RX: RX #1970 ID=0x100 len=1[0m
+[0;32mI (19248) CAN_RX: 01[0m
+[0;32mI (19248) CAN_RX: RX #1971 ID=0x100 len=1[0m
+[0;32mI (19258) CAN_RX: 01[0m
+[0;32mI (19258) CAN_RX: RX #1972 ID=0x100 len=1[0m
+[0;32mI (19258) CAN_RX: 01[0m
+[0;32mI (19268) CAN_RX: RX #1973 ID=0x100 len=1[0m
+[0;32mI (19268) CAN_RX: 01[0m
+[0;32mI (19268) CAN_RX: RX #1974 ID=0x100 len=1[0m
+[0;32mI (19268) CAN_RX: 01[0m
+[0;32mI (19278) CAN_RX: RX #1975 ID=0x100 len=1[0m
+[0;32mI (19278) CAN_RX: 01[0m
+[0;32mI (19278) CAN_RX: RX #1976 ID=0x100 len=1[0m
+[0;32mI (19288) CAN_RX: 01[0m
+[0;32mI (19288) CAN_RX: RX #1977 ID=0x100 len=1[0m
+[0;32mI (19288) CAN_RX: 01[0m
+[0;32mI (19288) CAN_RX: RX #1978 ID=0x100 len=1[0m
+[0;32mI (19298) CAN_RX: 01[0m
+[0;32mI (19298) CAN_RX: RX #1979 ID=0x100 len=1[0m
+[0;32mI (19298) CAN_RX: 01[0m
+[0;32mI (19298) CAN_RX: RX #1980 ID=0x100 len=1[0m
+[0;32mI (19308) CAN_RX: 01[0m
+[0;32mI (19308) CAN_RX: RX #1981 ID=0x100 len=1[0m
+[0;32mI (19308) CAN_RX: 01[0m
+[0;32mI (19318) CAN_RX: RX #1982 ID=0x100 len=1[0m
+[0;32mI (19318) CAN_RX: 01[0m
+[0;32mI (19318) CAN_RX: RX #1983 ID=0x100 len=1[0m
+[0;32mI (19328) CAN_RX: 01[0m
+[0;32mI (19328) CAN_RX: RX #1984 ID=0x100 len=1[0m
+[0;32mI (19328) CAN_RX: 01[0m
+[0;32mI (19328) CAN_RX: RX #1985 ID=0x100 len=1[0m
+[0;32mI (19338) CAN_RX: 01[0m
+[0;32mI (19338) CAN_RX: RX #1986 ID=0x100 len=1[0m
+[0;32mI (19338) CAN_RX: 01[0m
+[0;32mI (19338) CAN_RX: RX #1987 ID=0x100 len=1[0m
+[0;32mI (19348) CAN_RX: 01[0m
+[0;32mI (19348) CAN_RX: RX #1988 ID=0x100 len=1[0m
+[0;32mI (19348) CAN_RX: 01[0m
+[0;32mI (19358) CAN_RX: RX #1989 ID=0x100 len=1[0m
+[0;32mI (19358) CAN_RX: 01[0m
+[0;32mI (19358) CAN_RX: RX #1990 ID=0x100 len=1[0m
+[0;32mI (19358) CAN_RX: 01[0m
+[0;32mI (19368) CAN_RX: RX #1991 ID=0x100 len=1[0m
+[0;32mI (19368) CAN_RX: 01[0m
+[0;32mI (19368) CAN_RX: RX #1992 ID=0x100 len=1[0m
+[0;32mI (19378) CAN_RX: 01[0m
+[0;32mI (19378) CAN_RX: RX #1993 ID=0x100 len=1[0m
+[0;32mI (19378) CAN_RX: 01[0m
+[0;32mI (19378) CAN_RX: RX #1994 ID=0x100 len=1[0m
+[0;32mI (19388) CAN_RX: 01[0m
+[0;32mI (19388) CAN_RX: RX #1995 ID=0x100 len=1[0m
+[0;32mI (19388) CAN_RX: 01[0m
+[0;32mI (19398) CAN_RX: RX #1996 ID=0x100 len=1[0m
+[0;32mI (19398) CAN_RX: 01[0m
+[0;32mI (19398) CAN_RX: RX #1997 ID=0x100 len=1[0m
+[0;32mI (19398) CAN_RX: 01[0m
+[0;32mI (19408) CAN_RX: RX #1998 ID=0x100 len=1[0m
+[0;32mI (19408) CAN_RX: 01[0m
+[0;32mI (19408) CAN_RX: RX #1999 ID=0x100 len=1[0m
+[0;32mI (19418) CAN_RX: 01[0m
+[0;32mI (19418) CAN_RX: RX #2000 ID=0x100 len=1[0m
+[0;32mI (19418) CAN_RX: 01[0m
+[0;32mI (19418) CAN_RX: RX #2001 ID=0x100 len=1[0m
+[0;32mI (19428) CAN_RX: 01[0m
+[0;32mI (19428) CAN_RX: RX #2002 ID=0x100 len=1[0m
+[0;32mI (19428) CAN_RX: 01[0m
+[0;32mI (19428) CAN_RX: RX #2003 ID=0x100 len=1[0m
+[0;32mI (19438) CAN_RX: 01[0m
+[0;32mI (19438) CAN_RX: RX #2004 ID=0x100 len=1[0m
+[0;32mI (19438) CAN_RX: 01[0m
+[0;32mI (19448) CAN_RX: RX #2005 ID=0x100 len=1[0m
+[0;32mI (19448) CAN_RX: 01[0m
+[0;32mI (19448) CAN_RX: RX #2006 ID=0x100 len=1[0m
+[0;32mI (19458) CAN_RX: 01[0m
+[0;32mI (19458) CAN_RX: RX #2007 ID=0x100 len=1[0m
+[0;32mI (19458) CAN_RX: 01[0m
+[0;32mI (19458) CAN_RX: RX #2008 ID=0x100 len=1[0m
+[0;32mI (19468) CAN_RX: 01[0m
+[0;32mI (19468) CAN_RX: RX #2009 ID=0x100 len=1[0m
+[0;32mI (19468) CAN_RX: 01[0m
+[0;32mI (19468) CAN_RX: RX #2010 ID=0x100 len=1[0m
+[0;32mI (19478) CAN_RX: 01[0m
+[0;32mI (19478) CAN_RX: RX #2011 ID=0x100 len=1[0m
+[0;32mI (19478) CAN_RX: 01[0m
+[0;32mI (19488) CAN_RX: RX #2012 ID=0x100 len=1[0m
+[0;32mI (19488) CAN_RX: 01[0m
+[0;32mI (19488) CAN_RX: RX #2013 ID=0x100 len=1[0m
+[0;32mI (19488) CAN_RX: 01[0m
+[0;32mI (19498) CAN_RX: RX #2014 ID=0x100 len=1[0m
+[0;32mI (19498) CAN_RX: 01[0m
+[0;32mI (19498) CAN_RX: RX #2015 ID=0x100 len=1[0m
+[0;32mI (19508) CAN_RX: 01[0m
+[0;32mI (19508) CAN_RX: RX #2016 ID=0x100 len=1[0m
+[0;32mI (19508) CAN_RX: 01[0m
+[0;32mI (19508) CAN_RX: RX #2017 ID=0x100 len=1[0m
+[0;32mI (19518) CAN_RX: 01[0m
+[0;32mI (19518) CAN_RX: RX #2018 ID=0x100 len=1[0m
+[0;32mI (19518) CAN_RX: 01[0m
+[0;32mI (19518) CAN_RX: RX #2019 ID=0x100 len=1[0m
+[0;32mI (19528) CAN_RX: 01[0m
+[0;32mI (19528) CAN_RX: RX #2020 ID=0x100 len=1[0m
+[0;32mI (19528) CAN_RX: 01[0m
+[0;32mI (19538) CAN_RX: RX #2021 ID=0x100 len=1[0m
+[0;32mI (19538) CAN_RX: 01[0m
+[0;32mI (19538) CAN_RX: RX #2022 ID=0x100 len=1[0m
+[0;32mI (19548) CAN_RX: 01[0m
+[0;32mI (19548) CAN_RX: RX #2023 ID=0x100 len=1[0m
+[0;32mI (19548) CAN_RX: 01[0m
+[0;32mI (19548) CAN_RX: RX #2024 ID=0x100 len=1[0m
+[0;32mI (19558) CAN_RX: 01[0m
+[0;32mI (19558) CAN_RX: RX #2025 ID=0x100 len=1[0m
+[0;32mI (19558) CAN_RX: 01[0m
+[0;32mI (19558) CAN_RX: RX #2026 ID=0x100 len=1[0m
+[0;32mI (19568) CAN_RX: 01[0m
+[0;32mI (19568) CAN_RX: RX #2027 ID=0x100 len=1[0m
+[0;32mI (19568) CAN_RX: 01[0m
+[0;32mI (19578) CAN_RX: RX #2028 ID=0x100 len=1[0m
+[0;32mI (19578) CAN_RX: 01[0m
+[0;32mI (19578) CAN_RX: RX #2029 ID=0x100 len=1[0m
+[0;32mI (19578) CAN_RX: 01[0m
+[0;32mI (19588) CAN_RX: RX #2030 ID=0x100 len=1[0m
+[0;32mI (19588) CAN_RX: 01[0m
+[0;32mI (19588) CAN_RX: RX #2031 ID=0x100 len=1[0m
+[0;32mI (19598) CAN_RX: 01[0m
+[0;32mI (19598) CAN_RX: RX #2032 ID=0x100 len=1[0m
+[0;32mI (19598) CAN_RX: 01[0m
+[0;32mI (19598) CAN_RX: RX #2033 ID=0x100 len=1[0m
+[0;32mI (19608) CAN_RX: 01[0m
+[0;32mI (19608) CAN_RX: RX #2034 ID=0x100 len=1[0m
+[0;32mI (19608) CAN_RX: 01[0m
+[0;32mI (19618) CAN_RX: RX #2035 ID=0x100 len=1[0m
+[0;32mI (19618) CAN_RX: 01[0m
+[0;32mI (19618) CAN_RX: RX #2036 ID=0x100 len=1[0m
+[0;32mI (19618) CAN_RX: 01[0m
+[0;32mI (19628) CAN_RX: RX #2037 ID=0x100 len=1[0m
+[0;32mI (19628) CAN_RX: 01[0m
+[0;32mI (19628) CAN_RX: RX #2038 ID=0x100 len=1[0m
+[0;32mI (19638) CAN_RX: 01[0m
+[0;32mI (19638) CAN_RX: RX #2039 ID=0x100 len=1[0m
+[0;32mI (19638) CAN_RX: 01[0m
+[0;32mI (19638) CAN_RX: RX #2040 ID=0x100 len=1[0m
+[0;32mI (19648) CAN_RX: 01[0m
+[0;32mI (19648) CAN_RX: RX #2041 ID=0x100 len=1[0m
+[0;32mI (19648) CAN_RX: 01[0m
+[0;32mI (19648) CAN_RX: RX #2042 ID=0x100 len=1[0m
+[0;32mI (19658) CAN_RX: 01[0m
+[0;32mI (19658) CAN_RX: RX #2043 ID=0x100 len=1[0m
+[0;32mI (19658) CAN_RX: 01[0m
+[0;32mI (19668) CAN_RX: RX #2044 ID=0x100 len=1[0m
+[0;32mI (19668) CAN_RX: 01[0m
+[0;32mI (19668) CAN_RX: RX #2045 ID=0x100 len=1[0m
+[0;32mI (19678) CAN_RX: 01[0m
+[0;32mI (19678) CAN_RX: RX #2046 ID=0x100 len=1[0m
+[0;32mI (19678) CAN_RX: 01[0m
+[0;32mI (19678) CAN_RX: RX #2047 ID=0x100 len=1[0m
+[0;32mI (19688) CAN_RX: 01[0m
+[0;32mI (19688) CAN_RX: RX #2048 ID=0x100 len=1[0m
+[0;32mI (19688) CAN_RX: 01[0m
+[0;32mI (19688) CAN_RX: RX #2049 ID=0x100 len=1[0m
+[0;32mI (19698) CAN_RX: 01[0m
+[0;32mI (19698) CAN_RX: RX #2050 ID=0x100 len=1[0m
+[0;32mI (19698) CAN_RX: 01[0m
+[0;32mI (19708) CAN_RX: RX #2051 ID=0x100 len=1[0m
+[0;32mI (19708) CAN_RX: 01[0m
+[0;32mI (19708) CAN_RX: RX #2052 ID=0x100 len=1[0m
+[0;32mI (19708) CAN_RX: 01[0m
+[0;32mI (19718) CAN_RX: RX #2053 ID=0x100 len=1[0m
+[0;32mI (19718) CAN_RX: 01[0m
+[0;32mI (19718) CAN_RX: RX #2054 ID=0x100 len=1[0m
+[0;32mI (19728) CAN_RX: 01[0m
+[0;32mI (19728) CAN_RX: RX #2055 ID=0x100 len=1[0m
+[0;32mI (19728) CAN_RX: 01[0m
+[0;32mI (19728) CAN_RX: RX #2056 ID=0x100 len=1[0m
+[0;32mI (19738) CAN_RX: 01[0m
+[0;32mI (19738) CAN_RX: RX #2057 ID=0x100 len=1[0m
+[0;32mI (19738) CAN_RX: 01[0m
+[0;32mI (19738) CAN_RX: RX #2058 ID=0x100 len=1[0m
+[0;32mI (19748) CAN_RX: 01[0m
+[0;32mI (19748) CAN_RX: RX #2059 ID=0x100 len=1[0m
+[0;32mI (19748) CAN_RX: 01[0m
+[0;32mI (19758) CAN_RX: RX #2060 ID=0x100 len=1[0m
+[0;32mI (19758) CAN_RX: 01[0m
+[0;32mI (19758) CAN_RX: RX #2061 ID=0x100 len=1[0m
+[0;32mI (19768) CAN_RX: 01[0m
+[0;32mI (19768) CAN_RX: RX #2062 ID=0x100 len=1[0m
+[0;32mI (19768) CAN_RX: 01[0m
+[0;32mI (19768) CAN_RX: RX #2063 ID=0x100 len=1[0m
+[0;32mI (19778) CAN_RX: 01[0m
+[0;32mI (19778) CAN_RX: RX #2064 ID=0x100 len=1[0m
+[0;32mI (19778) CAN_RX: 01[0m
+[0;32mI (19778) CAN_RX: RX #2065 ID=0x100 len=1[0m
+[0;32mI (19788) CAN_RX: 01[0m
+[0;32mI (19788) CAN_RX: RX #2066 ID=0x100 len=1[0m
+[0;32mI (19788) CAN_RX: 01[0m
+[0;32mI (19798) CAN_RX: RX #2067 ID=0x100 len=1[0m
+[0;32mI (19798) CAN_RX: 01[0m
+[0;32mI (19798) CAN_RX: RX #2068 ID=0x100 len=1[0m
+[0;32mI (19808) CAN_RX: 01[0m
+[0;32mI (19808) CAN_RX: RX #2069 ID=0x100 len=1[0m
+[0;32mI (19808) CAN_RX: 01[0m
+[0;32mI (19808) CAN_RX: RX #2070 ID=0x100 len=1[0m
+[0;32mI (19818) CAN_RX: 01[0m
+[0;32mI (19818) CAN_RX: RX #2071 ID=0x100 len=1[0m
+[0;32mI (19818) CAN_RX: 01[0m
+[0;32mI (19818) CAN_RX: RX #2072 ID=0x100 len=1[0m
+[0;32mI (19828) CAN_RX: 01[0m
+[0;32mI (19828) CAN_RX: RX #2073 ID=0x100 len=1[0m
+[0;32mI (19828) CAN_RX: 01[0m
+[0;32mI (19838) CAN_RX: RX #2074 ID=0x100 len=1[0m
+[0;32mI (19838) CAN_RX: 01[0m
+[0;32mI (19838) CAN_RX: RX #2075 ID=0x100 len=1[0m
+[0;32mI (19838) CAN_RX: 01[0m
+[0;32mI (19848) CAN_RX: RX #2076 ID=0x100 len=1[0m
+[0;32mI (19848) CAN_RX: 01[0m
+[0;32mI (19848) CAN_RX: RX #2077 ID=0x100 len=1[0m
+[0;32mI (19858) CAN_RX: 01[0m
+[0;32mI (19858) CAN_RX: RX #2078 ID=0x100 len=1[0m
+[0;32mI (19858) CAN_RX: 01[0m
+[0;32mI (19858) CAN_RX: RX #2079 ID=0x100 len=1[0m
+[0;32mI (19868) CAN_RX: 01[0m
+[0;32mI (19868) CAN_RX: RX #2080 ID=0x100 len=1[0m
+[0;32mI (19868) CAN_RX: 01[0m
+[0;32mI (19868) CAN_RX: RX #2081 ID=0x100 len=1[0m
+[0;32mI (19878) CAN_RX: 01[0m
+[0;32mI (19878) CAN_RX: RX #2082 ID=0x100 len=1[0m
+[0;32mI (19878) CAN_RX: 01[0m
+[0;32mI (19888) CAN_RX: RX #2083 ID=0x100 len=1[0m
+[0;32mI (19888) CAN_RX: 01[0m
+[0;32mI (19888) CAN_RX

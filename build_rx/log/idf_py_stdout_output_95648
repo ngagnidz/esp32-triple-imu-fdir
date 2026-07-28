@@ -1,0 +1,272 @@
+Command: /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/tools/idf_monitor.py -p /dev/cu.usbserial-0001 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/mpu9250_driver.elf /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/bootloader/bootloader.elf -m '/Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python' '/Users/nikagagnidze/Desktop/esp/esp-idf/tools/idf.py' '-B' 'build_rx'
+����: ELF file SHA256:�ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15820
+load:0x40080400,len:3988
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.1-dev-4996-gc1b7f38212 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Jul 23 2026 20:12:11[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0a520h ( 42272) map[0m
+[0;32mI (103) esp_image: segment 1: paddr=0001a548 vaddr=3ffb0000 size=02b18h ( 11032) load[0m
+[0;32mI (107) esp_image: segment 2: paddr=0001d068 vaddr=40080000 size=02fb0h ( 12208) load[0m
+[0;32mI (113) esp_image: segment 3: paddr=00020020 vaddr=400d0020 size=1136ch ( 70508) map[0m
+[0;32mI (139) esp_image: segment 4: paddr=00031394 vaddr=40082fb0 size=081d8h ( 33240) load[0m
+[0;32mI (153) esp_image: segment 5: paddr=00039574 vaddr=50000000 size=00028h (    40) load[0m
+[0;32mI (159) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (160) boot: Disabling RNG early entropy source...[0m
+[0;32mI (171) cpu_start: Multicore app[0m
+[0;32mI (180) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (180) cpu_start: Pro cpu start user code[0m
+[0;32mI (180) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (182) app_init: Application information:[0m
+[0;32mI (186) app_init: Project name:     mpu9250_driver[0m
+[0;32mI (190) app_init: App version:      6721a32-dirty[0m
+[0;32mI (195) app_init: Compile time:     Jul 23 2026 20:12:04[0m
+[0;32mI (200) app_init: ELF file SHA256:  cf10ba2fc...[0m
+[0;32mI (204) app_init: ESP-IDF:          v6.1-dev-4996-gc1b7f38212[0m
+[0;32mI (209) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (213) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (217) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (221) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (227) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (232) heap_init: At 3FFB3648 len 0002C9B8 (178 KiB): DRAM[0m
+[0;32mI (238) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (243) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (249) heap_init: At 4008B188 len 00014E78 (83 KiB): IRAM[0m
+[0;33mW (255) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig[0m
+[0;32mI (267) spi_flash: detected chip: generic[0m
+[0;32mI (270) spi_flash: flash io: dio[0m
+[0;33mW (273) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (287) main_task: Started on CPU0[0m
+[0;32mI (287) main_task: Calling app_main()[0m
+[0;32mI (287) CAN_TX: TX up: tx=17 rx=16 500000 bit/s (normal mode)[0m
+[0;32mI (297) CAN_TX: TX #1 0x100=ESP_OK 0x101=ESP_OK | state=0 tec=16 rec=0 bus_err=2[0m
+[0;32mI (1297) CAN_TX: TX #2 0x100=ESP_OK 0x101=ESP_OK | state=0 tec=32 rec=0 bus_err=4[0m
+[0;32mI (2297) CAN_TX: TX #3 0x100=ESP_OK 0x101=ESP_OK | state=0 tec=48 rec=0 bus_err=6[0m
+[0;32mI (3297) CAN_TX: TX #4 0x100=ESP_OK 0x101=ESP_OK | state=0 tec=64 rec=0 bus_err=8[0m
+[0;32mI (4297) CAN_TX: TX #5 0x100=ESP_OK 0x101=ESP_OK | state=0 tec=80 rec=0 bus_err=10[0m
+[0;32mI (5297) CAN_TX: TX #6 0x100=ESP_OK 0x101=ESP_OK | state=1 tec=96 rec=0 bus_err=12[0m
+[0;32mI (6297) CAN_TX: TX #7 0x100=ESP_OK 0x101=ESP_OK | state=1 tec=112 rec=0 bus_err=14[0m
+[0;32mI (7297) CAN_TX: TX #8 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=16[0m
+[0;32mI (8297) CAN_TX: TX #9 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=18[0m
+[0;32mI (9297) CAN_TX: TX #10 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=20[0m
+[0;32mI (10297) CAN_TX: TX #11 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=22[0m
+[0;32mI (11297) CAN_TX: TX #12 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=24[0m
+[0;32mI (12297) CAN_TX: TX #13 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=26[0m
+[0;32mI (13297) CAN_TX: TX #14 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=28[0m
+[0;32mI (14297) CAN_TX: TX #15 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=30[0m
+[0;32mI (15297) CAN_TX: TX #16 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=32[0m
+[0;32mI (16297) CAN_TX: TX #17 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=34[0m
+[0;32mI (17297) CAN_TX: TX #18 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=36[0m
+[0;32mI (18297) CAN_TX: TX #19 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=38[0m
+[0;32mI (19297) CAN_TX: TX #20 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=40[0m
+[0;32mI (20297) CAN_TX: TX #21 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=42[0m
+[0;32mI (21297) CAN_TX: TX #22 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=44[0m
+[0;32mI (22297) CAN_TX: TX #23 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=46[0m
+[0;32mI (23297) CAN_TX: TX #24 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=48[0m
+[0;32mI (24297) CAN_TX: TX #25 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=50[0m
+[0;32mI (25297) CAN_TX: TX #26 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=52[0m
+[0;32mI (26297) CAN_TX: TX #27 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=54[0m
+[0;32mI (27297) CAN_TX: TX #28 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=56[0m
+[0;32mI (28297) CAN_TX: TX #29 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=58[0m
+[0;32mI (29297) CAN_TX: TX #30 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=60[0m
+[0;32mI (30297) CAN_TX: TX #31 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=62[0m
+[0;32mI (31297) CAN_TX: TX #32 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=64[0m
+[0;32mI (32297) CAN_TX: TX #33 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=66[0m
+[0;32mI (33297) CAN_TX: TX #34 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=68[0m
+[0;32mI (34297) CAN_TX: TX #35 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=70[0m
+[0;32mI (35297) CAN_TX: TX #36 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=72[0m
+[0;32mI (36297) CAN_TX: TX #37 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=74[0m
+[0;32mI (37297) CAN_TX: TX #38 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=76[0m
+[0;32mI (38297) CAN_TX: TX #39 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=78[0m
+[0;32mI (39297) CAN_TX: TX #40 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=80[0m
+[0;32mI (40297) CAN_TX: TX #41 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=82[0m
+[0;32mI (41297) CAN_TX: TX #42 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=84[0m
+[0;32mI (42297) CAN_TX: TX #43 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=86[0m
+[0;32mI (43297) CAN_TX: TX #44 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=88[0m
+[0;32mI (44297) CAN_TX: TX #45 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=90[0m
+[0;32mI (45297) CAN_TX: TX #46 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=92[0m
+[0;32mI (46297) CAN_TX: TX #47 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=94[0m
+[0;32mI (47297) CAN_TX: TX #48 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=96[0m
+[0;32mI (48297) CAN_TX: TX #49 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=98[0m
+[0;32mI (49297) CAN_TX: TX #50 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=100[0m
+[0;32mI (50297) CAN_TX: TX #51 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=102[0m
+[0;32mI (51297) CAN_TX: TX #52 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=104[0m
+[0;32mI (52297) CAN_TX: TX #53 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=106[0m
+[0;32mI (53297) CAN_TX: TX #54 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=108[0m
+[0;32mI (54297) CAN_TX: TX #55 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=110[0m
+[0;32mI (55297) CAN_TX: TX #56 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=112[0m
+[0;32mI (56297) CAN_TX: TX #57 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=114[0m
+[0;32mI (57297) CAN_TX: TX #58 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=116[0m
+[0;32mI (58297) CAN_TX: TX #59 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=118[0m
+[0;32mI (59297) CAN_TX: TX #60 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=120[0m
+[0;32mI (60297) CAN_TX: TX #61 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=122[0m
+[0;32mI (61297) CAN_TX: TX #62 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=124[0m
+[0;32mI (62297) CAN_TX: TX #63 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=126[0m
+[0;32mI (63297) CAN_TX: TX #64 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=128[0m
+[0;32mI (64297) CAN_TX: TX #65 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=130[0m
+[0;32mI (65297) CAN_TX: TX #66 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=132[0m
+[0;32mI (66297) CAN_TX: TX #67 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=134[0m
+[0;32mI (67297) CAN_TX: TX #68 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=136[0m
+[0;32mI (68297) CAN_TX: TX #69 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=138[0m
+[0;32mI (69297) CAN_TX: TX #70 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=140[0m
+[0;32mI (70297) CAN_TX: TX #71 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=142[0m
+[0;32mI (71297) CAN_TX: TX #72 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=144[0m
+[0;32mI (72297) CAN_TX: TX #73 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=146[0m
+[0;32mI (73297) CAN_TX: TX #74 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=148[0m
+[0;32mI (74297) CAN_TX: TX #75 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=150[0m
+[0;32mI (75297) CAN_TX: TX #76 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=152[0m
+[0;32mI (76297) CAN_TX: TX #77 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=154[0m
+[0;32mI (77297) CAN_TX: TX #78 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=156[0m
+[0;32mI (78297) CAN_TX: TX #79 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=158[0m
+[0;32mI (79297) CAN_TX: TX #80 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=160[0m
+[0;32mI (80297) CAN_TX: TX #81 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=162[0m
+[0;32mI (81297) CAN_TX: TX #82 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=164[0m
+[0;32mI (82297) CAN_TX: TX #83 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=166[0m
+[0;32mI (83297) CAN_TX: TX #84 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=168[0m
+[0;32mI (84297) CAN_TX: TX #85 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=170[0m
+[0;32mI (85297) CAN_TX: TX #86 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=172[0m
+[0;32mI (86297) CAN_TX: TX #87 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=174[0m
+[0;32mI (87297) CAN_TX: TX #88 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=176[0m
+[0;32mI (88297) CAN_TX: TX #89 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=178[0m
+[0;32mI (89297) CAN_TX: TX #90 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=180[0m
+[0;32mI (90297) CAN_TX: TX #91 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=182[0m
+[0;32mI (91297) CAN_TX: TX #92 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=184[0m
+[0;32mI (92297) CAN_TX: TX #93 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=186[0m
+[0;32mI (93297) CAN_TX: TX #94 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=188[0m
+[0;32mI (94297) CAN_TX: TX #95 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=190[0m
+[0;32mI (95297) CAN_TX: TX #96 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=192[0m
+[0;32mI (96297) CAN_TX: TX #97 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=194[0m
+[0;32mI (97297) CAN_TX: TX #98 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=196[0m
+[0;32mI (98297) CAN_TX: TX #99 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=198[0m
+[0;32mI (99297) CAN_TX: TX #100 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=200[0m
+[0;32mI (100297) CAN_TX: TX #101 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=202[0m
+[0;32mI (101297) CAN_TX: TX #102 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=204[0m
+[0;32mI (102297) CAN_TX: TX #103 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=206[0m
+[0;32mI (103297) CAN_TX: TX #104 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=208[0m
+[0;32mI (104297) CAN_TX: TX #105 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=210[0m
+[0;32mI (105297) CAN_TX: TX #106 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=212[0m
+[0;32mI (106297) CAN_TX: TX #107 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=214[0m
+[0;32mI (107297) CAN_TX: TX #108 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=216[0m
+[0;32mI (108297) CAN_TX: TX #109 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=218[0m
+[0;32mI (109297) CAN_TX: TX #110 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=220[0m
+[0;32mI (110297) CAN_TX: TX #111 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=222[0m
+[0;32mI (111297) CAN_TX: TX #112 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=224[0m
+[0;32mI (112297) CAN_TX: TX #113 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=226[0m
+[0;32mI (113297) CAN_TX: TX #114 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=228[0m
+[0;32mI (114297) CAN_TX: TX #115 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=230[0m
+[0;32mI (115297) CAN_TX: TX #116 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=232[0m
+[0;32mI (116297) CAN_TX: TX #117 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=234[0m
+[0;32mI (117297) CAN_TX: TX #118 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=236[0m
+[0;32mI (118297) CAN_TX: TX #119 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=238[0m
+[0;32mI (119297) CAN_TX: TX #120 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=240[0m
+[0;32mI (120297) CAN_TX: TX #121 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=242[0m
+[0;32mI (121297) CAN_TX: TX #122 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=244[0m
+[0;32mI (122297) CAN_TX: TX #123 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=246[0m
+[0;32mI (123297) CAN_TX: TX #124 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=248[0m
+[0;32mI (124297) CAN_TX: TX #125 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=250[0m
+[0;32mI (125297) CAN_TX: TX #126 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=252[0m
+[0;32mI (126297) CAN_TX: TX #127 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=254[0m
+[0;32mI (127297) CAN_TX: TX #128 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=256[0m
+[0;32mI (128297) CAN_TX: TX #129 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=258[0m
+[0;32mI (129297) CAN_TX: TX #130 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=260[0m
+[0;32mI (130297) CAN_TX: TX #131 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=262[0m
+[0;32mI (131297) CAN_TX: TX #132 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=264[0m
+[0;32mI (132297) CAN_TX: TX #133 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=266[0m
+[0;32mI (133297) CAN_TX: TX #134 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=268[0m
+[0;32mI (134297) CAN_TX: TX #135 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=270[0m
+[0;32mI (135297) CAN_TX: TX #136 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=272[0m
+[0;32mI (136297) CAN_TX: TX #137 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=274[0m
+[0;32mI (137297) CAN_TX: TX #138 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=276[0m
+[0;32mI (138297) CAN_TX: TX #139 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=278[0m
+[0;32mI (139297) CAN_TX: TX #140 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=280[0m
+[0;32mI (140297) CAN_TX: TX #141 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=282[0m
+[0;32mI (141297) CAN_TX: TX #142 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=284[0m
+[0;32mI (142297) CAN_TX: TX #143 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=286[0m
+[0;32mI (143297) CAN_TX: TX #144 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=288[0m
+[0;32mI (144297) CAN_TX: TX #145 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=290[0m
+[0;32mI (145297) CAN_TX: TX #146 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=292[0m
+[0;32mI (146297) CAN_TX: TX #147 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=294[0m
+[0;32mI (147297) CAN_TX: TX #148 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=296[0m
+[0;32mI (148297) CAN_TX: TX #149 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=298[0m
+[0;32mI (149297) CAN_TX: TX #150 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=300[0m
+[0;32mI (150297) CAN_TX: TX #151 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=302[0m
+[0;32mI (151297) CAN_TX: TX #152 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=304[0m
+[0;32mI (152297) CAN_TX: TX #153 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=306[0m
+[0;32mI (153297) CAN_TX: TX #154 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=308[0m
+[0;32mI (154297) CAN_TX: TX #155 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=310[0m
+[0;32mI (155297) CAN_TX: TX #156 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=312[0m
+[0;32mI (156297) CAN_TX: TX #157 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=314[0m
+[0;32mI (157297) CAN_TX: TX #158 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=316[0m
+[0;32mI (158297) CAN_TX: TX #159 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=318[0m
+[0;32mI (159297) CAN_TX: TX #160 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=320[0m
+[0;32mI (160297) CAN_TX: TX #161 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=322[0m
+[0;32mI (161297) CAN_TX: TX #162 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=324[0m
+[0;32mI (162297) CAN_TX: TX #163 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=326[0m
+[0;32mI (163297) CAN_TX: TX #164 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=328[0m
+[0;32mI (164297) CAN_TX: TX #165 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=330[0m
+[0;32mI (165297) CAN_TX: TX #166 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=332[0m
+[0;32mI (166297) CAN_TX: TX #167 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=334[0m
+[0;32mI (167297) CAN_TX: TX #168 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=336[0m
+[0;32mI (168297) CAN_TX: TX #169 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=338[0m
+[0;32mI (169297) CAN_TX: TX #170 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=340[0m
+[0;32mI (170297) CAN_TX: TX #171 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=342[0m
+[0;32mI (171297) CAN_TX: TX #172 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=344[0m
+[0;32mI (172297) CAN_TX: TX #173 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=346[0m
+[0;32mI (173297) CAN_TX: TX #174 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=348[0m
+[0;32mI (174297) CAN_TX: TX #175 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=350[0m
+[0;32mI (175297) CAN_TX: TX #176 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=352[0m
+[0;32mI (176297) CAN_TX: TX #177 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=354[0m
+[0;32mI (177297) CAN_TX: TX #178 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=356[0m
+[0;32mI (178297) CAN_TX: TX #179 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=358[0m
+[0;32mI (179297) CAN_TX: TX #180 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=360[0m
+[0;32mI (180297) CAN_TX: TX #181 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=362[0m
+[0;32mI (181297) CAN_TX: TX #182 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=364[0m
+[0;32mI (182297) CAN_TX: TX #183 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=366[0m
+[0;32mI (183297) CAN_TX: TX #184 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=368[0m
+[0;32mI (184297) CAN_TX: TX #185 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=370[0m
+[0;32mI (185297) CAN_TX: TX #186 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=372[0m
+[0;32mI (186297) CAN_TX: TX #187 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=374[0m
+[0;32mI (187297) CAN_TX: TX #188 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=376[0m
+[0;32mI (188297) CAN_TX: TX #189 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=378[0m
+[0;32mI (189297) CAN_TX: TX #190 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=380[0m
+[0;32mI (190297) CAN_TX: TX #191 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=382[0m
+[0;32mI (191297) CAN_TX: TX #192 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=384[0m
+[0;32mI (192297) CAN_TX: TX #193 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=386[0m
+[0;32mI (193297) CAN_TX: TX #194 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=388[0m
+[0;32mI (194297) CAN_TX: TX #195 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=390[0m
+[0;32mI (195297) CAN_TX: TX #196 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=392[0m
+[0;32mI (196297) CAN_TX: TX #197 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=394[0m
+[0;32mI (197297) CAN_TX: TX #198 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=396[0m
+[0;32mI (198297) CAN_TX: TX #199 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=398[0m
+[0;32mI (199297) CAN_TX: TX #200 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=400[0m
+[0;32mI (200297) CAN_TX: TX #201 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=402[0m
+[0;32mI (201297) CAN_TX: TX #202 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=404[0m
+[0;32mI (202297) CAN_TX: TX #203 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=406[0m
+[0;32mI (203297) CAN_TX: TX #204 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=408[0m
+[0;32mI (204297) CAN_TX: TX #205 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=410[0m
+[0;32mI (205297) CAN_TX: TX #206 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=412[0m
+[0;32mI (206297) CAN_TX: TX #207 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=414[0m
+[0;32mI (207297) CAN_TX: TX #208 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=416[0m
+[0;32mI (208297) CAN_TX: TX #209 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=418[0m
+[0;32mI (209297) CAN_TX: TX #210 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=420[0m
+[0;32mI (210297) CAN_TX: TX #211 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=422[0m
+[0;32mI (211297) CAN_TX: TX #212 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=424[0m
+[0;32mI (212297) CAN_TX: TX #213 0x100=ESP_OK 0x101=ESP_OK | state=2 tec=128 rec=0 bus_err=426[0m

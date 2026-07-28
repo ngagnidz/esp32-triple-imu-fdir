@@ -1,0 +1,7 @@
+-Wno-frame-address
+-mlongcalls
+-fno-builtin-memcpy
+-fno-builtin-memset
+-fno-builtin-bzero
+"-specs=/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/specs/picolibc.specs"
+-fno-rtti

@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/CMakeFiles/bootloader
+/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/CMakeFiles/bootloader.rule
+/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/CMakeFiles/bootloader-complete.rule
+/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

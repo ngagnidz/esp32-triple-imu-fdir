@@ -1,0 +1,620 @@
+Command: /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/tools/idf_monitor.py -p /dev/cu.usbserial-0001 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/mpu9250_driver.elf /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx/bootloader/bootloader.elf -m '/Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python' '/Users/nikagagnidze/Desktop/esp/esp-idf/tools/idf.py' '-B' 'build_rx'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15820
+load:0x40080400,len:3988
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.1-dev-4996-gc1b7f38212 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Jul 23 2026 20:12:11[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0be90h ( 48784) map[0m
+[0;32mI (105) esp_image: segment 1: paddr=0001beb8 vaddr=3ffb0000 size=02cdch ( 11484) load[0m
+[0;32mI (110) esp_image: segment 2: paddr=0001eb9c vaddr=40080000 size=0147ch (  5244) load[0m
+[0;32mI (112) esp_image: segment 3: paddr=00020020 vaddr=400d0020 size=13f44h ( 81732) map[0m
+[0;32mI (146) esp_image: segment 4: paddr=00033f6c vaddr=4008147c size=0c12ch ( 49452) load[0m
+[0;32mI (166) esp_image: segment 5: paddr=000400a0 vaddr=50000000 size=00028h (    40) load[0m
+[0;32mI (173) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (173) boot: Disabling RNG early entropy source...[0m
+[0;32mI (184) cpu_start: Multicore app[0m
+[0;32mI (193) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (193) cpu_start: Pro cpu start user code[0m
+[0;32mI (193) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (195) app_init: Application information:[0m
+[0;32mI (199) app_init: Project name:     mpu9250_driver[0m
+[0;32mI (203) app_init: App version:      6721a32-dirty[0m
+[0;32mI (208) app_init: Compile time:     Jul 23 2026 20:12:04[0m
+[0;32mI (213) app_init: ELF file SHA256:  f5955ed36...[0m
+[0;32mI (217) app_init: ESP-IDF:          v6.1-dev-4996-gc1b7f38212[0m
+[0;32mI (222) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (226) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (230) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (234) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (240) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (245) heap_init: At 3FFB38F0 len 0002C710 (177 KiB): DRAM[0m
+[0;32mI (251) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (256) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (262) heap_init: At 4008D5A8 len 00012A58 (74 KiB): IRAM[0m
+[0;32mI (268) spi_flash: detected chip: generic[0m
+[0;32mI (270) spi_flash: flash io: dio[0m
+[0;33mW (273) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (287) main_task: Started on CPU0[0m
+[0;32mI (287) main_task: Calling app_main()[0m
+SLEEPING_MODE_STATUS: 0x01
+Gyro Range: 0x8
+Accel Range: 0x10
+SLEEPING_MODE_STATUS: 0x01
+Gyro Range: 0x8
+Accel Range: 0x10
+SLEEPING_MODE_STATUS: 0x01
+Gyro Range: 0x8
+Accel Range: 0x10
+[0;32mI (307) main_task: Returned from app_main()[0m
+IMU 0 | Accel X:   -0.041  Y:   -0.054  Z:   -1.098 | Gyro X:    4.183  Y:    6.122  Z:    0.260
+IMU 1 | Accel X:    0.019  Y:    0.022  Z:   -0.942 | Gyro X:    0.000  Y:    0.000  Z:    0.000
+IMU 2 | Accel X:   -0.058  Y:   -0.048  Z:   -1.035 | Gyro X:   -1.924  Y:   -2.519  Z:   -1.450
+IMU 0 | Accel X:   -0.043  Y:   -0.055  Z:   -1.095 | Gyro X:    4.244  Y:    6.183  Z:    0.321
+IMU 1 | Accel X:    0.020  Y:    0.021  Z:   -0.949 | Gyro X:    2.260  Y:    2.748  Z:   -0.855
+IMU 2 | Accel X:   -0.058  Y:   -0.052  Z:   -1.033 | Gyro X:   -1.939  Y:   -2.504  Z:   -1.221
+[0;32mI (337) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.056  Z:   -1.097 | Gyro X:    4.565  Y:    6.092  Z:    0.122
+IMU 1 | Accel X:    0.018  Y:    0.017  Z:   -0.957 | Gyro X:    2.366  Y:    2.626  Z:   -1.008
+IMU 2 | Accel X:   -0.059  Y:   -0.049  Z:   -1.035 | Gyro X:   -1.710  Y:   -2.519  Z:   -1.405
+[0;32mI (367) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (397) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.043  Y:   -0.053  Z:   -1.096 | Gyro X:    4.244  Y:    6.107  Z:    0.305
+IMU 1 | Accel X:    0.018  Y:    0.019  Z:   -0.952 | Gyro X:    2.260  Y:    2.916  Z:   -0.870
+IMU 2 | Accel X:   -0.061  Y:   -0.054  Z:   -1.034 | Gyro X:   -1.954  Y:   -2.580  Z:   -1.542
+[0;32mI (397) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (427) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.052  Z:   -1.103 | Gyro X:    4.397  Y:    6.275  Z:    0.321
+IMU 1 | Accel X:    0.023  Y:    0.021  Z:   -0.951 | Gyro X:    2.229  Y:    2.748  Z:   -1.008
+IMU 2 | Accel X:   -0.063  Y:   -0.049  Z:   -1.038 | Gyro X:   -2.046  Y:   -2.458  Z:   -1.466
+[0;32mI (427) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (457) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.043  Y:   -0.053  Z:   -1.096 | Gyro X:    4.412  Y:    5.863  Z:    0.412
+IMU 1 | Accel X:    0.022  Y:    0.020  Z:   -0.948 | Gyro X:    2.351  Y:    2.809  Z:   -1.084
+IMU 2 | Accel X:   -0.060  Y:   -0.050  Z:   -1.032 | Gyro X:   -2.000  Y:   -2.489  Z:   -1.435
+[0;32mI (467) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (497) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.044  Y:   -0.050  Z:   -1.094 | Gyro X:    4.427  Y:    6.321  Z:    0.229
+IMU 1 | Accel X:    0.017  Y:    0.021  Z:   -0.952 | Gyro X:    2.290  Y:    2.534  Z:   -0.992
+IMU 2 | Accel X:   -0.055  Y:   -0.050  Z:   -1.041 | Gyro X:   -1.847  Y:   -2.641  Z:   -1.527
+[0;32mI (497) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (527) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.054  Z:   -1.096 | Gyro X:    4.382  Y:    6.015  Z:    0.305
+IMU 1 | Accel X:    0.021  Y:    0.022  Z:   -0.952 | Gyro X:    2.427  Y:    2.687  Z:   -0.931
+IMU 2 | Accel X:   -0.060  Y:   -0.052  Z:   -1.031 | Gyro X:   -2.076  Y:   -2.397  Z:   -1.573
+[0;32mI (537) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (567) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.046  Y:   -0.053  Z:   -1.101 | Gyro X:    4.473  Y:    5.863  Z:   -0.076
+IMU 1 | Accel X:    0.021  Y:    0.022  Z:   -0.943 | Gyro X:    2.229  Y:    2.748  Z:   -0.794
+IMU 2 | Accel X:   -0.057  Y:   -0.052  Z:   -1.032 | Gyro X:   -1.954  Y:   -2.534  Z:   -1.450
+[0;32mI (567) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (597) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.055  Z:   -1.093 | Gyro X:    4.519  Y:    6.122  Z:    0.489
+IMU 1 | Accel X:    0.015  Y:    0.019  Z:   -0.952 | Gyro X:    2.412  Y:    2.763  Z:   -1.069
+IMU 2 | Accel X:   -0.062  Y:   -0.048  Z:   -1.036 | Gyro X:   -1.939  Y:   -2.748  Z:   -1.542
+[0;32mI (597) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (627) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.043  Y:   -0.055  Z:   -1.095 | Gyro X:    4.260  Y:    6.107  Z:    0.351
+IMU 1 | Accel X:    0.017  Y:    0.022  Z:   -0.955 | Gyro X:    2.260  Y:    2.198  Z:   -1.145
+IMU 2 | Accel X:   -0.059  Y:   -0.052  Z:   -1.038 | Gyro X:   -1.817  Y:   -2.656  Z:   -1.588
+[0;32mI (637) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (667) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.057  Z:   -1.093 | Gyro X:    4.336  Y:    6.229  Z:    0.305
+IMU 1 | Accel X:    0.019  Y:    0.020  Z:   -0.946 | Gyro X:    2.366  Y:    2.641  Z:   -0.702
+IMU 2 | Accel X:   -0.058  Y:   -0.048  Z:   -1.035 | Gyro X:   -1.817  Y:   -2.595  Z:   -1.359
+[0;32mI (667) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (697) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.043  Y:   -0.055  Z:   -1.103 | Gyro X:    4.214  Y:    6.168  Z:    0.046
+IMU 1 | Accel X:    0.021  Y:    0.020  Z:   -0.952 | Gyro X:    2.366  Y:    2.626  Z:   -1.053
+IMU 2 | Accel X:   -0.060  Y:   -0.048  Z:   -1.036 | Gyro X:   -1.664  Y:   -2.595  Z:   -1.634
+[0;32mI (707) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (737) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.044  Y:   -0.053  Z:   -1.095 | Gyro X:    4.489  Y:    6.046  Z:    0.427
+IMU 1 | Accel X:    0.016  Y:    0.021  Z:   -0.955 | Gyro X:    2.214  Y:    2.580  Z:   -0.748
+IMU 2 | Accel X:   -0.059  Y:   -0.049  Z:   -1.037 | Gyro X:   -2.107  Y:   -2.397  Z:   -1.420
+[0;32mI (737) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (767) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.043  Y:   -0.056  Z:   -1.098 | Gyro X:    4.382  Y:    6.168  Z:    0.260
+IMU 1 | Accel X:    0.017  Y:    0.020  Z:   -0.952 | Gyro X:    2.260  Y:    2.733  Z:   -0.962
+IMU 2 | Accel X:   -0.057  Y:   -0.052  Z:   -1.035 | Gyro X:   -2.000  Y:   -2.580  Z:   -1.359
+[0;32mI (767) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (797) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.044  Y:   -0.051  Z:   -1.095 | Gyro X:    4.336  Y:    6.168  Z:    0.076
+IMU 1 | Accel X:    0.016  Y:    0.021  Z:   -0.949 | Gyro X:    2.382  Y:    2.687  Z:   -1.069
+IMU 2 | Accel X:   -0.056  Y:   -0.047  Z:   -1.037 | Gyro X:   -2.168  Y:   -2.534  Z:   -1.588
+[0;32mI (807) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (837) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.040  Y:   -0.052  Z:   -1.095 | Gyro X:    4.382  Y:    6.015  Z:    0.229
+IMU 1 | Accel X:    0.016  Y:    0.021  Z:   -0.949 | Gyro X:    2.351  Y:    2.702  Z:   -1.038
+IMU 2 | Accel X:   -0.055  Y:   -0.052  Z:   -1.038 | Gyro X:   -1.954  Y:   -2.779  Z:   -1.328
+[0;32mI (837) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (867) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.054  Z:   -1.095 | Gyro X:    4.443  Y:    6.092  Z:    0.351
+IMU 1 | Accel X:    0.018  Y:    0.019  Z:   -0.958 | Gyro X:    2.137  Y:    2.519  Z:   -1.282
+IMU 2 | Accel X:   -0.060  Y:   -0.050  Z:   -1.036 | Gyro X:   -1.679  Y:   -2.595  Z:   -1.588
+[0;32mI (877) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (907) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.046  Y:   -0.054  Z:   -1.101 | Gyro X:    4.443  Y:    6.076  Z:    0.168
+IMU 1 | Accel X:    0.013  Y:    0.021  Z:   -0.949 | Gyro X:    2.580  Y:    2.641  Z:   -0.962
+IMU 2 | Accel X:   -0.059  Y:   -0.052  Z:   -1.035 | Gyro X:   -2.061  Y:   -2.458  Z:   -1.313
+[0;32mI (907) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (937) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.045  Y:   -0.053  Z:   -1.095 | Gyro X:    4.519  Y:    6.061  Z:    0.489
+IMU 1 | Accel X:    0.017  Y:    0.017  Z:   -0.947 | Gyro X:    2.550  Y:    2.626  Z:   -0.840
+IMU 2 | Accel X:   -0.061  Y:   -0.049  Z:   -1.031 | Gyro X:   -2.046  Y:   -2.336  Z:   -1.695
+[0;32mI (937) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (967) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.052  Z:   -1.103 | Gyro X:    3.985  Y:    6.000  Z:    0.107
+IMU 1 | Accel X:    0.019  Y:    0.020  Z:   -0.953 | Gyro X:    2.397  Y:    2.641  Z:   -1.023
+IMU 2 | Accel X:   -0.056  Y:   -0.052  Z:   -1.043 | Gyro X:   -1.939  Y:   -2.534  Z:   -1.389
+[0;32mI (977) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1007) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.052  Z:   -1.095 | Gyro X:    4.061  Y:    6.000  Z:    0.382
+IMU 1 | Accel X:    0.016  Y:    0.022  Z:   -0.953 | Gyro X:    2.351  Y:    2.458  Z:   -0.977
+IMU 2 | Accel X:   -0.056  Y:   -0.047  Z:   -1.039 | Gyro X:   -1.878  Y:   -2.885  Z:   -1.359
+[0;32mI (1007) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1037) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.040  Y:   -0.054  Z:   -1.098 | Gyro X:    4.305  Y:    6.153  Z:    0.260
+IMU 1 | Accel X:    0.017  Y:    0.021  Z:   -0.948 | Gyro X:    2.427  Y:    2.855  Z:   -0.931
+IMU 2 | Accel X:   -0.059  Y:   -0.050  Z:   -1.035 | Gyro X:   -1.878  Y:   -2.305  Z:   -1.496
+[0;32mI (1047) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1077) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.043  Y:   -0.056  Z:   -1.097 | Gyro X:    4.107  Y:    5.954  Z:    0.000
+IMU 1 | Accel X:    0.017  Y:    0.021  Z:   -0.948 | Gyro X:    2.412  Y:    2.702  Z:   -0.885
+IMU 2 | Accel X:   -0.060  Y:   -0.051  Z:   -1.032 | Gyro X:   -1.725  Y:   -2.504  Z:   -1.313
+[0;32mI (1077) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1107) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.045  Y:   -0.049  Z:   -1.102 | Gyro X:    4.137  Y:    5.863  Z:    0.382
+IMU 1 | Accel X:    0.020  Y:    0.022  Z:   -0.948 | Gyro X:    2.443  Y:    2.595  Z:   -0.977
+IMU 2 | Accel X:   -0.060  Y:   -0.049  Z:   -1.040 | Gyro X:   -1.969  Y:   -2.473  Z:   -1.557
+[0;32mI (1107) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1147) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.040  Y:   -0.053  Z:   -1.099 | Gyro X:    4.305  Y:    6.092  Z:    0.153
+IMU 1 | Accel X:    0.018  Y:    0.023  Z:   -0.947 | Gyro X:    2.305  Y:    2.534  Z:   -0.840
+IMU 2 | Accel X:   -0.060  Y:   -0.046  Z:   -1.038 | Gyro X:   -1.786  Y:   -2.824  Z:   -1.496
+[0;32mI (1147) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1177) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.039  Y:   -0.056  Z:   -1.104 | Gyro X:    4.336  Y:    6.015  Z:    0.351
+IMU 1 | Accel X:    0.015  Y:    0.022  Z:   -0.950 | Gyro X:    2.351  Y:    2.626  Z:   -1.099
+IMU 2 | Accel X:   -0.057  Y:   -0.051  Z:   -1.035 | Gyro X:   -1.771  Y:   -2.763  Z:   -1.466
+[0;32mI (1177) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1207) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.044  Y:   -0.053  Z:   -1.099 | Gyro X:    4.168  Y:    6.092  Z:    0.168
+IMU 1 | Accel X:    0.021  Y:    0.022  Z:   -0.952 | Gyro X:    2.382  Y:    2.733  Z:   -0.992
+IMU 2 | Accel X:   -0.060  Y:   -0.051  Z:   -1.031 | Gyro X:   -1.802  Y:   -2.611  Z:   -1.282
+[0;32mI (1217) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1247) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.041  Y:   -0.051  Z:   -1.099 | Gyro X:    4.275  Y:    5.908  Z:    0.366
+IMU 1 | Accel X:    0.018  Y:    0.017  Z:   -0.951 | Gyro X:    2.427  Y:    2.641  Z:   -1.130
+IMU 2 | Accel X:   -0.058  Y:   -0.044  Z:   -1.034 | Gyro X:   -2.046  Y:   -2.580  Z:   -1.282
+[0;32mI (1247) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1277) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.038  Y:   -0.052  Z:   -1.094 | Gyro X:    4.260  Y:    6.000  Z:    0.061
+IMU 1 | Accel X:    0.022  Y:    0.020  Z:   -0.957 | Gyro X:    2.351  Y:    2.504  Z:   -0.947
+IMU 2 | Accel X:   -0.061  Y:   -0.049  Z:   -1.036 | Gyro X:   -1.893  Y:   -2.641  Z:   -1.374
+[0;32mI (1287) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1317) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.044  Y:   -0.053  Z:   -1.101 | Gyro X:    4.412  Y:    6.122  Z:    0.260
+IMU 1 | Accel X:    0.020  Y:    0.024  Z:   -0.956 | Gyro X:    2.336  Y:    2.489  Z:   -0.855
+IMU 2 | Accel X:   -0.060  Y:   -0.052  Z:   -1.030 | Gyro X:   -2.107  Y:   -2.382  Z:   -1.405
+[0;32mI (1317) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1347) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.043  Y:   -0.056  Z:   -1.094 | Gyro X:    4.321  Y:    6.061  Z:    0.198
+IMU 1 | Accel X:    0.017  Y:    0.019  Z:   -0.950 | Gyro X:    2.412  Y:    2.626  Z:   -0.931
+IMU 2 | Accel X:   -0.056  Y:   -0.052  Z:   -1.033 | Gyro X:   -2.031  Y:   -2.641  Z:   -1.374
+[0;32mI (1347) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1377) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.047  Y:   -0.055  Z:   -1.096 | Gyro X:    4.092  Y:    6.260  Z:    0.382
+IMU 1 | Accel X:    0.022  Y:    0.023  Z:   -0.950 | Gyro X:    2.519  Y:    2.580  Z:   -1.160
+IMU 2 | Accel X:   -0.057  Y:   -0.053  Z:   -1.028 | Gyro X:   -1.847  Y:   -2.641  Z:   -1.282
+[0;32mI (1387) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1417) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.041  Y:   -0.051  Z:   -1.101 | Gyro X:    4.031  Y:    6.107  Z:    0.550
+IMU 1 | Accel X:    0.015  Y:    0.023  Z:   -0.952 | Gyro X:    2.550  Y:    2.687  Z:   -0.779
+IMU 2 | Accel X:   -0.055  Y:   -0.045  Z:   -1.034 | Gyro X:   -1.863  Y:   -2.626  Z:   -1.298
+[0;32mI (1417) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1447) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.052  Z:   -1.102 | Gyro X:    4.183  Y:    5.954  Z:    0.336
+IMU 1 | Accel X:    0.015  Y:    0.022  Z:   -0.950 | Gyro X:    2.260  Y:    2.412  Z:   -1.115
+IMU 2 | Accel X:   -0.057  Y:   -0.047  Z:   -1.039 | Gyro X:   -1.802  Y:   -2.534  Z:   -1.359
+[0;32mI (1457) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1487) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.043  Y:   -0.058  Z:   -1.098 | Gyro X:    4.260  Y:    6.275  Z:    0.275
+IMU 1 | Accel X:    0.017  Y:    0.024  Z:   -0.955 | Gyro X:    2.443  Y:    2.550  Z:   -1.099
+IMU 2 | Accel X:   -0.063  Y:   -0.054  Z:   -1.035 | Gyro X:   -2.015  Y:   -2.626  Z:   -1.527
+[0;32mI (1487) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1517) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.040  Y:   -0.050  Z:   -1.098 | Gyro X:    4.214  Y:    6.137  Z:    0.412
+IMU 1 | Accel X:    0.019  Y:    0.017  Z:   -0.953 | Gyro X:    2.321  Y:    2.672  Z:   -1.099
+IMU 2 | Accel X:   -0.055  Y:   -0.043  Z:   -1.030 | Gyro X:   -1.771  Y:   -2.595  Z:   -1.496
+[0;32mI (1527) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1557) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.044  Y:   -0.052  Z:   -1.098 | Gyro X:    4.260  Y:    6.137  Z:    0.260
+IMU 1 | Accel X:    0.018  Y:    0.019  Z:   -0.953 | Gyro X:    2.336  Y:    2.458  Z:   -0.947
+IMU 2 | Accel X:   -0.065  Y:   -0.047  Z:   -1.029 | Gyro X:   -1.924  Y:   -2.366  Z:   -1.542
+[0;32mI (1557) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1587) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.041  Y:   -0.050  Z:   -1.098 | Gyro X:    4.382  Y:    6.031  Z:    0.168
+IMU 1 | Accel X:    0.014  Y:    0.018  Z:   -0.953 | Gyro X:    2.443  Y:    2.626  Z:   -1.145
+IMU 2 | Accel X:   -0.058  Y:   -0.050  Z:   -1.038 | Gyro X:   -2.183  Y:   -2.382  Z:   -1.435
+[0;32mI (1587) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1617) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.052  Z:   -1.094 | Gyro X:    4.229  Y:    5.908  Z:    0.427
+IMU 1 | Accel X:    0.017  Y:    0.025  Z:   -0.949 | Gyro X:    2.473  Y:    2.779  Z:   -0.977
+IMU 2 | Accel X:   -0.061  Y:   -0.043  Z:   -1.037 | Gyro X:   -2.107  Y:   -2.489  Z:   -1.435
+[0;32mI (1627) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1657) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.041  Y:   -0.057  Z:   -1.097 | Gyro X:    4.107  Y:    6.000  Z:    0.351
+IMU 1 | Accel X:    0.017  Y:    0.023  Z:   -0.953 | Gyro X:    2.443  Y:    2.473  Z:   -1.221
+IMU 2 | Accel X:   -0.059  Y:   -0.054  Z:   -1.031 | Gyro X:   -1.847  Y:   -2.534  Z:   -1.466
+[0;32mI (1657) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1687) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.049  Z:   -1.097 | Gyro X:    4.565  Y:    6.061  Z:    0.351
+IMU 1 | Accel X:    0.018  Y:    0.020  Z:   -0.955 | Gyro X:    2.550  Y:    2.580  Z:   -0.794
+IMU 2 | Accel X:   -0.059  Y:   -0.046  Z:   -1.038 | Gyro X:   -2.122  Y:   -2.580  Z:   -1.313
+[0;32mI (1697) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1727) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.044  Y:   -0.052  Z:   -1.095 | Gyro X:    4.519  Y:    6.229  Z:    0.382
+IMU 1 | Accel X:    0.017  Y:    0.022  Z:   -0.958 | Gyro X:    2.473  Y:    2.794  Z:   -1.023
+IMU 2 | Accel X:   -0.062  Y:   -0.048  Z:   -1.037 | Gyro X:   -2.046  Y:   -2.382  Z:   -1.374
+[0;32mI (1727) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1757) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.050  Z:   -1.095 | Gyro X:    4.351  Y:    6.122  Z:    0.183
+IMU 1 | Accel X:    0.017  Y:    0.017  Z:   -0.952 | Gyro X:    2.580  Y:    2.473  Z:   -0.992
+IMU 2 | Accel X:   -0.058  Y:   -0.049  Z:   -1.034 | Gyro X:   -2.137  Y:   -2.443  Z:   -1.618
+[0;32mI (1757) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1797) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.055  Z:   -1.102 | Gyro X:    4.427  Y:    6.107  Z:    0.214
+IMU 1 | Accel X:    0.019  Y:    0.020  Z:   -0.948 | Gyro X:    2.183  Y:    2.718  Z:   -0.885
+IMU 2 | Accel X:   -0.061  Y:   -0.053  Z:   -1.032 | Gyro X:   -1.725  Y:   -2.489  Z:   -1.282
+[0;32mI (1797) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1827) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.043  Y:   -0.054  Z:   -1.098 | Gyro X:    4.382  Y:    6.137  Z:    0.412
+IMU 1 | Accel X:    0.016  Y:    0.016  Z:   -0.952 | Gyro X:    2.351  Y:    2.565  Z:   -0.962
+IMU 2 | Accel X:   -0.058  Y:   -0.049  Z:   -1.034 | Gyro X:   -1.832  Y:   -2.595  Z:   -1.405
+[0;32mI (1827) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1857) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.040  Y:   -0.053  Z:   -1.093 | Gyro X:    4.458  Y:    6.061  Z:    0.260
+IMU 1 | Accel X:    0.016  Y:    0.019  Z:   -0.947 | Gyro X:    2.412  Y:    2.626  Z:   -1.084
+IMU 2 | Accel X:   -0.057  Y:   -0.049  Z:   -1.038 | Gyro X:   -1.878  Y:   -2.580  Z:   -1.511
+[0;32mI (1867) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1897) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.045  Y:   -0.058  Z:   -1.097 | Gyro X:    4.046  Y:    6.046  Z:   -0.046
+IMU 1 | Accel X:    0.022  Y:    0.023  Z:   -0.948 | Gyro X:    2.260  Y:    2.641  Z:   -1.176
+IMU 2 | Accel X:   -0.060  Y:   -0.053  Z:   -1.036 | Gyro X:   -1.863  Y:   -2.489  Z:   -1.511
+[0;32mI (1897) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1927) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.045  Y:   -0.053  Z:   -1.096 | Gyro X:    4.366  Y:    5.863  Z:    0.305
+IMU 1 | Accel X:    0.018  Y:    0.021  Z:   -0.939 | Gyro X:    2.260  Y:    2.580  Z:   -1.115
+IMU 2 | Accel X:   -0.058  Y:   -0.043  Z:   -1.031 | Gyro X:   -2.000  Y:   -2.534  Z:   -1.389
+[0;32mI (1937) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1967) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.044  Y:   -0.054  Z:   -1.103 | Gyro X:    4.565  Y:    6.122  Z:    0.443
+IMU 1 | Accel X:    0.020  Y:    0.018  Z:   -0.952 | Gyro X:    2.305  Y:    2.626  Z:   -1.053
+IMU 2 | Accel X:   -0.065  Y:   -0.050  Z:   -1.039 | Gyro X:   -1.969  Y:   -2.290  Z:   -1.359
+[0;32mI (1967) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (1997) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.044  Y:   -0.058  Z:   -1.098 | Gyro X:    4.168  Y:    5.954  Z:    0.443
+IMU 1 | Accel X:    0.017  Y:    0.020  Z:   -0.949 | Gyro X:    2.260  Y:    2.702  Z:   -0.977
+IMU 2 | Accel X:   -0.061  Y:   -0.052  Z:   -1.031 | Gyro X:   -1.954  Y:   -2.580  Z:   -1.389
+[0;32mI (1997) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2027) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.038  Y:   -0.054  Z:   -1.098 | Gyro X:    4.351  Y:    5.969  Z:    0.290
+IMU 1 | Accel X:    0.012  Y:    0.021  Z:   -0.947 | Gyro X:    2.458  Y:    2.595  Z:   -0.885
+IMU 2 | Accel X:   -0.056  Y:   -0.052  Z:   -1.030 | Gyro X:   -2.000  Y:   -2.504  Z:   -1.588
+[0;32mI (2037) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2067) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.041  Y:   -0.053  Z:   -1.098 | Gyro X:    4.443  Y:    6.137  Z:    0.214
+IMU 1 | Accel X:    0.013  Y:    0.022  Z:   -0.952 | Gyro X:    2.168  Y:    2.595  Z:   -1.145
+IMU 2 | Accel X:   -0.057  Y:   -0.047  Z:   -1.037 | Gyro X:   -2.031  Y:   -2.534  Z:   -1.511
+[0;32mI (2067) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2097) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.057  Z:   -1.102 | Gyro X:    4.336  Y:    6.107  Z:    0.244
+IMU 1 | Accel X:    0.019  Y:    0.018  Z:   -0.945 | Gyro X:    2.550  Y:    2.397  Z:   -0.962
+IMU 2 | Accel X:   -0.060  Y:   -0.051  Z:   -1.035 | Gyro X:   -1.786  Y:   -2.794  Z:   -1.618
+[0;32mI (2107) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2137) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.044  Y:   -0.052  Z:   -1.092 | Gyro X:    4.351  Y:    6.107  Z:    0.061
+IMU 1 | Accel X:    0.018  Y:    0.019  Z:   -0.948 | Gyro X:    2.336  Y:    2.611  Z:   -0.931
+IMU 2 | Accel X:   -0.059  Y:   -0.049  Z:   -1.040 | Gyro X:   -1.985  Y:   -2.656  Z:   -1.573
+[0;32mI (2137) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2167) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.049  Y:   -0.053  Z:   -1.094 | Gyro X:    4.336  Y:    6.229  Z:    0.214
+IMU 1 | Accel X:    0.020  Y:    0.022  Z:   -0.954 | Gyro X:    2.534  Y:    2.702  Z:   -1.069
+IMU 2 | Accel X:   -0.063  Y:   -0.053  Z:   -1.031 | Gyro X:   -1.802  Y:   -2.458  Z:   -1.420
+[0;32mI (2177) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2207) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.041  Y:   -0.055  Z:   -1.094 | Gyro X:    4.366  Y:    5.786  Z:    0.473
+IMU 1 | Accel X:    0.020  Y:    0.021  Z:   -0.952 | Gyro X:    2.366  Y:    2.626  Z:   -1.053
+IMU 2 | Accel X:   -0.055  Y:   -0.049  Z:   -1.033 | Gyro X:   -1.847  Y:   -2.473  Z:   -1.481
+[0;32mI (2207) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2237) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.039  Y:   -0.052  Z:   -1.100 | Gyro X:    4.137  Y:    6.092  Z:    0.427
+IMU 1 | Accel X:    0.016  Y:    0.018  Z:   -0.947 | Gyro X:    2.382  Y:    2.489  Z:   -1.237
+IMU 2 | Accel X:   -0.060  Y:   -0.048  Z:   -1.034 | Gyro X:   -1.939  Y:   -2.550  Z:   -1.359
+[0;32mI (2237) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2267) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.041  Y:   -0.053  Z:   -1.099 | Gyro X:    4.076  Y:    6.122  Z:    0.458
+IMU 1 | Accel X:    0.016  Y:    0.023  Z:   -0.954 | Gyro X:    2.397  Y:    2.565  Z:   -1.130
+IMU 2 | Accel X:   -0.058  Y:   -0.049  Z:   -1.032 | Gyro X:   -1.847  Y:   -2.489  Z:   -1.481
+[0;32mI (2277) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2307) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.053  Z:   -1.102 | Gyro X:    4.351  Y:    6.046  Z:    0.412
+IMU 1 | Accel X:    0.011  Y:    0.018  Z:   -0.962 | Gyro X:    2.321  Y:    2.702  Z:   -0.870
+IMU 2 | Accel X:   -0.054  Y:   -0.047  Z:   -1.039 | Gyro X:   -1.802  Y:   -2.611  Z:   -1.420
+[0;32mI (2307) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2337) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.048  Y:   -0.056  Z:   -1.096 | Gyro X:    4.351  Y:    6.137  Z:    0.214
+IMU 1 | Accel X:    0.019  Y:    0.024  Z:   -0.949 | Gyro X:    2.519  Y:    2.534  Z:   -1.084
+IMU 2 | Accel X:   -0.062  Y:   -0.051  Z:   -1.026 | Gyro X:   -1.985  Y:   -2.626  Z:   -1.496
+[0;32mI (2347) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2377) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.047  Y:   -0.057  Z:   -1.093 | Gyro X:    4.153  Y:    6.000  Z:    0.260
+IMU 1 | Accel X:    0.022  Y:    0.021  Z:   -0.945 | Gyro X:    2.565  Y:    2.412  Z:   -0.870
+IMU 2 | Accel X:   -0.062  Y:   -0.051  Z:   -1.036 | Gyro X:   -1.985  Y:   -2.565  Z:   -1.481
+[0;32mI (2377) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2407) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.051  Z:   -1.100 | Gyro X:    4.321  Y:    6.198  Z:    0.290
+IMU 1 | Accel X:    0.017  Y:    0.017  Z:   -0.947 | Gyro X:    2.366  Y:    2.809  Z:   -1.008
+IMU 2 | Accel X:   -0.060  Y:   -0.042  Z:   -1.037 | Gyro X:   -1.878  Y:   -2.504  Z:   -1.450
+[0;32mI (2407) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2437) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.043  Y:   -0.053  Z:   -1.094 | Gyro X:    4.183  Y:    6.031  Z:    0.290
+IMU 1 | Accel X:    0.019  Y:    0.025  Z:   -0.945 | Gyro X:    2.351  Y:    2.702  Z:   -1.023
+IMU 2 | Accel X:   -0.059  Y:   -0.049  Z:   -1.042 | Gyro X:   -1.802  Y:   -2.412  Z:   -1.496
+[0;32mI (2447) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2477) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.053  Z:   -1.098 | Gyro X:    4.336  Y:    6.000  Z:    0.427
+IMU 1 | Accel X:    0.019  Y:    0.025  Z:   -0.945 | Gyro X:    2.336  Y:    2.733  Z:   -1.115
+IMU 2 | Accel X:   -0.059  Y:   -0.049  Z:   -1.035 | Gyro X:   -1.939  Y:   -2.519  Z:   -1.420
+[0;32mI (2477) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2507) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.041  Y:   -0.055  Z:   -1.098 | Gyro X:    4.397  Y:    6.076  Z:    0.290
+IMU 1 | Accel X:    0.021  Y:    0.021  Z:   -0.956 | Gyro X:    2.534  Y:    2.519  Z:   -0.916
+IMU 2 | Accel X:   -0.062  Y:   -0.052  Z:   -1.035 | Gyro X:   -2.031  Y:   -2.626  Z:   -1.573
+[0;32mI (2517) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2547) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.048  Y:   -0.053  Z:   -1.094 | Gyro X:    4.580  Y:    5.863  Z:    0.244
+IMU 1 | Accel X:    0.020  Y:    0.021  Z:   -0.950 | Gyro X:    2.366  Y:    2.366  Z:   -1.008
+IMU 2 | Accel X:   -0.059  Y:   -0.052  Z:   -1.039 | Gyro X:   -1.725  Y:   -2.580  Z:   -1.435
+[0;32mI (2547) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2577) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.050  Y:   -0.054  Z:   -1.098 | Gyro X:    4.290  Y:    5.924  Z:    0.061
+IMU 1 | Accel X:    0.022  Y:    0.021  Z:   -0.958 | Gyro X:    2.641  Y:    2.763  Z:   -0.962
+IMU 2 | Accel X:   -0.063  Y:   -0.046  Z:   -1.035 | Gyro X:   -2.000  Y:   -2.412  Z:   -1.405
+[0;32mI (2587) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2617) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.045  Y:   -0.050  Z:   -1.091 | Gyro X:    3.954  Y:    5.969  Z:    0.107
+IMU 1 | Accel X:    0.020  Y:    0.018  Z:   -0.948 | Gyro X:    2.366  Y:    2.550  Z:   -0.916
+IMU 2 | Accel X:   -0.061  Y:   -0.049  Z:   -1.038 | Gyro X:   -1.863  Y:   -2.550  Z:   -1.557
+[0;32mI (2617) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2647) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.036  Y:   -0.054  Z:   -1.096 | Gyro X:    4.275  Y:    6.046  Z:    0.305
+IMU 1 | Accel X:    0.010  Y:    0.022  Z:   -0.950 | Gyro X:    2.534  Y:    2.763  Z:   -1.069
+IMU 2 | Accel X:   -0.052  Y:   -0.051  Z:   -1.037 | Gyro X:   -2.183  Y:   -2.489  Z:   -1.298
+[0;32mI (2647) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2677) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.040  Y:   -0.054  Z:   -1.097 | Gyro X:    4.443  Y:    6.092  Z:    0.183
+IMU 1 | Accel X:    0.021  Y:    0.019  Z:   -0.947 | Gyro X:    2.229  Y:    2.595  Z:   -1.008
+[0;32mI (2687) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+IMU 2 | Accel X:   -0.059  Y:   -0.049  Z:   -1.030 | Gyro X:   -1.985  Y:   -2.641  Z:   -1.344
+[0;32mI (2707) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.039  Y:   -0.047  Z:   -1.097 | Gyro X:    4.244  Y:    6.260  Z:    0.107
+IMU 1 | Accel X:    0.009  Y:    0.017  Z:   -0.956 | Gyro X:    2.275  Y:    2.473  Z:   -0.992
+IMU 2 | Accel X:   -0.052  Y:   -0.042  Z:   -1.041 | Gyro X:   -2.015  Y:   -2.702  Z:   -1.710
+[0;32mI (2717) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2747) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.052  Y:   -0.058  Z:   -1.101 | Gyro X:    4.534  Y:    5.710  Z:    0.015
+IMU 1 | Accel X:    0.009  Y:    0.017  Z:   -0.956 | Gyro X:    2.260  Y:    2.504  Z:   -1.023
+IMU 2 | Accel X:   -0.070  Y:   -0.055  Z:   -1.034 | Gyro X:   -1.679  Y:   -2.779  Z:   -1.435
+[0;32mI (2757) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2787) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.039  Y:   -0.053  Z:   -1.096 | Gyro X:    4.198  Y:    6.229  Z:    0.244
+IMU 1 | Accel X:    0.014  Y:    0.020  Z:   -0.957 | Gyro X:    2.412  Y:    2.580  Z:   -0.947
+IMU 2 | Accel X:   -0.055  Y:   -0.046  Z:   -1.041 | Gyro X:   -2.198  Y:   -2.565  Z:   -1.496
+[0;32mI (2787) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2817) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.044  Y:   -0.050  Z:   -1.094 | Gyro X:    4.489  Y:    6.000  Z:    0.290
+IMU 1 | Accel X:    0.018  Y:    0.015  Z:   -0.947 | Gyro X:    2.489  Y:    2.550  Z:   -1.053
+IMU 2 | Accel X:   -0.061  Y:   -0.049  Z:   -1.028 | Gyro X:   -1.954  Y:   -2.626  Z:   -1.405
+[0;32mI (2817) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2857) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.050  Y:   -0.059  Z:   -1.099 | Gyro X:    4.336  Y:    5.954  Z:    0.290
+IMU 1 | Accel X:    0.022  Y:    0.021  Z:   -0.951 | Gyro X:    2.305  Y:    2.489  Z:   -1.221
+IMU 2 | Accel X:   -0.064  Y:   -0.050  Z:   -1.030 | Gyro X:   -1.771  Y:   -2.641  Z:   -1.435
+[0;32mI (2857) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2887) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.039  Y:   -0.054  Z:   -1.097 | Gyro X:    4.504  Y:    6.015  Z:    0.366
+IMU 1 | Accel X:    0.016  Y:    0.023  Z:   -0.955 | Gyro X:    2.290  Y:    2.351  Z:   -0.916
+IMU 2 | Accel X:   -0.056  Y:   -0.051  Z:   -1.038 | Gyro X:   -1.893  Y:   -2.656  Z:   -1.359
+[0;32mI (2887) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2917) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.042  Y:   -0.062  Z:   -1.098 | Gyro X:    4.244  Y:    6.015  Z:    0.046
+IMU 1 | Accel X:    0.021  Y:    0.019  Z:   -0.955 | Gyro X:    2.641  Y:    2.656  Z:   -0.916
+IMU 2 | Accel X:   -0.065  Y:   -0.050  Z:   -1.039 | Gyro X:   -2.031  Y:   -2.580  Z:   -1.359
+[0;32mI (2927) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2957) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.032  Y:   -0.043  Z:   -1.095 | Gyro X:    4.427  Y:    6.153  Z:    0.198
+IMU 1 | Accel X:    0.009  Y:    0.013  Z:   -0.949 | Gyro X:    2.229  Y:    2.763  Z:   -1.053
+IMU 2 | Accel X:   -0.048  Y:   -0.038  Z:   -1.038 | Gyro X:   -1.908  Y:   -2.702  Z:   -1.481
+[0;32mI (2957) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (2987) can_bringup: CAN TX ok: status=1[0m
+IMU 0 | Accel X:   -0.044  Y:   -0.061  Z:   -1.100 | Gyro X:    4.260  Y:    6.168  Z:    0.427
+IMU 1 | Accel X:    0.020  Y:    0.022  Z:   -0.938 | Gyro X:    2.382  Y:    2.626  Z:   -1.160
+IMU 2 | Accel X:   -0.061  Y:   -0.052  Z:   -1.033 | Gyro X:   -1.863  Y:   -2.687  Z:   -1.542
+[0;32mI (2997) can_bringup: CAN TX ok: SENT[0m
+state: NOMINAL
+
+[0;32mI (3027) can_bringup: CAN TX ok: status=1[0m

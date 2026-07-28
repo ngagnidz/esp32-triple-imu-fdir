@@ -1,0 +1,1041 @@
+[1/4] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/partition_table/partition-table.bin /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/mpu9250_driver.bin
+mpu9250_driver.bin binary size 0x2cbd0 bytes. Smallest app partition is 0x100000 bytes. 0xd3430 bytes (83%) free.
+[2/4] Performing build step for 'bootloader'
+[1/1] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader/bootloader.bin
+Bootloader binary size 0x6640 bytes. 0x9c0 bytes (9%) free.
+[3/4] No install step for 'bootloader'
+[4/4] Completed 'bootloader'
+Adding "flash"'s dependency "all" to list of commands with default set of options.
+Executing action: all (aliases: build)
+Running ninja in directory /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx
+Executing "ninja all"...
+Executing action: flash
+Running ninja in directory /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx
+Executing "ninja flash"...
+[1/5] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/partition_table/partition-table.bin /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/mpu9250_driver.bin
+mpu9250_driver.bin binary size 0x2cbd0 bytes. Smallest app partition is 0x100000 bytes. 0xd3430 bytes (83%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader/bootloader.bin
+Bootloader binary size 0x6640 bytes. 0x9c0 bytes (9%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] Running utility command for flash
+esptool --chip esp32 -p /dev/cu.usbserial-0001 -b 460800 --before=default-reset --after=hard-reset write-flash --flash-mode dio --flash-freq 40m --flash-size 2MB 0x1000 bootloader/bootloader.bin 0x8000 partition_table/partition-table.bin 0x10000 mpu9250_driver.bin --diff-with bootloader/bootloader_flashed.bin partition_table/partition-table_flashed.bin mpu9250_driver_flashed.bin
+esptool v5.3.dev3
+Serial port /dev/cu.usbserial-0001:
+Connecting......
+[1A[2K[1A[2KConnected to ESP32 on /dev/cu.usbserial-0001:
+Chip type:          ESP32-D0WD-V3 (revision v3.1)
+Features:           Wi-Fi, BT, Dual Core + LP Core, 240MHz, Vref calibration in eFuse, Coding Scheme None
+Crystal frequency:  40MHz
+MAC:                d4:e9:f4:ed:69:04
+
+Uploading stub flasher...
+Running stub flasher...
+[1A[2K[1A[2KStub flasher running.
+Changing baud rate to 460800...
+Changed.
+
+Configuring flash size...
+
+Writing 'bootloader/bootloader.bin' at 0x00001000...
+SHA digest in image updated.
+SHA digest in image updated.
+No changed sectors found, verifying if data is in flash...
+[1A[2K'bootloader/bootloader.bin' at 0x00001000 verified.
+
+Writing 'partition_table/partition-table.bin' at 0x00008000...
+No changed sectors found, verifying if data is in flash...
+[1A[2K'partition_table/partition-table.bin' at 0x00008000 verified.
+
+Writing 'mpu9250_driver.bin' at 0x00010000...
+No changed sectors found, verifying if data is in flash...
+[1/4] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/partition_table/partition-table.bin /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/mpu9250_driver.bin
+mpu9250_driver.bin binary size 0x2cbd0 bytes. Smallest app partition is 0x100000 bytes. 0xd3430 bytes (83%) free.
+[2/4] Performing build step for 'bootloader'
+[1/1] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader/bootloader.bin
+Bootloader binary size 0x6640 bytes. 0x9c0 bytes (9%) free.
+[3/4] No install step for 'bootloader'
+[4/4] Completed 'bootloader'
+Adding "flash"'s dependency "all" to list of commands with default set of options.
+Executing action: all (aliases: build)
+Running ninja in directory /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx
+Executing "ninja all"...
+Executing action: flash
+Running ninja in directory /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx
+Executing "ninja flash"...
+[1/5] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/partition_table/partition-table.bin /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/mpu9250_driver.bin
+mpu9250_driver.bin binary size 0x2cbd0 bytes. Smallest app partition is 0x100000 bytes. 0xd3430 bytes (83%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader/bootloader.bin
+Bootloader binary size 0x6640 bytes. 0x9c0 bytes (9%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] Running utility command for flash
+esptool --chip esp32 -p /dev/cu.usbserial-0001 -b 460800 --before=default-reset --after=hard-reset write-flash --flash-mode dio --flash-freq 40m --flash-size 2MB 0x1000 bootloader/bootloader.bin 0x8000 partition_table/partition-table.bin 0x10000 mpu9250_driver.bin --diff-with bootloader/bootloader_flashed.bin partition_table/partition-table_flashed.bin mpu9250_driver_flashed.bin
+esptool v5.3.dev3
+Serial port /dev/cu.usbserial-0001:
+Connecting......
+[1A[2K[1A[2KConnected to ESP32 on /dev/cu.usbserial-0001:
+Chip type:          ESP32-D0WD-V3 (revision v3.1)
+Features:           Wi-Fi, BT, Dual Core + LP Core, 240MHz, Vref calibration in eFuse, Coding Scheme None
+Crystal frequency:  40MHz
+MAC:                d4:e9:f4:ed:69:04
+
+Uploading stub flasher...
+Running stub flasher...
+[1A[2K[1A[2KStub flasher running.
+Changing baud rate to 460800...
+Changed.
+
+Configuring flash size...
+
+Writing 'bootloader/bootloader.bin' at 0x00001000...
+SHA digest in image updated.
+SHA digest in image updated.
+No changed sectors found, verifying if data is in flash...
+[1A[2K'bootloader/bootloader.bin' at 0x00001000 verified.
+
+Writing 'partition_table/partition-table.bin' at 0x00008000...
+No changed sectors found, verifying if data is in flash...
+[1A[2K'partition_table/partition-table.bin' at 0x00008000 verified.
+
+Writing 'mpu9250_driver.bin' at 0x00010000...
+No changed sectors found, verifying if data is in flash...
+[1A[2K'mpu9250_driver.bin' at 0x00010000 verified.
+
+Hard resetting via RTS pin...
+Executing action: monitor
+Running idf_monitor in directory /Users/nikagagnidze/Desktop/esp/triple_imu_fdir
+Executing "/Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/tools/idf_monitor.py -p /dev/cu.usbserial-0001 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/mpu9250_driver.elf /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader/bootloader.elf -m '/Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python' '/Users/nikagagnidze/Desktop/esp/esp-idf/tools/idf.py' '-B' 'build_tx'"...
+� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �x� x � �� ��x��������xx � �x�x x�x� �xets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+rst:ets Jul 29 2019 12:21:46
+
+r (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (S0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15820
+load:0x40080400,len:3988
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.1-dev-4996-gc1b7f38212 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Jul 28 2026 16:12:00[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0abe0h ( 44000) map[0m
+[0;32mI (104) esp_image: segment 1: paddr=0001ac08 vaddr=3ffb0000 size=02cdch ( 11484) load[0m
+[0;32mI (108) esp_image: segment 2: paddr=0001d8ec vaddr=40080000 size=0272ch ( 10028) load[0m
+[0;32mI (113) esp_image: segment 3: paddr=00020020 vaddr=400d0020 size=11d60h ( 73056) map[0m
+[0;32mI (141) esp_image: segment 4: paddr=00031d88 vaddr=4008272c size=0adf4h ( 44532) load[0m
+[0;32mI (159) esp_image: segment 5: paddr=0003cb84 vaddr=50000000 size=00028h (    40) load[0m
+[0;32mI (167) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (167) boot: Disabling RNG early entropy source...[0m
+[0;32mI (178) cpu_start: Multicore app[0m
+[0;32mI (186) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (186) cpu_start: Pro cpu start user code[0m
+[0;32mI (186) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (188) app_init: Application information:[0m
+[0;32mI (192) app_init: Project name:     mpu9250_driver[0m
+[0;32mI (196) app_init: App version:      6721a32-dirty[0m
+[0;32mI (201) app_init: Compile time:     Jul 28 2026 16:10:48[0m
+[0;32mI (206) app_init: ELF file SHA256:  9dfa1d3cc...[0m
+[0;32mI (210) app_init: ESP-IDF:          v6.1-dev-4996-gc1b7f38212[0m
+[0;32mI (216) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (219) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (223) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (227) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (234) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (239) heap_init: At 3FFB37B8 len 0002C848 (178 KiB): DRAM[0m
+[0;32mI (244) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (249) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (255) heap_init: At 4008D520 len 00012AE0 (74 KiB): IRAM[0m
+[0;32mI (262) spi_flash: detected chip: generic[0m
+[0;32mI (264) spi_flash: flash io: dio[0m
+[0;33mW (267) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (280) main_task: Started on CPU0[0m
+[0;32mI (280) main_task: Calling app_main()[0m
+SLEEPING_MODE_STATUS: 0x01
+Gyro Range: 0x8
+Accel Range: 0x10
+SLEEPING_MODE_STATUS: 0x01
+Gyro Range: 0x8
+Accel Range: 0x10
+SLEEPING_MODE_STATUS: 0x01
+Gyro Range: 0x8
+Accel Range: 0x10
+[0;32mI (300) CAN_TX: CAN link up: tx=21 rx=23 500 kbit/s (normal mode)[0m
+[0;32mI (300) main_task: Returned from app_main()[0m
+IMU 0 | Accel X:    0.104  Y:   -0.004  Z:   -1.097 | Gyro X:    4.290  Y:    5.908  Z:    0.351
+IMU 1 | Accel X:   -0.003  Y:   -0.033  Z:   -1.040 | Gyro X:   -1.725  Y:   -2.595  Z:   -1.359
+IMU 2 | Accel X:    0.000  Y:   -0.006  Z:   -0.948 | Gyro X:    0.000  Y:    0.000  Z:    0.000
+[0;32mI (330) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 0 | Accel X:    0.102  Y:   -0.006  Z:   -1.095 | Gyro X:    4.412  Y:    5.969  Z:    0.122
+IMU 1 | Accel X:   -0.004  Y:   -0.034  Z:   -1.037 | Gyro X:   -1.908  Y:   -2.473  Z:   -1.115
+IMU 2 | Accel X:    0.001  Y:   -0.002  Z:   -0.952 | Gyro X:    2.412  Y:    2.641  Z:   -1.023
+0.034017state: NOMINAL
+
+IMU 0 | Accel X:    0.106  Y:   -0.003  Z:   -1.097 | Gyro X:    4.397  Y:    6.137  Z:    0.458
+[0;32mI (370) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.008  Y:   -0.034  Z:   -1.042 | Gyro X:   -1.847  Y:   -2.534  Z:   -1.618
+IMU 2 | Accel X:    0.003  Y:   -0.002  Z:   -0.957 | Gyro X:    2.519  Y:    2.748  Z:   -1.237
+0.033285state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.009  Z:   -1.099 | Gyro X:    4.137  Y:    5.832  Z:    0.336
+[0;32mI (400) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.035  Z:   -1.039 | Gyro X:   -1.954  Y:   -2.534  Z:   -1.405
+IMU 2 | Accel X:    0.001  Y:   -0.006  Z:   -0.960 | Gyro X:    2.275  Y:    2.809  Z:   -0.992
+0.033610state: NOMINAL
+
+IMU 0 | Accel X:    0.102  Y:   -0.001  Z:   -1.098 | Gyro X:    4.366  Y:    5.985  Z:    0.366
+[0;32mI (430) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.033  Z:   -1.039 | Gyro X:   -2.015  Y:   -2.519  Z:   -1.359
+IMU 2 | Accel X:   -0.003  Y:   -0.009  Z:   -0.952 | Gyro X:    2.687  Y:    2.565  Z:   -0.885
+0.033529state: NOMINAL
+
+IMU 0 | Accel X:    0.102  Y:   -0.007  Z:   -1.098 | Gyro X:    4.076  Y:    6.214  Z:    0.244
+[0;32mI (460) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.032  Z:   -1.038 | Gyro X:   -1.710  Y:   -2.626  Z:   -1.603
+IMU 2 | Accel X:    0.002  Y:   -0.010  Z:   -0.954 | Gyro X:    2.443  Y:    2.718  Z:   -0.885
+0.031820state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.005  Z:   -1.102 | Gyro X:    4.290  Y:    6.092  Z:    0.336
+[0;32mI (500) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.032  Z:   -1.044 | Gyro X:   -1.893  Y:   -2.519  Z:   -1.359
+IMU 2 | Accel X:   -0.001  Y:   -0.005  Z:   -0.959 | Gyro X:    2.443  Y:    2.916  Z:   -0.840
+0.033366state: NOMINAL
+
+IMU 0 | Accel X:    0.108  Y:   -0.003  Z:   -1.103 | Gyro X:    4.550  Y:    6.076  Z:    0.427
+[0;32mI (530) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.032  Z:   -1.035 | Gyro X:   -1.954  Y:   -2.779  Z:   -1.679
+IMU 2 | Accel X:   -0.001  Y:   -0.007  Z:   -0.947 | Gyro X:    2.382  Y:    2.763  Z:   -1.008
+0.033203state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.008  Z:   -1.100 | Gyro X:    4.153  Y:    5.908  Z:    0.244
+[0;32mI (560) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.010  Y:   -0.035  Z:   -1.037 | Gyro X:   -1.924  Y:   -2.763  Z:   -1.252
+IMU 2 | Accel X:    0.001  Y:   -0.003  Z:   -0.955 | Gyro X:    2.580  Y:    2.840  Z:   -1.130
+0.033854state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.005  Z:   -1.095 | Gyro X:    4.504  Y:    5.939  Z:    0.351
+[0;32mI (600) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.034  Z:   -1.038 | Gyro X:   -1.908  Y:   -2.443  Z:   -1.405
+IMU 2 | Accel X:   -0.002  Y:   -0.008  Z:   -0.957 | Gyro X:    2.427  Y:    2.840  Z:   -0.962
+0.032878state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.006  Z:   -1.100 | Gyro X:    4.290  Y:    6.168  Z:    0.534
+[0;32mI (630) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.033  Z:   -1.041 | Gyro X:   -1.908  Y:   -2.794  Z:   -1.466
+IMU 2 | Accel X:   -0.002  Y:   -0.007  Z:   -0.963 | Gyro X:    2.321  Y:    2.718  Z:   -0.931
+0.032145state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.007  Z:   -1.098 | Gyro X:    4.321  Y:    6.107  Z:    0.366
+[0;32mI (660) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.031  Z:   -1.043 | Gyro X:   -1.969  Y:   -2.611  Z:   -1.496
+IMU 2 | Accel X:   -0.001  Y:   -0.007  Z:   -0.956 | Gyro X:    2.519  Y:    2.840  Z:   -0.947
+0.033854state: NOMINAL
+
+IMU 0 | Accel X:    0.106  Y:   -0.006  Z:   -1.102 | Gyro X:    4.244  Y:    6.137  Z:   -0.198
+[0;32mI (700) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.033  Z:   -1.039 | Gyro X:   -1.771  Y:   -2.580  Z:   -1.420
+IMU 2 | Accel X:    0.001  Y:   -0.006  Z:   -0.958 | Gyro X:    2.534  Y:    2.916  Z:   -0.763
+0.033610state: NOMINAL
+
+IMU 0 | Accel X:    0.106  Y:   -0.005  Z:   -1.099 | Gyro X:    4.321  Y:    5.985  Z:    0.275
+[0;32mI (730) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.038  Z:   -1.036 | Gyro X:   -1.985  Y:   -2.733  Z:   -1.527
+IMU 2 | Accel X:    0.001  Y:   -0.004  Z:   -0.955 | Gyro X:    2.565  Y:    2.962  Z:   -0.916
+0.034831state: NOMINAL
+
+IMU 0 | Accel X:    0.106  Y:   -0.004  Z:   -1.093 | Gyro X:    4.153  Y:    5.908  Z:    0.260
+[0;32mI (760) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.001  Y:   -0.033  Z:   -1.044 | Gyro X:   -1.771  Y:   -2.641  Z:   -1.450
+IMU 2 | Accel X:    0.001  Y:   -0.006  Z:   -0.953 | Gyro X:    2.565  Y:    2.641  Z:   -0.962
+0.034668state: NOMINAL
+
+IMU 0 | Accel X:    0.108  Y:   -0.006  Z:   -1.097 | Gyro X:    4.244  Y:    6.031  Z:    0.046
+[0;32mI (800) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.035  Z:   -1.037 | Gyro X:   -1.908  Y:   -2.443  Z:   -1.527
+IMU 2 | Accel X:    0.006  Y:   -0.008  Z:   -0.960 | Gyro X:    2.748  Y:    3.084  Z:   -0.916
+0.035238state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.007  Z:   -1.101 | Gyro X:    4.336  Y:    5.832  Z:    0.382
+[0;32mI (830) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.032  Z:   -1.043 | Gyro X:   -1.740  Y:   -2.626  Z:   -1.466
+IMU 2 | Accel X:    0.002  Y:   -0.007  Z:   -0.956 | Gyro X:    2.260  Y:    2.702  Z:   -1.069
+0.036133state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.005  Z:   -1.095 | Gyro X:    4.305  Y:    6.031  Z:    0.336
+[0;32mI (860) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.039  Z:   -1.040 | Gyro X:   -1.695  Y:   -2.656  Z:   -1.511
+IMU 2 | Accel X:    0.001  Y:   -0.004  Z:   -0.955 | Gyro X:    2.489  Y:    2.611  Z:   -1.053
+0.035238state: NOMINAL
+
+IMU 0 | Accel X:    0.102  Y:   -0.004  Z:   -1.098 | Gyro X:    4.336  Y:    6.000  Z:    0.565
+[0;32mI (900) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.036  Z:   -1.038 | Gyro X:   -1.924  Y:   -2.763  Z:   -1.435
+IMU 2 | Accel X:   -0.001  Y:   -0.005  Z:   -0.959 | Gyro X:    2.489  Y:    2.748  Z:   -0.840
+0.033529state: NOMINAL
+
+IMU 0 | Accel X:    0.106  Y:   -0.003  Z:   -1.103 | Gyro X:    4.198  Y:    5.954  Z:    0.122
+[0;32mI (930) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.033  Z:   -1.045 | Gyro X:   -1.878  Y:   -2.443  Z:   -1.573
+IMU 2 | Accel X:    0.003  Y:   -0.005  Z:   -0.954 | Gyro X:    2.397  Y:    2.870  Z:   -0.992
+0.032796state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.004  Z:   -1.099 | Gyro X:    4.229  Y:    6.107  Z:    0.183
+[0;32mI (960) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.007  Y:   -0.039  Z:   -1.042 | Gyro X:   -1.771  Y:   -2.382  Z:   -1.420
+IMU 2 | Accel X:   -0.000  Y:    0.000  Z:   -0.950 | Gyro X:    2.244  Y:    2.931  Z:   -1.084
+0.034342state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.003  Z:   -1.097 | Gyro X:    4.000  Y:    6.198  Z:    0.198
+[0;32mI (1000) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.035  Z:   -1.038 | Gyro X:   -1.954  Y:   -2.550  Z:   -1.420
+IMU 2 | Accel X:    0.005  Y:   -0.007  Z:   -0.960 | Gyro X:    2.550  Y:    2.809  Z:   -0.840
+0.032308state: NOMINAL
+
+IMU 0 | Accel X:    0.102  Y:   -0.005  Z:   -1.095 | Gyro X:    4.336  Y:    5.985  Z:    0.290
+[0;32mI (1030) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.034  Z:   -1.034 | Gyro X:   -1.863  Y:   -2.321  Z:   -1.511
+IMU 2 | Accel X:   -0.005  Y:   -0.007  Z:   -0.954 | Gyro X:    2.473  Y:    2.718  Z:   -0.885
+0.034342state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.005  Z:   -1.102 | Gyro X:    4.351  Y:    5.985  Z:    0.092
+[0;32mI (1060) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.036  Z:   -1.037 | Gyro X:   -1.878  Y:   -2.489  Z:   -1.511
+IMU 2 | Accel X:   -0.000  Y:   -0.003  Z:   -0.958 | Gyro X:    2.397  Y:    2.779  Z:   -0.779
+0.031331state: NOMINAL
+
+IMU 0 | Accel X:    0.106  Y:   -0.003  Z:   -1.098 | Gyro X:    4.244  Y:    5.954  Z:    0.046
+[0;32mI (1100) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.007  Y:   -0.033  Z:   -1.042 | Gyro X:   -1.832  Y:   -2.550  Z:   -1.527
+IMU 2 | Accel X:    0.003  Y:   -0.005  Z:   -0.954 | Gyro X:    2.443  Y:    2.779  Z:   -0.916
+0.033366state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.003  Z:   -1.100 | Gyro X:    4.244  Y:    5.893  Z:    0.183
+[0;32mI (1130) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.038  Z:   -1.040 | Gyro X:   -1.786  Y:   -2.748  Z:   -1.389
+IMU 2 | Accel X:    0.003  Y:   -0.008  Z:   -0.954 | Gyro X:    2.458  Y:    2.870  Z:   -0.962
+0.034261state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.006  Z:   -1.098 | Gyro X:    4.534  Y:    6.031  Z:    0.275
+[0;32mI (1160) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.038  Z:   -1.036 | Gyro X:   -2.076  Y:   -2.504  Z:   -1.496
+IMU 2 | Accel X:   -0.002  Y:   -0.007  Z:   -0.960 | Gyro X:    2.290  Y:    2.809  Z:   -1.008
+0.034342state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.008  Z:   -1.099 | Gyro X:    4.305  Y:    5.924  Z:    0.489
+[0;32mI (1190) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.035  Z:   -1.040 | Gyro X:   -2.000  Y:   -2.611  Z:   -1.298
+IMU 2 | Accel X:    0.001  Y:   -0.006  Z:   -0.956 | Gyro X:    2.580  Y:    2.931  Z:   -0.733
+0.032878state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.002  Z:   -1.097 | Gyro X:    4.122  Y:    5.893  Z:    0.092
+[0;32mI (1230) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.031  Z:   -1.041 | Gyro X:   -1.695  Y:   -2.458  Z:   -1.435
+IMU 2 | Accel X:    0.001  Y:   -0.006  Z:   -0.955 | Gyro X:    2.351  Y:    2.687  Z:   -0.992
+0.035482state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.005  Z:   -1.101 | Gyro X:    4.275  Y:    6.137  Z:    0.351
+[0;32mI (1260) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.009  Y:   -0.036  Z:   -1.039 | Gyro X:   -1.985  Y:   -2.443  Z:   -1.603
+IMU 2 | Accel X:    0.001  Y:   -0.007  Z:   -0.957 | Gyro X:    2.550  Y:    2.916  Z:   -0.916
+0.032552state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.007  Z:   -1.090 | Gyro X:    4.382  Y:    5.847  Z:    0.458
+[0;32mI (1290) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.031  Z:   -1.046 | Gyro X:   -1.954  Y:   -2.580  Z:   -1.511
+IMU 2 | Accel X:    0.004  Y:   -0.007  Z:   -0.957 | Gyro X:    2.626  Y:    2.809  Z:   -1.115
+0.032389state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.005  Z:   -1.097 | Gyro X:    4.290  Y:    6.107  Z:    0.336
+[0;32mI (1330) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:    0.000  Y:   -0.035  Z:   -1.039 | Gyro X:   -1.847  Y:   -2.534  Z:   -1.481
+IMU 2 | Accel X:    0.001  Y:   -0.008  Z:   -0.954 | Gyro X:    2.397  Y:    2.931  Z:   -1.099
+0.034424state: NOMINAL
+
+IMU 0 | Accel X:    0.106  Y:   -0.003  Z:   -1.099 | Gyro X:    4.107  Y:    6.000  Z:    0.214
+[0;32mI (1360) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.035  Z:   -1.046 | Gyro X:   -1.573  Y:   -2.718  Z:   -1.237
+IMU 2 | Accel X:   -0.000  Y:   -0.007  Z:   -0.950 | Gyro X:    2.550  Y:    2.794  Z:   -0.840
+0.034831state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.001  Z:   -1.098 | Gyro X:    4.122  Y:    6.061  Z:    0.229
+[0;32mI (1390) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.001  Y:   -0.032  Z:   -1.037 | Gyro X:   -1.954  Y:   -2.748  Z:   -1.359
+IMU 2 | Accel X:    0.002  Y:   -0.007  Z:   -0.957 | Gyro X:    2.702  Y:    2.595  Z:   -1.038
+0.033447state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.003  Z:   -1.099 | Gyro X:    4.443  Y:    5.878  Z:    0.382
+[0;32mI (1430) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.036  Z:   -1.039 | Gyro X:   -1.985  Y:   -2.672  Z:   -1.481
+IMU 2 | Accel X:    0.004  Y:   -0.008  Z:   -0.957 | Gyro X:    2.687  Y:    2.550  Z:   -0.947
+0.035970state: NOMINAL
+
+IMU 0 | Accel X:    0.108  Y:   -0.001  Z:   -1.103 | Gyro X:    4.107  Y:    5.969  Z:   -0.061
+[0;32mI (1460) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.037  Z:   -1.040 | Gyro X:   -1.863  Y:   -2.565  Z:   -1.481
+IMU 2 | Accel X:    0.000  Y:   -0.006  Z:   -0.952 | Gyro X:    2.275  Y:    2.901  Z:   -0.992
+0.034505state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.007  Z:   -1.099 | Gyro X:    4.382  Y:    5.969  Z:    0.092
+[0;32mI (1490) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.034  Z:   -1.037 | Gyro X:   -1.908  Y:   -2.885  Z:   -1.252
+IMU 2 | Accel X:    0.001  Y:   -0.012  Z:   -0.947 | Gyro X:    2.641  Y:    2.855  Z:   -0.931
+0.035075state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.004  Z:   -1.103 | Gyro X:    4.290  Y:    6.168  Z:    0.336
+[0;32mI (1530) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.037  Z:   -1.037 | Gyro X:   -1.847  Y:   -2.489  Z:   -1.649
+IMU 2 | Accel X:    0.002  Y:   -0.007  Z:   -0.950 | Gyro X:    2.504  Y:    2.687  Z:   -0.992
+0.034587state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.005  Z:   -1.099 | Gyro X:    4.382  Y:    6.183  Z:    0.122
+[0;32mI (1560) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.038  Z:   -1.042 | Gyro X:   -1.695  Y:   -2.718  Z:   -1.649
+IMU 2 | Accel X:    0.000  Y:   -0.004  Z:   -0.955 | Gyro X:    2.534  Y:    2.718  Z:   -1.145
+0.034342state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.003  Z:   -1.100 | Gyro X:    4.656  Y:    6.122  Z:    0.061
+[0;32mI (1590) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.035  Z:   -1.038 | Gyro X:   -1.985  Y:   -2.718  Z:   -1.282
+IMU 2 | Accel X:    0.003  Y:   -0.005  Z:   -0.955 | Gyro X:    2.672  Y:    2.809  Z:   -0.901
+0.033203state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.006  Z:   -1.100 | Gyro X:    4.153  Y:    6.168  Z:    0.153
+[0;32mI (1630) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.037  Z:   -1.045 | Gyro X:   -1.832  Y:   -2.534  Z:   -1.435
+IMU 2 | Accel X:    0.000  Y:   -0.005  Z:   -0.955 | Gyro X:    2.504  Y:    2.733  Z:   -1.084
+0.034098state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.007  Z:   -1.104 | Gyro X:    4.305  Y:    6.076  Z:    0.107
+[0;32mI (1660) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.033  Z:   -1.040 | Gyro X:   -1.939  Y:   -2.412  Z:   -1.313
+IMU 2 | Accel X:    0.002  Y:   -0.007  Z:   -0.951 | Gyro X:    2.504  Y:    2.931  Z:   -0.901
+0.033773state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.007  Z:   -1.104 | Gyro X:    4.260  Y:    6.061  Z:    0.122
+[0;32mI (1690) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.036  Z:   -1.042 | Gyro X:   -1.450  Y:   -2.427  Z:   -1.328
+IMU 2 | Accel X:    0.002  Y:   -0.005  Z:   -0.951 | Gyro X:    2.397  Y:    2.794  Z:   -1.023
+0.033854state: NOMINAL
+
+IMU 0 | Accel X:    0.106  Y:   -0.003  Z:   -1.095 | Gyro X:    4.153  Y:    6.183  Z:    0.183
+[0;32mI (1730) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.034  Z:   -1.040 | Gyro X:   -1.695  Y:   -2.519  Z:   -1.664
+IMU 2 | Accel X:    0.001  Y:   -0.007  Z:   -0.953 | Gyro X:    2.351  Y:    2.885  Z:   -0.794
+0.033610state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.006  Z:   -1.095 | Gyro X:    4.427  Y:    5.893  Z:    0.382
+[0;32mI (1760) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.035  Z:   -1.039 | Gyro X:   -1.924  Y:   -2.733  Z:   -1.542
+IMU 2 | Accel X:   -0.000  Y:   -0.008  Z:   -0.955 | Gyro X:    2.534  Y:    2.641  Z:   -1.191
+0.035319state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.007  Z:   -1.094 | Gyro X:    4.458  Y:    6.153  Z:    0.427
+[0;32mI (1790) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.000  Y:   -0.034  Z:   -1.038 | Gyro X:   -1.725  Y:   -2.763  Z:   -1.679
+IMU 2 | Accel X:    0.000  Y:   -0.005  Z:   -0.956 | Gyro X:    2.397  Y:    2.718  Z:   -0.885
+0.033773state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.002  Z:   -1.103 | Gyro X:    4.168  Y:    5.985  Z:    0.336
+[0;32mI (1830) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.036  Z:   -1.034 | Gyro X:   -1.679  Y:   -2.534  Z:   -1.359
+IMU 2 | Accel X:   -0.001  Y:   -0.009  Z:   -0.955 | Gyro X:    2.336  Y:    2.672  Z:   -1.282
+0.034505state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.010  Z:   -1.103 | Gyro X:    4.229  Y:    5.969  Z:    0.214
+[0;32mI (1860) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:    0.000  Y:   -0.033  Z:   -1.042 | Gyro X:   -2.031  Y:   -2.565  Z:   -1.664
+IMU 2 | Accel X:    0.003  Y:   -0.004  Z:   -0.958 | Gyro X:    2.580  Y:    2.809  Z:   -0.733
+0.033529state: NOMINAL
+
+IMU 0 | Accel X:    0.101  Y:   -0.009  Z:   -1.097 | Gyro X:    4.519  Y:    6.183  Z:    0.260
+[0;32mI (1890) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.033  Z:   -1.042 | Gyro X:   -1.954  Y:   -2.565  Z:   -1.420
+IMU 2 | Accel X:   -0.002  Y:   -0.007  Z:   -0.953 | Gyro X:    2.550  Y:    2.656  Z:   -0.916
+0.036051state: NOMINAL
+
+IMU 0 | Accel X:    0.106  Y:   -0.002  Z:   -1.101 | Gyro X:    4.321  Y:    6.214  Z:    0.351
+[0;32mI (1930) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.034  Z:   -1.032 | Gyro X:   -1.939  Y:   -2.595  Z:   -1.389
+IMU 2 | Accel X:    0.001  Y:   -0.004  Z:   -0.953 | Gyro X:    2.672  Y:    2.855  Z:   -0.870
+0.031169state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.005  Z:   -1.096 | Gyro X:    4.198  Y:    6.183  Z:    0.137
+[0;32mI (1960) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.032  Z:   -1.043 | Gyro X:   -1.863  Y:   -2.763  Z:   -1.511
+IMU 2 | Accel X:    0.001  Y:   -0.010  Z:   -0.954 | Gyro X:    2.504  Y:    2.550  Z:   -1.130
+0.034261state: NOMINAL
+
+IMU 0 | Accel X:    0.106  Y:   -0.004  Z:   -1.097 | Gyro X:    4.351  Y:    6.046  Z:   -0.015
+[0;32mI (1990) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.001  Y:   -0.037  Z:   -1.041 | Gyro X:   -1.786  Y:   -2.412  Z:   -1.466
+IMU 2 | Accel X:   -0.002  Y:   -0.006  Z:   -0.952 | Gyro X:    2.412  Y:    2.626  Z:   -0.824
+0.034912state: NOMINAL
+
+IMU 0 | Accel X:    0.106  Y:   -0.009  Z:   -1.103 | Gyro X:    4.443  Y:    6.076  Z:    0.275
+[0;32mI (2030) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.031  Z:   -1.042 | Gyro X:   -2.015  Y:   -2.336  Z:   -1.313
+IMU 2 | Accel X:    0.003  Y:   -0.006  Z:   -0.954 | Gyro X:    2.473  Y:    2.672  Z:   -1.038
+0.034342state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.002  Z:   -1.097 | Gyro X:    4.351  Y:    6.061  Z:    0.046
+[0;32mI (2060) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.007  Y:   -0.037  Z:   -1.042 | Gyro X:   -1.847  Y:   -2.641  Z:   -1.435
+IMU 2 | Accel X:   -0.002  Y:   -0.004  Z:   -0.953 | Gyro X:    2.550  Y:    2.763  Z:   -0.855
+0.035238state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.005  Z:   -1.094 | Gyro X:    4.321  Y:    5.969  Z:    0.244
+[0;32mI (2090) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.033  Z:   -1.044 | Gyro X:   -1.817  Y:   -2.519  Z:   -1.511
+IMU 2 | Accel X:    0.002  Y:   -0.008  Z:   -0.952 | Gyro X:    2.595  Y:    2.901  Z:   -0.947
+0.031331state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.006  Z:   -1.099 | Gyro X:    4.473  Y:    6.214  Z:    0.351
+[0;32mI (2130) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.036  Z:   -1.045 | Gyro X:   -1.939  Y:   -2.611  Z:   -1.359
+IMU 2 | Accel X:    0.002  Y:   -0.004  Z:   -0.959 | Gyro X:    2.366  Y:    2.840  Z:   -0.916
+0.033854state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.005  Z:   -1.100 | Gyro X:    4.275  Y:    5.679  Z:    0.092
+[0;32mI (2160) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.007  Y:   -0.036  Z:   -1.041 | Gyro X:   -2.000  Y:   -2.687  Z:   -1.405
+IMU 2 | Accel X:    0.002  Y:   -0.006  Z:   -0.955 | Gyro X:    2.351  Y:    2.626  Z:   -0.992
+0.034098state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.001  Z:   -1.094 | Gyro X:    4.397  Y:    6.198  Z:    0.305
+[0;32mI (2190) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.036  Z:   -1.034 | Gyro X:   -2.046  Y:   -2.443  Z:   -1.374
+IMU 2 | Accel X:    0.003  Y:   -0.009  Z:   -0.962 | Gyro X:    2.534  Y:    2.702  Z:   -0.748
+0.033691state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.004  Z:   -1.099 | Gyro X:    4.198  Y:    6.214  Z:    0.229
+[0;32mI (2230) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.037  Z:   -1.036 | Gyro X:   -1.939  Y:   -2.595  Z:   -1.344
+IMU 2 | Accel X:    0.000  Y:   -0.007  Z:   -0.950 | Gyro X:    2.641  Y:    2.656  Z:   -0.901
+0.035156state: NOMINAL
+
+IMU 0 | Accel X:    0.102  Y:   -0.004  Z:   -1.097 | Gyro X:    3.969  Y:    6.168  Z:    0.611
+[0;32mI (2260) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.034  Z:   -1.044 | Gyro X:   -1.908  Y:   -2.443  Z:   -1.481
+IMU 2 | Accel X:   -0.003  Y:   -0.004  Z:   -0.960 | Gyro X:    2.473  Y:    2.840  Z:   -1.053
+0.033366state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.004  Z:   -1.098 | Gyro X:    4.275  Y:    6.076  Z:    0.305
+[0;32mI (2290) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.037  Z:   -1.039 | Gyro X:   -2.000  Y:   -2.336  Z:   -1.389
+IMU 2 | Accel X:    0.005  Y:   -0.008  Z:   -0.946 | Gyro X:    2.458  Y:    2.855  Z:   -1.084
+0.032145state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.006  Z:   -1.099 | Gyro X:    4.183  Y:    6.046  Z:    0.061
+[0;32mI (2330) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.034  Z:   -1.042 | Gyro X:   -2.015  Y:   -2.672  Z:   -1.328
+IMU 2 | Accel X:    0.001  Y:   -0.010  Z:   -0.951 | Gyro X:    2.550  Y:    2.519  Z:   -1.023
+0.035075state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.002  Z:   -1.098 | Gyro X:    4.260  Y:    6.000  Z:    0.290
+[0;32mI (2360) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.037  Z:   -1.037 | Gyro X:   -1.695  Y:   -2.534  Z:   -1.267
+IMU 2 | Accel X:   -0.001  Y:   -0.009  Z:   -0.958 | Gyro X:    2.443  Y:    2.641  Z:   -0.947
+0.033529state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.004  Z:   -1.101 | Gyro X:    4.305  Y:    6.168  Z:    0.183
+[0;32mI (2390) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.035  Z:   -1.043 | Gyro X:   -1.771  Y:   -2.611  Z:   -1.389
+IMU 2 | Accel X:   -0.000  Y:   -0.002  Z:   -0.956 | Gyro X:    2.489  Y:    2.641  Z:   -0.931
+0.032471state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.003  Z:   -1.099 | Gyro X:    4.107  Y:    6.000  Z:    0.260
+[0;32mI (2430) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.035  Z:   -1.039 | Gyro X:   -1.863  Y:   -2.656  Z:   -1.603
+IMU 2 | Accel X:   -0.001  Y:   -0.004  Z:   -0.951 | Gyro X:    2.595  Y:    2.763  Z:   -1.023
+0.033285state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.005  Z:   -1.097 | Gyro X:    4.351  Y:    6.107  Z:   -0.015
+[0;32mI (2460) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.036  Z:   -1.044 | Gyro X:   -2.031  Y:   -2.595  Z:   -1.389
+IMU 2 | Accel X:    0.003  Y:   -0.010  Z:   -0.955 | Gyro X:    2.489  Y:    2.443  Z:   -1.084
+0.032145state: NOMINAL
+
+IMU 0 | Accel X:    0.106  Y:   -0.007  Z:   -1.101 | Gyro X:    4.183  Y:    6.137  Z:    0.107
+[0;32mI (2490) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.001  Y:   -0.031  Z:   -1.040 | Gyro X:   -1.557  Y:   -2.702  Z:   -1.542
+IMU 2 | Accel X:    0.002  Y:   -0.011  Z:   -0.954 | Gyro X:    2.611  Y:    2.779  Z:   -0.931
+0.034993state: NOMINAL
+
+IMU 0 | Accel X:    0.100  Y:   -0.002  Z:   -1.095 | Gyro X:    4.198  Y:    6.000  Z:    0.229
+[0;32mI (2520) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.038  Z:   -1.038 | Gyro X:   -1.863  Y:   -2.519  Z:   -1.298
+IMU 2 | Accel X:   -0.005  Y:   -0.007  Z:   -0.951 | Gyro X:    2.489  Y:    2.504  Z:   -0.947
+0.035482state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.010  Z:   -1.097 | Gyro X:    4.382  Y:    5.893  Z:    0.168
+[0;32mI (2560) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:    0.001  Y:   -0.037  Z:   -1.041 | Gyro X:   -1.603  Y:   -2.779  Z:   -1.160
+IMU 2 | Accel X:   -0.005  Y:   -0.003  Z:   -0.955 | Gyro X:    2.702  Y:    2.718  Z:   -1.069
+0.031087state: NOMINAL
+
+IMU 0 | Accel X:    0.109  Y:   -0.008  Z:   -1.100 | Gyro X:    4.305  Y:    5.878  Z:    0.290
+[0;32mI (2590) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.007  Y:   -0.036  Z:   -1.038 | Gyro X:   -1.893  Y:   -2.626  Z:   -1.344
+IMU 2 | Accel X:   -0.002  Y:   -0.008  Z:   -0.954 | Gyro X:    2.473  Y:    2.855  Z:   -1.038
+0.033122state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.007  Z:   -1.097 | Gyro X:    4.336  Y:    5.969  Z:    0.351
+[0;32mI (2620) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.035  Z:   -1.039 | Gyro X:   -1.954  Y:   -2.809  Z:   -1.496
+IMU 2 | Accel X:    0.006  Y:   -0.006  Z:   -0.950 | Gyro X:    2.290  Y:    2.641  Z:   -1.038
+0.033040state: NOMINAL
+
+IMU 0 | Accel X:    0.108  Y:   -0.006  Z:   -1.101 | Gyro X:    4.168  Y:    5.847  Z:    0.351
+[0;32mI (2660) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.008  Y:   -0.038  Z:   -1.043 | Gyro X:   -1.786  Y:   -2.718  Z:   -1.542
+IMU 2 | Accel X:    0.006  Y:   -0.006  Z:   -0.957 | Gyro X:    2.397  Y:    2.595  Z:   -1.084
+0.035400state: NOMINAL
+
+IMU 0 | Accel X:    0.106  Y:   -0.004  Z:   -1.099 | Gyro X:    4.443  Y:    6.198  Z:    0.290
+[0;32mI (2690) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.036  Z:   -1.041 | Gyro X:   -2.000  Y:   -2.519  Z:   -1.511
+IMU 2 | Accel X:    0.004  Y:   -0.010  Z:   -0.954 | Gyro X:    2.580  Y:    2.763  Z:   -1.053
+0.035238state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.008  Z:   -1.097 | Gyro X:    4.412  Y:    6.260  Z:    0.168
+[0;32mI (2720) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.033  Z:   -1.043 | Gyro X:   -1.557  Y:   -2.305  Z:   -1.359
+IMU 2 | Accel X:    0.000  Y:   -0.009  Z:   -0.954 | Gyro X:    2.427  Y:    2.763  Z:   -0.947
+0.035400state: NOMINAL
+
+IMU 0 | Accel X:    0.102  Y:   -0.007  Z:   -1.099 | Gyro X:    4.397  Y:    6.107  Z:    0.412
+[0;32mI (2760) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.031  Z:   -1.042 | Gyro X:   -1.954  Y:   -2.794  Z:   -1.328
+IMU 2 | Accel X:    0.001  Y:   -0.006  Z:   -0.955 | Gyro X:    2.427  Y:    3.053  Z:   -1.084
+0.034342state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.007  Z:   -1.090 | Gyro X:    4.260  Y:    5.878  Z:    0.214
+[0;32mI (2790) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.033  Z:   -1.034 | Gyro X:   -1.924  Y:   -2.473  Z:   -1.328
+IMU 2 | Accel X:   -0.001  Y:   -0.008  Z:   -0.956 | Gyro X:    2.534  Y:    2.626  Z:   -0.992
+0.033773state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:    0.000  Z:   -1.093 | Gyro X:    4.412  Y:    6.107  Z:    0.336
+[0;32mI (2820) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.034  Z:   -1.046 | Gyro X:   -1.863  Y:   -2.550  Z:   -1.435
+IMU 2 | Accel X:   -0.000  Y:   -0.004  Z:   -0.955 | Gyro X:    2.489  Y:    2.611  Z:   -0.992
+0.033285state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.007  Z:   -1.097 | Gyro X:    4.168  Y:    5.893  Z:    0.229
+[0;32mI (2860) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.034  Z:   -1.038 | Gyro X:   -1.771  Y:   -2.305  Z:   -1.511
+IMU 2 | Accel X:    0.001  Y:   -0.006  Z:   -0.955 | Gyro X:    2.412  Y:    2.733  Z:   -0.824
+0.033122state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.005  Z:   -1.097 | Gyro X:    4.489  Y:    5.924  Z:    0.153
+[0;32mI (2890) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.007  Y:   -0.030  Z:   -1.041 | Gyro X:   -1.664  Y:   -2.519  Z:   -1.405
+IMU 2 | Accel X:    0.000  Y:   -0.011  Z:   -0.950 | Gyro X:    2.168  Y:    2.626  Z:   -0.824
+0.033447state: NOMINAL
+
+IMU 0 | Accel X:    0.109  Y:   -0.002  Z:   -1.099 | Gyro X:    4.168  Y:    6.107  Z:    0.458
+[0;32mI (2920) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.035  Z:   -1.038 | Gyro X:   -2.046  Y:   -2.382  Z:   -1.618
+IMU 2 | Accel X:   -0.000  Y:   -0.007  Z:   -0.954 | Gyro X:    2.305  Y:    2.550  Z:   -1.038
+0.032715state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.005  Z:   -1.099 | Gyro X:    4.351  Y:    6.168  Z:    0.290
+[0;32mI (2960) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.041  Z:   -1.039 | Gyro X:   -1.863  Y:   -2.565  Z:   -1.374
+IMU 2 | Accel X:    0.005  Y:   -0.010  Z:   -0.957 | Gyro X:    2.656  Y:    2.565  Z:   -1.145
+0.034993state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.003  Z:   -1.103 | Gyro X:    4.198  Y:    6.107  Z:    0.153
+[0;32mI (2990) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.036  Z:   -1.041 | Gyro X:   -1.649  Y:   -2.702  Z:   -1.344
+IMU 2 | Accel X:    0.003  Y:   -0.007  Z:   -0.957 | Gyro X:    2.321  Y:    2.687  Z:   -0.794
+0.035889state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.005  Z:   -1.103 | Gyro X:    4.382  Y:    5.908  Z:    0.046
+[0;32mI (3020) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.007  Y:   -0.036  Z:   -1.038 | Gyro X:   -1.725  Y:   -2.595  Z:   -1.313
+IMU 2 | Accel X:   -0.001  Y:   -0.004  Z:   -0.956 | Gyro X:    2.519  Y:    2.565  Z:   -0.855
+0.034017state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.007  Z:   -1.094 | Gyro X:    4.275  Y:    6.229  Z:    0.244
+[0;32mI (3060) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.001  Y:   -0.031  Z:   -1.030 | Gyro X:   -1.817  Y:   -2.718  Z:   -1.252
+IMU 2 | Accel X:   -0.005  Y:   -0.011  Z:   -0.949 | Gyro X:    2.519  Y:    2.595  Z:   -1.023
+0.032064state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.009  Z:   -1.104 | Gyro X:    4.412  Y:    6.290  Z:    0.168
+[0;32mI (3090) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.007  Y:   -0.033  Z:   -1.044 | Gyro X:   -1.939  Y:   -2.321  Z:   -1.496
+IMU 2 | Accel X:   -0.005  Y:   -0.010  Z:   -0.965 | Gyro X:    2.473  Y:    2.748  Z:   -1.008
+0.032389state: NOMINAL
+
+IMU 0 | Accel X:    0.110  Y:   -0.000  Z:   -1.097 | Gyro X:    4.321  Y:    6.061  Z:    0.153
+[0;32mI (3120) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.043  Z:   -1.040 | Gyro X:   -2.031  Y:   -2.504  Z:   -1.420
+IMU 2 | Accel X:    0.005  Y:   -0.003  Z:   -0.953 | Gyro X:    2.519  Y:    2.534  Z:   -0.840
+0.031820state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.005  Z:   -1.095 | Gyro X:    4.336  Y:    6.031  Z:    0.183
+[0;32mI (3160) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.035  Z:   -1.038 | Gyro X:   -1.863  Y:   -2.550  Z:   -1.115
+IMU 2 | Accel X:   -0.002  Y:   -0.012  Z:   -0.953 | Gyro X:    2.351  Y:    2.611  Z:   -0.992
+0.036051state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.012  Z:   -1.103 | Gyro X:    4.366  Y:    6.153  Z:    0.260
+[0;32mI (3190) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.031  Z:   -1.046 | Gyro X:   -1.954  Y:   -2.626  Z:   -1.496
+IMU 2 | Accel X:   -0.002  Y:   -0.017  Z:   -0.959 | Gyro X:    2.748  Y:    2.611  Z:   -1.008
+0.031982state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.001  Z:   -1.097 | Gyro X:    4.290  Y:    6.000  Z:    0.244
+[0;32mI (3220) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.042  Z:   -1.041 | Gyro X:   -2.031  Y:   -2.427  Z:   -1.466
+IMU 2 | Accel X:   -0.005  Y:   -0.000  Z:   -0.959 | Gyro X:    2.366  Y:    2.855  Z:   -1.115
+0.032715state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.000  Z:   -1.099 | Gyro X:    4.305  Y:    5.786  Z:    0.290
+[0;32mI (3260) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.007  Y:   -0.040  Z:   -1.041 | Gyro X:   -1.893  Y:   -2.489  Z:   -1.527
+IMU 2 | Accel X:    0.000  Y:   -0.003  Z:   -0.956 | Gyro X:    2.550  Y:    2.809  Z:   -0.763
+0.031820state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.008  Z:   -1.091 | Gyro X:    4.198  Y:    5.863  Z:    0.229
+[0;32mI (3290) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.007  Y:   -0.029  Z:   -1.042 | Gyro X:   -1.771  Y:   -2.458  Z:   -1.511
+IMU 2 | Accel X:    0.004  Y:   -0.012  Z:   -0.950 | Gyro X:    2.397  Y:    2.702  Z:   -0.962
+0.033529state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.007  Z:   -1.101 | Gyro X:    4.275  Y:    5.847  Z:    0.137
+[0;32mI (3320) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.010  Y:   -0.031  Z:   -1.036 | Gyro X:   -1.908  Y:   -2.824  Z:   -1.511
+IMU 2 | Accel X:    0.004  Y:   -0.009  Z:   -0.950 | Gyro X:    2.244  Y:    2.733  Z:   -0.687
+0.033610state: NOMINAL
+
+IMU 0 | Accel X:    0.106  Y:    0.000  Z:   -1.101 | Gyro X:    4.198  Y:    6.107  Z:    0.229
+[0;32mI (3360) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.043  Z:   -1.039 | Gyro X:   -2.107  Y:   -2.656  Z:   -1.573
+IMU 2 | Accel X:    0.002  Y:   -0.006  Z:   -0.951 | Gyro X:    2.534  Y:    2.733  Z:   -1.084
+0.032878state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:    0.000  Z:   -1.098 | Gyro X:    4.427  Y:    5.725  Z:    0.321
+[0;32mI (3390) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.033  Z:   -1.042 | Gyro X:   -1.756  Y:   -2.534  Z:   -1.527
+IMU 2 | Accel X:    0.001  Y:   -0.005  Z:   -0.955 | Gyro X:    2.504  Y:    2.595  Z:   -0.824
+0.034587state: NOMINAL
+
+IMU 0 | Accel X:    0.101  Y:   -0.008  Z:   -1.100 | Gyro X:    4.107  Y:    6.168  Z:    0.000
+[0;32mI (3420) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.001  Y:   -0.033  Z:   -1.043 | Gyro X:   -1.863  Y:   -2.656  Z:   -1.481
+IMU 2 | Accel X:    0.001  Y:   -0.006  Z:   -0.965 | Gyro X:    2.504  Y:    2.702  Z:   -1.221
+0.034424state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.006  Z:   -1.094 | Gyro X:    4.061  Y:    6.244  Z:    0.336
+[0;32mI (3460) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.033  Z:   -1.032 | Gyro X:   -1.969  Y:   -2.656  Z:   -1.603
+IMU 2 | Accel X:    0.003  Y:   -0.005  Z:   -0.946 | Gyro X:    2.519  Y:    2.809  Z:   -1.084
+0.033854state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.004  Z:   -1.095 | Gyro X:    4.366  Y:    5.954  Z:    0.061
+[0;32mI (3490) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.008  Y:   -0.039  Z:   -1.042 | Gyro X:   -1.847  Y:   -2.702  Z:   -1.573
+IMU 2 | Accel X:    0.001  Y:   -0.003  Z:   -0.955 | Gyro X:    2.672  Y:    2.702  Z:   -1.084
+0.034424state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.007  Z:   -1.096 | Gyro X:    4.061  Y:    6.015  Z:    0.168
+[0;32mI (3520) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.033  Z:   -1.037 | Gyro X:   -1.969  Y:   -2.473  Z:   -1.389
+IMU 2 | Accel X:   -0.000  Y:   -0.004  Z:   -0.951 | Gyro X:    2.351  Y:    2.779  Z:   -1.115
+0.031657state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.009  Z:   -1.100 | Gyro X:    4.290  Y:    6.015  Z:    0.458
+[0;32mI (3560) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.007  Y:   -0.033  Z:   -1.042 | Gyro X:   -1.893  Y:   -2.321  Z:   -1.267
+IMU 2 | Accel X:   -0.001  Y:   -0.011  Z:   -0.955 | Gyro X:    2.534  Y:    2.809  Z:   -1.008
+0.032633state: NOMINAL
+
+IMU 0 | Accel X:    0.102  Y:   -0.003  Z:   -1.105 | Gyro X:    4.504  Y:    6.015  Z:    0.168
+[0;32mI (3590) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.037  Z:   -1.042 | Gyro X:   -1.786  Y:   -2.809  Z:   -1.405
+IMU 2 | Accel X:    0.001  Y:   -0.007  Z:   -0.957 | Gyro X:    2.565  Y:    2.550  Z:   -0.885
+0.031820state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.003  Z:   -1.101 | Gyro X:    4.336  Y:    6.092  Z:    0.366
+[0;32mI (3620) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.036  Z:   -1.047 | Gyro X:   -1.771  Y:   -2.840  Z:   -1.267
+IMU 2 | Accel X:   -0.004  Y:   -0.008  Z:   -0.950 | Gyro X:    2.504  Y:    2.656  Z:   -0.824
+0.032959state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.001  Z:   -1.104 | Gyro X:    4.305  Y:    6.137  Z:    0.137
+[0;32mI (3660) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.001  Y:   -0.034  Z:   -1.038 | Gyro X:   -2.031  Y:   -2.794  Z:   -1.313
+IMU 2 | Accel X:   -0.003  Y:   -0.009  Z:   -0.958 | Gyro X:    2.427  Y:    2.626  Z:   -0.962
+0.031413state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.003  Z:   -1.102 | Gyro X:    4.122  Y:    6.107  Z:    0.260
+[0;32mI (3690) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.001  Y:   -0.031  Z:   -1.040 | Gyro X:   -1.725  Y:   -2.382  Z:   -1.466
+IMU 2 | Accel X:   -0.004  Y:   -0.007  Z:   -0.947 | Gyro X:    2.366  Y:    2.733  Z:   -0.947
+0.032878state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.003  Z:   -1.102 | Gyro X:    4.076  Y:    6.092  Z:    0.244
+[0;32mI (3720) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.007  Y:   -0.035  Z:   -1.038 | Gyro X:   -1.802  Y:   -2.412  Z:   -1.664
+IMU 2 | Accel X:    0.000  Y:   -0.009  Z:   -0.959 | Gyro X:    2.626  Y:    2.611  Z:   -1.053
+0.033366state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.005  Z:   -1.096 | Gyro X:    4.290  Y:    5.878  Z:    0.061
+[0;32mI (3750) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.008  Y:   -0.034  Z:   -1.042 | Gyro X:   -1.710  Y:   -2.687  Z:   -1.466
+IMU 2 | Accel X:    0.002  Y:   -0.007  Z:   -0.954 | Gyro X:    2.611  Y:    2.641  Z:   -1.069
+0.032959state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.004  Z:   -1.103 | Gyro X:    4.260  Y:    6.031  Z:    0.214
+[0;32mI (3790) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.034  Z:   -1.040 | Gyro X:   -2.183  Y:   -2.611  Z:   -1.374
+IMU 2 | Accel X:   -0.001  Y:   -0.005  Z:   -0.955 | Gyro X:    2.473  Y:    2.748  Z:   -1.099
+0.033691state: NOMINAL
+
+IMU 0 | Accel X:    0.101  Y:   -0.000  Z:   -1.096 | Gyro X:    4.198  Y:    6.000  Z:    0.076
+[0;32mI (3820) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.003  Y:   -0.038  Z:   -1.043 | Gyro X:   -1.863  Y:   -2.427  Z:   -1.420
+IMU 2 | Accel X:   -0.002  Y:   -0.005  Z:   -0.955 | Gyro X:    2.275  Y:    2.534  Z:   -1.038
+0.034261state: NOMINAL
+
+IMU 0 | Accel X:    0.101  Y:   -0.004  Z:   -1.102 | Gyro X:    4.260  Y:    6.168  Z:    0.107
+[0;32mI (3850) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.001  Y:   -0.037  Z:   -1.041 | Gyro X:   -2.122  Y:   -2.321  Z:   -1.511
+IMU 2 | Accel X:    0.001  Y:   -0.006  Z:   -0.950 | Gyro X:    2.595  Y:    2.763  Z:   -0.687
+0.032145state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.004  Z:   -1.096 | Gyro X:    4.168  Y:    6.015  Z:    0.015
+[0;32mI (3890) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.009  Y:   -0.032  Z:   -1.052 | Gyro X:   -1.725  Y:   -2.489  Z:   -1.344
+IMU 2 | Accel X:    0.007  Y:   -0.009  Z:   -0.959 | Gyro X:    2.595  Y:    2.748  Z:   -1.038
+0.033529state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.003  Z:   -1.098 | Gyro X:    4.412  Y:    6.214  Z:    0.229
+[0;32mI (3920) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.009  Y:   -0.033  Z:   -1.042 | Gyro X:   -1.802  Y:   -2.611  Z:   -1.237
+IMU 2 | Accel X:    0.002  Y:   -0.009  Z:   -0.956 | Gyro X:    2.519  Y:    2.641  Z:   -0.870
+0.034261state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.008  Z:   -1.100 | Gyro X:    4.000  Y:    5.939  Z:    0.580
+[0;32mI (3950) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.001  Y:   -0.035  Z:   -1.038 | Gyro X:   -1.817  Y:   -2.366  Z:   -1.466
+IMU 2 | Accel X:   -0.001  Y:   -0.007  Z:   -0.950 | Gyro X:    2.550  Y:    2.718  Z:   -0.901
+0.032552state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.002  Z:   -1.091 | Gyro X:    4.168  Y:    6.092  Z:    0.260
+[0;32mI (3990) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.036  Z:   -1.039 | Gyro X:   -1.939  Y:   -2.733  Z:   -1.374
+IMU 2 | Accel X:    0.002  Y:   -0.006  Z:   -0.954 | Gyro X:    2.550  Y:    2.748  Z:   -1.053
+0.034912state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:    0.000  Z:   -1.092 | Gyro X:    4.351  Y:    5.969  Z:    0.412
+[0;32mI (4020) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.000  Y:   -0.036  Z:   -1.038 | Gyro X:   -1.863  Y:   -2.382  Z:   -1.527
+IMU 2 | Accel X:    0.001  Y:   -0.003  Z:   -0.952 | Gyro X:    2.336  Y:    2.702  Z:   -0.626
+0.033691state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.000  Z:   -1.095 | Gyro X:    4.244  Y:    5.985  Z:    0.397
+[0;32mI (4050) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.036  Z:   -1.040 | Gyro X:   -1.939  Y:   -2.580  Z:   -1.237
+IMU 2 | Accel X:   -0.002  Y:   -0.010  Z:   -0.957 | Gyro X:    2.504  Y:    2.611  Z:   -0.824
+0.034342state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.006  Z:   -1.098 | Gyro X:    4.198  Y:    6.244  Z:    0.260
+[0;32mI (4090) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.005  Y:   -0.036  Z:   -1.042 | Gyro X:   -1.939  Y:   -2.229  Z:   -1.710
+IMU 2 | Accel X:    0.001  Y:   -0.007  Z:   -0.955 | Gyro X:    2.443  Y:    2.885  Z:   -0.947
+0.033447state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.006  Z:   -1.098 | Gyro X:    4.214  Y:    6.260  Z:    0.183
+[0;32mI (4120) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.032  Z:   -1.036 | Gyro X:   -1.939  Y:   -2.504  Z:   -1.511
+IMU 2 | Accel X:    0.005  Y:   -0.012  Z:   -0.944 | Gyro X:    2.321  Y:    2.718  Z:   -0.977
+0.034668state: NOMINAL
+
+IMU 0 | Accel X:    0.111  Y:   -0.005  Z:   -1.102 | Gyro X:    4.275  Y:    5.908  Z:    0.427
+[0;32mI (4150) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.009  Y:   -0.036  Z:   -1.042 | Gyro X:   -1.740  Y:   -2.580  Z:   -1.450
+IMU 2 | Accel X:    0.005  Y:   -0.006  Z:   -0.956 | Gyro X:    2.336  Y:    2.595  Z:   -0.885
+0.036133state: NOMINAL
+
+IMU 0 | Accel X:    0.102  Y:   -0.007  Z:   -1.096 | Gyro X:    4.305  Y:    6.107  Z:    0.076
+[0;32mI (4190) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.035  Z:   -1.042 | Gyro X:   -1.725  Y:   -2.473  Z:   -1.405
+IMU 2 | Accel X:   -0.000  Y:   -0.006  Z:   -0.954 | Gyro X:    2.412  Y:    2.336  Z:   -1.130
+0.035726state: NOMINAL
+
+IMU 0 | Accel X:    0.098  Y:   -0.003  Z:   -1.096 | Gyro X:    4.626  Y:    6.168  Z:    0.412
+[0;32mI (4220) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:    0.002  Y:   -0.036  Z:   -1.043 | Gyro X:   -1.771  Y:   -2.489  Z:   -1.618
+IMU 2 | Accel X:   -0.007  Y:   -0.009  Z:   -0.956 | Gyro X:    2.565  Y:    2.611  Z:   -1.038
+0.031901state: NOMINAL
+
+IMU 0 | Accel X:    0.101  Y:   -0.005  Z:   -1.097 | Gyro X:    4.275  Y:    5.832  Z:    0.260
+[0;32mI (4250) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.008  Y:   -0.037  Z:   -1.040 | Gyro X:   -2.092  Y:   -2.397  Z:   -1.420
+IMU 2 | Accel X:    0.003  Y:   -0.005  Z:   -0.955 | Gyro X:    2.427  Y:    2.763  Z:   -0.733
+0.030924state: NOMINAL
+
+IMU 0 | Accel X:    0.101  Y:   -0.005  Z:   -1.097 | Gyro X:    4.260  Y:    5.817  Z:    0.260
+[0;32mI (4290) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.033  Z:   -1.037 | Gyro X:   -1.893  Y:   -2.519  Z:   -1.435
+IMU 2 | Accel X:    0.002  Y:   -0.007  Z:   -0.958 | Gyro X:    2.595  Y:    2.626  Z:   -1.023
+0.032145state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.002  Z:   -1.095 | Gyro X:    4.244  Y:    6.275  Z:    0.290
+[0;32mI (4320) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.012  Y:   -0.034  Z:   -1.041 | Gyro X:   -1.924  Y:   -2.626  Z:   -1.298
+IMU 2 | Accel X:    0.008  Y:   -0.003  Z:   -0.950 | Gyro X:    2.595  Y:    2.733  Z:   -0.885
+0.033529state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.004  Z:   -1.100 | Gyro X:    4.397  Y:    5.908  Z:    0.183
+[0;32mI (4350) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.038  Z:   -1.046 | Gyro X:   -1.786  Y:   -2.427  Z:   -1.450
+IMU 2 | Accel X:    0.003  Y:   -0.006  Z:   -0.956 | Gyro X:    2.382  Y:    2.718  Z:   -1.115
+0.033447state: NOMINAL
+
+IMU 0 | Accel X:    0.103  Y:   -0.004  Z:   -1.099 | Gyro X:    4.107  Y:    5.893  Z:    0.137
+[0;32mI (4390) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.004  Y:   -0.033  Z:   -1.039 | Gyro X:   -1.618  Y:   -2.427  Z:   -1.420
+IMU 2 | Accel X:    0.000  Y:   -0.012  Z:   -0.955 | Gyro X:    2.595  Y:    2.565  Z:   -1.206
+0.035970state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.008  Z:   -1.093 | Gyro X:    4.458  Y:    6.076  Z:    0.336
+[0;32mI (4420) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.007  Y:   -0.039  Z:   -1.041 | Gyro X:   -2.000  Y:   -2.550  Z:   -1.527
+IMU 2 | Accel X:    0.003  Y:   -0.006  Z:   -0.953 | Gyro X:    2.550  Y:    2.733  Z:   -1.237
+0.032959state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.002  Z:   -1.094 | Gyro X:    4.321  Y:    5.649  Z:    0.229
+[0;32mI (4450) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.007  Y:   -0.038  Z:   -1.047 | Gyro X:   -1.939  Y:   -2.382  Z:   -1.634
+IMU 2 | Accel X:    0.004  Y:   -0.005  Z:   -0.955 | Gyro X:    2.290  Y:    2.779  Z:   -1.191
+0.033366state: NOMINAL
+
+IMU 0 | Accel X:    0.101  Y:   -0.001  Z:   -1.096 | Gyro X:    4.397  Y:    6.061  Z:    0.382
+[0;32mI (4490) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.002  Y:   -0.036  Z:   -1.037 | Gyro X:   -1.878  Y:   -2.718  Z:   -1.435
+IMU 2 | Accel X:   -0.006  Y:   -0.005  Z:   -0.950 | Gyro X:    2.534  Y:    2.748  Z:   -0.916
+0.033691state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.004  Z:   -1.096 | Gyro X:    4.153  Y:    6.061  Z:    0.275
+[0;32mI (4520) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.038  Z:   -1.043 | Gyro X:   -1.939  Y:   -2.580  Z:   -1.282
+IMU 2 | Accel X:    0.003  Y:   -0.009  Z:   -0.955 | Gyro X:    2.382  Y:    2.901  Z:   -0.916
+0.030762state: NOMINAL
+
+IMU 0 | Accel X:    0.112  Y:   -0.002  Z:   -1.094 | Gyro X:    4.351  Y:    5.679  Z:    0.366
+[0;32mI (4550) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.010  Y:   -0.032  Z:   -1.034 | Gyro X:   -1.847  Y:   -2.489  Z:   -1.466
+IMU 2 | Accel X:    0.004  Y:   -0.008  Z:   -0.955 | Gyro X:    2.504  Y:    2.718  Z:   -1.069
+0.033936state: NOMINAL
+
+IMU 0 | Accel X:    0.105  Y:   -0.008  Z:   -1.101 | Gyro X:    4.244  Y:    6.168  Z:    0.412
+[0;32mI (4590) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.010  Y:   -0.031  Z:   -1.042 | Gyro X:   -1.786  Y:   -2.641  Z:   -1.450
+IMU 2 | Accel X:    0.002  Y:   -0.012  Z:   -0.946 | Gyro X:    2.687  Y:    2.702  Z:   -1.069
+0.035400state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.004  Z:   -1.101 | Gyro X:    4.336  Y:    5.832  Z:    0.061
+[0;32mI (4620) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.008  Y:   -0.037  Z:   -1.038 | Gyro X:   -1.542  Y:   -2.397  Z:   -1.649
+IMU 2 | Accel X:    0.001  Y:   -0.008  Z:   -0.951 | Gyro X:    2.382  Y:    2.870  Z:   -1.053
+0.032227state: NOMINAL
+
+IMU 0 | Accel X:    0.097  Y:    0.001  Z:   -1.099 | Gyro X:    4.397  Y:    5.954  Z:    0.336
+[0;32mI (4650) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:    0.005  Y:   -0.042  Z:   -1.041 | Gyro X:   -1.878  Y:   -2.214  Z:   -1.237
+IMU 2 | Accel X:   -0.007  Y:   -0.001  Z:   -0.952 | Gyro X:    2.473  Y:    2.702  Z:   -0.763
+0.033285state: NOMINAL
+
+IMU 0 | Accel X:    0.107  Y:   -0.004  Z:   -1.097 | Gyro X:    4.458  Y:    6.046  Z:    0.290
+[0;32mI (4690) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+IMU 1 | Accel X:   -0.006  Y:   -0.035  Z:   -1.043 | Gyro X:   -2.107  Y:   -2.565  Z:   -1.115
+IMU 2 | Accel X:    0.003  Y:   -0.010  Z:   -0.956 | Gyro X:    2.412  Y:    2.565  Z:   -0.916
+0.031657state: NOMINAL
+
+IMU 0 | Accel X:    0.104  Y:   -0.007  Z:   -1.097 | Gyro X:    4.336  Y:    5.756  Z:    0.092
+[0;32mI (4720) CAN_TX: TX ok  state=1 | tx_err=0 rx_err=0 tx_fail=0[0m
+Done
