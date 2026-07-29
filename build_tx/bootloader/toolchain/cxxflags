@@ -1,7 +1,0 @@
-"-specs=/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader/specs/picolibc.specs"
--Wno-frame-address
--mlongcalls
--fno-builtin-memcpy
--fno-builtin-memset
--fno-builtin-bzero
--fno-rtti

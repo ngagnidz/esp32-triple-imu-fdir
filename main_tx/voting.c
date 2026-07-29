@@ -1,4 +1,5 @@
 #include "math.h"
+#include <stdbool.h>
 #include "voting.h"
 
 int mpu_fault[3] = {0, 0, 0};
@@ -84,7 +85,7 @@ voting_result voter(burst_read_data_t data1, burst_read_data_t data2, burst_read
     // 1 2 disagrees
     // 2 3 disagrees
 
-    // No one agrees
+    // No one disagrees
     if (!d13 && !d23 && !d12)
     {
         mpu_fault[0] = 0;
@@ -92,6 +93,19 @@ voting_result voter(burst_read_data_t data1, burst_read_data_t data2, burst_read
         mpu_fault[2] = 0;
         return ALL_AGREE;
     }
+
+    /*
+    001
+    010
+    100
+    110
+    011
+    101
+    000
+    111
+    */
+    // d12 d23 d13
+
     else
     {
         mpu_fault[0] = 1;

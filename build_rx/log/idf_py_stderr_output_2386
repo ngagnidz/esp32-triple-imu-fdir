@@ -1,1 +1,0 @@
-Command: cmake -G Ninja -B /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_rx -DPYTHON_DEPS_CHECKED=1 -DPYTHON=/Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python -DESP_PLATFORM=1 -DROLE=rx -DCCACHE_ENABLE=False /Users/nikagagnidze/Desktop/esp/triple_imu_fdir

@@ -69,9 +69,9 @@ static void voter_task(void *pv)
 void app_main(void)
 {
     mpu_init();
-    queue_creation();
-    // mpu_calibrate(200);
+    mpu_calibrate(200);
 
+    queue_creation();
     can_link_init();
 
     xTaskCreate(reader_task, "reader", 4096, NULL, 5, NULL);

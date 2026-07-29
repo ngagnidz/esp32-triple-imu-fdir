@@ -174,10 +174,10 @@ void mpu_calibrate(int samples)
     {
         float ax = 0, ay = 0, az = 0;
         float gx = 0, gy = 0, gz = 0;
+        burst_read();
 
         for (int n = 0; n < samples; n++)
         {
-            burst_read();
             burst_read_data_t reading = reading_extraction(i);
             ax += reading.accel_x;
             ay += reading.accel_y;

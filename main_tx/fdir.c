@@ -17,7 +17,7 @@ static int error_streak = 0;
 static int system_wide_error_streak = 0;
 extern int mpu_fault[3];
 
-char *get_state_name(system_condition status)
+const char *get_state_name(system_condition status)
 {
     switch (status)
     {
