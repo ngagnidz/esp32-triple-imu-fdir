@@ -94,18 +94,6 @@ voting_result voter(burst_read_data_t data1, burst_read_data_t data2, burst_read
         return ALL_AGREE;
     }
 
-    /*
-    001
-    010
-    100
-    110
-    011
-    101
-    000
-    111
-    */
-    // d12 d23 d13
-
     else
     {
         mpu_fault[0] = 1;

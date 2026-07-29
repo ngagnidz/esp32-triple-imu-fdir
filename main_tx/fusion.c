@@ -14,6 +14,7 @@ bool average_good(const burst_read_data_t readings[3], voting_result result, bur
 
     for (int i = 0; i < 3; i++)
     {
+        // MPU1_DISAGREE = 0
         if (result == MPU1_DISAGREE + i)
         {
             continue;

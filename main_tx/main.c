@@ -9,15 +9,7 @@
 #include "fusion.h"
 #include <string.h>
 
-static QueueHandle_t queues[3];
-
-static void queue_creation(void)
-{
-    for (int i = 0; i < 3; i++)
-    {
-        queues[i] = xQueueCreate(1, sizeof(burst_read_data_t));
-    }
-}
+static QueueHandle_t queue;
 
 static void reader_task(void *pv)
 {
@@ -28,22 +20,26 @@ static void reader_task(void *pv)
     while (1)
     {
         mpu_read_all(readings);
-        for (int i = 0; i < 3; i++)
-        {
-            xQueueSend(queues[i], &readings[i], portMAX_DELAY);
-        }
+        xQueueSend(queue, &readings, portMAX_DELAY);
         vTaskDelayUntil(&xLastWakeTime, xPeriod);
     }
 }
 
 static void voter_task(void *pv)
 {
+    char buffer[112];
     burst_read_data_t readings[3];
     while (1)
     {
+
+        xQueueReceive(queue, &buffer, portMAX_DELAY);
+        char pointer = 0;
+
         for (int i = 0; i < 3; i++)
         {
-            xQueueReceive(queues[i], &readings[i], portMAX_DELAY);
+            memcpy(&readings[i], buffer + pointer, sizeof(burst_read_data_t));
+            pointer += sizeof(burst_read_data_t);
+
             printf("IMU %d | Accel X: %f  Y: %f  Z: %f | Gyro X: %f  Y: %f  Z: %f\n",
                    i,
                    readings[i].accel_x, readings[i].accel_y, readings[i].accel_z,
@@ -71,8 +67,9 @@ void app_main(void)
     mpu_init();
     mpu_calibrate(200);
 
-    queue_creation();
     can_link_init();
+
+    queue = xQueueCreate(1, 3 * sizeof(burst_read_data_t));
 
     xTaskCreate(reader_task, "reader", 4096, NULL, 5, NULL);
     xTaskCreate(voter_task, "voter", 4096, NULL, 4, NULL);

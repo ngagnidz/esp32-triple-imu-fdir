@@ -77,10 +77,7 @@ update_state(voting_result result)
                 {
                     status = DEGRADED;
                 }
-                else
-                {
-                    printf("[FDIR] %d faults still flagged, staying FAILED\n", counter);
-                }
+
                 clean_streak = 0;
             }
         }
