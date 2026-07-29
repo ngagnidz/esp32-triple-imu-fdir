@@ -117,18 +117,23 @@ static int setup(spi_device_handle_t dev)
 
 static void burst_read(void)
 {
+
+    spi_transaction_t trans[3] = {0};
     for (int idx = 0; idx < 3; idx++)
     {
-        spi_transaction_t trans = {
-            .cmd = 1,
-            .length = 8 * 14,
-            .rx_buffer = buf[idx],
-            .addr = 0x3B,
-        };
+        trans[idx].cmd = 1;
+        trans[idx].length = 8 * 14;
+        trans[idx].addr = 0x3B;
+        trans[idx].rx_buffer = buf[idx];
+        // Queued transaction
+        spi_device_queue_trans(device_list[idx], &trans[idx], portMAX_DELAY);
+    }
 
-        spi_device_queue_trans(device_list[idx], &trans, portMAX_DELAY);
-        spi_transaction_t *dummy;
-        spi_device_get_trans_result(device_list[idx], &dummy, portMAX_DELAY);
+    // We are not using this pointer anyways
+    spi_transaction_t *r;
+    for (int idx = 0; idx < 3; idx++)
+    {
+        spi_device_get_trans_result(device_list[idx], &r, portMAX_DELAY);
     }
 }
 
