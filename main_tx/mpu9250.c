@@ -170,13 +170,15 @@ void mpu_read_all(burst_read_data_t out[3])
 
 void mpu_calibrate(int samples)
 {
-    for (int i = 0; i < 3; i++)
+
+    float ax = 0, ay = 0, az = 0;
+    float gx = 0, gy = 0, gz = 0;
+
+    for (int n = 0; n < samples; n++)
     {
-        float ax = 0, ay = 0, az = 0;
-        float gx = 0, gy = 0, gz = 0;
         burst_read();
 
-        for (int n = 0; n < samples; n++)
+        for (int i = 0; i < 3; i++)
         {
             burst_read_data_t reading = reading_extraction(i);
             ax += reading.accel_x;
@@ -186,7 +188,10 @@ void mpu_calibrate(int samples)
             gy += reading.gyro_y;
             gz += reading.gyro_z;
         }
+    }
 
+    for (int i = 0; i < 3; i++)
+    {
         offsets[i].ax = ax / samples;
         offsets[i].ay = ay / samples;
         offsets[i].az = az / samples - (-1.0f);

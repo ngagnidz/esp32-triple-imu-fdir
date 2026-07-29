@@ -10,7 +10,7 @@ typedef enum
     FAILED,
 } system_condition;
 
-char *get_state_name(system_condition status);
+const char *get_state_name(system_condition status);
 int get_state_number(system_condition status);
 system_condition update_state(voting_result result);
 

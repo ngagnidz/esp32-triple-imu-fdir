@@ -52,7 +52,7 @@ static void voter_task(void *pv)
 
         voting_result result = voter(readings[0], readings[1], readings[2]);
         system_condition condition = update_state(result);
-        char *state = get_state_name(condition);
+        const char *state = get_state_name(condition);
         int state_number = get_state_number(condition);
 
         burst_read_data_t avg;
