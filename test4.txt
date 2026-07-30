@@ -1,0 +1,400 @@
+[1/11] Performing build step for 'bootloader'
+[1/1] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader/bootloader.bin
+Bootloader binary size 0x6640 bytes. 0x9c0 bytes (9%) free.
+[2/11] No install step for 'bootloader'
+[3/11] Completed 'bootloader'
+[4/11] Building C object esp-idf/main_tx/CMakeFiles/__idf_main_tx.dir/main.c.obj
+[5/11] Building C object esp-idf/main_tx/CMakeFiles/__idf_main_tx.dir/tx.c.obj
+In file included from /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/main_tx/tx.c:2:
+/Users/nikagagnidze/Desktop/esp/esp-idf/components/driver/twai/include/driver/twai.h:17:2: warning: #warning "The legacy TWAI driver is deprecated, please use esp_twai.h" [-Wcpp]
+   17 | #warning "The legacy TWAI driver is deprecated, please use esp_twai.h"
+      |  ^~~~~~~
+[6/11] Building C object esp-idf/main_tx/CMakeFiles/__idf_main_tx.dir/mpu9250.c.obj
+[7/11] Linking C static library esp-idf/main_tx/libmain_tx.a
+[8/11] Generating esp-idf/esp_system/ld/sections.ld
+Skipping linker fragment parsing, fragment files unchanged
+[9/11] Linking CXX executable mpu9250_driver.elf
+[10/11] Generating binary image from built executable
+esptool v5.3.dev3
+Creating ESP32 image...
+Merged 3 ELF sections.
+Successfully created ESP32 image.
+Generated /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/mpu9250_driver.bin
+[11/11] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/partition_table/partition-table.bin /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/mpu9250_driver.bin
+mpu9250_driver.bin binary size 0x2cd10 bytes. Smallest app partition is 0x100000 bytes. 0xd32f0 bytes (82%) free.
+Adding "flash"'s dependency "all" to list of commands with default set of options.
+Executing action: all (aliases: build)
+Running ninja in directory /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx
+Executing "ninja all"...
+Executing action: flash
+Running ninja in directory /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx
+Executing "ninja flash"...
+[1/5] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/partition_table/partition-table.bin /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/mpu9250_driver.bin
+mpu9250_driver.bin binary size 0x2cd10 bytes. Smallest app partition is 0x100000 bytes. 0xd32f0 bytes (82%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader/bootloader.bin
+Bootloader binary size 0x6640 bytes. 0x9c0 bytes (9%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] Running utility command for flash
+esptool --chip esp32 -p /dev/cu.usbserial-0001 -b 460800 --before=default-reset --after=hard-reset write-flash --flash-mode dio --flash-freq 40m --flash-size 2MB 0x1000 bootloader/bootloader.bin 0x8000 partition_table/partition-table.bin 0x10000 mpu9250_driver.bin --diff-with bootloader/bootloader_flashed.bin partition_table/partition-table_flashed.bin mpu9250_driver_flashed.bin
+esptool v5.3.dev3
+Serial port /dev/cu.usbserial-0001:
+Connecting....
+[1A[2K[1A[2KConnected to ESP32 on /dev/cu.usbserial-0001:
+Chip type:          ESP32-D0WD-V3 (revision v3.1)
+Features:           Wi-Fi, BT, Dual Core + LP Core, 240MHz, Vref calibration in eFuse, Coding Scheme None
+Crystal frequency:  40MHz
+MAC:                d4:e9:f4:ed:69:04
+
+Uploading stub flasher...
+Running stub flasher...
+[1A[2K[1A[2KStub flasher running.
+Changing baud rate to 460800...
+Changed.
+
+Configuring flash size...
+
+Writing 'bootloader/bootloader.bin' at 0x00001000...
+SHA digest in image updated.
+SHA digest in image updated.
+No changed sectors found, verifying if data is in flash...
+[1A[2K'bootloader/bootloader.bin' at 0x00001000 verified.
+
+Writing 'partition_table/partition-table.bin' at 0x00008000...
+No changed sectors found, verifying if data is in flash...
+[1A[2K'partition_table/partition-table.bin' at 0x00008000 verified.
+
+Writing 'mpu9250_driver.bin' at 0x00010000...
+Changed data sectors found, fast reflashing...
+Reflashing 1 changed sector at 0x00010000...
+Flash will be erased from 0x00010000 to 0x00010fff...
+Compressed 4096 bytes to 1908...
+[KWriting at 0x00010000 [                              ]   0.0% 0/1908 bytes... [KWriting at 0x00011000 [==============================] 100.0% 1908/1908 bytes... 
+[1A[2K[1A[2KWrote 4096 bytes (1908 compressed) at 0x00010000 in 0.0 seconds (674.0 kbit/s).
+Reflashing 42 changed sectors at 0x00013000...
+Flash will be erased from 0x00013000 to 0x0003cfff...
+Compressed 172032 bytes to 102179...
+[KWriting at 0x00013000 [                              ]   0.0% 0/102179 bytes... [KWriting at 0x0001e688 [===>                          ]  16.0% 16384/102179 bytes... [KWriting at 0x00023dbf [========>                     ]  32.1% 32768/102179 bytes... [KWriting at 0x0002991f [=============>                ]  48.1% 49152/102179 bytes... [KWriting at 0x0002f1eb [==================>           ]  64.1% 65536/102179 bytes... [KWriting at 0x0003501c [=======================>      ]  80.2% 81920/102179 bytes... [KWriting at 0x0003b30a [===========================>  ]  96.2% 98304/102179 bytes... [KWriting at 0x0003d000 [==============================] 100.0% 102179/102179 bytes... 
+[1A[2K[1A[2KWrote 172032 bytes (102179 compressed) at 0x00013000 in 2.9 seconds (467.2 kbit/s).
+Verifying written data...
+[1/4] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/partition_table/partition-table.bin /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/mpu9250_driver.bin
+mpu9250_driver.bin binary size 0x2cd10 bytes. Smallest app partition is 0x100000 bytes. 0xd32f0 bytes (82%) free.
+[2/4] Performing build step for 'bootloader'
+[1/1] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader/bootloader.bin
+Bootloader binary size 0x6640 bytes. 0x9c0 bytes (9%) free.
+[3/4] No install step for 'bootloader'
+[4/4] Completed 'bootloader'
+Adding "flash"'s dependency "all" to list of commands with default set of options.
+Executing action: all (aliases: build)
+Running ninja in directory /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx
+Executing "ninja all"...
+Executing action: flash
+Running ninja in directory /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx
+Executing "ninja flash"...
+[1/5] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/partition_table/partition-table.bin /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/mpu9250_driver.bin
+mpu9250_driver.bin binary size 0x2cd10 bytes. Smallest app partition is 0x100000 bytes. 0xd32f0 bytes (82%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader/bootloader.bin
+Bootloader binary size 0x6640 bytes. 0x9c0 bytes (9%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] Running utility command for flash
+esptool --chip esp32 -p /dev/cu.usbserial-0001 -b 460800 --before=default-reset --after=hard-reset write-flash --flash-mode dio --flash-freq 40m --flash-size 2MB 0x1000 bootloader/bootloader.bin 0x8000 partition_table/partition-table.bin 0x10000 mpu9250_driver.bin --diff-with bootloader/bootloader_flashed.bin partition_table/partition-table_flashed.bin mpu9250_driver_flashed.bin
+esptool v5.3.dev3
+Serial port /dev/cu.usbserial-0001:
+Connecting....
+[1A[2K[1A[2KConnected to ESP32 on /dev/cu.usbserial-0001:
+Chip type:          ESP32-D0WD-V3 (revision v3.1)
+Features:           Wi-Fi, BT, Dual Core + LP Core, 240MHz, Vref calibration in eFuse, Coding Scheme None
+Crystal frequency:  40MHz
+MAC:                d4:e9:f4:ed:69:04
+
+Uploading stub flasher...
+Running stub flasher...
+[1A[2K[1A[2KStub flasher running.
+Changing baud rate to 460800...
+Changed.
+
+Configuring flash size...
+
+Writing 'bootloader/bootloader.bin' at 0x00001000...
+SHA digest in image updated.
+SHA digest in image updated.
+No changed sectors found, verifying if data is in flash...
+[1A[2K'bootloader/bootloader.bin' at 0x00001000 verified.
+
+Writing 'partition_table/partition-table.bin' at 0x00008000...
+No changed sectors found, verifying if data is in flash...
+[1A[2K'partition_table/partition-table.bin' at 0x00008000 verified.
+
+Writing 'mpu9250_driver.bin' at 0x00010000...
+Changed data sectors found, fast reflashing...
+Reflashing 1 changed sector at 0x00010000...
+Flash will be erased from 0x00010000 to 0x00010fff...
+Compressed 4096 bytes to 1908...
+[KWriting at 0x00010000 [                              ]   0.0% 0/1908 bytes... [KWriting at 0x00011000 [==============================] 100.0% 1908/1908 bytes... 
+[1A[2K[1A[2KWrote 4096 bytes (1908 compressed) at 0x00010000 in 0.0 seconds (671.5 kbit/s).
+Reflashing 42 changed sectors at 0x00013000...
+Flash will be erased from 0x00013000 to 0x0003cfff...
+Compressed 172032 bytes to 102179...
+[KWriting at 0x00013000 [                              ]   0.0% 0/102179 bytes... [KWriting at 0x0001e688 [===>                          ]  16.0% 16384/102179 bytes... [KWriting at 0x00023dbf [========>                     ]  32.1% 32768/102179 bytes... [KWriting at 0x0002991f [=============>                ]  48.1% 49152/102179 bytes... [KWriting at 0x0002f1eb [==================>           ]  64.1% 65536/102179 bytes... [KWriting at 0x0003501c [=======================>      ]  80.2% 81920/102179 bytes... [KWriting at 0x0003b30a [===========================>  ]  96.2% 98304/102179 bytes... [KWriting at 0x0003d000 [==============================] 100.0% 102179/102179 bytes... 
+[1A[2K[1A[2KWrote 172032 bytes (102179 compressed) at 0x00013000 in 2.9 seconds (466.8 kbit/s).
+Verifying written data...
+[1A[2KHash of data verified.
+
+Hard resetting via RTS pin...
+Executing action: monitor
+Running idf_monitor in directory /Users/nikagagnidze/Desktop/esp/triple_imu_fdir
+Executing "/Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/tools/idf_monitor.py -p /dev/cu.usbserial-0001 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/mpu9250_driver.elf /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader/bootloader.elf -m '/Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python' '/Users/nikagagnidze/Desktop/esp/esp-idf/tools/idf.py' '-B' 'build_tx'"...
+� xx�x��x�xx � xx�x��x�xx � xx�x��x�xx � xx�x��x�xx � xx�x��x�xx � xx�x��x�xx � xx�x��x�xx � xx�x��x�xx � xx�x��x�xx � xx�x��x�xx � xx�x��x�xx � xx�x��x�xx003ccbc vaddr=50ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6272
+load:0x40078000,len:15820
+load:0x40080400,len:3988
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.1-dev-4996-gc1b7f38212 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Jul 28 2026 16:12:00[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0ab20h ( 43808) map[0m
+[0;32mI (103) esp_image: segment 1: paddr=0001ab48 vaddr=3ffb0000 size=02cdch ( 11484) load[0m
+[0;32mI (108) esp_image: segment 2: paddr=0001d82c vaddr=40080000 size=027ech ( 10220) load[0m
+[0;32mI (113) esp_image: segment 3: paddr=00020020 vaddr=400d0020 size=11f58h ( 73560) map[0m
+[0;32mI (141) esp_image: segment 4: paddr=00031f80 vaddr=400827ec size=0ad34h ( 44340) load[0m
+[0;32mI (159) esp_image: segment 5: paddr=0003ccbc vaddr=50000000 size=00028h (    40) load[0m
+[0;32mI (167) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (167) boot: Disabling RNG early entropy source...[0m
+[0;32mI (178) cpu_start: Multicore app[0m
+[0;32mI (186) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (186) cpu_start: Pro cpu start user code[0m
+[0;32mI (186) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (188) app_init: Application information:[0m
+[0;32mI (192) app_init: Project name:     mpu9250_driver[0m
+[0;32mI (196) app_init: App version:      57cc173-dirty[0m
+[0;32mI (201) app_init: Compile time:     Jul 30 2026 15:03:52[0m
+[0;32mI (206) app_init: ELF file SHA256:  0b8691ee0...[0m
+[0;32mI (210) app_init: ESP-IDF:          v6.1-dev-4996-gc1b7f38212[0m
+[0;32mI (215) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (219) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (223) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (227) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (234) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (239) heap_init: At 3FFB37C8 len 0002C838 (178 KiB): DRAM[0m
+[0;32mI (244) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (249) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (255) heap_init: At 4008D520 len 00012AE0 (74 KiB): IRAM[0m
+[0;32mI (261) spi_flash: detected chip: generic[0m
+[0;32mI (264) spi_flash: flash io: dio[0m
+[0;33mW (267) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (280) main_task: Started on CPU0[0m
+[0;32mI (280) main_task: Calling app_main()[0m
+SLEEPING_MODE_STATUS: 0x01
+Gyro Range: 0x8
+Accel Range: 0x10
+SLEEPING_MODE_STATUS: 0x01
+Gyro Range: 0x8
+Accel Range: 0x10
+SLEEPING_MODE_STATUS: 0x01
+Gyro Range: 0x8
+Accel Range: 0x10
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+collect: 449 us
+[0;32mI (400) CAN_TX: CAN link up: tx=21 rx=23 500 kbit/s (normal mode)[0m
+[0;32mI (400) main_task: Returned from app_main()[0m
+collect: 449 us
+chain: 691 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+collect: 449 us
+chain: 679 us
+Done
+[1/9] Performing build step for 'bootloader'
+[1/1] cd /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader && /Users/nikagagnidze/.espressif/python_env/idf6.1_py3.13_env/bin/python /Users/nikagagnidze/Desktop/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/bootloader/bootloader.bin
+Bootloader binary size 0x6640 bytes. 0x9c0 bytes (9%) free.
+[2/9] No install step for 'bootloader'
+[3/9] Completed 'bootloader'
+[4/9] Building C object esp-idf/main_tx/CMakeFiles/__idf_main_tx.dir/mpu9250.c.obj
+FAILED: [code=1] esp-idf/main_tx/CMakeFiles/__idf_main_tx.dir/mpu9250.c.obj 
+/Users/nikagagnidze/.espressif/tools/xtensa-esp-elf/esp-15.2.0_20251204/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc -DESP_PLATFORM -DIDF_VER=\"v6.1-dev-4996-gc1b7f38212\" -DSOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE -DSOC_XTAL_FREQ_MHZ=CONFIG_XTAL_FREQ -D_GLIBCXX_HAVE_POSIX_SEMAPHORE -D_GLIBCXX_USE_POSIX_SEMAPHORE -D_GNU_SOURCE -D_POSIX_READER_WRITER_LOCKS -I/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/config -I/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/main_tx -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_libc/platform_include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/freertos/config/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/freertos/config/include/freertos -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/freertos/config/xtensa/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/freertos/esp_additions/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hw_support/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hw_support/include/soc -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hw_support/ldo/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hw_support/debug_probe/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hw_support/etm/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hw_support/mspi/mspi_timing_tuning/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hw_support/mspi/mspi_timing_tuning/tuning_scheme_impl/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hw_support/mspi/mspi_intr/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hw_support/power_supply/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hw_support/modem/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hw_support/port/esp32/. -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hw_support/port/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/heap/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/heap/tlsf -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/log/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/soc/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/soc/esp32 -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/soc/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/soc/esp32/register -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/hal/platform_port/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/hal/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/hal/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_rom/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_rom/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_rom/esp32/include/esp32 -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_rom/esp32 -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_common/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_system/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_system/port/soc -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_system/port/include/private -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_stdio/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/xtensa/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/xtensa/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/xtensa/deprecated_include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_gpio/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_gpio/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_usb/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_pmu/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_pmu/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_regi2c/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_regi2c/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_ana_conv/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_ana_conv/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_dma/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_i2s/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_i2s/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/lwip/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/lwip/include/apps -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/lwip/lwip/src/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/lwip/port/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/lwip/port/freertos/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/lwip/port/esp32xx/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/lwip/port/esp32xx/include/arch -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/lwip/port/esp32xx/include/sys -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/driver/i2c/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/driver/touch_sensor/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/driver/twai/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/driver/touch_sensor/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_i2c/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_i2c/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_twai/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_twai/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_touch_sens/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_touch_sens/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_driver_spi/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_pm/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_gpspi/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_hal_gpspi/esp32/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_driver_dma/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_driver_twai/include -I/Users/nikagagnidze/Desktop/esp/esp-idf/components/esp_timer/include @"/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx/toolchain/cflags" -fdiagnostics-color=always -ffunction-sections -fdata-sections -Wall -Werror -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-error=extra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fno-shrink-wrap -fmacro-prefix-map=/Users/nikagagnidze/Desktop/esp/triple_imu_fdir=. -fmacro-prefix-map=/Users/nikagagnidze/Desktop/esp/esp-idf=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -std=gnu23 -Wno-old-style-declaration -fzero-init-padding-bits=all -fno-malloc-dce -MD -MT esp-idf/main_tx/CMakeFiles/__idf_main_tx.dir/mpu9250.c.obj -MF esp-idf/main_tx/CMakeFiles/__idf_main_tx.dir/mpu9250.c.obj.d -o esp-idf/main_tx/CMakeFiles/__idf_main_tx.dir/mpu9250.c.obj -c /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/main_tx/mpu9250.c
+/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/main_tx/mpu9250.c: In function 'burst_cycle':
+/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/main_tx/mpu9250.c:156:31: error: 'cyc' undeclared (first use in this function)
+  156 |                (unsigned long)cyc, (unsigned long)(cyc / 160));
+      |                               ^~~
+/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/main_tx/mpu9250.c:156:31: note: each undeclared identifier is reported only once for each function it appears in
+/Users/nikagagnidze/Desktop/esp/triple_imu_fdir/main_tx/mpu9250.c:142:14: warning: unused variable 't0' [-Wunused-variable]
+  142 |     uint32_t t0 = esp_cpu_get_cycle_count();
+      |              ^~
+ninja: build stopped: subcommand failed.
+Adding "flash"'s dependency "all" to list of commands with default set of options.
+Executing action: all (aliases: build)
+Running ninja in directory /Users/nikagagnidze/Desktop/esp/triple_imu_fdir/build_tx
+Executing "ninja all"...

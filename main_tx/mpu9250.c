@@ -6,8 +6,9 @@
 #include "freertos/task.h"
 
 static spi_device_handle_t device_list[3];
-static WORD_ALIGNED_ATTR uint8_t buf[3][16];
-
+static WORD_ALIGNED_ATTR uint8_t buf[2][3][16];
+static int fill = 0;
+static bool primed = false;
 typedef struct
 {
     float ax;
@@ -115,41 +116,61 @@ static int setup(spi_device_handle_t dev)
     return 0;
 }
 
-static void burst_read(void)
+static void burst_queue(int slot)
 {
 
-    spi_transaction_t trans[3] = {0};
+    static spi_transaction_t trans[3];
     for (int idx = 0; idx < 3; idx++)
     {
         trans[idx].cmd = 1;
         trans[idx].length = 8 * 14;
         trans[idx].addr = 0x3B;
-        trans[idx].rx_buffer = buf[idx];
-        // Queued transaction
+        trans[idx].rx_buffer = buf[slot][idx];
         spi_device_queue_trans(device_list[idx], &trans[idx], portMAX_DELAY);
     }
+}
 
-    // We are not using this pointer anyways
+static int burst_cycle()
+{
+    if (primed == false)
+    {
+        burst_queue(fill);
+        primed = true;
+    }
+
     spi_transaction_t *r;
+    uint32_t t0 = esp_cpu_get_cycle_count();
+
     for (int idx = 0; idx < 3; idx++)
     {
         spi_device_get_trans_result(device_list[idx], &r, portMAX_DELAY);
     }
+    uint32_t cyc = esp_cpu_get_cycle_count() - t0;
+
+    int done = fill;
+    fill = fill ^ 1;
+    burst_queue(fill);
+
+    static int n = 0;
+    if (++n % 10 == 0)
+        printf("collect: %lu cycles (%lu us)\n",
+               (unsigned long)cyc, (unsigned long)(cyc / 160));
+    return done;
 }
 
-static burst_read_data_t reading_extraction(int idx)
+static burst_read_data_t reading_extraction(int slot, int idx)
 {
     burst_read_data_t read = {0};
 
-    read.accel_x = ((int16_t)((buf[idx][0] << 8) | buf[idx][1]) / ACCEL_SENSITIVITY) - offsets[idx].ax;
-    read.accel_y = ((int16_t)((buf[idx][2] << 8) | buf[idx][3]) / ACCEL_SENSITIVITY) - offsets[idx].ay;
-    read.accel_z = ((int16_t)((buf[idx][4] << 8) | buf[idx][5]) / ACCEL_SENSITIVITY) - offsets[idx].az;
+    read.accel_x = ((int16_t)((buf[slot][idx][0] << 8) | buf[slot][idx][1]) / ACCEL_SENSITIVITY) - offsets[idx].ax;
+    read.accel_y = ((int16_t)((buf[slot][idx][2] << 8) | buf[slot][idx][3]) / ACCEL_SENSITIVITY) - offsets[idx].ay;
+    read.accel_z = ((int16_t)((buf[slot][idx][4] << 8) | buf[slot][idx][5]) / ACCEL_SENSITIVITY) - offsets[idx].az;
 
-    read.temp = ((int16_t)((buf[idx][6] << 8) | buf[idx][7]) / TEMP_SENSITIVITY) + TEMP_OFFSET;
+    read.temp = ((int16_t)((buf[slot][idx][6] << 8) | buf[slot][idx][7]) / TEMP_SENSITIVITY) + TEMP_OFFSET;
 
-    read.gyro_x = ((int16_t)((buf[idx][8] << 8) | buf[idx][9]) / GYRO_SENSITIVITY) - offsets[idx].gx;
-    read.gyro_y = ((int16_t)((buf[idx][10] << 8) | buf[idx][11]) / GYRO_SENSITIVITY) - offsets[idx].gy;
-    read.gyro_z = ((int16_t)((buf[idx][12] << 8) | buf[idx][13]) / GYRO_SENSITIVITY) - offsets[idx].gz;
+    read.gyro_x = ((int16_t)((buf[slot][idx][8] << 8) | buf[slot][idx][9]) / GYRO_SENSITIVITY) - offsets[idx].gx;
+    read.gyro_y = ((int16_t)((buf[slot][idx][10] << 8) | buf[slot][idx][11]) / GYRO_SENSITIVITY) - offsets[idx].gy;
+    read.gyro_z = ((int16_t)((buf[slot][idx][12] << 8) | buf[slot][idx][13]) / GYRO_SENSITIVITY) - offsets[idx].gz;
 
     return read;
 }
@@ -166,10 +187,11 @@ void mpu_init(void)
 
 void mpu_read_all(burst_read_data_t out[3])
 {
-    burst_read();
+
+    int slot = burst_cycle();
     for (int i = 0; i < 3; i++)
     {
-        out[i] = reading_extraction(i);
+        out[i] = reading_extraction(slot, i);
     }
 }
 
@@ -181,11 +203,11 @@ void mpu_calibrate(int samples)
 
     for (int n = 0; n < samples; n++)
     {
-        burst_read();
+        int slot = burst_cycle();
 
         for (int i = 0; i < 3; i++)
         {
-            burst_read_data_t reading = reading_extraction(i);
+            burst_read_data_t reading = reading_extraction(slot, i);
             ax[i] += reading.accel_x;
             ay[i] += reading.accel_y;
             az[i] += reading.accel_z;

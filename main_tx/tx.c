@@ -33,15 +33,7 @@ void can_send_state(uint8_t state)
             .data_length_code = 1};
         msg.data[0] = state;
         esp_err_t r = twai_transmit(&msg, pdMS_TO_TICKS(10));
-        if (r == ESP_OK)
-        {
-            ESP_LOGI(TAG, "TX ok  state=%u | tx_err=%lu rx_err=%lu tx_fail=%lu",
-                     state,
-                     (unsigned long)st.tx_error_counter,
-                     (unsigned long)st.rx_error_counter,
-                     (unsigned long)st.tx_failed_count);
-        }
-        else
+        if (r != ESP_OK)
         {
             ESP_LOGW(TAG, "TX fail (%s) | tx_err=%lu rx_err=%lu tx_fail=%lu",
                      esp_err_to_name(r),
@@ -84,15 +76,7 @@ void can_send_data(float data)
             .data_length_code = sizeof(float)};
         memcpy(&msg.data[0], &data, sizeof(float));
         esp_err_t r = twai_transmit(&msg, pdMS_TO_TICKS(10));
-        if (r == ESP_OK)
-        {
-            ESP_LOGI(TAG, "TX ok  data=%.3f | tx_err=%lu rx_err=%lu tx_fail=%lu",
-                     data,
-                     (unsigned long)st.tx_error_counter,
-                     (unsigned long)st.rx_error_counter,
-                     (unsigned long)st.tx_failed_count);
-        }
-        else
+        if (r != ESP_OK)
         {
             ESP_LOGW(TAG, "TX fail (%s) | tx_err=%lu rx_err=%lu tx_fail=%lu",
                      esp_err_to_name(r),
