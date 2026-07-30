@@ -1,7 +1,7 @@
 #include "fusion.h"
 #include "stdio.h"
 
-bool average_good(const burst_read_data_t readings[3], voting_result result, burst_read_data_t *out)
+bool average_good(const burst_read_data_t readings[3], voting_result result, data_to_send *out)
 {
 
     burst_read_data_t avg = {0};
@@ -34,7 +34,9 @@ bool average_good(const burst_read_data_t readings[3], voting_result result, bur
     avg.gyro_y /= n;
     avg.gyro_z /= n;
 
-    *out = avg;
+    out->gyro_x = avg.gyro_x;
+    out->gyro_y = avg.gyro_y;
+    out->gyro_z = avg.gyro_z;
 
     return true;
 }

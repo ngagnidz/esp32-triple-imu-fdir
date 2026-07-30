@@ -51,12 +51,14 @@ static void voter_task(void *pv)
         const char *state = get_state_name(condition);
         int state_number = get_state_number(condition);
 
-        burst_read_data_t avg;
+        data_to_send avg;
 
         if (average_good(readings, result, &avg))
         {
             can_send_state((uint8_t)state_number);
-            printf("%f", avg.accel_x);
+            can_send_data(avg.gyro_x);
+            can_send_data(avg.gyro_y);
+            can_send_data(avg.gyro_z);
             printf("state: %s\n\n", state);
         }
     }

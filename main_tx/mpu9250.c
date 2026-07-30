@@ -176,8 +176,8 @@ void mpu_read_all(burst_read_data_t out[3])
 void mpu_calibrate(int samples)
 {
 
-    float ax = 0, ay = 0, az = 0;
-    float gx = 0, gy = 0, gz = 0;
+    float ax[3] = {0}, ay[3] = {0}, az[3] = {0};
+    float gx[3] = {0}, gy[3] = {0}, gz[3] = {0};
 
     for (int n = 0; n < samples; n++)
     {
@@ -186,22 +186,22 @@ void mpu_calibrate(int samples)
         for (int i = 0; i < 3; i++)
         {
             burst_read_data_t reading = reading_extraction(i);
-            ax += reading.accel_x;
-            ay += reading.accel_y;
-            az += reading.accel_z;
-            gx += reading.gyro_x;
-            gy += reading.gyro_y;
-            gz += reading.gyro_z;
+            ax[i] += reading.accel_x;
+            ay[i] += reading.accel_y;
+            az[i] += reading.accel_z;
+            gx[i] += reading.gyro_x;
+            gy[i] += reading.gyro_y;
+            gz[i] += reading.gyro_z;
         }
     }
 
     for (int i = 0; i < 3; i++)
     {
-        offsets[i].ax = ax / samples;
-        offsets[i].ay = ay / samples;
-        offsets[i].az = az / samples - (-1.0f);
-        offsets[i].gx = gx / samples;
-        offsets[i].gy = gy / samples;
-        offsets[i].gz = gz / samples;
+        offsets[i].ax = ax[i] / samples;
+        offsets[i].ay = ay[i] / samples;
+        offsets[i].az = az[i] / samples - (-1.0f);
+        offsets[i].gx = gx[i] / samples;
+        offsets[i].gy = gy[i] / samples;
+        offsets[i].gz = gz[i] / samples;
     }
 }

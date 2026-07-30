@@ -3,6 +3,6 @@
 
 #include "voting.h"
 
-bool average_good(const burst_read_data_t readings[3], voting_result result, burst_read_data_t *out);
+bool average_good(const burst_read_data_t readings[3], voting_result result, data_to_send *out);
 
 #endif

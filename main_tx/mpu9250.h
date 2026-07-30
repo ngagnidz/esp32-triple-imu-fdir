@@ -25,6 +25,11 @@ typedef struct
     float gyro_z;
 } burst_read_data_t;
 
+typedef struct
+{
+    float gyro_x, gyro_y, gyro_z;
+} data_to_send;
+
 void mpu_init(void);
 void mpu_calibrate(int samples);
 void mpu_read_all(burst_read_data_t out[3]);
