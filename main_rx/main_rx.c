@@ -19,7 +19,7 @@ void receive_config(void)
 
     ESP_ERROR_CHECK(twai_driver_install(&g, &t, &f));
     ESP_ERROR_CHECK(twai_start());
-    ESP_LOGI(TAG, "CAN RX up: tx=%d rx=%d 500 kbit/s", RX_TX_GPIO, RX_RX_GPIO);
+    ESP_LOGI(TAG, "CAN RX up: tx=%d rx=%d", RX_TX_GPIO, RX_RX_GPIO);
 }
 
 void app_main(void)
@@ -46,12 +46,15 @@ void app_main(void)
             ESP_LOGI(TAG, "id=0x%lx state = %d",
                      (unsigned long)msg.identifier, state);
         }
-        else if (msg.data_length_code == 4)
+        else if (msg.data_length_code == 5)
         {
             float gyro;
-            memcpy(&gyro, msg.data, sizeof(float));
-            ESP_LOGI(TAG, "id=0x%lx gyro = %f",
-                     (unsigned long)msg.identifier, gyro);
+            char str;
+            memcpy(&str, &msg.data[0], sizeof(char));
+            memcpy(&gyro, &msg.data[1], sizeof(float));
+
+            ESP_LOGI(TAG, "id=0x%lx direction = %c gyro = %f",
+                     (unsigned long)msg.identifier, str, gyro);
         }
         else
         {

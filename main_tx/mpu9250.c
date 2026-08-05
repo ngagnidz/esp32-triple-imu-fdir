@@ -139,22 +139,15 @@ static int burst_cycle()
     }
 
     spi_transaction_t *r;
-    uint32_t t0 = esp_cpu_get_cycle_count();
 
     for (int idx = 0; idx < 3; idx++)
     {
         spi_device_get_trans_result(device_list[idx], &r, portMAX_DELAY);
     }
-    uint32_t cyc = esp_cpu_get_cycle_count() - t0;
 
     int done = fill;
     fill = fill ^ 1;
     burst_queue(fill);
-
-    static int n = 0;
-    if (++n % 10 == 0)
-        printf("collect: %lu cycles (%lu us)\n",
-               (unsigned long)cyc, (unsigned long)(cyc / 160));
     return done;
 }
 
