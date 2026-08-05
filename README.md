@@ -10,7 +10,7 @@ Triple modular redundancy with a fault detection, isolation and recovery layer i
 
 
 <p align="center">
-  <img src="image-1.png" width="75%" alt="Receiving node console output: system state and the three tagged gyro axes decoded from CAN">
+  <img src="docs/rx-output.png" width="75%" alt="Receiving node console output: system state and the three tagged gyro axes decoded from CAN">
   <br>
   <em>Output on the receiving node. Each cycle arrives as four CAN frames: the system state, X, Y and Z gyro axes at 100 Hz.</em>
 </p>
@@ -28,8 +28,8 @@ Triple modular redundancy with a fault detection, isolation and recovery layer i
 <!-- -->
 
 <p align="center">
-<img src="fdir-threshold.png" width="45%" alt="Ten consecutive MPU disagreements before the state changes">
-<img src="spi-burst.png" width="45%" alt="SPI burst across the three IMUs on the logic analyzer">
+<img src="docs/fdir-threshold.png" width="45%" alt="Ten consecutive MPU disagreements before the state changes">
+<img src="docs/spi-burst.png" width="45%" alt="SPI burst across the three IMUs on the logic analyzer">
 </p>
 
 
@@ -106,7 +106,7 @@ Host-side logic tests, no hardware required:
 
 CAN bus: Debugging my first CAN bus implementation took four days. I started with a simple two-node network and transmit/receive code to understand the protocol in practice. The receiver logged nothing, so I used a logic analyzer, which showed the transmitter was putting frames on the bus but getting no ACK. I swapped transceivers and ESP32 boards and tested different CAN libraries. I also measured CANH–CANL resistance with a multimeter and added termination resistors manually, but that did not solve the issue either. In the end, by flashing identical transmit and receive code onto each ESP32, I isolated the fault to a specific board: one ESP32 (bought locally in Georgia) could receive CAN frames but consistently failed to transmit them. I worked around it by assigning the faulty board the receive-only role in my project.
 <p align="center">
-  <img src="image.png" width="70%" alt="Saleae capture of the CAN bus: well-formed frames from the TX board, every one NAKed">
+  <img src="docs/can-nak-capture.png" width="70%" alt="Saleae capture of the CAN bus: well-formed frames from the TX board, every one NAKed">
   <br>
   <em>Saleae capture during CAN bring-up. The TX board is framing valid frames, but every frame is NAKed and no node acknowledges on the bus</em>
 </p>
