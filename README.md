@@ -53,8 +53,6 @@ Other key design considerations include:
 
 SPI over I2C - for developing a driver for MPU9250, I decided to use SPI over I2C. MPU9250 has only two I2C addresses. Therefore, for the third sensor, I would need either an I2C multiplexer or a second bus. 
 
-One queue, not three - all three readings are sent into a single queue. This approach makes sure that the voter always compares three readings captured at the same instant. Initially, I had 3 queues, one per sensor; however, later I realized that it could have led to desynchronization and the voter would have compared readings taken at different times.
-
 Electrical noise - was pushing the system into DEGRADED and FAILED and then straight back out again. To stop this, a state change now requires 10 consecutive disagreements rather than a single one. Noise almost never survives ten times in a row, but a faulty sensor does. This made the system more robust. However, the cost is that no fault can be detected faster than 100 ms.
 
 ## Testing
